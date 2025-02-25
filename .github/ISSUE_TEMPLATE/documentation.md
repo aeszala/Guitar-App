@@ -2,7 +2,7 @@
 name: Documentation
 about: List what code needs documentation.
 title: ''
-labels: ''
+labels: ":page_facing_up:Documentation"
 assignees: ''
 
 ---
