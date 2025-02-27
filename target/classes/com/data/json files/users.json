@@ -7,20 +7,7 @@
             "name": "Jake Daniels",
             "favoriteSongs":["89a2104b-1374-4ea4-8a16-38da24674a66", "7e5104e5-6d43-40e8-9828-942d450804d5" , "d8fb551b-9183-4098-9594-ca3a457b02b7"],
             "completedSongs": ["ad49d1b1-c064-4b1e-badf-ad724ede94ab", "8b6e1534-c5bd-425d-a47f-c82a5b5467ef", "5eeb9ace-397a-4ebd-8261-c4f8edbf9717"],
-            "completedLessons":
-            [{
-                "songs": ["82ddd3f9-c18a-423f-bd57-a9d3e922ce94", "3b0ec3d1-b5ac-4adb-86b3-30b3305bcbea", "a628b2e0-26e8-463d-8d10-89629700eab0"],
-                "topic": "How to play chords",
-                "assignments":[{
-                    "grade": null,
-                    "teacherComment": "You'll learn how to play chords through this lesson",
-                    "studentComment": "I am excited to learn!",
-                    "dueDate": "2025-09-25",
-                    "complete": false
-                }],
-                "progress": null,
-                "complete": false
-            }],
+            "completedLessons":["3400a38d-de4a-42fa-bbeb-b86b6e263211","9ee8be75-bbdd-4a65-bbb3-7582635ee724","8e70ed65-7b13-4460-9928-d49c36a61822"],
            "mySongs": "fda9a358-0c97-40df-b539-b367f4ee5ebc, 63d8357b-6cdd-43c2-9a10-005d4d63c92c, 8d75355a-e36a-467d-8de2-a36b121492e4",
            "securityQuestion": "What's your pets name?",
            "securityAnswer": "Polo"
@@ -34,17 +21,7 @@
             "name": "Dave Johnson",
             "favoriteSongs": ["3c6a7ecf-89ef-4c95-b52e-c7103146eeff", "afda5441-525d-4693-9989-a9e34c7a3e18", "80784b38-0c51-4f85-8ab7-bbcfb6936da8"],
             "completedSongs": ["a700bd67-d0df-457b-9315-8e5ad3f806d3", "0723c82a-a391-457c-bbdd-2cab378da047", "de9ab7e2-71f8-4f5c-8a33-241fa8c7a1d2"],
-            "completedLessons":
-            [{
-                "songs": ["127b56a3-23a3-4034-84c8-f6672b9c2a42", "de3f4f5b-b4cc-469f-ab4b-86b240e67a1e", "72c10cf7-2bd4-4802-b81c-4c3924f6684b"],
-                "topic": "How to read tabs",
-                "assignments":[{
-                    "grade": null,
-                    "teacherComment": "You'll learn how to read tabs.",
-                    "studentComment": "I am angry!",
-                    "dueDate": "2025-05-19",
-                    "complete": false
-                }],
+            "completedLessons":["bcf4169b-9b83-4736-8b51-d253f565ece5","fc838372-bbc7-46f7-954f-2a3efeb30f2a","5cfd1bf8-e734-43bb-9f91-ff71bb74d9a5"],
                 "progress": null,
                 "complete": false
             }],
@@ -52,6 +29,3 @@
            "securityQuestion": "What's your Dad's first name?",
            "securityAnswer": "Steve"
         }
-    ]
-
-}
