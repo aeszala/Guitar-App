@@ -18,7 +18,7 @@ public class MusicPlayer {
             Thread.sleep(300);
         }
         catch(Exception e) {
-            System.out.println(e);
+           System.out.println(e);
         }
     }
 
