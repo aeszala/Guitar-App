@@ -1,5 +1,8 @@
 package com.model;
 
-public class Difficulty {
-  
-}
+public enum Difficulty {
+        BEGINNER,
+        INTERMEDIATE,
+        ADVANCED;
+    }
+
