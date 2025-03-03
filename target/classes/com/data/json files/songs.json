@@ -42,14 +42,14 @@
             "length": 1.0,
             "pitch": 440,
             "string": 6,
-            "fret": 5
+            "fret": "fifth"
             },
             {
             "type": "F",
             "length": 0.25,
             "pitch": 440,
             "string": 5,
-            "fret": 8
+            "fret": "third"
             }]
         }],
         "completed": false

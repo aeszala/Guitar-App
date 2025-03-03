@@ -7,7 +7,17 @@ public class Measure {
     private int timeSignatureBottom;
     ArrayList<Sound> notes;
 
+    public Measure(int timeSignatureTop, int timeSignatureBottom, ArrayList<Sound> notes) {
+        this.timeSignatureTop = timeSignatureTop;
+        this.timeSignatureBottom = timeSignatureBottom;
+        this.notes = notes;
+    }
+
     public void display(){
         
     } 
+
+    public void play() {
+        
+    }
 }

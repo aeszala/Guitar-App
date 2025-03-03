@@ -2,16 +2,23 @@ package com.model;
 
 import javafx.scene.control.Tab;
 
-public class Note {
+public class Note extends Sound {
     private String type;
-    private Double length;
-    private Double pitch;
-    private int String;
+    private double length;
+    private double pitch;
+    private int stringNumber;
     private String fret;
-    private Double Tab;
 
-    public Double convertToTab(){
-        return Tab;
+    public Note(String type, double length, double pitch, int stringNumber, String fret) {
+        this.type = type;
+        this.length = length;
+        this.pitch = pitch;
+        this.stringNumber = stringNumber;
+        this.fret = fret;
+    }
+
+    public Tab convertToTab(){
+        return new Tab();
     }
   
 }

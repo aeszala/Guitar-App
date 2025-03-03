@@ -20,11 +20,11 @@ public class Song {
     private boolean completed;
 
     // Constructor
-    public Song(String title, String artist, int runLengthMin, int runLengthSec, int tempo, 
+    public Song(UUID id, String title, String artist, int runLengthMin, int runLengthSec, int tempo, 
                 double rating, ArrayList<Review> reviews, boolean metronomeOn, 
                 ArrayList<Genre> genres, Difficulty difficulty, ArrayList<Measure> measures, 
                 boolean completed) {
-        this.id = UUID.randomUUID();
+        this.id = id;
         this.title = title;
         this.artist = artist;
         this.runLengthMin = runLengthMin;
