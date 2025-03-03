@@ -1,7 +1,10 @@
 ﻿package com.model;
 import java.io.FileReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 import org.json.simple.JSONArray;
@@ -69,7 +72,7 @@ public class DataLoader extends DataConstants {
                 // Parsing Reviews
                 ArrayList<Review> reviews = getReviewsFromJSON((JSONArray) songJSON.get(SONG_REVIEWS));
     
-                // Parsing Genres (Assuming it's stored as an array of strings)
+                // Parsing Genres
                 ArrayList<Genre> genres = getGenresFromJSON((JSONArray) songJSON.get(SONG_GENRES));
     
                 // Parsing Measures
@@ -85,6 +88,33 @@ public class DataLoader extends DataConstants {
         return songs;
     }
     
+    public static ArrayList<Lesson> getLessons() {
+        ArrayList<Lesson> lessons = new ArrayList<>();
+    
+        try {
+            FileReader reader = new FileReader(LESSON_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray lessonsJSON = (JSONArray) parser.parse(reader);
+    
+            for (Object obj : lessonsJSON) {
+                JSONObject lessonJSON = (JSONObject) obj;
+                UUID id = UUID.fromString((String) lessonJSON.get(LESSON_ID));
+                String topic = (String) lessonJSON.get(LESSON_TOPIC);
+                double progress = (double) lessonJSON.get(LESSON_PROGRESS);
+                boolean complete = (boolean) lessonJSON.get(LESSON_COMPLETE);
+    
+                // Parsing Songs
+                ArrayList<Song> songs = getSongsFromUUIDs((JSONArray)lessonJSON.get(LESSON_SONGS));
+                // Parsing Assignments
+                ArrayList<Assignment> assignments = getAssignmentsFromJSON((JSONArray) lessonJSON.get(LESSON_ASSIGNMENTS));
+                
+                lessons.add(new Lesson(id, songs, topic, assignments, progress, complete));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lessons;
+    }
 
     private static User findUserById(UUID id) {
         for (User user : getUsers()) {
@@ -180,9 +210,37 @@ public class DataLoader extends DataConstants {
                 int stringNumber = ((Long) noteJSON.get(NOTE_STRING)).intValue();
                 String fret = (String) noteJSON.get(NOTE_FRET);
                 notes.add(new Note(type, length, pitch, stringNumber, fret));
+                // edit this because sound could be a note or a chord !!!!
             }
         }
         return notes;
+    }
+
+    private static ArrayList<Assignment> getAssignmentsFromJSON(JSONArray assignmentsJSON) {
+        ArrayList<Assignment> assignments = new ArrayList<>();
+        if (assignmentsJSON != null) {
+            for (Object obj : assignmentsJSON) {
+                JSONObject assignmentJSON = (JSONObject) obj;
+                double grade = (double) assignmentJSON.get(ASSIGNMENT_GRADE);
+                String teacherComment = (String) assignmentJSON.get(ASSIGNMENT_TEACHER_COMMENT);
+                String studentComment = (String) assignmentJSON.get(ASSIGNMENT_STUDENT_COMMENT);
+                Date dueDate = toDate((String) assignmentJSON.get(ASSIGNMENT_DUE_DATE)); // may need to read as string first
+                boolean complete = (boolean) assignmentJSON.get(ASSIGNMENT_COMPLETE);
+
+                assignments.add(new Assignment(grade, teacherComment, studentComment, dueDate, complete));
+            }
+        }
+        return assignments;
+    }
+
+    private static Date toDate(String date) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        try {
+            return formatter.parse(date);  // Parse the string into a Date object
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;  // Return null in case of an error
+        }
     }
     
     

@@ -44,4 +44,19 @@ public abstract class DataConstants {
     protected static final String NOTE_PITCH = "pitch";
     protected static final String NOTE_STRING = "string";
     protected static final String NOTE_FRET = "fret";
+
+    // lesson class constants
+    protected static final String LESSON_FILE_NAME = "src/Lessons.json";
+    protected static final String LESSON_ID = "id";
+    protected static final String LESSON_SONGS = "songs";
+    protected static final String LESSON_TOPIC = "topic";
+    protected static final String LESSON_ASSIGNMENTS = "assignments";
+    protected static final String LESSON_PROGRESS = "progress";
+    protected static final String LESSON_COMPLETE = "complete";
+    // assignment class constants (used when reading lessons file)
+    protected static final String ASSIGNMENT_GRADE = "grade";
+    protected static final String ASSIGNMENT_TEACHER_COMMENT = "teacherComment";
+    protected static final String ASSIGNMENT_STUDENT_COMMENT = "studentComment";
+    protected static final String ASSIGNMENT_DUE_DATE = "dueDate";
+    protected static final String ASSIGNMENT_COMPLETE = "complete";
 }
