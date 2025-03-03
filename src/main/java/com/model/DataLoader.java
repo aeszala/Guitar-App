@@ -242,6 +242,15 @@ public class DataLoader extends DataConstants {
             return null;  // Return null in case of an error
         }
     }
+
+    public static void main(String[] args) {
+        ArrayList<User> users = DataLoader.getUsers();
+
+        for(User user : users) {
+            System.out.println(user);
+        }
+        
+    }
     
     
     
