@@ -8,7 +8,7 @@
             "favoriteSongs":["89a2104b-1374-4ea4-8a16-38da24674a66", "7e5104e5-6d43-40e8-9828-942d450804d5" , "d8fb551b-9183-4098-9594-ca3a457b02b7"],
             "completedSongs": ["ad49d1b1-c064-4b1e-badf-ad724ede94ab", "8b6e1534-c5bd-425d-a47f-c82a5b5467ef", "5eeb9ace-397a-4ebd-8261-c4f8edbf9717"],
             "completedLessons":["3400a38d-de4a-42fa-bbeb-b86b6e263211","9ee8be75-bbdd-4a65-bbb3-7582635ee724","8e70ed65-7b13-4460-9928-d49c36a61822"],
-           "mySongs": "fda9a358-0c97-40df-b539-b367f4ee5ebc, 63d8357b-6cdd-43c2-9a10-005d4d63c92c, 8d75355a-e36a-467d-8de2-a36b121492e4",
+           "mySongs": ["fda9a358-0c97-40df-b539-b367f4ee5ebc, 63d8357b-6cdd-43c2-9a10-005d4d63c92c, 8d75355a-e36a-467d-8de2-a36b121492e4"],
            "securityQuestion": "What's your pets name?",
            "securityAnswer": "Polo"
         },
