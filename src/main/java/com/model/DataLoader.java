@@ -39,6 +39,7 @@ public class DataLoader extends DataConstants {
 				users.add(new User(id, username, password, email, name,
                 favoriteSongs, completedSongs, completedLessons, mySongs,
                 securityQuestion, securityAnswer));
+
             }
 
             return users;
@@ -241,6 +242,15 @@ public class DataLoader extends DataConstants {
             e.printStackTrace();
             return null;  // Return null in case of an error
         }
+    }
+
+    public static void main(String[] args) {
+        ArrayList<User> users = DataLoader.getUsers();
+
+        for(User user : users) {
+            System.out.println(user);
+        }
+        
     }
     
     
