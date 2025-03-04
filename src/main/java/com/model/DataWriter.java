@@ -1,7 +1,9 @@
 package com.model;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -79,5 +81,25 @@ public class DataWriter extends DataConstants {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+      // Creates user list
+      ArrayList<User> users = new ArrayList<User>();
+      // Define folder name
+      String folderName = "UserData";
+      // Create folder if it doesn't exist
+      File folder = new File(folderName);
+      if (!folder.exists()) {
+          if (folder.mkdir()) {
+              System.out.println("Folder created: " + folderName);
+          } else {
+              System.out.println("Failed to create folder.");
+              return;
+          }
+      }
+      User user = new User(null, USER_USERNAME, USER_PASSWORD, USER_EMAIL, LESSON_FILE_NAME, null, null, null, null, ASSIGNMENT_DUE_DATE, ASSIGNMENT_COMPLETE);
+      DataWriter.writeUsers(users);
+
     }
 }
