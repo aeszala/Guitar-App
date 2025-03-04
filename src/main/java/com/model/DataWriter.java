@@ -11,7 +11,7 @@ import org.json.simple.JSONObject;
 public class DataWriter extends DataConstants {
 
     // Method to write users to the JSON file
-    public static void writeUsers(List<User> users) {
+    public static void saveUsers(List<User> users) {
         JSONArray userList = new JSONArray();
         for (User user : users) {
             JSONObject userObject = new JSONObject();
@@ -33,7 +33,7 @@ public class DataWriter extends DataConstants {
     }
 
     // Method to write songs to the JSON file
-//    public static void writeSongs(List<Song> songs) {
+//    public static void saveSongs(List<Song> songs) {
 //        JSONArray songList = new JSONArray();
 //        for (Song song : songs) {
 //            JSONObject songObject = new JSONObject();
@@ -57,7 +57,7 @@ public class DataWriter extends DataConstants {
 //    }
 
     // Method to write lessons to the JSON file
-//    public static void writeLessons(List<Lesson> lessons) {
+//    public static void saveLessons(List<Lesson> lessons) {
 //        JSONArray lessonList = new JSONArray();
 //        for (Lesson lesson : lessons) {
 //            JSONObject lessonObject = new JSONObject();
@@ -99,7 +99,7 @@ public class DataWriter extends DataConstants {
           }
       }
       User user = new User(null, null, null, null, null, null);
-      DataWriter.writeUsers(users);
+      DataWriter.saveUsers(users);
 
     }
 }
