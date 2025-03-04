@@ -87,7 +87,7 @@ public class DataWriter extends DataConstants {
       // Creates user list
       ArrayList<User> users = new ArrayList<User>();
       // Define folder name
-      String folderName = "UserData";
+      String folderName = "SongData";
       // Create folder if it doesn't exist
       File folder = new File(folderName);
       if (!folder.exists()) {
