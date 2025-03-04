@@ -17,6 +17,11 @@ public class User {
     public String securityAnswer;
     public boolean login;
 
+    public User(String username2, String password2, String email2, String name2, String securityQuestion2,
+            String securityAnswer2) {
+        //TODO Auto-generated constructor stub
+    }
+
     public void user(String username, String password, String email, String name, String securityQuestion, String securityAnswer){
         this.id = UUID.randomUUID();
         this.username = username;
@@ -106,5 +111,10 @@ public class User {
                 ", completedLessons=" + completedLessons.size() +
                 ", mySongs=" + mySongs.size() +
                 '}';
+    }
+
+    public boolean login(String username2, String password2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'login'");
     }
 }
