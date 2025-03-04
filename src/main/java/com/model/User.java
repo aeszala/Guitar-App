@@ -17,12 +17,24 @@ public class User {
     public String securityAnswer;
     public boolean login;
 
-    public User(String username2, String password2, String email2, String name2, String securityQuestion2,
-            String securityAnswer2) {
-        //TODO Auto-generated constructor stub
+    public User(UUID id, String username, String password, String email, String name, 
+                ArrayList<Song> farvoriteSongs, ArrayList<Song> completedSongs, 
+                ArrayList<Lesson> completedLessons, ArrayList<Song> mySongs, 
+                String securityQuestion, String securityAnswer){
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.name = name;
+        this.securityQuestion = securityQuestion;
+        this.securityAnswer = securityAnswer;
+        this.favoriteSongs = farvoriteSongs;
+        this.completedSongs = completedSongs;
+        this.completedLessons = completedLessons;
+        this.mySongs = mySongs;
     }
 
-    public void user(String username, String password, String email, String name, String securityQuestion, String securityAnswer){
+    public User(String username, String password, String email, String name, String securityQuestion, String securityAnswer){
         this.id = UUID.randomUUID();
         this.username = username;
         this.password = password;
