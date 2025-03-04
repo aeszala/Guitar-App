@@ -1,17 +1,22 @@
-{
-    "Lesson": {
-      "id": "84142748-d6ec-4b4a-ad58-ba025ce03873",
-      "songs": ["992a5b9b-8673-497e-ad42-abec7c8d7204", "268b9591-2279-4072-aa2d-df4c314b6216", "5858dd04-8a32-468b-b466-8cd201400c9f"],
-      "topic": "How to play chords",
-      "assignments": [{
+[
+  {
+    "id": "84142748-d6ec-4b4a-ad58-ba025ce03873",
+    "songs": [
+      "992a5b9b-8673-497e-ad42-abec7c8d7204",
+      "268b9591-2279-4072-aa2d-df4c314b6216",
+      "5858dd04-8a32-468b-b466-8cd201400c9f"
+    ],
+    "topic": "How to play chords",
+    "assignments": [
+      {
         "grade": null,
         "teacherComment": "You'll learn how to play chords thorugh this lesson",
         "studentComment": "I am very excited!",
         "dueDate": "2025-09-26",
-        "complete":false
-      }],
-      "progress": 0.0,
-      "complete": false
-    }
+        "complete": false
+      }
+    ],
+    "progress": 0,
+    "complete": false
   }
-  
+]
