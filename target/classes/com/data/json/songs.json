@@ -1,112 +1,132 @@
-﻿[
+[
     {
-        "id": "024dbb50-6c97-4591-afc9-9624a4cfd29d",
-        "title": "Moonlight Sonata",
-        "artist": "Ludwig V. Beethoven",
-        "runLengthMin": 6,
-        "runLengthSec": 6,
-        "notes": [{
-            "type": "A",
-            "length": 1.0,
-            "pitch": 440,
-            "string": 6,
-            "fret": 5
+      "id": "024dbb50-6c97-4591-afc9-9624a4cfd29d",
+      "title": "Moonlight Sonata",
+      "artist": "Ludwig V. Beethoven",
+      "runLengthMin": 6,
+      "runLengthSec": 6,
+      "notes": [
+        {
+          "type": "A",
+          "length": 1,
+          "pitch": 440,
+          "string": 6,
+          "fret": 5
         },
         {
-            "type": "F",
-            "length": 0.25,
-            "pitch": 440,
-            "string": 5,
-            "fret": 8
-        }],
-        "tempo": 111,
-        "rating": 4.5,
-        "reviews": [{
-            "rating": 5,
-            "id": "d82c5496-838d-4281-9483-400a27efebf3",
-            "comment": "My favorite song to play!"
+          "type": "F",
+          "length": 0.25,
+          "pitch": 440,
+          "string": 5,
+          "fret": 8
+        }
+      ],
+      "tempo": 111,
+      "rating": 4.5,
+      "reviews": [
+        {
+          "rating": 5,
+          "id": "d82c5496-838d-4281-9483-400a27efebf3",
+          "comment": "My favorite song to play!"
         },
         {
-            "rating": 4,
-            "id": "acaf4ea3-57b0-4bc3-b2e5-d01ebd2a84ab",
-            "comment": "It's pretty good."
-        }],
-        "metronomeOn": true,
-        "genres": ["CLASSICAL"],
-        "difficulty": "INTERMEDIATE",
-        "measures": [{
-            "timeSignatureTop": 4,
-            "timeSignatureBottom": 4,
-            "notes": [{
-            "type": "A",
-            "length": 1.0,
-            "pitch": 440,
-            "string": 6,
-            "fret": "fifth"
+          "rating": 4,
+          "id": "acaf4ea3-57b0-4bc3-b2e5-d01ebd2a84ab",
+          "comment": "It's pretty good."
+        }
+      ],
+      "metronomeOn": true,
+      "genres": [
+        "CLASSICAL"
+      ],
+      "difficulty": "INTERMEDIATE",
+      "measures": [
+        {
+          "timeSignatureTop": 4,
+          "timeSignatureBottom": 4,
+          "notes": [
+            {
+              "type": "A",
+              "length": 1,
+              "pitch": 440,
+              "string": 6,
+              "fret": "fifth"
             },
             {
-            "type": "F",
-            "length": 0.25,
-            "pitch": 440,
-            "string": 5,
-            "fret": "third"
-            }]
-        }],
-        "completed": false
+              "type": "F",
+              "length": 0.25,
+              "pitch": 440,
+              "string": 5,
+              "fret": "third"
+            }
+          ]
+        }
+      ],
+      "completed": false
     },
     {
-        "id": "e15a4fa0-b838-4064-a3d3-e36015503eac",
-        "title": "You Are My Sunshine",
-        "artist": "Jimmie Davis",
-        "runLengthMin": 2,
-        "runLengthSec": 50,
-        "notes": [{
-            "type": "D",
-            "length": 1.0,
-            "pitch": 440,
-            "string": 6,
-            "fret": 10
+      "id": "e15a4fa0-b838-4064-a3d3-e36015503eac",
+      "title": "You Are My Sunshine",
+      "artist": "Jimmie Davis",
+      "runLengthMin": 2,
+      "runLengthSec": 50,
+      "notes": [
+        {
+          "type": "D",
+          "length": 1,
+          "pitch": 440,
+          "string": 6,
+          "fret": 10
         },
         {
-            "type": "A",
-            "length": 0.5,
-            "pitch": 440,
-            "string": 4,
-            "fret": 7
-        }],
-        "tempo": 115,
-        "rating": 4.0,
-        "reviews": [{
-            "rating": 5,
-            "id": "57fa3166-d832-411c-9927-6c62118fd84e",
-            "comment": "I love this song! It reminds me of my mom!"
+          "type": "A",
+          "length": 0.5,
+          "pitch": 440,
+          "string": 4,
+          "fret": 7
+        }
+      ],
+      "tempo": 115,
+      "rating": 4,
+      "reviews": [
+        {
+          "rating": 5,
+          "id": "57fa3166-d832-411c-9927-6c62118fd84e",
+          "comment": "I love this song! It reminds me of my mom!"
         },
         {
-            "rating": 3,
-            "id": "77ffca24-4ab4-4db9-90db-551621f131bb",
-            "comment": "Too boring for me personally."
-        }],
-        "metronomeOn": false,
-        "genres": ["COUNTRY"],
-        "difficulty": "BEGINNER",
-        "measures": [{
-            "timeSignatureTop": 4,
-            "timeSignatureBottom": 4,
-            "notes": [{
-            "type": "D",
-            "length": 1.0,
-            "pitch": 440,
-            "string": 6,
-            "fret": 10
+          "rating": 3,
+          "id": "77ffca24-4ab4-4db9-90db-551621f131bb",
+          "comment": "Too boring for me personally."
+        }
+      ],
+      "metronomeOn": false,
+      "genres": [
+        "COUNTRY"
+      ],
+      "difficulty": "BEGINNER",
+      "measures": [
+        {
+          "timeSignatureTop": 4,
+          "timeSignatureBottom": 4,
+          "notes": [
+            {
+              "type": "D",
+              "length": 1,
+              "pitch": 440,
+              "string": 6,
+              "fret": 10
             },
             {
-            "type": "A",
-            "length": 0.5,
-            "pitch": 440,
-            "string": 4,
-            "fret": 7
-            }]
-        }],
-        "completed": false
+              "type": "A",
+              "length": 0.5,
+              "pitch": 440,
+              "string": 4,
+              "fret": 7
+            }
+          ]
+        }
+      ],
+      "completed": false
     }
-]
+  ]

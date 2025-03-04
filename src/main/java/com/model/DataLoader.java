@@ -31,13 +31,17 @@ public class DataLoader extends DataConstants {
                 String securityQuestion = (String)personJSON.get(USER_SECURITY_QUESTION);
                 String securityAnswer = (String)personJSON.get(USER_SECURITY_ANSWER);
 
-                ArrayList<Song> favoriteSongs = getSongsFromUUIDs((JSONArray)personJSON.get(USER_FAVORITE_SONGS));
-                ArrayList<Song> completedSongs = getSongsFromUUIDs((JSONArray)personJSON.get(USER_COMPLETED_SONGS));
-                ArrayList<Lesson> completedLessons = getLessonsFromUUIDs((JSONArray)personJSON.get(USER_COMPLETED_LESSONS));
-                ArrayList<Song> mySongs = getSongsFromUUIDs((JSONArray)personJSON.get(USER_MY_SONGS));
+                // check here
+                // ArrayList<Song> favoriteSongs = getSongsFromUUIDs((JSONArray)personJSON.get(USER_FAVORITE_SONGS));
+                // ArrayList<Song> completedSongs = getSongsFromUUIDs((JSONArray)personJSON.get(USER_COMPLETED_SONGS));
+                // ArrayList<Lesson> completedLessons = getLessonsFromUUIDs((JSONArray)personJSON.get(USER_COMPLETED_LESSONS));
+                // ArrayList<Song> mySongs = getSongsFromUUIDs((JSONArray)personJSON.get(USER_MY_SONGS));
 			
-				users.add(new User(id, username, password, email, name,
-                favoriteSongs, completedSongs, completedLessons, mySongs,
+				// users.add(new User(id, username, password, email, name,
+                // favoriteSongs, completedSongs, completedLessons, mySongs,
+                // securityQuestion, securityAnswer));
+
+                users.add(new User(username, password, email, name,
                 securityQuestion, securityAnswer));
 
             }
@@ -127,7 +131,7 @@ public class DataLoader extends DataConstants {
     }
 
     private static ArrayList<Song> getSongsFromUUIDs(JSONArray songUUIDs) {
-        ArrayList<Song> songs = new ArrayList<>();
+        ArrayList<Song> songs = new ArrayList<Song>();
         for (Object uuid : songUUIDs) {
             songs.add(findSongById(UUID.fromString((String) uuid)));
         }
