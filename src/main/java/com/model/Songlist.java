@@ -10,7 +10,7 @@ public class Songlist {
 
     }
 
-    public Songlist getInstance(){
+    public Songlist getInstance() {
 
     }
 
