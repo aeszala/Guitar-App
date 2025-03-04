@@ -11,7 +11,7 @@ import org.json.simple.JSONObject;
 public class DataWriter extends DataConstants {
 
     // Method to write users to the JSON file
-    public static void writeUsers(List<User> users) {
+    public static void saveUsers(List<User> users) {
         JSONArray userList = new JSONArray();
         for (User user : users) {
             JSONObject userObject = new JSONObject();
@@ -33,45 +33,45 @@ public class DataWriter extends DataConstants {
     }
 
     // Method to write songs to the JSON file
-    public static void writeSongs(List<Song> songs) {
-        JSONArray songList = new JSONArray();
-        for (Song song : songs) {
-            JSONObject songObject = new JSONObject();
-            songObject.put(SONG_ID, song.getId());
-            songObject.put(SONG_TITLE, song.getTitle());
-            songObject.put(SONG_ARTIST, song.getArtist());
-            songObject.put(SONG_RUN_LENGTH_MIN, song.getRunLengthMin());
-            songObject.put(SONG_RUN_LENGTH_SEC, song.getRunLengthSec());
-            songObject.put(SONG_TEMPO, song.getTempo());
-            songObject.put(SONG_RATING, song.getRating());
-            songObject.put(SONG_REVIEWS, song.getReviews());
-            songObject.put(SONG_METRONOME_ON, song.isMetronomeOn());
-            songObject.put(SONG_GENRES, song.getGenres());
-            songObject.put(SONG_DIFFICULTY, song.getDifficulty());
-            songObject.put(SONG_MEASURES, song.getMeasures());
-            songObject.put(SONG_COMPLETED, song.isCompleted());
-
-            songList.add(songObject);
-        }
-        writeToFile(SONG_FILE_NAME, songList);
-    }
+//    public static void saveSongs(List<Song> songs) {
+//        JSONArray songList = new JSONArray();
+//        for (Song song : songs) {
+//            JSONObject songObject = new JSONObject();
+//            songObject.put(SONG_ID, song.getId());
+//            songObject.put(SONG_TITLE, song.getTitle());
+//            songObject.put(SONG_ARTIST, song.getArtist());
+//            songObject.put(SONG_RUN_LENGTH_MIN, song.getRunLengthMin());
+//            songObject.put(SONG_RUN_LENGTH_SEC, song.getRunLengthSec());
+//            songObject.put(SONG_TEMPO, song.getTempo());
+//            songObject.put(SONG_RATING, song.getRating());
+//            songObject.put(SONG_REVIEWS, song.getReviews());
+//            songObject.put(SONG_METRONOME_ON, song.isMetronomeOn());
+//            songObject.put(SONG_GENRES, song.getGenres());
+//            songObject.put(SONG_DIFFICULTY, song.getDifficulty());
+//            songObject.put(SONG_MEASURES, song.getMeasures());
+//            songObject.put(SONG_COMPLETED, song.isCompleted());
+//
+//            songList.add(songObject);
+//        }
+//        writeToFile(SONG_FILE_NAME, songList);
+//    }
 
     // Method to write lessons to the JSON file
-    public static void writeLessons(List<Lesson> lessons) {
-        JSONArray lessonList = new JSONArray();
-        for (Lesson lesson : lessons) {
-            JSONObject lessonObject = new JSONObject();
-            lessonObject.put(LESSON_ID, lesson.getId());
-            lessonObject.put(LESSON_SONGS, lesson.getSongs());
-            lessonObject.put(LESSON_TOPIC, lesson.getTopic());
-            lessonObject.put(LESSON_ASSIGNMENTS, lesson.getAssignments());
-            lessonObject.put(LESSON_PROGRESS, lesson.getProgress());
-            lessonObject.put(LESSON_COMPLETE, lesson.isComplete());
-
-            lessonList.add(lessonObject);
-        }
-        writeToFile(LESSON_FILE_NAME, lessonList);
-    }
+//    public static void saveLessons(List<Lesson> lessons) {
+//        JSONArray lessonList = new JSONArray();
+//        for (Lesson lesson : lessons) {
+//            JSONObject lessonObject = new JSONObject();
+//            lessonObject.put(LESSON_ID, lesson.getId());
+//            lessonObject.put(LESSON_SONGS, lesson.getSongs());
+//            lessonObject.put(LESSON_TOPIC, lesson.getTopic());
+//            lessonObject.put(LESSON_ASSIGNMENTS, lesson.getAssignments());
+//            lessonObject.put(LESSON_PROGRESS, lesson.getProgress());
+//            lessonObject.put(LESSON_COMPLETE, lesson.isComplete());
+//
+//            lessonList.add(lessonObject);
+//        }
+//        writeToFile(LESSON_FILE_NAME, lessonList);
+//    }
 
     // Helper method to write JSON data to a file
     private static void writeToFile(String fileName, JSONArray data) {
@@ -87,7 +87,7 @@ public class DataWriter extends DataConstants {
       // Creates user list
       ArrayList<User> users = new ArrayList<User>();
       // Define folder name
-      String folderName = "UserData";
+      String folderName = "LessonData";
       // Create folder if it doesn't exist
       File folder = new File(folderName);
       if (!folder.exists()) {
@@ -98,8 +98,8 @@ public class DataWriter extends DataConstants {
               return;
           }
       }
-      User user = new User(null, USER_USERNAME, USER_PASSWORD, USER_EMAIL, LESSON_FILE_NAME, null, null, null, null, ASSIGNMENT_DUE_DATE, ASSIGNMENT_COMPLETE);
-      DataWriter.writeUsers(users);
+      User user = new User(null, null, null, null, null, null);
+      DataWriter.saveUsers(users);
 
     }
 }
