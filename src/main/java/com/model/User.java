@@ -31,8 +31,8 @@ public class User {
         this.mySongs = new ArrayList<>();
     }
 
-    public boolean login(String inputUsername, String inputPassword){
-        return this.username.equals(inputUsername) && this.password.equals(inputPassword);
+    public boolean login(){
+        return login;
     }
 
     public void logOut(){
@@ -94,7 +94,7 @@ public class User {
     }
 
 
-    @Override
+    
     public String toString(){
         return "User{" +
                 "id=" + id +
