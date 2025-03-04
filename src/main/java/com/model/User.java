@@ -98,6 +98,10 @@ public class User {
         return securityQuestion;
     }
 
+    public String getSecurityAnswer(){
+        return securityAnswer;
+    }
+
 
     
     public String toString(){
@@ -114,7 +118,6 @@ public class User {
     }
 
     public boolean login(String username2, String password2) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'login'");
     }
 }

@@ -1,16 +1,15 @@
-﻿import java.util.ArrayList;
+﻿package com.model;
+
+import java.util.ArrayList;
 
 public class UserList {
-    // Singleton instance
     private static UserList userList = null;
     private ArrayList<User> users;
 
-    // Private constructor to prevent direct instantiation
     private UserList() {
         users = new ArrayList<>();
     }
 
-    // Singleton getInstance method
     public static UserList getInstance() {
         if (userList == null) {
             userList = new UserList();
@@ -18,9 +17,7 @@ public class UserList {
         return userList;
     }
 
-    // Add a new user
     public boolean addUser(String username, String password, String email, String name, String securityQuestion, String securityAnswer) {
-        // Ensure username is unique
         if (getUser(username) != null) {
             System.out.println("Username already exists.");
             return false;
@@ -32,20 +29,18 @@ public class UserList {
         return true;
     }
 
-    // Retrieve a user by username
     public User getUser(String username) {
         for (User user : users) {
             if (user.getUsername().equalsIgnoreCase(username)) {
                 return user;
             }
         }
-        return null; // User not found
+        return null; 
     }
 
-    // Edit user details
     public void editUser(User user, String username, String name, String password, String email) {
         if (user != null) {
-            user = getUser(user.getUsername()); // Get the existing user object
+            user = getUser(user.getUsername()); 
             if (user != null) {
                 user = new User(username, password, email, name, user.getSecurityQuestion(), user.getSecurityAnswer());
                 System.out.println("User details updated successfully.");
@@ -55,17 +50,14 @@ public class UserList {
         }
     }
 
-    // Check if the given password matches the stored user's password
     public boolean isMatch(User user, String password) {
         return user != null && user.login(user.getUsername(), password);
     }
 
-    // Save users (this could be extended to save to a file or database)
     public void saveUsers() {
         System.out.println("Users saved successfully. (Implement file/database storage here)");
     }
 
-    // Display all users (for testing purposes)
     public void displayUsers() {
         for (User user : users) {
             System.out.println(user);
