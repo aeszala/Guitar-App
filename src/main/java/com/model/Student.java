@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public class Student {
     private double grade;
-    ArrayList<Assignment> assignments;
-    ArrayList<Assignment> completedAssignments;
-    ArrayList<Lesson> lessons;
+    private ArrayList<Assignment> assignments;
+    private ArrayList<Assignment> completedAssignments;
+    private ArrayList<Lesson> lessons;
     private Teacher teacher;
-    private boolean turnedIn
+    private boolean turnedIn;
 
     public void openAssignment(Assignment assignment){
 

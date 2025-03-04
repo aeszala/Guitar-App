@@ -39,6 +39,7 @@ public class DataLoader extends DataConstants {
 				users.add(new User(id, username, password, email, name,
                 favoriteSongs, completedSongs, completedLessons, mySongs,
                 securityQuestion, securityAnswer));
+
             }
 
             return users;
