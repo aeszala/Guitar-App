@@ -24,5 +24,9 @@ public class Lesson {
     public void complete(){
 
     }
+
+    public UUID getId() {
+        return id;
+    }
     
 }

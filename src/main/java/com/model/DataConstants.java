@@ -1,8 +1,10 @@
 ﻿package com.model;
 
+import java.io.File;
+
 public abstract class DataConstants {
     // user class constants
-    protected static final String USER_FILE_NAME = "data/users.json";
+    protected static final String USER_FILE_NAME = "src/main/java/com/data/json/users.json";
     protected static final String USER_ID = "id";
     protected static final String USER_USERNAME = "username";
     protected static final String USER_PASSWORD = "password";
@@ -16,7 +18,7 @@ public abstract class DataConstants {
     protected static final String USER_SECURITY_ANSWER = "securityAnswer";
 
     // song class constants
-    protected static final String SONG_FILE_NAME = "data/songs.json";
+    protected static final String SONG_FILE_NAME = "src/main/java/com/data/json/songs.json";
     protected static final String SONG_ID = "id";
     protected static final String SONG_TITLE = "title";
     protected static final String SONG_ARTIST = "artist";
@@ -46,7 +48,7 @@ public abstract class DataConstants {
     protected static final String NOTE_FRET = "fret";
 
     // lesson class constants
-    protected static final String LESSON_FILE_NAME = "data/Lessons.json";
+    protected static final String LESSON_FILE_NAME = "src/main/java/com/data/json/Lessons.json";
     protected static final String LESSON_ID = "id";
     protected static final String LESSON_SONGS = "songs";
     protected static final String LESSON_TOPIC = "topic";
