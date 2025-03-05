@@ -18,12 +18,10 @@ public class Song {
     private Difficulty difficulty;
     private ArrayList<Measure> measures;
     private boolean completed;
+    public Object getTitle;
 
     // Constructor
-    public Song(UUID id, String title, String artist, int runLengthMin, int runLengthSec, int tempo, 
-                double rating, ArrayList<Review> reviews, boolean metronomeOn, 
-                ArrayList<Genre> genres, Difficulty difficulty, ArrayList<Measure> measures, 
-                boolean completed) {
+    public Song(String title, String artist, int runLengthMin, int runLengthSec, double rating, ArrayList<Genre> genres) {
         this.id = id;
         this.title = title;
         this.artist = artist;
@@ -37,6 +35,11 @@ public class Song {
         this.difficulty = difficulty;
         this.measures = measures;
         this.completed = completed;
+    }
+
+    public Song(String title2, String artist2, int runLengthMin2, int runLengthSec2, double rating2,
+            ArrayList<Genre> genre) {
+        //TODO Auto-generated constructor stub
     }
 
     // Method to play the song (stub)
@@ -159,5 +162,10 @@ public class Song {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+
+    public static void add(Song newSong) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'add'");
     }
 }
