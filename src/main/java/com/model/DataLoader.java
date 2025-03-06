@@ -103,11 +103,19 @@ public class DataLoader extends DataConstants {
                     reviews.add(createReview(reviewsIDs.get(j).toString()));
                 }
     
-                // Parsing Genres
+                // Fill Genres list
+                JSONArray genresIDs = (JSONArray)songJSON.get(SONG_GENRES);
                 ArrayList<Genre> genres = new ArrayList<Genre>();
+                for (int j = 0; j < genresIDs.size(); j++) {
+                    genres.add(getGenre(genresIDs.get(j).toString()));
+                }
     
-                // Parsing Measures
+                // Fill Measures list
+                JSONArray measuresIDs = (JSONArray)songJSON.get(SONG_MEASURES);
                 ArrayList<Measure> measures = new ArrayList<Measure>();
+                for (int j = 0; j < measuresIDs.size(); j++) {
+                    measures.add(createMeasure(measuresIDs.get(j).toString()));
+                }
     
                 songs.add(new Song(id, title, artist, runLengthMin, runLengthSec,
                         tempo, rating, reviews, metronomeOn, genres, difficulty,
@@ -275,8 +283,6 @@ public class DataLoader extends DataConstants {
     }
 
     private static Review createReview(String reviewString) {
-        //String input = "{\"rating\":5,\"comment\":\"My favorite song to play!\",\"id\":\"d82c5496-838d-4281-9483-400a27efebf3\"}";
-
         // Define regex patterns to extract the values
         String ratingPattern = "\"rating\":(\\d+)";
         String commentPattern = "\"comment\":\"([^\"]+)\"";
@@ -309,17 +315,60 @@ public class DataLoader extends DataConstants {
         return review;
     }
 
+    private static Measure createMeasure(String measureString) {
+        System.out.println("This is what I'm given: " + measureString);
+        return new Measure(0, 0, null);
+        
+    }
+
+    private static Genre getGenre(String genreString) {
+        Genre genre = null;
+        System.out.println("This is what I have: " + genreString);
+        switch (genreString) {
+            case "ROCK":
+                genre = Genre.ROCK;
+                break;
+            case "POP":
+                genre = Genre.POP;
+                break;
+            case "COUNTRY":
+                genre = Genre.COUNTRY;
+                break;
+            case "HIPHOP":
+                genre = Genre.HIPHOP;
+                break;
+            case "ELECTRONIC":
+                genre = Genre.ELECTRONIC;
+                break;
+            case "JAZZ":
+                genre = Genre.JAZZ;
+                break;
+            case "CLASSICAL":
+                genre = Genre.CLASSICAL;
+                break;
+            case "SOUL":
+                genre = Genre.SOUL;
+                break;
+            case "INDIE":
+                genre = Genre.INDIE;
+                break;
+        }
+        return genre;
+    }
+
     public static void main(String[] args) {
         ArrayList<User> users = DataLoader.getUsers();
         ArrayList<Song> songs = DataLoader.getSongs();
 
+        System.out.println("Songs:");
         for (Song song : songs) {
             System.out.println(song);
         }
 
-        // for(User user : users) {
-        //     System.out.println(user);
-        // }
+        System.out.println("\nUsers:");
+        for(User user : users) {
+            System.out.println(user);
+        }
         
     }
     
