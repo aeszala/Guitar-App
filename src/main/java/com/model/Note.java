@@ -8,13 +8,15 @@ public class Note extends Sound {
     private double pitch;
     private int string;
     private String fret;
+    public String soundType;
     
-    public Note(String type, double length, double pitch, int string, String fret) {
+    public Note(String type, double length, double pitch, int string, String fret, String soundType) {
         this.type = type;
         this.length = length;
         this.pitch = pitch;
         this.string = string;
         this.fret = fret;
+        this.soundType = "note";
     }
 
     public Tab convertToTab(){
