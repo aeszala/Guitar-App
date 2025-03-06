@@ -21,7 +21,9 @@
         "8e70ed65-7b13-4460-9928-d49c36a61822"
       ],
       "mySongs": [
-        "fda9a358-0c97-40df-b539-b367f4ee5ebc, 63d8357b-6cdd-43c2-9a10-005d4d63c92c, 8d75355a-e36a-467d-8de2-a36b121492e4"
+        "fda9a358-0c97-40df-b539-b367f4ee5ebc",
+        "63d8357b-6cdd-43c2-9a10-005d4d63c92c",
+        "8d75355a-e36a-467d-8de2-a36b121492e4"
       ],
       "securityQuestion": "What's your pet's name?",
       "securityAnswer": "Polo"

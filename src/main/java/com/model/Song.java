@@ -18,10 +18,31 @@ public class Song {
     private Difficulty difficulty;
     private ArrayList<Measure> measures;
     private boolean completed;
-    public Object getTitle;
+    public String getTitle;
 
-    // Constructor
-    public Song(String title, String artist, int runLengthMin, int runLengthSec, double rating, ArrayList<Genre> genres) {
+    // Constructor for new songs
+    public Song(String title, String artist, int runLengthMin, int runLengthSec, 
+                int tempo, ArrayList<Genre> genres, 
+                Difficulty difficulty, ArrayList<Measure> measures) {
+        this.id = UUID.randomUUID();
+        this.title = title;
+        this.artist = artist;
+        this.runLengthMin = runLengthMin;
+        this.runLengthSec = runLengthSec;
+        this.tempo = tempo;
+        this.rating = 0;
+        this.reviews = new ArrayList<Review>();
+        this.metronomeOn = false;
+        this.genres = genres;
+        this.difficulty = difficulty;
+        this.measures = measures;
+        this.completed = false;
+    }
+
+    public Song(UUID id, String title, String artist, int runLengthMin, int runLengthSec, 
+                int tempo, double rating, ArrayList<Review> reviews, boolean metronomeOn, 
+                ArrayList<Genre> genres, Difficulty difficulty, ArrayList<Measure> measures, 
+                boolean completed) {
         this.id = id;
         this.title = title;
         this.artist = artist;
@@ -35,11 +56,6 @@ public class Song {
         this.difficulty = difficulty;
         this.measures = measures;
         this.completed = completed;
-    }
-
-    public Song(String title2, String artist2, int runLengthMin2, int runLengthSec2, double rating2,
-            ArrayList<Genre> genre) {
-        //TODO Auto-generated constructor stub
     }
 
     // Method to play the song (stub)
@@ -167,5 +183,25 @@ public class Song {
     public static void add(Song newSong) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'add'");
+    }
+
+    // toString method
+    @Override
+    public String toString() {
+        return "Song{" +
+            "id=" + id +
+            ", title='" + title + '\'' +
+            ", artist='" + artist + '\'' +
+            ", runLengthMin=" + runLengthMin +
+            ", runLengthSec=" + runLengthSec +
+            ", tempo=" + tempo +
+            ", rating=" + rating +
+            ", reviews=" + reviews +
+            ", metronomeOn=" + metronomeOn +
+            ", genres=" + genres +
+            ", difficulty=" + difficulty +
+            ", measures=" + measures +
+            ", completed=" + completed +
+            '}';
     }
 }

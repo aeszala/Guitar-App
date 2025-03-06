@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.Locale;
 import java.util.UUID;
 
@@ -30,25 +32,38 @@ public class DataLoader extends DataConstants {
                 String name = (String)personJSON.get(USER_NAME);
                 String securityQuestion = (String)personJSON.get(USER_SECURITY_QUESTION);
                 String securityAnswer = (String)personJSON.get(USER_SECURITY_ANSWER);
-                JSONArray favoriteSongs0 = (JSONArray)personJSON.get(USER_FAVORITE_SONGS);
+
+                // fill favoriteSong list
+                JSONArray favoriteSongsIDs = (JSONArray)personJSON.get(USER_FAVORITE_SONGS);
                 ArrayList<Song> favoriteSongs = new ArrayList<Song>();
-                for (int j = 0; j < favoriteSongs0.size(); j++) {
-                    //favoriteSongs.add(findSongById(UUID.fromString(favoriteSongs0.get(j).toString())));
+                for (int j = 0; j < favoriteSongsIDs.size(); j++) {
+                    // favoriteSongs.add(findSongById(UUID.fromString(favoriteSongsIDs.get(j).toString())));
                 }
 
+                // fill completedSong list
+                JSONArray completedSongsIDs = (JSONArray)personJSON.get(USER_COMPLETED_SONGS);
                 ArrayList<Song> completedSongs = new ArrayList<Song>();
-                ArrayList<Lesson> completedLessons = new ArrayList<Lesson>();;
+                for (int j = 0; j < completedSongsIDs.size(); j++) {
+                    //completedSongs.add(findSongById(UUID.fromString(completedSongsIDs.get(j).toString())));
+                }
+
+                // fill completedLessons list
+                JSONArray completedLessonsIDs = (JSONArray)personJSON.get(USER_COMPLETED_LESSONS);
+                ArrayList<Lesson> completedLessons = new ArrayList<Lesson>();
+                for (int j = 0; j < completedLessonsIDs.size(); j++) {
+                    //completedLessons.add(findSongById(UUID.fromString(completedLessonsIDs.get(j).toString())));
+                }
+
+                // fill mySongs list
+                // JSONArray mySongsIDs = (JSONArray)personJSON.get(USER_MY_SONGS);
                 ArrayList<Song> mySongs = new ArrayList<Song>();
-                // ArrayList<Song> favoriteSongs = getSongsFromUUIDs((JSONArray)personJSON.get(USER_FAVORITE_SONGS));
-                // ArrayList<Song> completedSongs = getSongsFromUUIDs((JSONArray)personJSON.get(USER_COMPLETED_SONGS));
-                // ArrayList<Lesson> completedLessons = getLessonsFromUUIDs((JSONArray)personJSON.get(USER_COMPLETED_LESSONS));
-                // ArrayList<Song> mySongs = getSongsFromUUIDs((JSONArray)personJSON.get(USER_MY_SONGS));
+                // for (int j = 0; j < mySongsIDs.size(); j++) {
+                //     //mySongs.add(findSongById(UUID.fromString(mySongsIDs.get(j).toString())));
+                // }
 			
 				users.add(new User(id, username, password, email, name,
                 favoriteSongs, completedSongs, completedLessons, mySongs,
                 securityQuestion, securityAnswer));
-
-                // users.add(new User(username, password, email, name, securityQuestion, securityAnswer));
 
             }
 
@@ -63,31 +78,44 @@ public class DataLoader extends DataConstants {
         ArrayList<Song> songs = new ArrayList<>();
     
         try {
-            FileReader reader = new FileReader(SONG_FILE_NAME); // Corrected from USER_FILE_NAME
+            FileReader reader = new FileReader(SONG_FILE_NAME);
             JSONParser parser = new JSONParser();
             JSONArray songsJSON = (JSONArray) parser.parse(reader);
     
-            for (Object obj : songsJSON) {
-                JSONObject songJSON = (JSONObject) obj;
+            for (int i = 0; i < songsJSON.size(); i++) {
+                JSONObject songJSON = (JSONObject)songsJSON.get(i);
                 UUID id = UUID.fromString((String) songJSON.get(SONG_ID));
                 String title = (String) songJSON.get(SONG_TITLE);
                 String artist = (String) songJSON.get(SONG_ARTIST);
                 int runLengthMin = ((Long) songJSON.get(SONG_RUN_LENGTH_MIN)).intValue();
                 int runLengthSec = ((Long) songJSON.get(SONG_RUN_LENGTH_SEC)).intValue();
                 int tempo = ((Long) songJSON.get(SONG_TEMPO)).intValue();
-                double rating = (double) songJSON.get(SONG_RATING);
+                // double rating = (double) songJSON.get(SONG_RATING);
+                double rating = ((Number) songJSON.get(SONG_RATING)).doubleValue();
                 boolean metronomeOn = (boolean) songJSON.get(SONG_METRONOME_ON);
                 Difficulty difficulty = Difficulty.valueOf((String) songJSON.get(SONG_DIFFICULTY)); // Convert String to Enum
                 boolean completed = (boolean) songJSON.get(SONG_COMPLETED);
     
-                // Parsing Reviews
-                ArrayList<Review> reviews = getReviewsFromJSON((JSONArray) songJSON.get(SONG_REVIEWS));
+                // fill Reviews list
+                JSONArray reviewsIDs = (JSONArray)songJSON.get(SONG_REVIEWS);
+                ArrayList<Review> reviews = new ArrayList<Review>();
+                for (int j = 0; j < reviewsIDs.size(); j++) {
+                    reviews.add(createReview(reviewsIDs.get(j).toString()));
+                }
     
-                // Parsing Genres
-                ArrayList<Genre> genres = getGenresFromJSON((JSONArray) songJSON.get(SONG_GENRES));
+                // Fill Genres list
+                JSONArray genresIDs = (JSONArray)songJSON.get(SONG_GENRES);
+                ArrayList<Genre> genres = new ArrayList<Genre>();
+                for (int j = 0; j < genresIDs.size(); j++) {
+                    genres.add(getGenre(genresIDs.get(j).toString()));
+                }
     
-                // Parsing Measures
-                ArrayList<Measure> measures = getMeasuresFromJSON((JSONArray) songJSON.get(SONG_MEASURES));
+                // Fill Measures list
+                JSONArray measuresIDs = (JSONArray)songJSON.get(SONG_MEASURES);
+                ArrayList<Measure> measures = new ArrayList<Measure>();
+                for (int j = 0; j < measuresIDs.size(); j++) {
+                    measures.add(createMeasure(measuresIDs.get(j).toString()));
+                }
     
                 songs.add(new Song(id, title, artist, runLengthMin, runLengthSec,
                         tempo, rating, reviews, metronomeOn, genres, difficulty,
@@ -133,7 +161,7 @@ public class DataLoader extends DataConstants {
                 return user;
             }
         }
-        return null;
+        return new User("JohnDoe", "ABC123", "123@email.com", "John Doe", "What's your first pet's name?", "Spot");
     }
 
     private static ArrayList<Song> getSongsFromUUIDs(JSONArray songUUIDs) {
@@ -254,9 +282,90 @@ public class DataLoader extends DataConstants {
         }
     }
 
+    private static Review createReview(String reviewString) {
+        // Define regex patterns to extract the values
+        String ratingPattern = "\"rating\":(\\d+)";
+        String commentPattern = "\"comment\":\"([^\"]+)\"";
+        String idPattern = "\"id\":\"([^\"]+)\"";
+
+        // Create a list to store the extracted values
+        List<String> values = new ArrayList<>();
+
+        // Extract rating
+        Matcher ratingMatcher = Pattern.compile(ratingPattern).matcher(reviewString);
+        if (ratingMatcher.find()) {
+            values.add(ratingMatcher.group(1)); // Add the rating value
+        }
+
+        // Extract comment
+        Matcher commentMatcher = Pattern.compile(commentPattern).matcher(reviewString);
+        if (commentMatcher.find()) {
+            values.add(commentMatcher.group(1)); // Add the comment value
+        }
+
+        // Extract id
+        Matcher idMatcher = Pattern.compile(idPattern).matcher(reviewString);
+        if (idMatcher.find()) {
+            values.add(idMatcher.group(1)); // Add the id value
+        }
+
+        // create review object
+        User author = findUserById(UUID.fromString(values.get(2).toString()));
+        Review review = new Review(Double.parseDouble(values.get(0)), values.get(1), author);
+        return review;
+    }
+
+    private static Measure createMeasure(String measureString) {
+        System.out.println("This is what I'm given: " + measureString);
+        return new Measure(0, 0, null);
+        
+    }
+
+    private static Genre getGenre(String genreString) {
+        Genre genre = null;
+        System.out.println("This is what I have: " + genreString);
+        switch (genreString) {
+            case "ROCK":
+                genre = Genre.ROCK;
+                break;
+            case "POP":
+                genre = Genre.POP;
+                break;
+            case "COUNTRY":
+                genre = Genre.COUNTRY;
+                break;
+            case "HIPHOP":
+                genre = Genre.HIPHOP;
+                break;
+            case "ELECTRONIC":
+                genre = Genre.ELECTRONIC;
+                break;
+            case "JAZZ":
+                genre = Genre.JAZZ;
+                break;
+            case "CLASSICAL":
+                genre = Genre.CLASSICAL;
+                break;
+            case "SOUL":
+                genre = Genre.SOUL;
+                break;
+            case "INDIE":
+                genre = Genre.INDIE;
+                break;
+        }
+        return genre;
+    }
+
     public static void main(String[] args) {
         ArrayList<User> users = DataLoader.getUsers();
+        ArrayList<Song> songs = DataLoader.getSongs();
 
+        System.out.println("Songs:");
+        for (Song song : songs) {
+            System.out.println(song);
+        }
+
+        System.out.println("\nUsers:");
         for(User user : users) {
             System.out.println(user);
         }
