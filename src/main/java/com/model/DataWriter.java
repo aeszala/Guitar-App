@@ -84,22 +84,40 @@ public class DataWriter extends DataConstants {
     }
 
     public static void main(String[] args) {
-      // Creates user list
-      ArrayList<User> users = new ArrayList<User>();
-      // Define folder name
-      String folderName = "LessonData";
-      // Create folder if it doesn't exist
-      File folder = new File(folderName);
-      if (!folder.exists()) {
-          if (folder.mkdir()) {
-              System.out.println("Folder created: " + folderName);
-          } else {
-              System.out.println("Failed to create folder.");
-              return;
-          }
-      }
-      User user = new User(null, null, null, null, null, null);
-      DataWriter.saveUsers(users);
+        // Creates user list
+        ArrayList<User> users = new ArrayList<>();
 
+        // Define folder name
+        String folderName = "LessonData";
+        File folder = new File(folderName);
+
+        // Create folder if it doesn't exist
+        if (!folder.exists()) {
+            if (folder.mkdir()) {
+                System.out.println("Folder created: " + folderName);
+            } else {
+                System.out.println("Failed to create folder.");
+                return;
+            }
+        }
+
+        // Define file name inside the folder
+        String fileName = folderName + "/lessons.txt";
+        File file = new File(fileName);
+
+        // Create file if it doesn't exist
+        try {
+            if (file.createNewFile()) {
+                System.out.println("File created: " + fileName);
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while creating the file.");
+            e.printStackTrace();
+        }
+
+        User user = new User(null, null, null, null, null, null);
+        DataWriter.saveUsers(users);
     }
 }
