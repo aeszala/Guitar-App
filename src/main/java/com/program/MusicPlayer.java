@@ -1,6 +1,8 @@
-﻿package com.program;
+package com.program;
 
-import com.guitar_app_one_direction.Music;
+
+import com.guitar_app_one_direction.*;
+
 
 public class MusicPlayer {
 
@@ -56,6 +58,8 @@ public class MusicPlayer {
     public static void main(String[] args) {
     MusicPlayer player = new MusicPlayer();
     player.playSong();
-    }
+    
+    
+}
 
 }

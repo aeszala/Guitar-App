@@ -9,4 +9,6 @@ module com.guitar_app_one_direction {
 
     opens com.model to javafx.fxml;
     exports com.model;
+
+    opens com.program to javafx.fxml;
 }
