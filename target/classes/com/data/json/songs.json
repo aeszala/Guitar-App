@@ -8,6 +8,7 @@
       "notes": [
         {
           "type": "A",
+          "soundType": "note",
           "length": 1,
           "pitch": 440,
           "string": 6,
@@ -15,10 +16,20 @@
         },
         {
           "type": "F",
+          "soundType": "note",
           "length": 0.25,
           "pitch": 440,
           "string": 5,
           "fret": 8
+        },
+        {
+          "type": "C Major",
+          "soundType": "chord",
+          "notes": [
+            { "type": "C", "soundType": "note", "length": 1, "pitch": 261.63, "string": 5, "fret": "third" },
+            { "type": "E", "soundType": "note", "length": 1, "pitch": 329.63, "string": 4, "fret": "second" },
+            { "type": "G", "soundType": "note", "length": 1, "pitch": 392.00, "string": 3, "fret": "open" }
+          ]
         }
       ],
       "tempo": 111,
