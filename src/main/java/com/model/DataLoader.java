@@ -1,5 +1,6 @@
 ﻿package com.model;
 import java.io.FileReader;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -315,11 +316,45 @@ public class DataLoader extends DataConstants {
         return review;
     }
 
-    private static Measure createMeasure(String measureString) {
-        System.out.println("This is what I'm given: " + measureString);
-        return new Measure(0, 0, null);
-        
+    public static Measure createMeasure(String jsonString) {
+        try {
+            JSONParser parser = new JSONParser();
+            JSONObject measureJSON = (JSONObject) parser.parse(jsonString);
+
+            // Extract time signature
+            int timeSignatureTop = ((Long) measureJSON.get("timeSignatureTop")).intValue();
+            System.out.println("TS top: " + timeSignatureTop);
+            int timeSignatureBottom = ((Long) measureJSON.get("timeSignatureBottom")).intValue();
+            System.out.println("TS bottom: " + timeSignatureBottom);
+
+            // Extract notes array
+            JSONArray notesJSON = (JSONArray) measureJSON.get("notes");
+            ArrayList<Sound> sounds = new ArrayList<>();
+
+            if (notesJSON != null) {
+                for (Object obj : notesJSON) {
+                    JSONObject noteJSON = (JSONObject) obj;
+                    String type = (String) noteJSON.get("type");
+                    double length = ((Number) noteJSON.get("length")).doubleValue();
+                    double pitch = ((Number) noteJSON.get("pitch")).doubleValue();
+                    int stringNumber = ((Long) noteJSON.get("string")).intValue();
+                    String fret = (String) noteJSON.get("fret");
+
+                    // Assuming Note is the subclass of Sound
+                    sounds.add(new Note(type, length, pitch, stringNumber, fret));
+                }
+            }
+
+            // Create and return the Measure object
+            return new Measure(timeSignatureTop, timeSignatureBottom, sounds);
+        } catch (org.json.simple.parser.ParseException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                    return null;
+                }
     }
+
+
 
     private static Genre getGenre(String genreString) {
         Genre genre = null;
