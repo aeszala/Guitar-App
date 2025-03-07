@@ -128,7 +128,7 @@ public class DataWriter extends DataConstants {
         Song song = new Song("id1", "Myself", 1, 2, 0, new ArrayList<Genre>(), Difficulty.BEGINNER, new ArrayList<Measure>());
         songs.add(song);
         DataWriter.saveSongs(songs);
-//        Lesson lesson = new Lesson(null, null, fileName, null, 0, false);
+//        Lesson lesson = new Lesson("id2", new ArrayList<Songs>(), "bee", new ArrayList<Assignment>(), 0, false);
 //        lessons.add(lesson);
 //        DataWriter.saveLessons(lessons);
     }
