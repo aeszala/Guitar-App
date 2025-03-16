@@ -1,7 +1,7 @@
 package com.model;
 import java.util.ArrayList;
 
-public class Chord {
+public class Chord extends Sound{
   private String type;
   private ArrayList<Note> notes;
 

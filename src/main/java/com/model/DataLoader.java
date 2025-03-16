@@ -316,45 +316,65 @@ public class DataLoader extends DataConstants {
         return review;
     }
 
-    public static Measure createMeasure(String jsonString) {
+    private static Measure createMeasure(String jsonString) {
         try {
             JSONParser parser = new JSONParser();
             JSONObject measureJSON = (JSONObject) parser.parse(jsonString);
-
+    
             // Extract time signature
-            int timeSignatureTop = ((Long) measureJSON.get("timeSignatureTop")).intValue();
-            System.out.println("TS top: " + timeSignatureTop);
-            int timeSignatureBottom = ((Long) measureJSON.get("timeSignatureBottom")).intValue();
-            System.out.println("TS bottom: " + timeSignatureBottom);
-
-            // Extract notes array
-            JSONArray notesJSON = (JSONArray) measureJSON.get("notes");
+            int timeSignatureTop = ((Long) measureJSON.get(MEASURE_TIME_SIGNATURE_TOP)).intValue();
+            int timeSignatureBottom = ((Long) measureJSON.get(MEASURE_TIME_SIGNATURE_BOTTOM)).intValue();
+    
+            // Extract sounds array
+            JSONArray soundsJSON = (JSONArray) measureJSON.get(MEASURE_NOTES);
             ArrayList<Sound> sounds = new ArrayList<>();
+    
+            if (soundsJSON != null) {
+                for (Object obj : soundsJSON) {
+                    JSONObject soundJSON = (JSONObject) obj;
+                    System.out.println("This is what we have: " + soundJSON.toString());
+                    // Check if it's a Chord (has a "notes" array)
+                    if (soundJSON.containsKey("notes")) {
+                        String type = (String) soundJSON.get("type");
+                        JSONArray chordNotesJSON = (JSONArray) soundJSON.get("notes");
+                        ArrayList<Note> chordNotes = new ArrayList<>();
+    
+                        for (Object noteObj : chordNotesJSON) {
+                            JSONObject noteJSON = (JSONObject) noteObj;
+                            String noteType = (String) noteJSON.get("type");
+                            double length = ((Number) noteJSON.get("length")).doubleValue();
+                            double pitch = ((Number) noteJSON.get("pitch")).doubleValue();
+                            int stringNumber = ((Long) noteJSON.get("string")).intValue();
+                            String fret = (String) noteJSON.get("fret");
+    
+                            chordNotes.add(new Note(noteType, length, pitch, stringNumber, fret));
+                        }
+                        // Create a Chord object and add to sounds list
+                        System.out.println("im not trying to add a chord");
+                        // sounds.add(new Chord("A major", new ArrayList<Note>()));
+                        // sounds.add(new Chord(type, chordNotes));
 
-            if (notesJSON != null) {
-                for (Object obj : notesJSON) {
-                    JSONObject noteJSON = (JSONObject) obj;
-                    String type = (String) noteJSON.get("type");
-                    double length = ((Number) noteJSON.get("length")).doubleValue();
-                    double pitch = ((Number) noteJSON.get("pitch")).doubleValue();
-                    int stringNumber = ((Long) noteJSON.get("string")).intValue();
-                    String fret = (String) noteJSON.get("fret");
-
-                    // Assuming Note is the subclass of Sound
-                    sounds.add(new Note(type, length, pitch, stringNumber, fret));
+                    } else {
+                        // It's a Note
+                        String type = (String) soundJSON.get("type");
+                        double length = ((Number) soundJSON.get("length")).doubleValue();
+                        double pitch = ((Number) soundJSON.get("pitch")).doubleValue();
+                        int stringNumber = ((Long) soundJSON.get("string")).intValue();
+                        String fret = (String) soundJSON.get("fret");
+    
+                        sounds.add(new Note(type, length, pitch, stringNumber, fret));
+                    }
                 }
             }
-
+    
             // Create and return the Measure object
             return new Measure(timeSignatureTop, timeSignatureBottom, sounds);
+
         } catch (org.json.simple.parser.ParseException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                     return null;
                 }
-    }
-
-
+    }    
 
     private static Genre getGenre(String genreString) {
         Genre genre = null;
@@ -406,7 +426,5 @@ public class DataLoader extends DataConstants {
         }
         
     }
-    
-    
-    
+
 }
