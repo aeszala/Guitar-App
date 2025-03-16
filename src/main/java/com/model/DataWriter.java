@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -33,7 +32,7 @@ public class DataWriter extends DataConstants {
         writeToFile(USER_FILE_NAME, userList);
     }
 
-    // Method to write songs to the JSON file
+     // Method to write songs to the JSON file
     public static void saveSongs(List<Song> songs) {
         JSONArray songList = new JSONArray();
         for (Song song : songs) {
@@ -51,13 +50,15 @@ public class DataWriter extends DataConstants {
             songObject.put(SONG_DIFFICULTY, song.getDifficulty());
             songObject.put(SONG_MEASURES, song.getMeasures());
             songObject.put(SONG_COMPLETED, song.isCompleted());
+//            songObject.put(SONG_SOUND_TYPE, song.getSoundType());
+
 
             songList.add(songObject);
         }
         writeToFile(SONG_FILE_NAME, songList);
     }
 
-    // Method to write lessons to the JSON file
+     // Method to write lessons to the JSON file
     public static void saveLessons(List<Lesson> lessons) {
         JSONArray lessonList = new JSONArray();
         for (Lesson lesson : lessons) {
@@ -121,11 +122,14 @@ public class DataWriter extends DataConstants {
             e.printStackTrace();
         }
 
-        User user = new User(null, null, null, null, null, null);
+        User user = new User("username1", "password1", "email1", "name1", "Question1", "??1");
+        users.add(user);
         DataWriter.saveUsers(users);
-        Song song = new Song(null, fileName, fileName, 0, 0, 0, 0, null, false, null, null, null, false);
+        Song song = new Song("id1", "Myself", 1, 2, 0, new ArrayList<Genre>(), Difficulty.BEGINNER, new ArrayList<Measure>());
+        songs.add(song);
         DataWriter.saveSongs(songs);
-        Lesson lesson = new Lesson(null, null, fileName, null, 0, false);
-        DataWriter.saveLessons(lessons);
+//        Lesson lesson = new Lesson("id2", new ArrayList<Songs>(), "bee", new ArrayList<Assignment>(), 0, false);
+//        lessons.add(lesson);
+//        DataWriter.saveLessons(lessons);
     }
 }

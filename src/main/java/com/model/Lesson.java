@@ -28,5 +28,11 @@ public class Lesson {
     public UUID getId() {
         return id;
     }
+
+    public ArrayList<Song> getSongs(){
+        return getSongs();
+    }
+
+    
     
 }
