@@ -6,7 +6,7 @@ public class NormalUser {
     private int points;
     private int streak;
     private int ranking;
-    ArrayList<Song> publishedSongs;
+    private ArrayList<Song> publishedSongs;
 
     public void publishedSong(Song song){
         
