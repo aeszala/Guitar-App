@@ -54,7 +54,7 @@ public class Lesson {
         return progress;
     }
 
-    public boolean getComplete() {
+    public boolean isComplete() {
         return complete;
     }
 

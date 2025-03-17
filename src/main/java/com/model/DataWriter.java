@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -125,10 +127,11 @@ public class DataWriter extends DataConstants {
         User user = new User("username1", "password1", "email1", "name1", "Question1", "Answer1");
         users.add(user);
         DataWriter.saveUsers(users);
-        Song song = new Song("id1", "Myself", 1, 2, 0, new ArrayList<Genre>(), Difficulty.BEGINNER, new ArrayList<Measure>());
+        Song song = new Song("title2", "Myself", 1, 2, 0, new ArrayList<Genre>(), Difficulty.BEGINNER, new ArrayList<Measure>());
         songs.add(song);
         DataWriter.saveSongs(songs);
-//        Lesson lesson = new Lesson("id2", new ArrayList<Songs>(), "bee", new ArrayList<Assignment>(), 0, false);
+// Stuck on getSongs in Lesson file
+//        Lesson lesson = new Lesson(new ArrayList<Song>(), "topic3", new ArrayList<Assignment>());
 //        lessons.add(lesson);
 //        DataWriter.saveLessons(lessons);
     }
