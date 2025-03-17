@@ -42,6 +42,24 @@ public class Lesson {
         return getSongs();
     }
 
+    public String getTopic(){
+        return topic;
+    }
+    
+    public ArrayList<Assignment> getAssignments() {
+        return assignments;
+    }
+
+    public double getProgress() {
+        return progress;
+    }
+
+    public boolean getComplete() {
+        return complete;
+    }
+
+
+
     @Override
     public String toString() {
         return "Lesson{" +

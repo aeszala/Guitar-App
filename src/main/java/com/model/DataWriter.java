@@ -63,7 +63,7 @@ public class DataWriter extends DataConstants {
         JSONArray lessonList = new JSONArray();
         for (Lesson lesson : lessons) {
             JSONObject lessonObject = new JSONObject();
-            lessonObject.put(LESSON_ID, lesson.getId());
+            lessonObject.put(LESSON_ID, lesson.getId().toString());
             lessonObject.put(LESSON_SONGS, lesson.getSongs());
             lessonObject.put(LESSON_TOPIC, lesson.getTopic());
             lessonObject.put(LESSON_ASSIGNMENTS, lesson.getAssignments());
