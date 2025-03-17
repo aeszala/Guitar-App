@@ -39,7 +39,7 @@ public class Lesson {
     }
 
     public ArrayList<Song> getSongs(){
-        return getSongs();
+        return songs;
     }
 
     public String getTopic(){

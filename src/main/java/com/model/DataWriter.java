@@ -130,9 +130,8 @@ public class DataWriter extends DataConstants {
         Song song = new Song("title2", "Myself", 1, 2, 0, new ArrayList<Genre>(), Difficulty.BEGINNER, new ArrayList<Measure>());
         songs.add(song);
         DataWriter.saveSongs(songs);
-// Stuck on getSongs in Lesson file
-//        Lesson lesson = new Lesson(new ArrayList<Song>(), "topic3", new ArrayList<Assignment>());
-//        lessons.add(lesson);
-//        DataWriter.saveLessons(lessons);
+        Lesson lesson = new Lesson(new ArrayList<Song>(), "topic3", new ArrayList<Assignment>());
+        lessons.add(lesson);
+        DataWriter.saveLessons(lessons);
     }
 }
