@@ -22,13 +22,34 @@ public class DataWriter extends DataConstants {
             userObject.put(USER_PASSWORD, user.getPassword());
             userObject.put(USER_EMAIL, user.getEmail());
             userObject.put(USER_NAME, user.getName());
-            userObject.put(USER_FAVORITE_SONGS, user.getFavoriteSongs());
-            userObject.put(USER_COMPLETED_SONGS, user.getCompletedSongs());
-            userObject.put(USER_COMPLETED_LESSONS, user.getCompletedLessons());
-            userObject.put(USER_MY_SONGS, user.getMySongs());
+    
+            JSONArray favoriteSongsArray = new JSONArray();
+            for (Song song : user.getFavoriteSongs()) {
+                favoriteSongsArray.add(song.toJson());
+            }
+            userObject.put(USER_FAVORITE_SONGS, favoriteSongsArray);
+    
+            JSONArray completedSongsArray = new JSONArray();
+            for (Song song : user.getCompletedSongs()) {
+                completedSongsArray.add(song.toJson());
+            }
+            userObject.put(USER_COMPLETED_SONGS, completedSongsArray);
+    
+            JSONArray completedLessonsArray = new JSONArray();
+            for (Lesson lesson : user.getCompletedLessons()) {
+                completedLessonsArray.add(lesson.toJson());
+            }
+            userObject.put(USER_COMPLETED_LESSONS, completedLessonsArray);
+    
+            JSONArray mySongsArray = new JSONArray();
+            for (Song song : user.getMySongs()) {
+                mySongsArray.add(song.toJson());
+            }
+            userObject.put(USER_MY_SONGS, mySongsArray);
+    
             userObject.put(USER_SECURITY_QUESTION, user.getSecurityQuestion());
             userObject.put(USER_SECURITY_ANSWER, user.getSecurityAnswer());
-
+    
             userList.add(userObject);
         }
         writeToFile(USER_FILE_NAME, userList);
