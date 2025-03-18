@@ -5,80 +5,6 @@
       "artist": "Ludwig V. Beethoven",
       "runLengthMin": 6,
       "runLengthSec": 6,
-      "notes": [
-          {
-              "type": "E",
-              "soundType": "note",
-              "length": 1,
-              "pitch": 659.25,
-              "string": 1,
-              "fret": 0
-          },
-          {
-              "type": "D#",
-              "soundType": "note",
-              "length": 1,
-              "pitch": 622.25,
-              "string": 2,
-              "fret": 4
-          },
-          {
-              "type": "E",
-              "soundType": "note",
-              "length": 1,
-              "pitch": 659.25,
-              "string": 1,
-              "fret": 0
-          },
-          {
-              "type": "D#",
-              "soundType": "note",
-              "length": 1,
-              "pitch": 622.25,
-              "string": 2,
-              "fret": 4
-          },
-          {
-              "type": "E",
-              "soundType": "note",
-              "length": 1,
-              "pitch": 659.25,
-              "string": 1,
-              "fret": 0
-          },
-          {
-              "type": "B",
-              "soundType": "note",
-              "length": 1,
-              "pitch": 493.88,
-              "string": 2,
-              "fret": 0
-          },
-          {
-              "type": "D",
-              "soundType": "note",
-              "length": 1,
-              "pitch": 587.33,
-              "string": 3,
-              "fret": 0
-          },
-          {
-              "type": "C",
-              "soundType": "note",
-              "length": 1,
-              "pitch": 523.25,
-              "string": 3,
-              "fret": 5
-          },
-          {
-              "type": "A",
-              "soundType": "note",
-              "length": 1,
-              "pitch": 440,
-              "string": 4,
-              "fret": 2
-          }
-      ],
       "tempo": 111,
       "rating": 4.8,
       "reviews": [
@@ -105,6 +31,7 @@
               "notes": [
                   {
                       "type": "E",
+                      "soundType": "note",
                       "length": 1,
                       "pitch": 659.25,
                       "string": 1,
@@ -112,10 +39,79 @@
                   },
                   {
                       "type": "D#",
+                      "soundType": "note",
                       "length": 1,
                       "pitch": 622.25,
                       "string": 2,
                       "fret": 4
+                  },
+                  {
+                      "type": "E",
+                      "soundType": "note",
+                      "length": 1,
+                      "pitch": 659.25,
+                      "string": 1,
+                      "fret": 0
+                  },
+                  {
+                      "type": "D#",
+                      "soundType": "note",
+                      "length": 1,
+                      "pitch": 622.25,
+                      "string": 2,
+                      "fret": 4
+                  }
+              ]
+          },
+          {
+              "timeSignatureTop": 4,
+              "timeSignatureBottom": 4,
+              "notes": [
+                  {
+                      "type": "E",
+                      "soundType": "note",
+                      "length": 1,
+                      "pitch": 659.25,
+                      "string": 1,
+                      "fret": 0
+                  },
+                  {
+                      "type": "B",
+                      "soundType": "note",
+                      "length": 1,
+                      "pitch": 493.88,
+                      "string": 2,
+                      "fret": 0
+                  },
+                  {
+                      "type": "D",
+                      "soundType": "note",
+                      "length": 1,
+                      "pitch": 587.33,
+                      "string": 3,
+                      "fret": 0
+                  },
+                  {
+                      "type": "C",
+                      "soundType": "note",
+                      "length": 1,
+                      "pitch": 523.25,
+                      "string": 3,
+                      "fret": 5
+                  }
+              ]
+          },
+          {
+              "timeSignatureTop": 4,
+              "timeSignatureBottom": 4,
+              "notes": [
+                  {
+                      "type": "A",
+                      "soundType": "note",
+                      "length": 1,
+                      "pitch": 440,
+                      "string": 4,
+                      "fret": 2
                   }
               ]
           }
@@ -123,87 +119,12 @@
       "completed": false
   },
 
-  [
     {
         "id": "f3c5d6a2-89b7-4e6a-8c3f-2a4d5e6b7c8d",
         "title": "You Are My Sunshine",
         "artist": "Jimmie Davis",
         "runLengthMin": 3,
         "runLengthSec": 45,
-        "notes": [
-            {
-                "type": "C",
-                "soundType": "note",
-                "length": 1,
-                "pitch": 523.25,
-                "string": 2,
-                "fret": 1
-            },
-            {
-                "type": "C",
-                "soundType": "note",
-                "length": 1,
-                "pitch": 523.25,
-                "string": 2,
-                "fret": 1
-            },
-            {
-                "type": "C",
-                "soundType": "note",
-                "length": 1,
-                "pitch": 523.25,
-                "string": 2,
-                "fret": 1
-            },
-            {
-                "type": "D",
-                "soundType": "note",
-                "length": 1,
-                "pitch": 587.33,
-                "string": 2,
-                "fret": 3
-            },
-            {
-                "type": "E",
-                "soundType": "note",
-                "length": 1,
-                "pitch": 659.25,
-                "string": 1,
-                "fret": 0
-            },
-            {
-                "type": "E",
-                "soundType": "note",
-                "length": 1,
-                "pitch": 659.25,
-                "string": 1,
-                "fret": 0
-            },
-            {
-                "type": "D",
-                "soundType": "note",
-                "length": 1,
-                "pitch": 587.33,
-                "string": 2,
-                "fret": 3
-            },
-            {
-                "type": "C",
-                "soundType": "note",
-                "length": 1,
-                "pitch": 523.25,
-                "string": 2,
-                "fret": 1
-            },
-            {
-                "type": "A",
-                "soundType": "note",
-                "length": 1,
-                "pitch": 440.00,
-                "string": 3,
-                "fret": 2
-            }
-        ],
         "tempo": 100,
         "rating": 4.7,
         "reviews": [
@@ -223,7 +144,7 @@
             "COUNTRY",
             "FOLK"
         ],
-        "difficulty": "EASY",
+        "difficulty": "BEGINNER",
         "measures": [
             {
                 "timeSignatureTop": 4,
@@ -231,6 +152,23 @@
                 "notes": [
                     {
                         "type": "C",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 523.25,
+                        "string": 2,
+                        "fret": 1
+                    },
+                    {
+                        "type": "C",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 523.25,
+                        "string": 2,
+                        "fret": 1
+                    },
+                    {
+                        "type": "C",
+                        "soundType": "note",
                         "length": 1,
                         "pitch": 523.25,
                         "string": 2,
@@ -238,15 +176,129 @@
                     },
                     {
                         "type": "D",
+                        "soundType": "note",
                         "length": 1,
                         "pitch": 587.33,
                         "string": 2,
                         "fret": 3
                     }
                 ]
+            },
+            {
+                "timeSignatureTop": 4,
+                "timeSignatureBottom": 4,
+                "notes": [
+                    {
+                        "type": "E",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 659.25,
+                        "string": 1,
+                        "fret": 0
+                    },
+                    {
+                        "type": "E",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 659.25,
+                        "string": 1,
+                        "fret": 0
+                    },
+                    {
+                        "type": "D",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 587.33,
+                        "string": 2,
+                        "fret": 3
+                    },
+                    {
+                        "type": "C",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 523.25,
+                        "string": 2,
+                        "fret": 1
+                    }
+                ]
+            },
+            {
+                "timeSignatureTop": 4,
+                "timeSignatureBottom": 4,
+                "notes": [
+                    {
+                        "type": "A",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 440.00,
+                        "string": 3,
+                        "fret": 2
+                    },
+                    {
+                        "type": "A",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 440.00,
+                        "string": 3,
+                        "fret": 2
+                    },
+                    {
+                        "type": "C",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 523.25,
+                        "string": 2,
+                        "fret": 1
+                    },
+                    {
+                        "type": "D",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 587.33,
+                        "string": 2,
+                        "fret": 3
+                    }
+                ]
+            },
+            {
+                "timeSignatureTop": 4,
+                "timeSignatureBottom": 4,
+                "notes": [
+                    {
+                        "type": "E",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 659.25,
+                        "string": 1,
+                        "fret": 0
+                    },
+                    {
+                        "type": "C",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 523.25,
+                        "string": 2,
+                        "fret": 1
+                    },
+                    {
+                        "type": "A",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 440.00,
+                        "string": 3,
+                        "fret": 2
+                    },
+                    {
+                        "type": "G",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 392.00,
+                        "string": 3,
+                        "fret": 0
+                    }
+                ]
             }
         ],
         "completed": false
     }
-]
 ]

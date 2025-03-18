@@ -1,5 +1,7 @@
 ﻿package com.model;
 
+import org.json.simple.JSONObject;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Assignment {
@@ -18,6 +20,21 @@ public Assignment(String title, double grade, String teacherComment, String stud
     this.studentComment = studentComment;
     this.dueDate = dueDate;
     this.complete = complete;
+}
+
+public JSONObject toJson() {
+    JSONObject assignmentObject = new JSONObject();
+    assignmentObject.put("grade", grade);
+    assignmentObject.put("teacherComment", teacherComment);
+    assignmentObject.put("studentComment", studentComment);
+
+    // Format the date to a readable string
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    assignmentObject.put("dueDate", dateFormat.format(dueDate));
+
+    assignmentObject.put("complete", complete);
+
+    return assignmentObject;
 }
 
 

@@ -17,8 +17,9 @@ public class Songlist {
         return songList;
     }
 
-    public void addSongs(String title, String artist, int runLengthMin, int runLengthSec, double rating, ArrayList<Genre> genre) {
-        Song newSong = new Song(title, artist, runLengthMin, runLengthSec, rating, genre);
+    public void addSongs(String title, String artist, int runLengthMin, int runLengthSec, int tempo,
+                        ArrayList<Genre> genres, Difficulty difficulty, ArrayList<Measure> measures) {
+        Song newSong = new Song(title, artist, runLengthMin, runLengthSec, tempo, genres, difficulty, measures);
         songs.add(newSong);
     }
 
@@ -35,5 +36,13 @@ public class Songlist {
 
     public void saveSongs() {
         System.out.println("Saving songs...");
+    }
+
+    public Song getSong(String title) {
+        for (Song song : songs) {
+            if (song.getTitle().toLowerCase().equals(title.toLowerCase()))
+                return song;
+        }
+        return null;
     }
 }

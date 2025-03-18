@@ -91,10 +91,12 @@ public class DataLoader extends DataConstants {
                 int runLengthMin = ((Long) songJSON.get(SONG_RUN_LENGTH_MIN)).intValue();
                 int runLengthSec = ((Long) songJSON.get(SONG_RUN_LENGTH_SEC)).intValue();
                 int tempo = ((Long) songJSON.get(SONG_TEMPO)).intValue();
-                // double rating = (double) songJSON.get(SONG_RATING);
                 double rating = ((Number) songJSON.get(SONG_RATING)).doubleValue();
                 boolean metronomeOn = (boolean) songJSON.get(SONG_METRONOME_ON);
-                Difficulty difficulty = Difficulty.valueOf((String) songJSON.get(SONG_DIFFICULTY)); // Convert String to Enum
+                String difficultyString = (String) songJSON.get(SONG_DIFFICULTY);
+                Difficulty difficulty = Difficulty.valueOf(difficultyString.toUpperCase()); // Convert String to Enum
+                if (difficulty == null)
+                    difficulty = Difficulty.INTERMEDIATE;
                 boolean completed = (boolean) songJSON.get(SONG_COMPLETED);
     
                 // fill Reviews list
@@ -258,7 +260,7 @@ public class DataLoader extends DataConstants {
                 double pitch = (double) noteJSON.get(NOTE_PITCH);
                 int stringNumber = ((Long) noteJSON.get(NOTE_STRING)).intValue();
                 String fret = (String) noteJSON.get(NOTE_FRET);
-                notes.add(new Note(type, length, pitch, stringNumber, fret));
+                notes.add(new Note(type, length, pitch, stringNumber, fret, "note"));
                 // edit this because sound could be a note or a chord !!!!
             }
         }
@@ -341,7 +343,6 @@ public class DataLoader extends DataConstants {
             if (soundsJSON != null) {
                 for (Object obj : soundsJSON) {
                     JSONObject soundJSON = (JSONObject) obj;
-                    System.out.println("This is what we have: " + soundJSON.toString());
                     // Check if it's a Chord (has a "notes" array)
                     if (soundJSON.containsKey("notes")) {
                         String type = (String) soundJSON.get("type");
@@ -354,7 +355,7 @@ public class DataLoader extends DataConstants {
                             double length = ((Number) noteJSON.get("length")).doubleValue();
                             double pitch = ((Number) noteJSON.get("pitch")).doubleValue();
                             int stringNumber = ((Long) noteJSON.get("string")).intValue();
-                            String fret = (String) noteJSON.get("fret");
+                            int fret = ((Long) noteJSON.get("fret")).intValue();
     
                             chordNotes.add(new Note(noteType, length, pitch, stringNumber, fret, "note"));
                         }
@@ -367,9 +368,9 @@ public class DataLoader extends DataConstants {
                         double length = ((Number) soundJSON.get("length")).doubleValue();
                         double pitch = ((Number) soundJSON.get("pitch")).doubleValue();
                         int stringNumber = ((Long) soundJSON.get("string")).intValue();
-                        String fret = (String) soundJSON.get("fret");
-    
-                        sounds.add(new Note(type, length, pitch, stringNumber, fret, "note"));
+                        int fret = ((Long) soundJSON.get("fret")).intValue();
+                        Note newNote = new Note(type, length, pitch, stringNumber, fret, "note");
+                        sounds.add(newNote);
                     }
                 }
             }
@@ -413,7 +414,6 @@ public class DataLoader extends DataConstants {
 
     private static Genre getGenre(String genreString) {
         Genre genre = null;
-        System.out.println("This is what I have: " + genreString);
         switch (genreString) {
             case "ROCK":
                 genre = Genre.ROCK;
