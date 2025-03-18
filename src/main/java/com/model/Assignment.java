@@ -3,6 +3,7 @@
 import java.util.Date;
 
 public class Assignment {
+    private String title;
     private double grade;
     private String teacherComment;
     private String studentComment;
@@ -10,7 +11,8 @@ public class Assignment {
     private boolean complete;
 
 // Constructor
-public Assignment(double grade, String teacherComment, String studentComment, Date dueDate, boolean complete) {
+public Assignment(String title, double grade, String teacherComment, String studentComment, Date dueDate, boolean complete) {
+    this.title = title;
     this.grade = grade;
     this.teacherComment = teacherComment;
     this.studentComment = studentComment;
@@ -64,6 +66,14 @@ public Date getDueDate()
     return dueDate;
 }
 
+public String getTitle(){
+    return title;
+}
+
+public void setTitle(String title){
+    this.title = title;
+}
+
 public void setDueDate(Date dueDate)
 {
     this.dueDate = dueDate;
@@ -77,6 +87,17 @@ public boolean isComplete()
 public void setComplete(boolean complete)
 {
     this.complete = complete;
+}
+
+
+public void addComment(String comment, String role) {
+    if ("teacher".equalsIgnoreCase(role)) {
+        this.teacherComment = (teacherComment == null || teacherComment.isEmpty()) ? comment : teacherComment + " | " + comment;
+    } else if ("student".equalsIgnoreCase(role)) {
+        this.studentComment = (studentComment == null || studentComment.isEmpty()) ? comment : studentComment + " | " + comment;
+    } else {
+        System.out.println("Invalid role. Please use 'teacher' or 'student'.");
+    }
 }
 
 }
