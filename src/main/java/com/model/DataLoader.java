@@ -91,16 +91,19 @@ public class DataLoader extends DataConstants {
                 int runLengthMin = ((Long) songJSON.get(SONG_RUN_LENGTH_MIN)).intValue();
                 int runLengthSec = ((Long) songJSON.get(SONG_RUN_LENGTH_SEC)).intValue();
                 int tempo = ((Long) songJSON.get(SONG_TEMPO)).intValue();
-                // double rating = (double) songJSON.get(SONG_RATING);
                 double rating = ((Number) songJSON.get(SONG_RATING)).doubleValue();
                 boolean metronomeOn = (boolean) songJSON.get(SONG_METRONOME_ON);
-                Difficulty difficulty = Difficulty.valueOf((String) songJSON.get(SONG_DIFFICULTY)); // Convert String to Enum
+                String difficultyString = (String) songJSON.get(SONG_DIFFICULTY);
+                Difficulty difficulty = Difficulty.valueOf(difficultyString.toUpperCase()); // Convert String to Enum
+                if (difficulty == null)
+                    difficulty = Difficulty.INTERMEDIATE;
                 boolean completed = (boolean) songJSON.get(SONG_COMPLETED);
     
                 // fill Reviews list
                 JSONArray reviewsJSON = (JSONArray)songJSON.get(SONG_REVIEWS);
                 ArrayList<Review> reviews = new ArrayList<Review>();
                 for (int j = 0; j < reviewsJSON.size(); j++) {
+                    System.out.println("Adding review");
                     reviews.add(createReview(reviewsJSON.get(j).toString()));
                 }
     
@@ -108,14 +111,16 @@ public class DataLoader extends DataConstants {
                 JSONArray genresJSON = (JSONArray)songJSON.get(SONG_GENRES);
                 ArrayList<Genre> genres = new ArrayList<Genre>();
                 for (int j = 0; j < genresJSON.size(); j++) {
-                    genres.add(getGenre(genresJSON.get(j).toString()));
+                    // System.out.println("Adding genres");
+                    // genres.add(getGenre(genresJSON.get(j).toString()));
                 }
     
                 // Fill Measures list
                 JSONArray measuresJSON = (JSONArray)songJSON.get(SONG_MEASURES);
                 ArrayList<Measure> measures = new ArrayList<Measure>();
                 for (int j = 0; j < measuresJSON.size(); j++) {
-                    measures.add(createMeasure(measuresJSON.get(j).toString()));
+                    // System.out.println("Adding measures");
+                    // measures.add(createMeasure(measuresJSON.get(j).toString()));
                 }
     
                 songs.add(new Song(id, title, artist, runLengthMin, runLengthSec,
@@ -258,7 +263,7 @@ public class DataLoader extends DataConstants {
                 double pitch = (double) noteJSON.get(NOTE_PITCH);
                 int stringNumber = ((Long) noteJSON.get(NOTE_STRING)).intValue();
                 String fret = (String) noteJSON.get(NOTE_FRET);
-                notes.add(new Note(type, length, pitch, stringNumber, fret));
+                notes.add(new Note(type, length, pitch, stringNumber, fret, "note"));
                 // edit this because sound could be a note or a chord !!!!
             }
         }
