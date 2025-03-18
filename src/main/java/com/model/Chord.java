@@ -16,6 +16,14 @@ public class Chord extends Sound {
     this.soundType = "chord";
   }
 
+  //Constructor
+  public Chord (String type, ArrayList<Note> notes, String soundType)
+  {
+    this.type = type;
+    this.notes = notes;
+    this.soundType = "chord";
+  }
+
   public Tab convertToTab()
   {
     StringBuilder tabRepresentation = new StringBuilder("Chord: " + type + " | ");

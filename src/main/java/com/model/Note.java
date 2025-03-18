@@ -55,5 +55,9 @@ public class Note extends Sound {
     public void setFret(String fret) {
          this.fret = fret; 
     }
-  
+
+    @Override
+    public String toString() {
+        
+    }
 }

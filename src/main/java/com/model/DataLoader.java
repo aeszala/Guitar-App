@@ -98,24 +98,24 @@ public class DataLoader extends DataConstants {
                 boolean completed = (boolean) songJSON.get(SONG_COMPLETED);
     
                 // fill Reviews list
-                JSONArray reviewsIDs = (JSONArray)songJSON.get(SONG_REVIEWS);
+                JSONArray reviewsJSON = (JSONArray)songJSON.get(SONG_REVIEWS);
                 ArrayList<Review> reviews = new ArrayList<Review>();
-                for (int j = 0; j < reviewsIDs.size(); j++) {
-                    reviews.add(createReview(reviewsIDs.get(j).toString()));
+                for (int j = 0; j < reviewsJSON.size(); j++) {
+                    reviews.add(createReview(reviewsJSON.get(j).toString()));
                 }
     
                 // Fill Genres list
-                JSONArray genresIDs = (JSONArray)songJSON.get(SONG_GENRES);
+                JSONArray genresJSON = (JSONArray)songJSON.get(SONG_GENRES);
                 ArrayList<Genre> genres = new ArrayList<Genre>();
-                for (int j = 0; j < genresIDs.size(); j++) {
-                    genres.add(getGenre(genresIDs.get(j).toString()));
+                for (int j = 0; j < genresJSON.size(); j++) {
+                    genres.add(getGenre(genresJSON.get(j).toString()));
                 }
     
                 // Fill Measures list
-                JSONArray measuresIDs = (JSONArray)songJSON.get(SONG_MEASURES);
+                JSONArray measuresJSON = (JSONArray)songJSON.get(SONG_MEASURES);
                 ArrayList<Measure> measures = new ArrayList<Measure>();
-                for (int j = 0; j < measuresIDs.size(); j++) {
-                    measures.add(createMeasure(measuresIDs.get(j).toString()));
+                for (int j = 0; j < measuresJSON.size(); j++) {
+                    measures.add(createMeasure(measuresJSON.get(j).toString()));
                 }
     
                 songs.add(new Song(id, title, artist, runLengthMin, runLengthSec,
@@ -136,17 +136,26 @@ public class DataLoader extends DataConstants {
             JSONParser parser = new JSONParser();
             JSONArray lessonsJSON = (JSONArray) parser.parse(reader);
     
-            for (Object obj : lessonsJSON) {
-                JSONObject lessonJSON = (JSONObject) obj;
+            for (int i = 0; i < lessonsJSON.size(); i++) {
+                JSONObject lessonJSON = (JSONObject)lessonsJSON.get(i);
                 UUID id = UUID.fromString((String) lessonJSON.get(LESSON_ID));
                 String topic = (String) lessonJSON.get(LESSON_TOPIC);
-                double progress = (double) lessonJSON.get(LESSON_PROGRESS);
+                double progress = ((Number) lessonJSON.get(LESSON_PROGRESS)).doubleValue();
                 boolean complete = (boolean) lessonJSON.get(LESSON_COMPLETE);
     
-                // Parsing Songs
-                ArrayList<Song> songs = getSongsFromUUIDs((JSONArray)lessonJSON.get(LESSON_SONGS));
-                // Parsing Assignments
-                ArrayList<Assignment> assignments = getAssignmentsFromJSON((JSONArray) lessonJSON.get(LESSON_ASSIGNMENTS));
+                // fill Songs list
+                JSONArray songsIDs = (JSONArray)lessonJSON.get(LESSON_SONGS);
+                ArrayList<Song> songs = new ArrayList<Song>();
+                for (int j = 0; j < songsIDs.size(); j++) {
+                    // songs.add(findSongById(UUID.fromString(songsIDs.get(j).toString())));
+                }
+
+                // Fill assignments list
+                JSONArray assignmentsJSON = (JSONArray)lessonJSON.get(LESSON_ASSIGNMENTS);
+                ArrayList<Assignment> assignments = new ArrayList<Assignment>();
+                for (int j = 0; j < assignmentsJSON.size(); j++) {
+                    assignments.add(createAssignment(assignmentsJSON.get(j).toString()));
+                }
                 
                 lessons.add(new Lesson(id, songs, topic, assignments, progress, complete));
             }
@@ -316,45 +325,91 @@ public class DataLoader extends DataConstants {
         return review;
     }
 
-    public static Measure createMeasure(String jsonString) {
+    private static Measure createMeasure(String jsonString) {
         try {
             JSONParser parser = new JSONParser();
             JSONObject measureJSON = (JSONObject) parser.parse(jsonString);
-
+    
             // Extract time signature
-            int timeSignatureTop = ((Long) measureJSON.get("timeSignatureTop")).intValue();
-            System.out.println("TS top: " + timeSignatureTop);
-            int timeSignatureBottom = ((Long) measureJSON.get("timeSignatureBottom")).intValue();
-            System.out.println("TS bottom: " + timeSignatureBottom);
-
-            // Extract notes array
-            JSONArray notesJSON = (JSONArray) measureJSON.get("notes");
+            int timeSignatureTop = ((Long) measureJSON.get(MEASURE_TIME_SIGNATURE_TOP)).intValue();
+            int timeSignatureBottom = ((Long) measureJSON.get(MEASURE_TIME_SIGNATURE_BOTTOM)).intValue();
+    
+            // Extract sounds array
+            JSONArray soundsJSON = (JSONArray) measureJSON.get(MEASURE_NOTES);
             ArrayList<Sound> sounds = new ArrayList<>();
+    
+            if (soundsJSON != null) {
+                for (Object obj : soundsJSON) {
+                    JSONObject soundJSON = (JSONObject) obj;
+                    System.out.println("This is what we have: " + soundJSON.toString());
+                    // Check if it's a Chord (has a "notes" array)
+                    if (soundJSON.containsKey("notes")) {
+                        String type = (String) soundJSON.get("type");
+                        JSONArray chordNotesJSON = (JSONArray) soundJSON.get("notes");
+                        ArrayList<Note> chordNotes = new ArrayList<>();
+    
+                        for (Object noteObj : chordNotesJSON) {
+                            JSONObject noteJSON = (JSONObject) noteObj;
+                            String noteType = (String) noteJSON.get("type");
+                            double length = ((Number) noteJSON.get("length")).doubleValue();
+                            double pitch = ((Number) noteJSON.get("pitch")).doubleValue();
+                            int stringNumber = ((Long) noteJSON.get("string")).intValue();
+                            String fret = (String) noteJSON.get("fret");
+    
+                            chordNotes.add(new Note(noteType, length, pitch, stringNumber, fret, "note"));
+                        }
+                        // Create a Chord object and add to sounds list
+                        sounds.add(new Chord(type, chordNotes, "chord"));
 
-            if (notesJSON != null) {
-                for (Object obj : notesJSON) {
-                    JSONObject noteJSON = (JSONObject) obj;
-                    String type = (String) noteJSON.get("type");
-                    double length = ((Number) noteJSON.get("length")).doubleValue();
-                    double pitch = ((Number) noteJSON.get("pitch")).doubleValue();
-                    int stringNumber = ((Long) noteJSON.get("string")).intValue();
-                    String fret = (String) noteJSON.get("fret");
-
-                    // Assuming Note is the subclass of Sound
-                    sounds.add(new Note(type, length, pitch, stringNumber, fret));
+                    } else {
+                        // It's a Note
+                        String type = (String) soundJSON.get("type");
+                        double length = ((Number) soundJSON.get("length")).doubleValue();
+                        double pitch = ((Number) soundJSON.get("pitch")).doubleValue();
+                        int stringNumber = ((Long) soundJSON.get("string")).intValue();
+                        String fret = (String) soundJSON.get("fret");
+    
+                        sounds.add(new Note(type, length, pitch, stringNumber, fret, "note"));
+                    }
                 }
             }
-
+    
             // Create and return the Measure object
             return new Measure(timeSignatureTop, timeSignatureBottom, sounds);
+
         } catch (org.json.simple.parser.ParseException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                     return null;
                 }
-    }
+    }    
 
+    private static Assignment createAssignment(String jsonString) {
+        try {
+            JSONParser parser = new JSONParser();
+            JSONObject assigmentJSON = (JSONObject) parser.parse(jsonString);
+    
+            double grade;
+            if (assigmentJSON.get(ASSIGNMENT_GRADE) == null )
+                grade = 0;
+            else
+                grade = ((Number) assigmentJSON.get(ASSIGNMENT_GRADE)).doubleValue();
+            String teacherComment = (String)assigmentJSON.get(ASSIGNMENT_TEACHER_COMMENT);
+            String studentComment = (String)assigmentJSON.get(ASSIGNMENT_STUDENT_COMMENT);
+            Date date = new Date();     // Match FileWriter format later
+            boolean complete = (boolean)assigmentJSON.get(ASSIGNMENT_COMPLETE);
 
+            // Extract sounds array
+            JSONArray soundsJSON = (JSONArray) assigmentJSON.get(MEASURE_NOTES);
+            ArrayList<Sound> sounds = new ArrayList<>();
+    
+            // Create and return the Assignment object
+            return new Assignment(grade, teacherComment, studentComment, date, complete);
+
+        } catch (org.json.simple.parser.ParseException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+    }    
 
     private static Genre getGenre(String genreString) {
         Genre genre = null;
@@ -394,6 +449,7 @@ public class DataLoader extends DataConstants {
     public static void main(String[] args) {
         ArrayList<User> users = DataLoader.getUsers();
         ArrayList<Song> songs = DataLoader.getSongs();
+        ArrayList<Lesson> lessons = DataLoader.getLessons();
 
         System.out.println("Songs:");
         for (Song song : songs) {
@@ -404,9 +460,12 @@ public class DataLoader extends DataConstants {
         for(User user : users) {
             System.out.println(user);
         }
+
+        System.out.println("\nLessons:");
+        for (Lesson lesson : lessons) {
+            System.out.println(lesson);
+        }
         
     }
-    
-    
-    
+
 }

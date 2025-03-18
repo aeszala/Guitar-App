@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -15,7 +17,7 @@ public class DataWriter extends DataConstants {
         JSONArray userList = new JSONArray();
         for (User user : users) {
             JSONObject userObject = new JSONObject();
-            userObject.put(USER_ID, user.getId());
+            userObject.put(USER_ID, user.getId().toString());
             userObject.put(USER_USERNAME, user.getUsername());
             userObject.put(USER_PASSWORD, user.getPassword());
             userObject.put(USER_EMAIL, user.getEmail());
@@ -37,7 +39,7 @@ public class DataWriter extends DataConstants {
         JSONArray songList = new JSONArray();
         for (Song song : songs) {
             JSONObject songObject = new JSONObject();
-            songObject.put(SONG_ID, song.getId());
+            songObject.put(SONG_ID, song.getId().toString());
             songObject.put(SONG_TITLE, song.getTitle());
             songObject.put(SONG_ARTIST, song.getArtist());
             songObject.put(SONG_RUN_LENGTH_MIN, song.getRunLengthMin());
@@ -47,7 +49,7 @@ public class DataWriter extends DataConstants {
             songObject.put(SONG_REVIEWS, song.getReviews());
             songObject.put(SONG_METRONOME_ON, song.isMetronomeOn());
             songObject.put(SONG_GENRES, song.getGenres());
-            songObject.put(SONG_DIFFICULTY, song.getDifficulty());
+            songObject.put(SONG_DIFFICULTY, song.getDifficulty().toString());
             songObject.put(SONG_MEASURES, song.getMeasures());
             songObject.put(SONG_COMPLETED, song.isCompleted());
 //            songObject.put(SONG_SOUND_TYPE, song.getSoundType());
@@ -63,7 +65,7 @@ public class DataWriter extends DataConstants {
         JSONArray lessonList = new JSONArray();
         for (Lesson lesson : lessons) {
             JSONObject lessonObject = new JSONObject();
-            lessonObject.put(LESSON_ID, lesson.getId());
+            lessonObject.put(LESSON_ID, lesson.getId().toString());
             lessonObject.put(LESSON_SONGS, lesson.getSongs());
             lessonObject.put(LESSON_TOPIC, lesson.getTopic());
             lessonObject.put(LESSON_ASSIGNMENTS, lesson.getAssignments());
@@ -122,14 +124,14 @@ public class DataWriter extends DataConstants {
             e.printStackTrace();
         }
 
-        User user = new User("username1", "password1", "email1", "name1", "Question1", "??1");
+        User user = new User("username1", "password1", "email1", "name1", "Question1", "Answer1");
         users.add(user);
         DataWriter.saveUsers(users);
-//        Song song = new Song("id1", "Myself", 1, 2, 0, new ArrayList<Genre>(), Difficulty.BEGINNER, new ArrayList<Measure>());
-//        songs.add(song);
-//        DataWriter.saveSongs(songs);
-//        Lesson lesson = new Lesson(null, null, fileName, null, 0, false);
-//        lessons.add(lesson);
-//        DataWriter.saveLessons(lessons);
+        Song song = new Song("title2", "Myself", 1, 2, 0, new ArrayList<Genre>(), Difficulty.BEGINNER, new ArrayList<Measure>());
+        songs.add(song);
+        DataWriter.saveSongs(songs);
+        Lesson lesson = new Lesson(new ArrayList<Song>(), "topic3", new ArrayList<Assignment>());
+        lessons.add(lesson);
+        DataWriter.saveLessons(lessons);
     }
 }

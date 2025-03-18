@@ -11,6 +11,15 @@ public class Lesson {
     private double progress;
     private boolean complete;
 
+    public Lesson(ArrayList<Song> songs, String topic, ArrayList<Assignment> assignments) {
+        this.id = UUID.randomUUID();
+        this.songs = songs;
+        this.topic = topic;
+        this.assignments = assignments;
+        this.progress = 0;
+        this.complete = false;
+    }
+
     public Lesson(UUID id, ArrayList<Song> songs, String topic,
     ArrayList<Assignment> assignments, double progress, boolean complete) {
         this.id = id;
@@ -37,16 +46,8 @@ public class Lesson {
         songs.add(song);
     }
 
-    public ArrayList<Assignment> getAssignments(){
-        return assignments;
-    }
-
     public void addAssignment(Assignment assignment){
         assignments.add(assignment);
-    }
-
-    public boolean isComplete(){
-        return complete;
     }
 
     public void complete(){
@@ -56,6 +57,42 @@ public class Lesson {
     public UUID getId() {
         return id;
     }
-    
+
+    public ArrayList<Assignment> getAssignments() {
+        return assignments;
+    }
+
+    public double getProgress() {
+        return progress;
+    }
+
+    public boolean isComplete() {
+        return complete;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "Lesson{" +
+                "id=" + id +
+                ", topic='" + topic + '\'' +
+                ", progress=" + progress +
+                ", complete=" + complete +
+                ", songs=" + getSongTitles() +
+                ", assignments=" + assignments +
+                '}';
+}
+
+    // Helper method to get song titles as a list
+    private String getSongTitles() {
+        if (songs == null || songs.isEmpty())
+            return "No Songs";
+        StringBuilder titles = new StringBuilder("[");
+        for (Song song : songs) {
+            titles.append(song.getTitle()).append(", ");
+        }
+        return titles.substring(0, titles.length() - 2) + "]"; // Remove last comma and space
+}
     
 }
