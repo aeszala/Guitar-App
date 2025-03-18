@@ -3,6 +3,10 @@ package com.model;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+
 public class Song {
     // Attributes
     private UUID id;
@@ -204,4 +208,32 @@ public class Song {
             ", completed=" + completed +
             '}';
     }
+
+    public JSONObject toJson() {
+    JSONObject jsonObject = new JSONObject();
+    jsonObject.put("id", id.toString());
+    jsonObject.put("title", title);
+    jsonObject.put("artist", artist);
+    jsonObject.put("runLengthMin", runLengthMin);
+    jsonObject.put("runLengthSec", runLengthSec);
+    jsonObject.put("tempo", tempo);
+    jsonObject.put("rating", rating);
+    jsonObject.put("metronomeOn", metronomeOn);
+    jsonObject.put("difficulty", difficulty.toString());
+    
+    JSONArray genreArray = new JSONArray();
+    for (Genre genre : genres) {
+        genreArray.add(genre.toString());
+    }
+    jsonObject.put("genres", genreArray);
+
+    JSONArray measureArray = new JSONArray();
+    for (Measure measure : measures) {
+        measureArray.add(measure.toJson());
+    }
+    jsonObject.put("measures", measureArray);
+    
+    return jsonObject;
 }
+}
+
