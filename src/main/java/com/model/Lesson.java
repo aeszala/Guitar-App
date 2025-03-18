@@ -21,8 +21,36 @@ public class Lesson {
         this.complete = complete;
     }
 
-    public void complete(){
+    public String getTopic() {
+        return topic;
+    }
 
+    public void setTopic(String topic){
+        this.topic = topic;
+    }
+
+    public ArrayList<Song> getSongs(){
+        return songs;
+    }
+
+    public void addSong(Song song){
+        songs.add(song);
+    }
+
+    public ArrayList<Assignment> getAssignments(){
+        return assignments;
+    }
+
+    public void addAssignment(Assignment assignment){
+        assignments.add(assignment);
+    }
+
+    public boolean isComplete(){
+        return complete;
+    }
+
+    public void complete(){
+        this.complete = true;
     }
 
     public UUID getId() {
