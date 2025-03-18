@@ -1,143 +1,443 @@
 [
-    {
-      "id": "024dbb50-6c97-4591-afc9-9624a4cfd29d",
-      "title": "Moonlight Sonata",
-      "artist": "Ludwig V. Beethoven",
-      "runLengthMin": 6,
-      "runLengthSec": 6,
-      "notes": [
-        {
-          "type": "A",
-          "soundType": "note",
-          "length": 1,
-          "pitch": 440,
-          "string": 6,
-          "fret": 5
-        },
-        {
-          "type": "F",
-          "soundType": "note",
-          "length": 0.25,
-          "pitch": 440,
-          "string": 5,
-          "fret": 8
-        },
-        {
-          "type": "C Major",
-          "soundType": "chord",
-          "notes": [
-            { "type": "C", "soundType": "note", "length": 1, "pitch": 261.63, "string": 5, "fret": "third" },
-            { "type": "E", "soundType": "note", "length": 1, "pitch": 329.63, "string": 4, "fret": "second" },
-            { "type": "G", "soundType": "note", "length": 1, "pitch": 392.00, "string": 3, "fret": "open" }
-          ]
-        }
-      ],
-      "tempo": 111,
-      "rating": 4.5,
-      "reviews": [
-        {
-          "rating": 5,
-          "id": "d82c5496-838d-4281-9483-400a27efebf3",
-          "comment": "My favorite song to play!"
-        },
-        {
-          "rating": 4,
-          "id": "acaf4ea3-57b0-4bc3-b2e5-d01ebd2a84ab",
-          "comment": "It's pretty good."
-        }
-      ],
-      "metronomeOn": true,
-      "genres": [
-        "CLASSICAL"
-      ],
-      "difficulty": "INTERMEDIATE",
-      "measures": [
-        {
-          "timeSignatureTop": 4,
-          "timeSignatureBottom": 4,
-          "notes": [
-            {
-              "type": "A",
-              "length": 1,
-              "pitch": 440,
-              "string": 6,
-              "fret": "fifth"
-            },
-            {
-              "type": "F",
-              "length": 0.25,
-              "pitch": 440,
-              "string": 5,
-              "fret": "third"
-            }
-          ]
-        }
-      ],
-      "completed": false
-    },
-    {
-      "id": "e15a4fa0-b838-4064-a3d3-e36015503eac",
-      "title": "You Are My Sunshine",
-      "artist": "Jimmie Davis",
-      "runLengthMin": 2,
-      "runLengthSec": 50,
-      "notes": [
-        {
-          "type": "D",
-          "length": 1,
-          "pitch": 440,
-          "string": 6,
-          "fret": 10
-        },
-        {
-          "type": "A",
-          "length": 0.5,
-          "pitch": 440,
-          "string": 4,
-          "fret": 7
-        }
-      ],
-      "tempo": 115,
-      "rating": 4,
-      "reviews": [
-        {
-          "rating": 5,
-          "id": "57fa3166-d832-411c-9927-6c62118fd84e",
-          "comment": "I love this song! It reminds me of my mom!"
-        },
-        {
-          "rating": 3,
-          "id": "77ffca24-4ab4-4db9-90db-551621f131bb",
-          "comment": "Too boring for me personally."
-        }
-      ],
-      "metronomeOn": false,
-      "genres": [
-        "COUNTRY"
-      ],
-      "difficulty": "BEGINNER",
-      "measures": [
-        {
-          "timeSignatureTop": 4,
-          "timeSignatureBottom": 4,
-          "notes": [
-            {
-              "type": "D",
-              "length": 1,
-              "pitch": 440,
-              "string": 6,
-              "fret": 10
-            },
-            {
-              "type": "A",
-              "length": 0.5,
-              "pitch": 440,
-              "string": 4,
-              "fret": 7
-            }
-          ]
-        }
-      ],
-      "completed": false
-    }
-  ]
+  {
+    "id": "024dbb50-6c97-4591-afc9-9624a4cfd29d",
+    "title": "Moonlight Sonata",
+    "artist": "Ludwig V. Beethoven",
+    "runLengthMin": 6,
+    "runLengthSec": 6,
+    "notes": [
+      {
+        "type": "E",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 329.63,
+        "string": 6,
+        "fret": "open"
+      },
+      {
+        "type": "D#",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 311.13,
+        "string": 5,
+        "fret": 6
+      },
+      {
+        "type": "B",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 246.94,
+        "string": 4,
+        "fret": 4
+      },
+      {
+        "type": "G#",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 415.30,
+        "string": 3,
+        "fret": 4
+      },
+      {
+        "type": "E",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 329.63,
+        "string": 6,
+        "fret": "open"
+      },
+      {
+        "type": "C#",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 277.18,
+        "string": 5,
+        "fret": 4
+      },
+      {
+        "type": "B",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 246.94,
+        "string": 4,
+        "fret": 4
+      },
+      {
+        "type": "G#",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 415.30,
+        "string": 3,
+        "fret": 4
+      },
+      {
+        "type": "F#",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 370.00,
+        "string": 4,
+        "fret": 4
+      },
+      {
+        "type": "D#",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 311.13,
+        "string": 5,
+        "fret": 6
+      },
+      {
+        "type": "B",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 246.94,
+        "string": 4,
+        "fret": 4
+      },
+      {
+        "type": "C#",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 277.18,
+        "string": 5,
+        "fret": 4
+      },
+      {
+        "type": "B",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 246.94,
+        "string": 4,
+        "fret": 4
+      },
+      {
+        "type": "A",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 220.00,
+        "string": 5,
+        "fret": 0
+      },
+      {
+        "type": "G#",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 415.30,
+        "string": 3,
+        "fret": 4
+      },
+      {
+        "type": "E",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 329.63,
+        "string": 6,
+        "fret": "open"
+      }
+    ],
+    "tempo": 60,
+    "rating": 4.5,
+    "reviews": [
+      {
+        "rating": 5,
+        "id": "d82c5496-838d-4281-9483-400a27efebf3",
+        "comment": "My favorite song to play!"
+      },
+      {
+        "rating": 4,
+        "id": "acaf4ea3-57b0-4bc3-b2e5-d01ebd2a84ab",
+        "comment": "It's pretty good."
+      }
+    ],
+    "metronomeOn": true,
+    "genres": [
+      "CLASSICAL"
+    ],
+    "difficulty": "INTERMEDIATE",
+    "measures": [
+      {
+        "timeSignatureTop": 4,
+        "timeSignatureBottom": 4,
+        "notes": [
+          {
+            "type": "E",
+            "length": 1,
+            "pitch": 329.63,
+            "string": 6,
+            "fret": "open"
+          },
+          {
+            "type": "D#",
+            "length": 1,
+            "pitch": 311.13,
+            "string": 5,
+            "fret": 6
+          },
+          {
+            "type": "B",
+            "length": 1,
+            "pitch": 246.94,
+            "string": 4,
+            "fret": 4
+          },
+          {
+            "type": "G#",
+            "length": 1,
+            "pitch": 415.30,
+            "string": 3,
+            "fret": 4
+          }
+        ]
+      },
+      {
+        "timeSignatureTop": 4,
+        "timeSignatureBottom": 4,
+        "notes": [
+          {
+            "type": "E",
+            "length": 1,
+            "pitch": 329.63,
+            "string": 6,
+            "fret": "open"
+          },
+          {
+            "type": "C#",
+            "length": 1,
+            "pitch": 277.18,
+            "string": 5,
+            "fret": 4
+          },
+          {
+            "type": "B",
+            "length": 1,
+            "pitch": 246.94,
+            "string": 4,
+            "fret": 4
+          },
+          {
+            "type": "G#",
+            "length": 1,
+            "pitch": 415.30,
+            "string": 3,
+            "fret": 4
+          }
+        ]
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "2f68c7a2-0e9c-450a-8d2e-63d0f03b09c1",
+    "title": "You Are My Sunshine",
+    "artist": "Jimmie Davis",
+    "runLengthMin": 2,
+    "runLengthSec": 45,
+    "notes": [
+      {
+        "type": "C",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 261.63,
+        "string": 5,
+        "fret": "third"
+      },
+      {
+        "type": "E",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 329.63,
+        "string": 4,
+        "fret": "second"
+      },
+      {
+        "type": "G",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 392.00,
+        "string": 3,
+        "fret": "open"
+      },
+      {
+        "type": "C",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 261.63,
+        "string": 5,
+        "fret": "third"
+      },
+      {
+        "type": "F",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 349.23,
+        "string": 4,
+        "fret": "third"
+      },
+      {
+        "type": "E",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 329.63,
+        "string": 4,
+        "fret": "second"
+      },
+      {
+        "type": "C",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 261.63,
+        "string": 5,
+        "fret": "third"
+      },
+      {
+        "type": "G",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 392.00,
+        "string": 3,
+        "fret": "open"
+      },
+      {
+        "type": "A",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 220.00,
+        "string": 5,
+        "fret": "open"
+      },
+      {
+        "type": "D",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 293.66,
+        "string": 4,
+        "fret": "open"
+      },
+      {
+        "type": "G",
+        "soundType": "note",
+        "length": 1,
+        "pitch": 392.00,
+        "string": 3,
+        "fret": "open"
+      }
+    ],
+    "tempo": 80,
+    "rating": 4.7,
+    "reviews": [
+      {
+        "rating": 5,
+        "id": "b8292f6a-d289-41f2-9b2b-1d95f8f34253",
+        "comment": "Such a classic, always fun to play!"
+      },
+      {
+        "rating": 4,
+        "id": "9f5f5a56-cdfb-4236-8ca1-c982a9137798",
+        "comment": "Great for beginners. Easy and catchy."
+      }
+    ],
+    "metronomeOn": true,
+    "genres": [
+      "COUNTRY"
+    ],
+    "difficulty": "BEGINNER",
+    "measures": [
+      {
+        "timeSignatureTop": 4,
+        "timeSignatureBottom": 4,
+        "notes": [
+          {
+            "type": "C",
+            "length": 1,
+            "pitch": 261.63,
+            "string": 5,
+            "fret": "third"
+          },
+          {
+            "type": "E",
+            "length": 1,
+            "pitch": 329.63,
+            "string": 4,
+            "fret": "second"
+          },
+          {
+            "type": "G",
+            "length": 1,
+            "pitch": 392.00,
+            "string": 3,
+            "fret": "open"
+          },
+          {
+            "type": "C",
+            "length": 1,
+            "pitch": 261.63,
+            "string": 5,
+            "fret": "third"
+          }
+        ]
+      },
+      {
+        "timeSignatureTop": 4,
+        "timeSignatureBottom": 4,
+        "notes": [
+          {
+            "type": "F",
+            "length": 1,
+            "pitch": 349.23,
+            "string": 4,
+            "fret": "third"
+          },
+          {
+            "type": "E",
+            "length": 1,
+            "pitch": 329.63,
+            "string": 4,
+            "fret": "second"
+          },
+          {
+            "type": "C",
+            "length": 1,
+            "pitch": 261.63,
+            "string": 5,
+            "fret": "third"
+          },
+          {
+            "type": "G",
+            "length": 1,
+            "pitch": 392.00,
+            "string": 3,
+            "fret": "open"
+          }
+        ]
+      },
+      {
+        "timeSignatureTop": 4,
+        "timeSignatureBottom": 4,
+        "notes": [
+          {
+            "type": "A",
+            "length": 1,
+            "pitch": 220.00,
+            "string": 5,
+            "fret": "open"
+          },
+          {
+            "type": "D",
+            "length": 1,
+            "pitch": 293.66,
+            "string": 4,
+            "fret": "open"
+          },
+          {
+            "type": "G",
+            "length": 1,
+            "pitch": 392.00,
+            "string": 3,
+            "fret": "open"
+          }
+        ]
+      }
+    ],
+    "completed": false
+  }
+]  
