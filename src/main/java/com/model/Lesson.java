@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Lesson {
+    public String title;
     private UUID id;
     private ArrayList<Song> songs;
     private String topic;
@@ -94,6 +95,14 @@ public class Lesson {
 
     public boolean isComplete() {
         return complete;
+    }
+
+    public String getTitle(){
+        return title;
+    }
+
+    public void setTitle(title){
+        this.title = title;
     }
 
 
