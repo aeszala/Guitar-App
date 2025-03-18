@@ -1,5 +1,7 @@
 package com.model;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -28,6 +30,30 @@ public class Lesson {
         this.assignments = assignments;
         this.progress = progress;
         this.complete = complete;
+    }
+
+    public JSONObject toJson() {
+        JSONObject lessonObject = new JSONObject();
+        lessonObject.put("id", id.toString());
+        lessonObject.put("topic", topic);
+        lessonObject.put("progress", progress);
+        lessonObject.put("complete", complete);
+
+        // Convert songs to JSON
+        JSONArray songArray = new JSONArray();
+        for (Song song : songs) {
+            songArray.add(song.toJson());
+        }
+        lessonObject.put("songs", songArray);
+
+        // Convert assignments to JSON
+        JSONArray assignmentArray = new JSONArray();
+        for (Assignment assignment : assignments) {
+            assignmentArray.add(assignment.toJson());
+        }
+        lessonObject.put("assignments", assignmentArray);
+
+        return lessonObject;
     }
 
     public String getTopic() {
