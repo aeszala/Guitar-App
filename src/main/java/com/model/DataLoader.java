@@ -103,7 +103,6 @@ public class DataLoader extends DataConstants {
                 JSONArray reviewsJSON = (JSONArray)songJSON.get(SONG_REVIEWS);
                 ArrayList<Review> reviews = new ArrayList<Review>();
                 for (int j = 0; j < reviewsJSON.size(); j++) {
-                    System.out.println("Adding review");
                     reviews.add(createReview(reviewsJSON.get(j).toString()));
                 }
     
@@ -111,16 +110,14 @@ public class DataLoader extends DataConstants {
                 JSONArray genresJSON = (JSONArray)songJSON.get(SONG_GENRES);
                 ArrayList<Genre> genres = new ArrayList<Genre>();
                 for (int j = 0; j < genresJSON.size(); j++) {
-                    // System.out.println("Adding genres");
-                    // genres.add(getGenre(genresJSON.get(j).toString()));
+                    genres.add(getGenre(genresJSON.get(j).toString()));
                 }
     
                 // Fill Measures list
                 JSONArray measuresJSON = (JSONArray)songJSON.get(SONG_MEASURES);
                 ArrayList<Measure> measures = new ArrayList<Measure>();
                 for (int j = 0; j < measuresJSON.size(); j++) {
-                    // System.out.println("Adding measures");
-                    // measures.add(createMeasure(measuresJSON.get(j).toString()));
+                    measures.add(createMeasure(measuresJSON.get(j).toString()));
                 }
     
                 songs.add(new Song(id, title, artist, runLengthMin, runLengthSec,
@@ -346,7 +343,6 @@ public class DataLoader extends DataConstants {
             if (soundsJSON != null) {
                 for (Object obj : soundsJSON) {
                     JSONObject soundJSON = (JSONObject) obj;
-                    System.out.println("This is what we have: " + soundJSON.toString());
                     // Check if it's a Chord (has a "notes" array)
                     if (soundJSON.containsKey("notes")) {
                         String type = (String) soundJSON.get("type");
@@ -359,7 +355,7 @@ public class DataLoader extends DataConstants {
                             double length = ((Number) noteJSON.get("length")).doubleValue();
                             double pitch = ((Number) noteJSON.get("pitch")).doubleValue();
                             int stringNumber = ((Long) noteJSON.get("string")).intValue();
-                            String fret = (String) noteJSON.get("fret");
+                            int fret = ((Long) noteJSON.get("fret")).intValue();
     
                             chordNotes.add(new Note(noteType, length, pitch, stringNumber, fret, "note"));
                         }
@@ -372,9 +368,9 @@ public class DataLoader extends DataConstants {
                         double length = ((Number) soundJSON.get("length")).doubleValue();
                         double pitch = ((Number) soundJSON.get("pitch")).doubleValue();
                         int stringNumber = ((Long) soundJSON.get("string")).intValue();
-                        String fret = (String) soundJSON.get("fret");
-    
-                        sounds.add(new Note(type, length, pitch, stringNumber, fret, "note"));
+                        int fret = ((Long) soundJSON.get("fret")).intValue();
+                        Note newNote = new Note(type, length, pitch, stringNumber, fret, "note");
+                        sounds.add(newNote);
                     }
                 }
             }
@@ -418,7 +414,6 @@ public class DataLoader extends DataConstants {
 
     private static Genre getGenre(String genreString) {
         Genre genre = null;
-        System.out.println("This is what I have: " + genreString);
         switch (genreString) {
             case "ROCK":
                 genre = Genre.ROCK;

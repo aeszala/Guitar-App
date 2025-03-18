@@ -10,7 +10,7 @@ public class Measure {
     public Measure(int timeSignatureTop, int timeSignatureBottom, ArrayList<Sound> notes) {
         this.timeSignatureTop = timeSignatureTop;
         this.timeSignatureBottom = timeSignatureBottom;
-        this.notes = new ArrayList<>();
+        this.notes = notes;
     }
 
     public void display(){
@@ -41,4 +41,23 @@ public class Measure {
     public void play() {
 
     }
+
+    @Override
+    public String toString() {
+        return "Measure{" +
+                "Time Signature: " + timeSignatureTop + "/" + timeSignatureBottom +
+                ", Notes: " + getNoteTypes() +
+                '}';
+    }
+    
+    // Helper method to get the type of each sound in the notes list
+    private String getNoteTypes() {
+        if (notes == null || notes.isEmpty()) return "No Notes";
+        StringBuilder types = new StringBuilder("[");
+        for (Sound sound : notes) {
+            types.append(sound.getType()).append(", ");
+        }
+        return types.substring(0, types.length() - 2) + "]"; // Remove last comma and space
+    }
+    
 }
