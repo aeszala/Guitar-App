@@ -48,7 +48,7 @@ public abstract class DataConstants {
     protected static final String NOTE_FRET = "fret";
 
     // lesson class constants
-    protected static final String LESSON_FILE_NAME = "src/main/java/com/data/json/Lessons.json";
+    protected static final String LESSON_FILE_NAME = "src/main/java/com/data/json/Lesson.json";
     protected static final String LESSON_ID = "id";
     protected static final String LESSON_SONGS = "songs";
     protected static final String LESSON_TOPIC = "topic";
