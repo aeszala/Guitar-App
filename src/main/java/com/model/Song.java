@@ -199,6 +199,7 @@ public class Song {
         }
     
         System.out.println("Song playback finished.");
+    }
 
     // toString method
     @Override

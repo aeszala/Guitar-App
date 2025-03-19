@@ -1,5 +1,301 @@
 package com.model;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+public class DataWriter {
+    private static final String LESSONS_FILE = "src\\main\\java\\com\\data\\json\\Lesson.json";
+    private static final String USERS_FILE = "src\\main\\java\\com\\data\\json\\users.json";
+    private static final String SONGS_FILE = "src\\main\\java\\com\\data\\json\\songs.json";
+
+    public static void saveLessons(ArrayList<Lesson> lessons) {
+        JSONArray lessonArray = new JSONArray();
+        for (Lesson lesson : lessons) {
+            lessonArray.add(lesson.toJson());
+        }
+        writeToFile(LESSONS_FILE, lessonArray);
+    }
+
+    public static void saveUsers(ArrayList<User> users) {
+        JSONArray userArray = new JSONArray();
+        for (User user : users) {
+            userArray.add(user.toJson());
+        }
+        writeToFile(USERS_FILE, userArray);
+    }
+
+    public static void saveSongs(ArrayList<Song> songs) {
+        JSONArray songArray = new JSONArray();
+        for (Song song : songs) {
+            songArray.add(song.toJson());
+        }
+        writeToFile(SONGS_FILE, songArray);
+    }
+
+    private static void writeToFile(String filename, JSONArray jsonArray) {
+        try (FileWriter file = new FileWriter(filename)) {
+            file.write(jsonArray.toJSONString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            // Creating Date object for assignment due dates
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date dueDate = sdf.parse("2025-03-20");
+
+            // Creating Assignments
+            Assignment assignment1 = new Assignment("Math Homework", 95.5, "Good job!", "It was challenging.", dueDate, true);
+            Assignment assignment2 = new Assignment("Science Project", 85.0, "Needs improvement.", "I learned a lot.", dueDate, false);
+
+            // Creating Assignment List
+            ArrayList<Assignment> assignments = new ArrayList<>();
+            assignments.add(assignment1);
+            assignments.add(assignment2);
+
+            // Creating Songs
+            Song song1 = new Song("null", "null", 33, 44, 5, new ArrayList<Genre>(), Difficulty.BEGINNER, new ArrayList<Measure>());
+//            Song song2 = new Song("Song Title 2", "Artist 2", 90, "Pop", 2, 30);
+
+            // Creating Song List
+            ArrayList<Song> songs = new ArrayList<>();
+            songs.add(song1);
+//            songs.add(song2);
+
+            // Creating Lesson with Songs and Assignments
+            Lesson lesson = new Lesson(songs, "Physics", assignments);
+            ArrayList<Lesson> lessons = new ArrayList<>();
+            lessons.add(lesson);
+
+            // Saving Data to JSON Files
+            saveLessons(lessons);
+            saveSongs(songs);
+
+            System.out.println("Lessons and Songs saved successfully.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+/*
+package com.model;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+public class DataWriter {
+
+    public static void saveUsers(List<User> users) {
+        JSONArray userList = new JSONArray();
+
+        for (User user : users) {
+            JSONObject userObject = new JSONObject();
+            userObject.put("id", user.getId().toString());
+            userObject.put("username", user.getUsername());
+            userObject.put("password", user.getPassword());
+            userObject.put("email", user.getEmail());
+            userObject.put("name", user.getName());
+
+            // Convert Song and Lesson objects to UUIDs
+            userObject.put("favoriteSongs", convertUUIDListToJSON(user.getFavoriteSongs().stream().map(Song::getId).collect(Collectors.toList())
+            ));
+            userObject.put("completedSongs", convertUUIDListToJSON(user.getCompletedSongs().stream().map(Song::getId).collect(Collectors.toList())
+            ));
+            userObject.put("completedLessons", convertUUIDListToJSON(user.getCompletedLessons().stream().map(Lesson::getId).collect(Collectors.toList())
+            ));
+            
+            // Convert mySongs to UUID Comma Separated String
+            userObject.put("mySongs", convertUUIDListToCommaString(user.getMySongs().stream().map(Song::getId).collect(Collectors.toList())
+            ));
+            
+            userObject.put("securityQuestion", user.getSecurityQuestion());
+            userObject.put("securityAnswer", user.getSecurityAnswer());
+            
+            userList.add(userObject);
+        }
+
+        writeToFile("src\\main\\java\\com\\data\\json\\users.json", userList);
+    }
+
+    public static void saveSongs(List<Song> songs) {
+        JSONArray songList = new JSONArray();
+
+        for (Song song : songs) {
+            JSONObject songObject = new JSONObject();
+            songObject.put("id", song.getId().toString());
+            songObject.put("title", song.getTitle());
+            songObject.put("artist", song.getArtist());
+            songObject.put("runLengthMin", song.getRunLengthMin());
+            songObject.put("runLengthSec", song.getRunLengthSec());
+            songObject.put("tempo", song.getTempo());
+            songObject.put("rating", song.getRating());
+            songObject.put("metronomeOn", song.isMetronomeOn());
+            songObject.put("difficulty", song.getDifficulty().toString());
+            
+            // Serialize Reviews
+            JSONArray reviewArray = new JSONArray();
+            for (Review review : song.getReviews()) {
+                reviewArray.add(review.toJson());
+            }
+            songObject.put("reviews", reviewArray);
+
+            // Serialize Genres
+            JSONArray genreArray = new JSONArray();
+            for (Genre genre : song.getGenres()) {
+                genreArray.add(genre.toString());
+            }
+            songObject.put("genres", genreArray);
+
+            // Serialize Measures
+            JSONArray measureArray = new JSONArray();
+            for (Measure measure : song.getMeasures()) {
+                measureArray.add(measure.toJson());
+            }
+            songObject.put("measures", measureArray);
+
+            songObject.put("completed", song.isCompleted());
+            songList.add(songObject);
+        }
+
+        writeToFile("src\\main\\java\\com\\data\\json\\songs.json", songList);
+    }
+
+    public static void saveLessons(List<Lesson> lessons) {
+        JSONArray lessonList = new JSONArray();
+
+        for (Lesson lesson : lessons) {
+            JSONObject lessonObject = new JSONObject();
+            lessonObject.put("id", lesson.getId().toString());
+            lessonObject.put("topic", lesson.getTopic());
+            lessonObject.put("progress", lesson.getProgress());
+            lessonObject.put("complete", lesson.isComplete());
+
+            // Serialize Songs as UUIDs
+            lessonObject.put("songs", convertUUIDListToJSON(lesson.getSongs().stream().map(Song::getId).collect(Collectors.toList())
+            ));
+
+            // Serialize Assignments
+            JSONArray assignmentArray = new JSONArray();
+            for (Assignment assignment : lesson.getAssignments()) {
+                assignmentArray.add(assignment.toJson());
+            }
+            lessonObject.put("assignments", assignmentArray);
+
+            lessonList.add(lessonObject);
+        }
+
+        writeToFile("src\\main\\java\\com\\data\\json\\Lesson.json", lessonList);
+    }
+
+    private static JSONArray convertUUIDListToJSON(List<UUID> uuids) {
+        JSONArray jsonArray = new JSONArray();
+        for (UUID id : uuids) {
+            jsonArray.add(id.toString());
+        }
+        return jsonArray;
+    }
+
+    private static String convertUUIDListToCommaString(List<UUID> uuids) {
+        StringBuilder sb = new StringBuilder();
+        for (UUID id : uuids) {
+            if (sb.length() > 0) sb.append(", ");
+            sb.append(id.toString());
+        }
+        return sb.toString();
+    }
+
+    private static void writeToFile(String fileName, JSONArray data) {
+        try (FileWriter file = new FileWriter(fileName)) {
+            file.write(data.toJSONString());
+            file.flush();
+            System.out.println(fileName + " written successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        // Create lists for users, songs, and lessons
+        ArrayList<User> users = new ArrayList<>();
+        ArrayList<Song> songs = new ArrayList<>();
+        ArrayList<Lesson> lessons = new ArrayList<>();
+
+                // Define folder name
+        String folderName = "LessonData";
+        File folder = new File(folderName);
+
+        // Create folder if it doesn't exist
+        if (!folder.exists()) {
+            if (folder.mkdir()) {
+                System.out.println("Folder created: " + folderName);
+            } else {
+                System.out.println("Failed to create folder.");
+                return;
+            }
+        }
+
+        // Define file name inside the folder
+        String fileName = folderName + "/lessons.txt";
+        File file = new File(fileName);
+
+        // Create file if it doesn't exist
+        try {
+            if (file.createNewFile()) {
+                System.out.println("File created: " + fileName);
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while creating the file.");
+            e.printStackTrace();
+        }
+    
+        // Example User
+        User user = new User("username1", "password1", "email1", "name1", "Question1", "Answer1");
+        users.add(user);
+    
+        // Example Song
+        Song song = new Song("title2", "Myself", 1, 2, 0, new ArrayList<>(), Difficulty.BEGINNER, new ArrayList<>());
+        songs.add(song);
+    
+        // Example Lesson
+        Lesson lesson = new Lesson(new ArrayList<>(), "topic3", new ArrayList<>());
+        lessons.add(lesson);
+    
+        // Save data to JSON
+        DataWriter.saveUsers(users);
+        DataWriter.saveSongs(songs);
+        DataWriter.saveLessons(lessons);
+    
+        System.out.println("Data saved to JSON files.");
+    }
+}
+*/
+
+
+
+/*
+package com.model;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -19,14 +315,62 @@ public class DataWriter extends DataConstants {
         writeToFile(USER_FILE_NAME, userList);
     }
 
-    // Method to write songs to the JSON file
     public static void saveSongs(List<Song> songs) {
         JSONArray songList = new JSONArray();
+    
         for (Song song : songs) {
-            songList.add(song.toJson());
+            JSONObject songObject = new JSONObject();
+            songObject.put("id", song.getId().toString());
+            songObject.put("title", song.getTitle());
+            songObject.put("artist", song.getArtist());
+            songObject.put("runLengthMin", song.getRunLengthMin());
+            songObject.put("runLengthSec", song.getRunLengthSec());
+            songObject.put("tempo", song.getTempo());
+            songObject.put("rating", song.getRating());
+            songObject.put("metronomeOn", song.isMetronomeOn());
+            songObject.put("difficulty", song.getDifficulty().toString());
+            songObject.put("completed", song.isCompleted());
+    
+            // Serialize Reviews
+            JSONArray reviewArray = new JSONArray();
+            for (Review review : song.getReviews()) {
+                JSONObject reviewObject = new JSONObject();
+                reviewObject.put("rating", review.getRating());
+                reviewObject.put("author", review.getAuthor());
+                reviewObject.put("comment", review.getComment());
+                reviewArray.add(reviewObject);
+            }
+            songObject.put("reviews", reviewArray);
+    
+            // Serialize Genres
+            JSONArray genreArray = new JSONArray();
+            for (Genre genre : song.getGenres()) {
+                genreArray.add(genre.toString());
+            }
+            songObject.put("genres", genreArray);
+    
+            // Serialize Measures and Notes
+            JSONArray measureArray = new JSONArray();
+            for (Measure measure : song.getMeasures()) {
+                JSONObject measureObject = new JSONObject();
+                measureObject.put("timeSignatureTop", measure.getTimeSignatureTop());
+                measureObject.put("timeSignatureBottom", measure.getTimeSignatureBottom());
+    
+                JSONArray noteArray = new JSONArray();
+                for (Sound sound : measure.getNotes()) {
+                    noteArray.add(sound.toJson()); // Use polymorphism to call correct toJson()
+                }
+                measureObject.put("notes", noteArray);
+                measureArray.add(measureObject);
+            }
+            songObject.put("measures", measureArray);
+    
+            songList.add(songObject);
         }
-        writeToFile(SONG_FILE_NAME, songList);
+    
+        writeToFile("songs.json", songList);
     }
+    
 
     // Method to write lessons to the JSON file
     public static void saveLessons(List<Lesson> lessons) {
@@ -84,19 +428,21 @@ public class DataWriter extends DataConstants {
         }
 
         // Sample test data
-        User user = new User("username1", "password1", "email1", "name1", "Question1", "Answer1");
+        User user = new User("username.test1", "password.test1", "email1", "name1", "Question1", "Answer1");
         users.add(user);
         DataWriter.saveUsers(users);
 
-        Song song = new Song("title2", "Myself", 1, 2, 0, new ArrayList<Genre>(), Difficulty.BEGINNER, new ArrayList<Measure>());
+        Song song = new Song("title2.test", "Myself.test", 1, 2, 0, new ArrayList<Genre>(), Difficulty.BEGINNER, new ArrayList<Measure>());
         songs.add(song);
         DataWriter.saveSongs(songs);
 
-        Lesson lesson = new Lesson(new ArrayList<Song>(), "topic3", new ArrayList<Assignment>());
+        Lesson lesson = new Lesson(new ArrayList<Song>(), "topic3.test", new ArrayList<Assignment>());
         lessons.add(lesson);
-        DataWriter.saveLessons(lessons);
+        DataWriter.saveLessons(lessons); 
     }
 }
+*/
+
 
 
 /* import java.io.File;

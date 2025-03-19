@@ -1,5 +1,7 @@
 package com.model;
 
+import org.json.simple.JSONObject;
+
 public class Review {
   private Double rating;
   private String author;
@@ -34,6 +36,14 @@ public class Review {
   public void setComment(String comment){
     this.comment = comment;
   }
+
+  public JSONObject toJson() {
+    JSONObject reviewObject = new JSONObject();
+    reviewObject.put("rating", rating);
+    reviewObject.put("author", author);
+    reviewObject.put("comment", comment);
+    return reviewObject;
+}
 
   public String toString() {
     return "Review{" +

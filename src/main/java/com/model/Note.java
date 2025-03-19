@@ -1,5 +1,7 @@
 package com.model;
 
+import org.json.simple.JSONObject;
+
 import javafx.scene.control.Tab;
 
 public class Note extends Sound {
@@ -38,6 +40,9 @@ public class Note extends Sound {
     public double getLength() {
         return length;
     }
+    public double getPitch() {
+        return pitch;
+    }
     public void setPitch(Double pitch){
         this.pitch = pitch;
     }
@@ -54,6 +59,21 @@ public class Note extends Sound {
     }
     public void setFret(int fret) {
          this.fret = fret; 
+    }
+    public String getSoundType() {
+        return soundType;
+    }
+    
+    @Override
+    public JSONObject toJson() {
+        JSONObject noteObject = new JSONObject();
+        noteObject.put("type", getType());
+        noteObject.put("soundType", getSoundType());
+        noteObject.put("length", getLength());
+        noteObject.put("pitch", getPitch());
+        noteObject.put("string", getString());
+        noteObject.put("fret", getFret());
+        return noteObject;
     }
 
     @Override
