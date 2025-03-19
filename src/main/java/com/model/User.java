@@ -20,7 +20,7 @@ public class User {
     public boolean login;
 
     public User(UUID id, String username, String password, String email, String name, 
-                ArrayList<Song> farvoriteSongs, ArrayList<Song> completedSongs, 
+                ArrayList<Song> favoriteSongs, ArrayList<Song> completedSongs, 
                 ArrayList<Lesson> completedLessons, ArrayList<Song> mySongs, 
                 String securityQuestion, String securityAnswer){
         this.id = id;
@@ -30,7 +30,7 @@ public class User {
         this.name = name;
         this.securityQuestion = securityQuestion;
         this.securityAnswer = securityAnswer;
-        this.favoriteSongs = farvoriteSongs;
+        this.favoriteSongs = favoriteSongs;
         this.completedSongs = completedSongs;
         this.completedLessons = completedLessons;
         this.mySongs = mySongs;
@@ -51,39 +51,47 @@ public class User {
     }
 
     public JSONObject toJson() {
-        JSONObject userObject = new JSONObject();
-        userObject.put("id", this.id.toString());
-        userObject.put("username", this.username);
-        userObject.put("password", this.password);
-        userObject.put("email", this.email);
-        userObject.put("name", this.name);
-        userObject.put("securityQuestion", this.securityQuestion);
-        userObject.put("securityAnswer", this.securityAnswer);
+    JSONObject userObject = new JSONObject();
+    userObject.put("id", this.id.toString());
+    userObject.put("username", this.username);
+    userObject.put("password", this.password);
+    userObject.put("email", this.email);
+    userObject.put("name", this.name);
+    userObject.put("securityQuestion", this.securityQuestion);
+    userObject.put("securityAnswer", this.securityAnswer);
     
-        JSONArray favoriteSongsArray = new JSONArray();
-        for (Song song : this.favoriteSongs) {
+    JSONArray favoriteSongsArray = new JSONArray();
+    if (favoriteSongs != null) {
+        for (Song song : favoriteSongs) {
             favoriteSongsArray.add(song.toJson());
         }
-        userObject.put("favoriteSongs", favoriteSongsArray);
-    
-        JSONArray completedSongsArray = new JSONArray();
-        for (Song song : this.completedSongs) {
+    }
+    userObject.put("favoriteSongs", favoriteSongsArray);
+        
+    JSONArray completedSongsArray = new JSONArray();
+    if (completedSongs != null) {
+        for (Song song : completedSongs) {
             completedSongsArray.add(song.toJson());
         }
-        userObject.put("completedSongs", completedSongsArray);
-    
-        JSONArray completedLessonsArray = new JSONArray();
-        for (Lesson lesson : this.completedLessons) {
+    }
+    userObject.put("completedSongs", completedSongsArray);
+        
+    JSONArray completedLessonsArray = new JSONArray();
+    if (completedLessons != null) {
+        for (Lesson lesson : completedLessons) {
             completedLessonsArray.add(lesson.toJson());
         }
-        userObject.put("completedLessons", completedLessonsArray);
-    
-        JSONArray mySongsArray = new JSONArray();
-        for (Song song : this.mySongs) {
+    }
+    userObject.put("completedLessons", completedLessonsArray);
+        
+    JSONArray mySongsArray = new JSONArray();
+    if (mySongs != null) {
+        for (Song song : mySongs) {
             mySongsArray.add(song.toJson());
         }
-        userObject.put("mySongs", mySongsArray);
-    
+    }
+    userObject.put("mySongs", mySongsArray);
+        
         return userObject;
     }
 
