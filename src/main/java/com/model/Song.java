@@ -185,6 +185,17 @@ public class Song {
         throw new UnsupportedOperationException("Unimplemented method 'add'");
     }
 
+    public void play() 
+    {
+        System.out.println("Playing song: " + title + " by " + artist);
+        System.out.println("Tempo: " + tempo + " BPM");
+    
+        for (Measure measure : measures) {
+            measure.play();  // Calls the play method for each measure
+        }
+    
+        System.out.println("Song playback finished.");
+
     // toString method
     @Override
     public String toString() {

@@ -58,6 +58,7 @@ public class Note extends Sound {
 
     @Override
     public String toString() {
-        
+        return("Playing note: " + type + " on string " + string + " at fret " + fret +
+        " with pitch " + pitch + "Hz and length " + length);
     }
 }
