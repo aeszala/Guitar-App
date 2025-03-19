@@ -10,12 +10,12 @@
       "reviews": [
           {
               "rating": 5,
-              "id": "b743a92f-9e7d-4dd3-9c66-913f6e5141f2",
+              "author": "Sarah Brown",
               "comment": "Beautiful piece, sounds amazing on guitar!"
           },
           {
               "rating": 4,
-              "id": "a94c9e28-056a-4969-8a3e-6c5f7e48c6c4",
+              "author": "John Smith",
               "comment": "Challenging but rewarding to learn."
           }
       ],
@@ -130,12 +130,12 @@
         "reviews": [
             {
                 "rating": 5,
-                "id": "a1b2c3d4-e5f6-7890-1234-56789abcdef0",
+                "author": "Gary Horton",
                 "comment": "Such a classic! Easy to play and sounds great."
             },
             {
                 "rating": 4,
-                "id": "b2c3d4e5-f678-9012-3456-789abcdef123",
+                "author": "Samantha Diaz",
                 "comment": "Great song, but took me some time to get the rhythm right."
             }
         ],

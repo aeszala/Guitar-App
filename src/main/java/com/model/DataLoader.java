@@ -15,6 +15,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class DataLoader extends DataConstants {
+    private static ArrayList<User> userCache = UserList.getInstance().getUsers();
+    private static ArrayList<Song> songCache = Songlist.getInstance().getSongs();
+    private static ArrayList<Lesson> lessonCache = LessonList.getInstance().getLessons();
 
     public static ArrayList<User> getUsers() {
         ArrayList<User> users = new ArrayList<User>();
@@ -23,7 +26,7 @@ public class DataLoader extends DataConstants {
             FileReader reader = new FileReader(USER_FILE_NAME);
 			JSONParser parser = new JSONParser();	
 			JSONArray peopleJSON = (JSONArray)new JSONParser().parse(reader);
-
+            
             for (int i = 0; i < peopleJSON.size(); i++) {
                 JSONObject personJSON = (JSONObject)peopleJSON.get(i);
 				UUID id = UUID.fromString((String)personJSON.get(USER_ID));
@@ -36,36 +39,23 @@ public class DataLoader extends DataConstants {
 
                 // fill favoriteSong list
                 JSONArray favoriteSongsIDs = (JSONArray)personJSON.get(USER_FAVORITE_SONGS);
-                ArrayList<Song> favoriteSongs = new ArrayList<Song>();
-                for (int j = 0; j < favoriteSongsIDs.size(); j++) {
-                    // favoriteSongs.add(findSongById(UUID.fromString(favoriteSongsIDs.get(j).toString())));
-                }
+                ArrayList<Song> favoriteSongs = getSongsFromUUIDs(favoriteSongsIDs);
 
                 // fill completedSong list
                 JSONArray completedSongsIDs = (JSONArray)personJSON.get(USER_COMPLETED_SONGS);
-                ArrayList<Song> completedSongs = new ArrayList<Song>();
-                for (int j = 0; j < completedSongsIDs.size(); j++) {
-                    //completedSongs.add(findSongById(UUID.fromString(completedSongsIDs.get(j).toString())));
-                }
+                ArrayList<Song> completedSongs = getSongsFromUUIDs(completedSongsIDs);
 
                 // fill completedLessons list
                 JSONArray completedLessonsIDs = (JSONArray)personJSON.get(USER_COMPLETED_LESSONS);
-                ArrayList<Lesson> completedLessons = new ArrayList<Lesson>();
-                for (int j = 0; j < completedLessonsIDs.size(); j++) {
-                    //completedLessons.add(findSongById(UUID.fromString(completedLessonsIDs.get(j).toString())));
-                }
+                ArrayList<Lesson> completedLessons = getLessonsFromUUIDs(completedLessonsIDs);
 
                 // fill mySongs list
-                // JSONArray mySongsIDs = (JSONArray)personJSON.get(USER_MY_SONGS);
-                ArrayList<Song> mySongs = new ArrayList<Song>();
-                // for (int j = 0; j < mySongsIDs.size(); j++) {
-                //     //mySongs.add(findSongById(UUID.fromString(mySongsIDs.get(j).toString())));
-                // }
+                JSONArray mySongsIDs = (JSONArray)personJSON.get(USER_MY_SONGS);
+                ArrayList<Song> mySongs = getSongsFromUUIDs(mySongsIDs);
 			
 				users.add(new User(id, username, password, email, name,
                 favoriteSongs, completedSongs, completedLessons, mySongs,
                 securityQuestion, securityAnswer));
-
             }
 
             return users;
@@ -109,8 +99,11 @@ public class DataLoader extends DataConstants {
                 // Fill Genres list
                 JSONArray genresJSON = (JSONArray)songJSON.get(SONG_GENRES);
                 ArrayList<Genre> genres = new ArrayList<Genre>();
+                Genre genre;
                 for (int j = 0; j < genresJSON.size(); j++) {
-                    genres.add(getGenre(genresJSON.get(j).toString()));
+                    genre = getGenre(genresJSON.get(j).toString());
+                    if (genre != null)
+                        genres.add(genre);
                 }
     
                 // Fill Measures list
@@ -132,7 +125,6 @@ public class DataLoader extends DataConstants {
     
     public static ArrayList<Lesson> getLessons() {
         ArrayList<Lesson> lessons = new ArrayList<>();
-    
         try {
             FileReader reader = new FileReader(LESSON_FILE_NAME);
             JSONParser parser = new JSONParser();
@@ -149,7 +141,7 @@ public class DataLoader extends DataConstants {
                 JSONArray songsIDs = (JSONArray)lessonJSON.get(LESSON_SONGS);
                 ArrayList<Song> songs = new ArrayList<Song>();
                 for (int j = 0; j < songsIDs.size(); j++) {
-                    // songs.add(findSongById(UUID.fromString(songsIDs.get(j).toString())));
+                    songs.add(findSongById(UUID.fromString(songsIDs.get(j).toString())));
                 }
 
                 // Fill assignments list
@@ -168,18 +160,27 @@ public class DataLoader extends DataConstants {
     }
 
     private static User findUserById(UUID id) {
-        for (User user : getUsers()) {
+        if (userCache == null) {
+            System.out.println("Creating userCache list");
+            userCache = UserList.getInstance().getUsers();
+        }
+        for (User user : userCache) {
             if (user.getId().equals(id)) {
                 return user;
             }
         }
-        return new User("JohnDoe", "ABC123", "123@email.com", "John Doe", "What's your first pet's name?", "Spot");
+        return null;
     }
 
     private static ArrayList<Song> getSongsFromUUIDs(JSONArray songUUIDs) {
-        ArrayList<Song> songs = new ArrayList<Song>();
-        for (Object uuid : songUUIDs) {
-            songs.add(findSongById(UUID.fromString((String) uuid)));
+        ArrayList<Song> songs = new ArrayList<>();
+        if (songUUIDs != null) {
+            for (int i = 0; i < songUUIDs.size(); i++) {
+                Song song = findSongById(UUID.fromString((String) songUUIDs.get(i)));
+                if (song != null) {
+                    songs.add(song);
+                }
+            }
         }
         return songs;
     }
@@ -193,7 +194,10 @@ public class DataLoader extends DataConstants {
     }
     
     private static Song findSongById(UUID id) {
-        for (Song song : getSongs()) {
+        if (songCache == null) {
+            songCache = Songlist.getInstance().getSongs();
+        }
+        for (Song song : songCache) {
             if (song.getId().equals(id))
                 return song;
         }
@@ -201,7 +205,10 @@ public class DataLoader extends DataConstants {
     }
     
     private static Lesson findLessonById(UUID id) {
-        for (Lesson lesson : getLessons()) {
+        if (lessonCache == null) {
+            lessonCache = DataLoader.getLessons();
+        }
+        for (Lesson lesson : lessonCache) {
             if (lesson.getId().equals(id))
                 return lesson;
         }
@@ -215,8 +222,7 @@ public class DataLoader extends DataConstants {
                 JSONObject reviewJSON = (JSONObject) obj;
                 int rating = ((Long) reviewJSON.get(REVIEW_RATING)).intValue();
                 String comment = (String) reviewJSON.get(REVIEW_COMMENT);
-                UUID id = UUID.fromString((String) reviewJSON.get(REVIEW_AUTHOR));
-                User author = findUserById(id);
+                String author = (String) reviewJSON.get(REVIEW_AUTHOR);
                 reviews.add(new Review(rating, comment, author));
             }
         }
@@ -298,7 +304,7 @@ public class DataLoader extends DataConstants {
         // Define regex patterns to extract the values
         String ratingPattern = "\"rating\":(\\d+)";
         String commentPattern = "\"comment\":\"([^\"]+)\"";
-        String idPattern = "\"id\":\"([^\"]+)\"";
+        String authorPattern = "\"author\":\"([^\"]+)\"";
 
         // Create a list to store the extracted values
         List<String> values = new ArrayList<>();
@@ -315,15 +321,14 @@ public class DataLoader extends DataConstants {
             values.add(commentMatcher.group(1)); // Add the comment value
         }
 
-        // Extract id
-        Matcher idMatcher = Pattern.compile(idPattern).matcher(reviewString);
-        if (idMatcher.find()) {
-            values.add(idMatcher.group(1)); // Add the id value
+        // Extract author
+        Matcher authorMatcher = Pattern.compile(authorPattern).matcher(reviewString);
+        if (authorMatcher.find()) {
+            values.add(authorMatcher.group(1)); // Add the author value
         }
 
         // create review object
-        User author = findUserById(UUID.fromString(values.get(2).toString()));
-        Review review = new Review(Double.parseDouble(values.get(0)), values.get(1), author);
+        Review review = new Review(Double.parseDouble(values.get(0)), values.get(1), values.get(2));
         return review;
     }
 
@@ -396,15 +401,11 @@ public class DataLoader extends DataConstants {
                 grade = ((Number) assigmentJSON.get(ASSIGNMENT_GRADE)).doubleValue();
             String teacherComment = (String)assigmentJSON.get(ASSIGNMENT_TEACHER_COMMENT);
             String studentComment = (String)assigmentJSON.get(ASSIGNMENT_STUDENT_COMMENT);
-            Date date = new Date();     // Match FileWriter format later
+            Date dueDate = new Date();     // Match FileWriter format later
             boolean complete = (boolean)assigmentJSON.get(ASSIGNMENT_COMPLETE);
-
-            // Extract sounds array
-            JSONArray soundsJSON = (JSONArray) assigmentJSON.get(MEASURE_NOTES);
-            ArrayList<Sound> sounds = new ArrayList<>();
     
             // Create and return the Assignment object
-            return new Assignment(grade, teacherComment, studentComment, date, complete);
+            return new Assignment(grade, teacherComment, studentComment, dueDate, complete);
 
         } catch (org.json.simple.parser.ParseException e) {
                     e.printStackTrace();
@@ -441,6 +442,9 @@ public class DataLoader extends DataConstants {
                 break;
             case "INDIE":
                 genre = Genre.INDIE;
+                break;
+            case "FOLK":
+                genre = Genre.FOLK;
                 break;
         }
         return genre;

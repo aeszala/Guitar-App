@@ -9,5 +9,6 @@ public enum Genre {
     JAZZ,
     CLASSICAL,
     SOUL,
-    INDIE
+    INDIE,
+    FOLK
 }
