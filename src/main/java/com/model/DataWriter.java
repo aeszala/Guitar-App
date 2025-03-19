@@ -5,6 +5,105 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+public class DataWriter extends DataConstants {
+
+    // Method to write users to the JSON file
+    public static void saveUsers(List<User> users) {
+        JSONArray userList = new JSONArray();
+        for (User user : users) {
+            userList.add(user.toJson());
+        }
+        writeToFile(USER_FILE_NAME, userList);
+    }
+
+    // Method to write songs to the JSON file
+    public static void saveSongs(List<Song> songs) {
+        JSONArray songList = new JSONArray();
+        for (Song song : songs) {
+            songList.add(song.toJson());
+        }
+        writeToFile(SONG_FILE_NAME, songList);
+    }
+
+    // Method to write lessons to the JSON file
+    public static void saveLessons(List<Lesson> lessons) {
+        JSONArray lessonList = new JSONArray();
+        for (Lesson lesson : lessons) {
+            lessonList.add(lesson.toJson());
+        }
+        writeToFile(LESSON_FILE_NAME, lessonList);
+    }
+
+    // Helper method to write JSON data to a file
+    private static void writeToFile(String fileName, JSONArray data) {
+        try (FileWriter file = new FileWriter(fileName)) {
+            file.write(data.toJSONString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        // Create user, song, and lesson lists
+        ArrayList<User> users = new ArrayList<>();
+        ArrayList<Song> songs = new ArrayList<>();
+        ArrayList<Lesson> lessons = new ArrayList<>();
+
+        // Define folder name
+        String folderName = "LessonData";
+        File folder = new File(folderName);
+
+        // Create folder if it doesn't exist
+        if (!folder.exists()) {
+            if (folder.mkdir()) {
+                System.out.println("Folder created: " + folderName);
+            } else {
+                System.out.println("Failed to create folder.");
+                return;
+            }
+        }
+
+        // Define file name inside the folder
+        String fileName = folderName + "/lessons.txt";
+        File file = new File(fileName);
+
+        // Create file if it doesn't exist
+        try {
+            if (file.createNewFile()) {
+                System.out.println("File created: " + fileName);
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while creating the file.");
+            e.printStackTrace();
+        }
+
+        // Sample test data
+        User user = new User("username1", "password1", "email1", "name1", "Question1", "Answer1");
+        users.add(user);
+        DataWriter.saveUsers(users);
+
+        Song song = new Song("title2", "Myself", 1, 2, 0, new ArrayList<Genre>(), Difficulty.BEGINNER, new ArrayList<Measure>());
+        songs.add(song);
+        DataWriter.saveSongs(songs);
+
+        Lesson lesson = new Lesson(new ArrayList<Song>(), "topic3", new ArrayList<Assignment>());
+        lessons.add(lesson);
+        DataWriter.saveLessons(lessons);
+    }
+}
+
+
+/* import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import org.json.simple.JSONArray;
@@ -22,13 +121,34 @@ public class DataWriter extends DataConstants {
             userObject.put(USER_PASSWORD, user.getPassword());
             userObject.put(USER_EMAIL, user.getEmail());
             userObject.put(USER_NAME, user.getName());
-            userObject.put(USER_FAVORITE_SONGS, user.getFavoriteSongs());
-            userObject.put(USER_COMPLETED_SONGS, user.getCompletedSongs());
-            userObject.put(USER_COMPLETED_LESSONS, user.getCompletedLessons());
-            userObject.put(USER_MY_SONGS, user.getMySongs());
+    
+            JSONArray favoriteSongsArray = new JSONArray();
+            for (Song song : user.getFavoriteSongs()) {
+                favoriteSongsArray.add(song.toJson());
+            }
+            userObject.put(USER_FAVORITE_SONGS, favoriteSongsArray);
+    
+            JSONArray completedSongsArray = new JSONArray();
+            for (Song song : user.getCompletedSongs()) {
+                completedSongsArray.add(song.toJson());
+            }
+            userObject.put(USER_COMPLETED_SONGS, completedSongsArray);
+    
+            JSONArray completedLessonsArray = new JSONArray();
+            for (Lesson lesson : user.getCompletedLessons()) {
+                completedLessonsArray.add(lesson.toJson());
+            }
+            userObject.put(USER_COMPLETED_LESSONS, completedLessonsArray);
+    
+            JSONArray mySongsArray = new JSONArray();
+            for (Song song : user.getMySongs()) {
+                mySongsArray.add(song.toJson());
+            }
+            userObject.put(USER_MY_SONGS, mySongsArray);
+    
             userObject.put(USER_SECURITY_QUESTION, user.getSecurityQuestion());
             userObject.put(USER_SECURITY_ANSWER, user.getSecurityAnswer());
-
+    
             userList.add(userObject);
         }
         writeToFile(USER_FILE_NAME, userList);
@@ -135,3 +255,4 @@ public class DataWriter extends DataConstants {
         DataWriter.saveLessons(lessons);
     }
 }
+    */

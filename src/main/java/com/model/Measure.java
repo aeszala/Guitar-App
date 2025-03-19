@@ -1,6 +1,8 @@
 package com.model;
 
 import java.util.ArrayList;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 public class Measure {
     private int timeSignatureTop;
@@ -11,6 +13,21 @@ public class Measure {
         this.timeSignatureTop = timeSignatureTop;
         this.timeSignatureBottom = timeSignatureBottom;
         this.notes = notes;
+    }
+
+    public JSONObject toJson() {
+        JSONObject measureObject = new JSONObject();
+        measureObject.put("timeSignatureTop", timeSignatureTop);
+        measureObject.put("timeSignatureBottom", timeSignatureBottom);
+
+        // Convert notes to JSON
+        JSONArray noteArray = new JSONArray();
+        for (Sound sound : notes) {
+            noteArray.add(sound.toJson());
+        }
+        measureObject.put("notes", noteArray);
+
+        return measureObject;
     }
 
     public void display(){
@@ -39,7 +56,9 @@ public class Measure {
     }
 
     public void play() {
-
+        for (Sound note : notes) {
+            note.play();  // Assuming Sound class has a play() method
+        }
     }
 
     @Override
