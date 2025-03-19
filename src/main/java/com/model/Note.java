@@ -7,10 +7,10 @@ public class Note extends Sound {
     private double length;
     private double pitch;
     private int string;
-    private String fret;
+    private int fret;
     public String soundType;
     
-    public Note(String type, double length, double pitch, int string, String fret, String soundType) {
+    public Note(String type, double length, double pitch, int string, int fret, String soundType) {
         this.type = type;
         this.length = length;
         this.pitch = pitch;
@@ -49,16 +49,23 @@ public class Note extends Sound {
         this.string = string; 
     }
 
-    public String getFret() { 
+    public int getFret() { 
         return fret; 
     }
-    public void setFret(String fret) {
+    public void setFret(int fret) {
          this.fret = fret; 
     }
 
     @Override
     public String toString() {
-        return("Playing note: " + type + " on string " + string + " at fret " + fret +
-        " with pitch " + pitch + "Hz and length " + length);
+        return "Note {" +
+                "Type='" + type + '\'' +
+                ", Length=" + length +
+                ", Pitch=" + pitch +
+                ", String=" + string +
+                ", Fret=" + fret +
+                ", SoundType='" + soundType + '\'' +
+                '}';
     }
+    
 }
