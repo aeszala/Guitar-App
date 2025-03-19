@@ -1,5 +1,7 @@
 ﻿package com.model;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import java.util.UUID;
 import java.util.ArrayList;
 
@@ -46,6 +48,43 @@ public class User {
         this.completedSongs = new ArrayList<>();
         this.completedLessons = new ArrayList<>();
         this.mySongs = new ArrayList<>();
+    }
+
+    public JSONObject toJson() {
+        JSONObject userObject = new JSONObject();
+        userObject.put("id", this.id.toString());
+        userObject.put("username", this.username);
+        userObject.put("password", this.password);
+        userObject.put("email", this.email);
+        userObject.put("name", this.name);
+        userObject.put("securityQuestion", this.securityQuestion);
+        userObject.put("securityAnswer", this.securityAnswer);
+    
+        JSONArray favoriteSongsArray = new JSONArray();
+        for (Song song : this.favoriteSongs) {
+            favoriteSongsArray.add(song.toJson());
+        }
+        userObject.put("favoriteSongs", favoriteSongsArray);
+    
+        JSONArray completedSongsArray = new JSONArray();
+        for (Song song : this.completedSongs) {
+            completedSongsArray.add(song.toJson());
+        }
+        userObject.put("completedSongs", completedSongsArray);
+    
+        JSONArray completedLessonsArray = new JSONArray();
+        for (Lesson lesson : this.completedLessons) {
+            completedLessonsArray.add(lesson.toJson());
+        }
+        userObject.put("completedLessons", completedLessonsArray);
+    
+        JSONArray mySongsArray = new JSONArray();
+        for (Song song : this.mySongs) {
+            mySongsArray.add(song.toJson());
+        }
+        userObject.put("mySongs", mySongsArray);
+    
+        return userObject;
     }
 
     public boolean login(){
