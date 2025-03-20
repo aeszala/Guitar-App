@@ -246,7 +246,7 @@ public class DataLoader extends DataConstants {
             JSONArray soundsJSON = (JSONArray) measureJSON.get(MEASURE_NOTES);
             ArrayList<Sound> sounds = new ArrayList<>();
     
-            if (soundsJSON != null) {
+            if (soundsJSON != null && !soundsJSON.isEmpty()) {
                 for (Object obj : soundsJSON) {
                     JSONObject soundJSON = (JSONObject) obj;
                     // Check if it's a Chord (has a "notes" array)
