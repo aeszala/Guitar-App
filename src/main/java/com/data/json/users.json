@@ -1,1 +1,48 @@
-[{"password":"password1","completedLessons":[{"assignments":[{"teacherComment":"Good job!","grade":95.5,"dueDate":"2025-03-20","studentComment":"It was challenging.","complete":true},{"teacherComment":"Needs improvement.","grade":85.0,"dueDate":"2025-12-31","studentComment":"I learned a lot.","complete":false}],"songs":["056b417f-c545-4e7b-b9ac-2c572d3ce14c","b38f462c-3381-40ae-b078-5f41c38f677c"],"topic":"Music","progress":0.0,"id":"9f329888-78a0-4d2a-baf1-c95d03c93a26","complete":false}],"securityQuestion":"Question1","securityAnswer":"Answer1","mySongs":["056b417f-c545-4e7b-b9ac-2c572d3ce14c"],"name":"name1","completedSongs":["b38f462c-3381-40ae-b078-5f41c38f677c"],"id":"2bed14a6-61ed-4755-ae16-7b164a28ae7b","email":"email1","username":"username1","favoriteSongs":["056b417f-c545-4e7b-b9ac-2c572d3ce14c"]}]
+[
+  {
+    "password": "password1",
+    "completedLessons": [
+      {
+        "assignments": [
+          {
+            "teacherComment": "Good job!",
+            "grade": 95.5,
+            "dueDate": "2025-03-20",
+            "studentComment": "It was challenging.",
+            "complete": true
+          },
+          {
+            "teacherComment": "Needs improvement.",
+            "grade": 85.0,
+            "dueDate": "2025-12-31",
+            "studentComment": "I learned a lot.",
+            "complete": false
+          }
+        ],
+        "songs": [
+          "7e7e7a2e-0588-413b-8b6e-1efed635bfb1",
+          "bca1cda4-584d-41c5-91bd-94a608cbdb31"
+        ],
+        "topic": "Music",
+        "progress": 0.0,
+        "id": "0e44774f-f4ee-42dc-86ce-654b816f2afb",
+        "complete": false
+      }
+    ],
+    "securityQuestion": "Question1",
+    "securityAnswer": "Answer1",
+    "mySongs": [
+      "7e7e7a2e-0588-413b-8b6e-1efed635bfb1"
+    ],
+    "name": "name1",
+    "completedSongs": [
+      "bca1cda4-584d-41c5-91bd-94a608cbdb31"
+    ],
+    "id": "f3997ab7-1caf-42c5-8f4c-5ee763fd644c",
+    "email": "email1",
+    "username": "username1",
+    "favoriteSongs": [
+      "7e7e7a2e-0588-413b-8b6e-1efed635bfb1"
+    ]
+  }
+]

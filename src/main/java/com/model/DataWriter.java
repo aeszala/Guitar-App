@@ -68,10 +68,36 @@ public class DataWriter {
             assignments.add(assignment1);
             assignments.add(assignment2);
 
+            // Creating Songs with Genres
+            ArrayList<Genre> genres1 = new ArrayList<>();
+            genres1.add(Genre.ROCK);
+            genres1.add(Genre.POP);
+
+            ArrayList<Genre> genres2 = new ArrayList<>();
+            genres2.add(Genre.JAZZ);
+            genres2.add(Genre.CLASSICAL);
+
+            // Create Reviews
+            ArrayList<Review> reviews1 = new ArrayList<>();
+            reviews1.add(new Review(4.5, "Great song!", "John Doe"));
+            reviews1.add(new Review(3.8, "Pretty good.", "Jane Smith"));
+
+            // Create Measures
+            ArrayList<Sound> notes = new ArrayList<>();
+            notes.add(new Sound("C", 1));
+            notes.add(new Sound("D", 2));
+
+            ArrayList<Measure> measures1 = new ArrayList<>();
+            measures1.add(new Measure(4, 4, notes));
+
+            ArrayList<Measure> measures2 = new ArrayList<>();
+            measures2.add(new Measure(3, 4, notes));
+            
             // Creating Songs
-            Song song1 = new Song("TITLE1", "ARTIST1", 33, 44, 5, new ArrayList<Genre>(), Difficulty.BEGINNER, new ArrayList<Measure>());
-            Song song2 = new Song(UUID.randomUUID(), "title2", "artist2", 12, 25, 7, 0.5, new ArrayList<Review>(), true, new ArrayList<Genre>(), Difficulty.ADVANCED, new ArrayList<Measure>(), false);
-            // Song song3 = new Song(UUID.randomUUID());
+            Song song1 = new Song("TITLE1", "ARTIST1", 33, 44, 5, genres1, Difficulty.BEGINNER, new ArrayList<Measure>());
+            Song song2 = new Song(UUID.randomUUID(), "title2", "artist2", 12, 25, 7, 0.5, new ArrayList<Review>(), true, genres2, Difficulty.ADVANCED, new ArrayList<Measure>(), false);
+            
+//            song1.getMeasures().add();
 
             // Creating Song List
             ArrayList<Song> songs = new ArrayList<>();
