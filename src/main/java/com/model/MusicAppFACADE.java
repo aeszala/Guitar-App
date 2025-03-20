@@ -36,5 +36,12 @@ public class MusicAppFACADE {
         user.setSecurityAnswer(securityAnswer);
     }
 
+    public void login(String username, String password, String securityQuestion, String SecurityAnswer){
+        user.getUsername();
+        user.getPassword();
+        user.getSecurityQuestion();
+        user.getSecurityAnswer();
+    }
+
 
 }
