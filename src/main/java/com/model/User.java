@@ -60,40 +60,33 @@ public class User {
     userObject.put("securityQuestion", this.securityQuestion);
     userObject.put("securityAnswer", this.securityAnswer);
     
+    // Serialize only the Song IDs instead of full objects
     JSONArray favoriteSongsArray = new JSONArray();
-    if (favoriteSongs != null) {
-        for (Song song : favoriteSongs) {
-            favoriteSongsArray.add(song.toJson());
-        }
+    for (Song song : this.favoriteSongs) {
+        favoriteSongsArray.add(song.getId().toString());
     }
     userObject.put("favoriteSongs", favoriteSongsArray);
-        
+
     JSONArray completedSongsArray = new JSONArray();
-    if (completedSongs != null) {
-        for (Song song : completedSongs) {
-            completedSongsArray.add(song.toJson());
-        }
+    for (Song song : this.completedSongs) {
+        completedSongsArray.add(song.getId().toString());
     }
     userObject.put("completedSongs", completedSongsArray);
-        
-    JSONArray completedLessonsArray = new JSONArray();
-    if (completedLessons != null) {
-        for (Lesson lesson : completedLessons) {
-            completedLessonsArray.add(lesson.toJson());
-        }
-    }
-    userObject.put("completedLessons", completedLessonsArray);
-        
+
     JSONArray mySongsArray = new JSONArray();
-    if (mySongs != null) {
-        for (Song song : mySongs) {
-            mySongsArray.add(song.toJson());
-        }
+    for (Song song : this.mySongs) {
+        mySongsArray.add(song.getId().toString());
     }
     userObject.put("mySongs", mySongsArray);
-        
-        return userObject;
+
+    JSONArray completedLessonsArray = new JSONArray();
+    for (Lesson lesson : this.completedLessons) {
+        completedLessonsArray.add(lesson.toJson());
     }
+    userObject.put("completedLessons", completedLessonsArray);
+
+    return userObject;
+}
 
     public boolean login(){
         return login;

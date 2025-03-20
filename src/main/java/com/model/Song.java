@@ -63,6 +63,10 @@ public class Song {
         this.completed = completed;
     }
 
+    public Song(UUID id) {
+        this.id = id;
+    }
+
     // Method to play the song (stub)
     public void playSong() {
         System.out.println("Playing song: " + title);
@@ -205,6 +209,12 @@ public class Song {
     // toString method
     @Override
     public String toString() {
+        if(this.title == null || this.difficulty == null) {
+            return "Song{" +
+            "id=" + id +
+            '}';
+        }
+        else {
         return "Song{" +
             "id=" + id +
             ", title='" + title + '\'' +
@@ -220,6 +230,7 @@ public class Song {
             ", measures=" + measures +
             ", completed=" + completed +
             '}';
+        }
     }
 
     public JSONObject toJson() {
