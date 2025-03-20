@@ -1,1 +1,52 @@
-[{"assignments":[{"teacherComment":"Good job!","grade":95.5,"dueDate":"2025-03-20","studentComment":"It was challenging.","complete":true},{"teacherComment":"Needs improvement.","grade":85.0,"dueDate":"2025-03-20","studentComment":"I learned a lot.","complete":false}],"songs":[{"difficulty":"BEGINNER","measures":[],"artist":"ARTIST1","genres":[],"rating":0.0,"tempo":5,"runLengthMin":33,"id":"329c1999-db42-4d8b-9172-9951e86c4c4c","runLengthSec":44,"metronomeOn":false,"title":"TITLE1"},{"difficulty":"ADVANCED","measures":[],"artist":"pee","genres":[],"rating":0.5,"tempo":7,"runLengthMin":12,"id":"b80fcf77-d37f-41e1-9db6-89087339b0a6","runLengthSec":25,"metronomeOn":true,"title":"poop"}],"topic":"Music","progress":0.0,"id":"677e765a-d6f7-4280-92f6-3a3de5266f47","complete":false}]
+[
+  {
+    "assignments": [
+      {
+        "teacherComment": "Good job!",
+        "grade": 95.5,
+        "dueDate": "2025-03-20",
+        "studentComment": "It was challenging.",
+        "complete": true
+      },
+      {
+        "teacherComment": "Needs improvement.",
+        "grade": 85.0,
+        "dueDate": "2025-03-20",
+        "studentComment": "I learned a lot.",
+        "complete": false
+      }
+    ],
+    "songs": [
+      {
+        "difficulty": "BEGINNER",
+        "measures": [],
+        "artist": "ARTIST1",
+        "genres": [],
+        "rating": 0.0,
+        "tempo": 5,
+        "runLengthMin": 33,
+        "id": "84a4d051-9442-4741-9355-82ce2ee42078",
+        "runLengthSec": 44,
+        "metronomeOn": false,
+        "title": "TITLE1"
+      },
+      {
+        "difficulty": "ADVANCED",
+        "measures": [],
+        "artist": "artist2",
+        "genres": [],
+        "rating": 0.5,
+        "tempo": 7,
+        "runLengthMin": 12,
+        "id": "52a7f004-a163-498a-8c03-9c125f080595",
+        "runLengthSec": 25,
+        "metronomeOn": true,
+        "title": "title2"
+      }
+    ],
+    "topic": "Music",
+    "progress": 0.0,
+    "id": "ac827a49-4180-4923-89ab-713e5b454ed3",
+    "complete": false
+  }
+]
