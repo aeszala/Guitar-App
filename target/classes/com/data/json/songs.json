@@ -1,28 +1,304 @@
 [
   {
-    "difficulty": "BEGINNER",
-    "measures": [],
-    "artist": "ARTIST1",
-    "genres": [],
-    "rating": 0.0,
-    "tempo": 5,
-    "runLengthMin": 33,
-    "id": "e9937c74-4216-458c-8a16-4499ca09b626",
-    "runLengthSec": 44,
-    "metronomeOn": false,
-    "title": "TITLE1"
+      "id": "e9b1a89d-3c72-4f9d-b5f4-1a9dfb6e8f71",
+      "title": "Moonlight Sonata",
+      "artist": "Ludwig V. Beethoven",
+      "runLengthMin": 6,
+      "runLengthSec": 6,
+      "tempo": 111,
+      "rating": 4.8,
+      "reviews": [
+          {
+              "rating": 5,
+              "author": "Sarah Brown",
+              "comment": "Beautiful piece, sounds amazing on guitar!"
+          },
+          {
+              "rating": 4,
+              "author": "John Smith",
+              "comment": "Challenging but rewarding to learn."
+          }
+      ],
+      "metronomeOn": true,
+      "genres": [
+          "CLASSICAL"
+      ],
+      "difficulty": "INTERMEDIATE",
+      "measures": [
+          {
+              "timeSignatureTop": 4,
+              "timeSignatureBottom": 4,
+              "notes": [
+                  {
+                      "type": "E",
+                      "soundType": "note",
+                      "length": 1,
+                      "pitch": 659.25,
+                      "string": 1,
+                      "fret": 0
+                  },
+                  {
+                      "type": "D#",
+                      "soundType": "note",
+                      "length": 1,
+                      "pitch": 622.25,
+                      "string": 2,
+                      "fret": 4
+                  },
+                  {
+                      "type": "E",
+                      "soundType": "note",
+                      "length": 1,
+                      "pitch": 659.25,
+                      "string": 1,
+                      "fret": 0
+                  },
+                  {
+                      "type": "D#",
+                      "soundType": "note",
+                      "length": 1,
+                      "pitch": 622.25,
+                      "string": 2,
+                      "fret": 4
+                  }
+              ]
+          },
+          {
+              "timeSignatureTop": 4,
+              "timeSignatureBottom": 4,
+              "notes": [
+                  {
+                      "type": "E",
+                      "soundType": "note",
+                      "length": 1,
+                      "pitch": 659.25,
+                      "string": 1,
+                      "fret": 0
+                  },
+                  {
+                      "type": "B",
+                      "soundType": "note",
+                      "length": 1,
+                      "pitch": 493.88,
+                      "string": 2,
+                      "fret": 0
+                  },
+                  {
+                      "type": "D",
+                      "soundType": "note",
+                      "length": 1,
+                      "pitch": 587.33,
+                      "string": 3,
+                      "fret": 0
+                  },
+                  {
+                      "type": "C",
+                      "soundType": "note",
+                      "length": 1,
+                      "pitch": 523.25,
+                      "string": 3,
+                      "fret": 5
+                  }
+              ]
+          },
+          {
+              "timeSignatureTop": 4,
+              "timeSignatureBottom": 4,
+              "notes": [
+                  {
+                      "type": "A",
+                      "soundType": "note",
+                      "length": 1,
+                      "pitch": 440,
+                      "string": 4,
+                      "fret": 2
+                  }
+              ]
+          }
+      ],
+      "completed": false
   },
-  {
-    "difficulty": "ADVANCED",
-    "measures": [],
-    "artist": "artist2",
-    "genres": [],
-    "rating": 0.5,
-    "tempo": 7,
-    "runLengthMin": 12,
-    "id": "71f839e0-3080-423d-a6e9-cff5ea41e31a",
-    "runLengthSec": 25,
-    "metronomeOn": true,
-    "title": "title2"
-  }
+
+    {
+        "id": "f3c5d6a2-89b7-4e6a-8c3f-2a4d5e6b7c8d",
+        "title": "You Are My Sunshine",
+        "artist": "Jimmie Davis",
+        "runLengthMin": 3,
+        "runLengthSec": 45,
+        "tempo": 100,
+        "rating": 4.7,
+        "reviews": [
+            {
+                "rating": 5,
+                "author": "Gary Horton",
+                "comment": "Such a classic! Easy to play and sounds great."
+            },
+            {
+                "rating": 4,
+                "author": "Samantha Diaz",
+                "comment": "Great song, but took me some time to get the rhythm right."
+            }
+        ],
+        "metronomeOn": true,
+        "genres": [
+            "COUNTRY",
+            "FOLK"
+        ],
+        "difficulty": "BEGINNER",
+        "measures": [
+            {
+                "timeSignatureTop": 4,
+                "timeSignatureBottom": 4,
+                "notes": [
+                    {
+                        "type": "C",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 523.25,
+                        "string": 2,
+                        "fret": 1
+                    },
+                    {
+                        "type": "C",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 523.25,
+                        "string": 2,
+                        "fret": 1
+                    },
+                    {
+                        "type": "C",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 523.25,
+                        "string": 2,
+                        "fret": 1
+                    },
+                    {
+                        "type": "D",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 587.33,
+                        "string": 2,
+                        "fret": 3
+                    }
+                ]
+            },
+            {
+                "timeSignatureTop": 4,
+                "timeSignatureBottom": 4,
+                "notes": [
+                    {
+                        "type": "E",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 659.25,
+                        "string": 1,
+                        "fret": 0
+                    },
+                    {
+                        "type": "E",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 659.25,
+                        "string": 1,
+                        "fret": 0
+                    },
+                    {
+                        "type": "D",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 587.33,
+                        "string": 2,
+                        "fret": 3
+                    },
+                    {
+                        "type": "C",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 523.25,
+                        "string": 2,
+                        "fret": 1
+                    }
+                ]
+            },
+            {
+                "timeSignatureTop": 4,
+                "timeSignatureBottom": 4,
+                "notes": [
+                    {
+                        "type": "A",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 440.00,
+                        "string": 3,
+                        "fret": 2
+                    },
+                    {
+                        "type": "A",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 440.00,
+                        "string": 3,
+                        "fret": 2
+                    },
+                    {
+                        "type": "C",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 523.25,
+                        "string": 2,
+                        "fret": 1
+                    },
+                    {
+                        "type": "D",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 587.33,
+                        "string": 2,
+                        "fret": 3
+                    }
+                ]
+            },
+            {
+                "timeSignatureTop": 4,
+                "timeSignatureBottom": 4,
+                "notes": [
+                    {
+                        "type": "E",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 659.25,
+                        "string": 1,
+                        "fret": 0
+                    },
+                    {
+                        "type": "C",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 523.25,
+                        "string": 2,
+                        "fret": 1
+                    },
+                    {
+                        "type": "A",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 440.00,
+                        "string": 3,
+                        "fret": 2
+                    },
+                    {
+                        "type": "G",
+                        "soundType": "note",
+                        "length": 1,
+                        "pitch": 392.00,
+                        "string": 3,
+                        "fret": 0
+                    }
+                ]
+            }
+        ],
+        "completed": false
+    }
 ]
