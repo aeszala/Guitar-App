@@ -7,7 +7,7 @@ public class Sound {
 
     // Constructor to initialize Sound type
     public Sound(String type) {
-        this.type = type;
+        setType(type);
     }
 
     public void play() {
@@ -19,7 +19,10 @@ public class Sound {
     }
 
     public void setType(String type) {
-        this.type = type;
+        if (type.equalsIgnoreCase("chord"))
+            this.type = "chord";
+        else
+            this.type = "note";
     }
 
     public JSONObject toJson() {
