@@ -201,33 +201,6 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
-    private static ArrayList<Assignment> getAssignmentsFromJSON(JSONArray assignmentsJSON) {
-        ArrayList<Assignment> assignments = new ArrayList<>();
-        if (assignmentsJSON != null) {
-            for (Object obj : assignmentsJSON) {
-                JSONObject assignmentJSON = (JSONObject) obj;
-                double grade = (double) assignmentJSON.get(ASSIGNMENT_GRADE);
-                String teacherComment = (String) assignmentJSON.get(ASSIGNMENT_TEACHER_COMMENT);
-                String studentComment = (String) assignmentJSON.get(ASSIGNMENT_STUDENT_COMMENT);
-                Date dueDate = toDate((String) assignmentJSON.get(ASSIGNMENT_DUE_DATE)); // may need to read as string first
-                boolean complete = (boolean) assignmentJSON.get(ASSIGNMENT_COMPLETE);
-
-                assignments.add(new Assignment(grade, teacherComment, studentComment, dueDate, complete));
-            }
-        }
-        return assignments;
-    }
-
-    private static Date toDate(String date) {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-        try {
-            return formatter.parse(date);  // Parse the string into a Date object
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;  // Return null in case of an error
-        }
-    }
-
     private static Review createReview(String reviewString) {
         // Define regex patterns to extract the values
         String ratingPattern = "\"rating\":(\\d+)";
