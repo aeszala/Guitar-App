@@ -5,8 +5,13 @@ import org.json.simple.JSONObject;
 public class Sound {
     private String type;
 
-    public void play(){
-        
+    // Constructor to initialize Sound type
+    public Sound(String type) {
+        this.type = type;
+    }
+
+    public void play() {
+        // Implement sound playback logic here
     }
 
     public String getType() {
@@ -19,8 +24,12 @@ public class Sound {
 
     public JSONObject toJson() {
         JSONObject soundObject = new JSONObject();
-        soundObject.put("type", type);
+        soundObject.put("type", type != null ? type : "UNKNOWN"); // Handle null case
         return soundObject;
     }
-  
+
+    @Override
+    public String toString() {
+        return "Sound{" + "type='" + type + '\'' + '}';
+    }
 }

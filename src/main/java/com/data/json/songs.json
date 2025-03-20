@@ -1,1 +1,38 @@
-[{"difficulty":"BEGINNER","measures":[],"artist":"ARTIST1","genres":[],"rating":0.0,"tempo":5,"runLengthMin":33,"id":"056b417f-c545-4e7b-b9ac-2c572d3ce14c","runLengthSec":44,"metronomeOn":false,"title":"TITLE1"},{"difficulty":"ADVANCED","measures":[],"artist":"artist2","genres":[],"rating":0.5,"tempo":7,"runLengthMin":12,"id":"b38f462c-3381-40ae-b078-5f41c38f677c","runLengthSec":25,"metronomeOn":true,"title":"title2"}]
+[
+  {
+    "artist": "ARTIST1",
+    "rating": 0.0,
+    "tempo": 5,
+    "metronomeOn": false,
+    "completed": false,
+    "title": "TITLE1",
+    "difficulty": "BEGINNER",
+    "measures": [],
+    "reviews": [],
+    "genres": [
+      "ROCK",
+      "POP"
+    ],
+    "runLengthMin": 33,
+    "id": "7e7e7a2e-0588-413b-8b6e-1efed635bfb1",
+    "runLengthSec": 44
+  },
+  {
+    "artist": "artist2",
+    "rating": 0.5,
+    "tempo": 7,
+    "metronomeOn": true,
+    "completed": false,
+    "title": "title2",
+    "difficulty": "ADVANCED",
+    "measures": [],
+    "reviews": [],
+    "genres": [
+      "JAZZ",
+      "CLASSICAL"
+    ],
+    "runLengthMin": 12,
+    "id": "bca1cda4-584d-41c5-91bd-94a608cbdb31",
+    "runLengthSec": 25
+  }
+]
