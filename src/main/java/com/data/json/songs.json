@@ -1,21 +1,45 @@
 [
   {
-    "artist": "ARTIST1",
-    "rating": 0.0,
-    "tempo": 5,
+    "artist": "artist1",
+    "rating": 5.0,
+    "tempo": 112,
     "metronomeOn": false,
-    "completed": false,
-    "title": "TITLE1",
+    "completed": true,
+    "title": "title1",
     "difficulty": "BEGINNER",
-    "measures": [],
-    "reviews": [],
+    "measures": [
+      {
+        "timeSignatureBottom": 4,
+        "notes": [
+          {
+            "type": "C"
+          },
+          {
+            "type": "D"
+          }
+        ],
+        "timeSignatureTop": 4
+      }
+    ],
+    "reviews": [
+      {
+        "author": "John Doe",
+        "rating": 4.5,
+        "comment": "Great song!"
+      },
+      {
+        "author": "Jane Smith",
+        "rating": 3.8,
+        "comment": "Pretty good."
+      }
+    ],
     "genres": [
       "ROCK",
       "POP"
     ],
-    "runLengthMin": 33,
-    "id": "7e7e7a2e-0588-413b-8b6e-1efed635bfb1",
-    "runLengthSec": 44
+    "runLengthMin": 5,
+    "id": "9ea68579-58ef-48f0-8948-2fecf534cd79",
+    "runLengthSec": 32
   },
   {
     "artist": "artist2",
@@ -25,14 +49,38 @@
     "completed": false,
     "title": "title2",
     "difficulty": "ADVANCED",
-    "measures": [],
-    "reviews": [],
+    "measures": [
+      {
+        "timeSignatureBottom": 4,
+        "notes": [
+          {
+            "type": "C"
+          },
+          {
+            "type": "D"
+          }
+        ],
+        "timeSignatureTop": 3
+      }
+    ],
+    "reviews": [
+      {
+        "author": "Bob Williams",
+        "rating": 5.0,
+        "comment": "Perfect!"
+      },
+      {
+        "author": "Mary Watson",
+        "rating": 1.8,
+        "comment": "Bad."
+      }
+    ],
     "genres": [
       "JAZZ",
       "CLASSICAL"
     ],
     "runLengthMin": 12,
-    "id": "bca1cda4-584d-41c5-91bd-94a608cbdb31",
+    "id": "f1b102d9-d3d8-4917-83e5-f8b9a34339ff",
     "runLengthSec": 25
   }
 ]

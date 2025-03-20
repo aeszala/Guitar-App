@@ -81,11 +81,15 @@ public class DataWriter {
             ArrayList<Review> reviews1 = new ArrayList<>();
             reviews1.add(new Review(4.5, "Great song!", "John Doe"));
             reviews1.add(new Review(3.8, "Pretty good.", "Jane Smith"));
+            
+            ArrayList<Review> reviews2 = new ArrayList<>();
+            reviews2.add(new Review(5.0, "Perfect!", "Bob Williams"));
+            reviews2.add(new Review(1.8, "Bad.", "Mary Watson"));
 
             // Create Measures
             ArrayList<Sound> notes = new ArrayList<>();
-            notes.add(new Sound("C", 1));
-            notes.add(new Sound("D", 2));
+            notes.add(new Sound("C"));
+            notes.add(new Sound("D"));
 
             ArrayList<Measure> measures1 = new ArrayList<>();
             measures1.add(new Measure(4, 4, notes));
@@ -94,8 +98,8 @@ public class DataWriter {
             measures2.add(new Measure(3, 4, notes));
             
             // Creating Songs
-            Song song1 = new Song("TITLE1", "ARTIST1", 33, 44, 5, genres1, Difficulty.BEGINNER, new ArrayList<Measure>());
-            Song song2 = new Song(UUID.randomUUID(), "title2", "artist2", 12, 25, 7, 0.5, new ArrayList<Review>(), true, genres2, Difficulty.ADVANCED, new ArrayList<Measure>(), false);
+            Song song1 = new Song(UUID.randomUUID(), "title1", "artist1", 5, 32, 112, 5.0, reviews1, false, genres1, Difficulty.BEGINNER, measures1, true);
+            Song song2 = new Song(UUID.randomUUID(), "title2", "artist2", 12, 25, 7, 0.5, reviews2, true, genres2, Difficulty.ADVANCED, measures2, false);
             
 //            song1.getMeasures().add();
 
@@ -105,7 +109,7 @@ public class DataWriter {
             songs.add(song2);
 
             // Creating Lesson with Songs and Assignments
-            Lesson lesson = new Lesson(songs, "Music", assignments);
+            Lesson lesson = new Lesson("Lesson_Title", songs, "Music", assignments);
             ArrayList<Lesson> lessons = new ArrayList<>();
             lessons.add(lesson);
 
