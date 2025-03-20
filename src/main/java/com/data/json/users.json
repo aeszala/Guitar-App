@@ -1,11 +1,48 @@
-[{"password":"password1",
-"completedLessons":["d29ab8bc-fdcc-4554-acff-0c63d3be88e6"],
-"mySongs":["e9b1a89d-3c72-4f9d-b5f4-1a9dfb6e8f71"],
-"securityQuestion":"Question1",
-"securityAnswer":"Answer1",
-"name":"name1",
-"completedSongs":["e9937c74-4216-458c-8a16-4499ca09b626"],
-"id":"04c0d1ce-f0ab-464f-8bd5-49a433816bc1"
-,"email":"email1",
-"username":"username1",
-"favoriteSongs":["71f839e0-3080-423d-a6e9-cff5ea41e31a"]}]
+[
+  {
+    "password": "password1",
+    "completedLessons": [
+      {
+        "assignments": [
+          {
+            "teacherComment": "Good job!",
+            "grade": 95.5,
+            "dueDate": "2025-03-20",
+            "studentComment": "It was challenging.",
+            "complete": true
+          },
+          {
+            "teacherComment": "Needs improvement.",
+            "grade": 85.0,
+            "dueDate": "2025-12-31",
+            "studentComment": "I learned a lot.",
+            "complete": false
+          }
+        ],
+        "songs": [
+          "a1b5e787-1765-4a17-9090-c6372a5e8688",
+          "b196e62a-044a-44ed-a4de-ca3e8113fae3"
+        ],
+        "topic": "Music",
+        "progress": 0.0,
+        "id": "6148f5fd-1326-4ad1-86b0-a6847ab29fb6",
+        "complete": false
+      }
+    ],
+    "securityQuestion": "Question1",
+    "securityAnswer": "Answer1",
+    "mySongs": [
+      "a1b5e787-1765-4a17-9090-c6372a5e8688"
+    ],
+    "name": "name1",
+    "completedSongs": [
+      "b196e62a-044a-44ed-a4de-ca3e8113fae3"
+    ],
+    "id": "065d37fd-2ed4-4823-b13d-ac612f2031a4",
+    "email": "email1",
+    "username": "username1",
+    "favoriteSongs": [
+      "a1b5e787-1765-4a17-9090-c6372a5e8688"
+    ]
+  }
+]

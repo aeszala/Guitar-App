@@ -40,16 +40,16 @@ public class Lesson {
         lessonObject.put("progress", progress);
         lessonObject.put("complete", complete);
 
-        // Convert songs to JSON
-        JSONArray songArray = new JSONArray();
-        for (Song song : songs) {
-            songArray.add(song.toJson());
+        // Store only SongIDs
+        JSONArray songIdsArray = new JSONArray();
+        for (Song song : this.songs) {
+            songIdsArray.add(song.getId().toString());
         }
-        lessonObject.put("songs", songArray);
+        lessonObject.put("songs", songIdsArray);
 
         // Convert assignments to JSON
         JSONArray assignmentArray = new JSONArray();
-        for (Assignment assignment : assignments) {
+        for (Assignment assignment : this.assignments) {
             assignmentArray.add(assignment.toJson());
         }
         lessonObject.put("assignments", assignmentArray);

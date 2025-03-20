@@ -71,6 +71,7 @@ public class DataWriter {
             // Creating Songs
             Song song1 = new Song("TITLE1", "ARTIST1", 33, 44, 5, new ArrayList<Genre>(), Difficulty.BEGINNER, new ArrayList<Measure>());
             Song song2 = new Song(UUID.randomUUID(), "title2", "artist2", 12, 25, 7, 0.5, new ArrayList<Review>(), true, new ArrayList<Genre>(), Difficulty.ADVANCED, new ArrayList<Measure>(), false);
+            // Song song3 = new Song(UUID.randomUUID());
 
             // Creating Song List
             ArrayList<Song> songs = new ArrayList<>();

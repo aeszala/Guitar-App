@@ -17,36 +17,12 @@
       }
     ],
     "songs": [
-      {
-        "difficulty": "BEGINNER",
-        "measures": [],
-        "artist": "ARTIST1",
-        "genres": [],
-        "rating": 0.0,
-        "tempo": 5,
-        "runLengthMin": 33,
-        "id": "e9937c74-4216-458c-8a16-4499ca09b626",
-        "runLengthSec": 44,
-        "metronomeOn": false,
-        "title": "TITLE1"
-      },
-      {
-        "difficulty": "ADVANCED",
-        "measures": [],
-        "artist": "artist2",
-        "genres": [],
-        "rating": 0.5,
-        "tempo": 7,
-        "runLengthMin": 12,
-        "id": "71f839e0-3080-423d-a6e9-cff5ea41e31a",
-        "runLengthSec": 25,
-        "metronomeOn": true,
-        "title": "title2"
-      }
+      "a1b5e787-1765-4a17-9090-c6372a5e8688",
+      "b196e62a-044a-44ed-a4de-ca3e8113fae3"
     ],
     "topic": "Music",
     "progress": 0.0,
-    "id": "d29ab8bc-fdcc-4554-acff-0c63d3be88e6",
+    "id": "6148f5fd-1326-4ad1-86b0-a6847ab29fb6",
     "complete": false
   }
 ]
