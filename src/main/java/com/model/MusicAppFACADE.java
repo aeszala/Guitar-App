@@ -53,11 +53,11 @@ public class MusicAppFACADE {
         song.setTempo(tempo);
     }
 
-    public void reviewSong(Song song, int rating, String comment){
+    public void reviewSong(Song song, int rating, String comment, Assignment assignment){
         song.getTitle();
         song.setRating(rating);
-        teacher.comment(null, student, comment, comment);
-        student.comment(null, comment);
+        teacher.comment(assignment, student, comment, comment);
+        student.comment(assignment, comment);
     }
 
     
