@@ -14,6 +14,7 @@ public class Song {
     private String artist;
     private int runLengthMin;
     private int runLengthSec;
+    private String lyrics;
     private int tempo;
     private double rating;
     private ArrayList<Review> reviews;
@@ -123,6 +124,14 @@ public class Song {
 
     public void setRunLengthSec(int runLengthSec) {
         this.runLengthSec = runLengthSec;
+    }
+
+    public String getLyrics(){
+        return lyrics;
+    }
+
+    public void setLyrics(String lyrics){
+        this.lyrics = lyrics;
     }
 
     public int getTempo() {

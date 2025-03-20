@@ -6,6 +6,7 @@ public class MusicAppFACADE {
     private User user;
     private Student student;
     private Teacher teacher;
+    private Song song;
     
    public void createStudentAccount(String name, String username, String password, String email, Teacher teacher, String securityQuestion, String securityAnswer){
         user.setUsername(username);
@@ -35,6 +36,33 @@ public class MusicAppFACADE {
         user.setSecurityQuestion(securityQuestion);
         user.setSecurityAnswer(securityAnswer);
     }
+
+    public void login(String username, String password, String securityQuestion, String SecurityAnswer){
+        user.getUsername();
+        user.getPassword();
+        user.getSecurityQuestion();
+        user.getSecurityAnswer();
+    }
+
+    public void addSong(String title, String artist, int runLengthMin, int runLengthSec, String Lyrics, int tempo, Measure measure){
+        song.setTitle(title);
+        song.setArtist(artist);
+        song.setRunLengthMin(runLengthMin);
+        song.setRunLengthSec(runLengthSec);
+        song.setLyrics(Lyrics);
+        song.setTempo(tempo);
+    }
+
+    public void reviewSong(Song song, int rating, String comment){
+        song.getTitle();
+        song.setRating(rating);
+        teacher.comment(null, student, comment, comment);
+        student.comment(null, comment);
+    }
+
+    
+
+
 
 
 }
