@@ -109,7 +109,6 @@ public void setComplete(boolean complete)
     this.complete = complete;
 }
 
-
 public void addComment(String comment, String role) {
     if ("teacher".equalsIgnoreCase(role)) {
         this.teacherComment = (teacherComment == null || teacherComment.isEmpty()) ? comment : teacherComment + " | " + comment;
