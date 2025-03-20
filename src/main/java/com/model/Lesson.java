@@ -14,7 +14,7 @@ public class Lesson {
     private double progress;
     private boolean complete;
 
-    // new Lesson
+    // new Lesson Constructor
     public Lesson(String title, ArrayList<Song> songs, String topic, ArrayList<Assignment> assignments) {
         this.title = title;
         this.id = UUID.randomUUID();
@@ -25,7 +25,7 @@ public class Lesson {
         this.complete = false;
     }
 
-    // existing Lesson
+    // existing Lesson Constructor
     public Lesson(String title, UUID id, ArrayList<Song> songs, String topic,
     ArrayList<Assignment> assignments, double progress, boolean complete) {
         this.title = title;
@@ -135,5 +135,5 @@ public class Lesson {
         }
         return titles.substring(0, titles.length() - 2) + "]"; // Remove last comma and space
 }
-    
+
 }
