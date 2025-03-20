@@ -57,10 +57,11 @@ public class DataWriter {
             // Creating Date object for assignment due dates
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date dueDate = sdf.parse("2025-03-20");
+            Date dueDate2 = sdf.parse("2025-12-31");
 
             // Creating Assignments
             Assignment assignment1 = new Assignment("Music Practice", 95.5, "Good job!", "It was challenging.", dueDate, true);
-            Assignment assignment2 = new Assignment("Sheet Project", 85.0, "Needs improvement.", "I learned a lot.", dueDate, false);
+            Assignment assignment2 = new Assignment("Sheet Project", 85.0, "Needs improvement.", "I learned a lot.", dueDate2, false);
 
             // Creating Assignment List
             ArrayList<Assignment> assignments = new ArrayList<>();
