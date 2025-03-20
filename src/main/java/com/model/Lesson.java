@@ -97,7 +97,7 @@ public class Lesson {
         return complete;
     }
 
-    public String getTitle(){
+    public static String getTitle(){
         return title;
     }
 

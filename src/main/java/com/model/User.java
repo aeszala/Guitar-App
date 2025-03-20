@@ -161,6 +161,36 @@ public class User {
         return securityAnswer;
     }
 
+    public void setUsername(String username){
+        this.username = username;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setSecurityQuestion(String securityQuestion){
+        this.securityQuestion = securityQuestion;
+    }
+
+    public void setSecurityAnswer(String securityAnswer){
+        this.securityAnswer = securityAnswer;
+    }
+
+    public void setMyfavoritesongs(ArrayList<Song> favoriteSongs){
+        this.favoriteSongs = favoriteSongs;
+    }
+
+    
+
 
     
     public String toString(){
