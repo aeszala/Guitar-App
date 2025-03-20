@@ -1,108 +1,11 @@
-[
-  {
-    "password": "password1",
-    "completedLessons": [
-      {
-        "assignments": [
-          {
-            "teacherComment": "Good job!",
-            "grade": 95.5,
-            "dueDate": "2025-03-20",
-            "studentComment": "It was challenging.",
-            "complete": true
-          },
-          {
-            "teacherComment": "Needs improvement.",
-            "grade": 85.0,
-            "dueDate": "2025-12-31",
-            "studentComment": "I learned a lot.",
-            "complete": false
-          }
-        ],
-        "songs": [
-          {
-            "difficulty": "BEGINNER",
-            "measures": [],
-            "artist": "ARTIST1",
-            "genres": [],
-            "rating": 0.0,
-            "tempo": 5,
-            "runLengthMin": 33,
-            "id": "e9937c74-4216-458c-8a16-4499ca09b626",
-            "runLengthSec": 44,
-            "metronomeOn": false,
-            "title": "TITLE1"
-          },
-          {
-            "difficulty": "ADVANCED",
-            "measures": [],
-            "artist": "artist2",
-            "genres": [],
-            "rating": 0.5,
-            "tempo": 7,
-            "runLengthMin": 12,
-            "id": "71f839e0-3080-423d-a6e9-cff5ea41e31a",
-            "runLengthSec": 25,
-            "metronomeOn": true,
-            "title": "title2"
-          }
-        ],
-        "topic": "Music",
-        "progress": 0.0,
-        "id": "d29ab8bc-fdcc-4554-acff-0c63d3be88e6",
-        "complete": false
-      }
-    ],
-    "securityQuestion": "Question1",
-    "securityAnswer": "Answer1",
-    "mySongs": [
-      {
-        "difficulty": "BEGINNER",
-        "measures": [],
-        "artist": "ARTIST1",
-        "genres": [],
-        "rating": 0.0,
-        "tempo": 5,
-        "runLengthMin": 33,
-        "id": "e9937c74-4216-458c-8a16-4499ca09b626",
-        "runLengthSec": 44,
-        "metronomeOn": false,
-        "title": "TITLE1"
-      }
-    ],
-    "name": "name1",
-    "completedSongs": [
-      {
-        "difficulty": "ADVANCED",
-        "measures": [],
-        "artist": "artist2",
-        "genres": [],
-        "rating": 0.5,
-        "tempo": 7,
-        "runLengthMin": 12,
-        "id": "71f839e0-3080-423d-a6e9-cff5ea41e31a",
-        "runLengthSec": 25,
-        "metronomeOn": true,
-        "title": "title2"
-      }
-    ],
-    "id": "87b1b1e1-88b4-4493-b591-b135f8e7f538",
-    "email": "email1",
-    "username": "username1",
-    "favoriteSongs": [
-      {
-        "difficulty": "BEGINNER",
-        "measures": [],
-        "artist": "ARTIST1",
-        "genres": [],
-        "rating": 0.0,
-        "tempo": 5,
-        "runLengthMin": 33,
-        "id": "e9937c74-4216-458c-8a16-4499ca09b626",
-        "runLengthSec": 44,
-        "metronomeOn": false,
-        "title": "TITLE1"
-      }
-    ]
-  }
-]
+[{"password":"password1",
+"completedLessons":["d29ab8bc-fdcc-4554-acff-0c63d3be88e6"],
+"mySongs":["e9b1a89d-3c72-4f9d-b5f4-1a9dfb6e8f71"],
+"securityQuestion":"Question1",
+"securityAnswer":"Answer1",
+"name":"name1",
+"completedSongs":["e9937c74-4216-458c-8a16-4499ca09b626"],
+"id":"04c0d1ce-f0ab-464f-8bd5-49a433816bc1"
+,"email":"email1",
+"username":"username1",
+"favoriteSongs":["71f839e0-3080-423d-a6e9-cff5ea41e31a"]}]

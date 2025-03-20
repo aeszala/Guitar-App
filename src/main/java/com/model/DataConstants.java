@@ -56,6 +56,7 @@ public abstract class DataConstants {
     protected static final String LESSON_PROGRESS = "progress";
     protected static final String LESSON_COMPLETE = "complete";
     // assignment class constants (used when reading lessons file)
+    protected static final String ASSIGNMENT_TITLE = "title";
     protected static final String ASSIGNMENT_GRADE = "grade";
     protected static final String ASSIGNMENT_TEACHER_COMMENT = "teacherComment";
     protected static final String ASSIGNMENT_STUDENT_COMMENT = "studentComment";

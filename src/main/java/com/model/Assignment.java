@@ -117,4 +117,18 @@ public void addComment(String comment, String role) {
     }
 }
 
+@Override
+public String toString() {
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd"); // Format the due date
+
+    return "Assignment {" +
+            "Title='" + title + '\'' +
+            ", Grade=" + grade +
+            ", Teacher Comment='" + (teacherComment != null ? teacherComment : "None") + '\'' +
+            ", Student Comment='" + (studentComment != null ? studentComment : "None") + '\'' +
+            ", Due Date=" + (dueDate != null ? dateFormat.format(dueDate) : "No due date") +
+            ", Complete=" + complete +
+            '}';
+}
+
 }

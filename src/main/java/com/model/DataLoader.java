@@ -26,7 +26,7 @@ public class DataLoader extends DataConstants {
             FileReader reader = new FileReader(USER_FILE_NAME);
 			JSONParser parser = new JSONParser();	
 			JSONArray peopleJSON = (JSONArray)new JSONParser().parse(reader);
-            
+
             for (int i = 0; i < peopleJSON.size(); i++) {
                 JSONObject personJSON = (JSONObject)peopleJSON.get(i);
 				UUID id = UUID.fromString((String)personJSON.get(USER_ID));
@@ -394,24 +394,43 @@ public class DataLoader extends DataConstants {
             JSONParser parser = new JSONParser();
             JSONObject assigmentJSON = (JSONObject) parser.parse(jsonString);
     
+            String title = (String)assigmentJSON.get(ASSIGNMENT_TITLE);
             double grade;
             if (assigmentJSON.get(ASSIGNMENT_GRADE) == null )
-                grade = 0;
+                grade = -1; // no grade
             else
                 grade = ((Number) assigmentJSON.get(ASSIGNMENT_GRADE)).doubleValue();
             String teacherComment = (String)assigmentJSON.get(ASSIGNMENT_TEACHER_COMMENT);
             String studentComment = (String)assigmentJSON.get(ASSIGNMENT_STUDENT_COMMENT);
-            Date dueDate = new Date();     // Match FileWriter format later
+            String dateString = (String)assigmentJSON.get(ASSIGNMENT_DUE_DATE);
+            Date dueDate = createDate(dateString);
             boolean complete = (boolean)assigmentJSON.get(ASSIGNMENT_COMPLETE);
     
             // Create and return the Assignment object
-            return new Assignment(grade, teacherComment, studentComment, dueDate, complete);
+            return new Assignment(title, grade, teacherComment, studentComment, dueDate, complete);
 
         } catch (org.json.simple.parser.ParseException e) {
                     e.printStackTrace();
                     return null;
                 }
     }    
+
+    private static Date createDate(String dateString) {
+        String[] formats = {"yyyy-MM-dd", "yyyy/MM/dd"}; // Allowed formats
+
+        for (String format : formats) {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat(format);
+                sdf.setLenient(false); // Prevents invalid dates like 2024-02-30
+                Date date = sdf.parse(dateString);
+                System.out.println(date);
+                return date; // Converts to Date object
+            } catch (ParseException ignored) {
+                // Try next format
+            }
+        }
+        return new Date();
+    }
 
     private static Genre getGenre(String genreString) {
         Genre genre = null;
@@ -471,5 +490,4 @@ public class DataLoader extends DataConstants {
         }
         
     }
-
 }
