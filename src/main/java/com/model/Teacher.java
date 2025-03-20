@@ -56,7 +56,9 @@ public class Teacher {
         assignment.addComment(comment, role);
     }
 
-
+    public void getStudents(ArrayList<Student> students){
+        this.students = students;
+    }
 
     
 }

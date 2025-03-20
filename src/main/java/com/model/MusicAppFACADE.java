@@ -1,15 +1,40 @@
 ﻿package com.model;
 
+import java.util.ArrayList;
+
 public class MusicAppFACADE {
     private User user;
+    private Student student;
     private Teacher teacher;
     
-    public void login(String username, String password){
-        user.getEmail();
-        user.getUsername();
-        user.getPassword();
-        user.getId();
-        user.getSecurityQuestion();
-        user.getSecurityAnswer();
+   public void createStudentAccount(String name, String username, String password, String email, Teacher teacher, String securityQuestion, String securityAnswer){
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setEmail(email);
+        user.setName(name);
+        user.setSecurityQuestion(securityQuestion);
+        user.setSecurityAnswer(securityAnswer);
+        student.getTeacher();
+   }
+
+   public void createTeacherAccount(String name, String username, String password, String email, Teacher teacher, String securityQuestion, String securityAnswer, ArrayList<Student> students){
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setEmail(email);
+        user.setName(name);
+        user.setSecurityQuestion(securityQuestion);
+        user.setSecurityAnswer(securityAnswer);
+        teacher.getStudents(students);
+   }
+
+   public void createAccount(String name, String username, String password, String email, Teacher teacher, String securityQuestion, String securityAnswer, ArrayList<Student> students){
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setEmail(email);
+        user.setName(name);
+        user.setSecurityQuestion(securityQuestion);
+        user.setSecurityAnswer(securityAnswer);
     }
+
+
 }
