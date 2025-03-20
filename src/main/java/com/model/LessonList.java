@@ -8,7 +8,7 @@ public class LessonList {
     ArrayList<Lesson> lessons;
 
     private LessonList(){
-        lessons = new ArrayList<>();
+        lessons = DataLoader.getLessons();
     }
 
     public static LessonList getInstance(){
@@ -16,6 +16,10 @@ public class LessonList {
             lessonListInstance = new LessonList();
         }
         return lessonListInstance;
+    }
+
+    public ArrayList<Lesson> getLessons() {
+        return lessons;
     }
 
     public void addLesson(Lesson lesson) {

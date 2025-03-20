@@ -56,7 +56,9 @@ public class Measure {
     }
 
     public void play() {
-
+        for (Sound note : notes) {
+            note.play();  // Assuming Sound class has a play() method
+        }
     }
 
     @Override

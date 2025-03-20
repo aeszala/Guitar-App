@@ -15,6 +15,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class DataLoader extends DataConstants {
+    private static ArrayList<Song> songCache = Songlist.getInstance().getSongs();
+    private static ArrayList<Lesson> lessonCache = LessonList.getInstance().getLessons();
 
     public static ArrayList<User> getUsers() {
         ArrayList<User> users = new ArrayList<User>();
@@ -36,36 +38,23 @@ public class DataLoader extends DataConstants {
 
                 // fill favoriteSong list
                 JSONArray favoriteSongsIDs = (JSONArray)personJSON.get(USER_FAVORITE_SONGS);
-                ArrayList<Song> favoriteSongs = new ArrayList<Song>();
-                for (int j = 0; j < favoriteSongsIDs.size(); j++) {
-                    // favoriteSongs.add(findSongById(UUID.fromString(favoriteSongsIDs.get(j).toString())));
-                }
+                ArrayList<Song> favoriteSongs = getSongsFromUUIDs(favoriteSongsIDs);
 
                 // fill completedSong list
                 JSONArray completedSongsIDs = (JSONArray)personJSON.get(USER_COMPLETED_SONGS);
-                ArrayList<Song> completedSongs = new ArrayList<Song>();
-                for (int j = 0; j < completedSongsIDs.size(); j++) {
-                    //completedSongs.add(findSongById(UUID.fromString(completedSongsIDs.get(j).toString())));
-                }
+                ArrayList<Song> completedSongs = getSongsFromUUIDs(completedSongsIDs);
 
                 // fill completedLessons list
                 JSONArray completedLessonsIDs = (JSONArray)personJSON.get(USER_COMPLETED_LESSONS);
-                ArrayList<Lesson> completedLessons = new ArrayList<Lesson>();
-                for (int j = 0; j < completedLessonsIDs.size(); j++) {
-                    //completedLessons.add(findSongById(UUID.fromString(completedLessonsIDs.get(j).toString())));
-                }
+                ArrayList<Lesson> completedLessons = getLessonsFromUUIDs(completedLessonsIDs);
 
                 // fill mySongs list
-                // JSONArray mySongsIDs = (JSONArray)personJSON.get(USER_MY_SONGS);
-                ArrayList<Song> mySongs = new ArrayList<Song>();
-                // for (int j = 0; j < mySongsIDs.size(); j++) {
-                //     //mySongs.add(findSongById(UUID.fromString(mySongsIDs.get(j).toString())));
-                // }
+                JSONArray mySongsIDs = (JSONArray)personJSON.get(USER_MY_SONGS);
+                ArrayList<Song> mySongs = getSongsFromUUIDs(mySongsIDs);
 			
 				users.add(new User(id, username, password, email, name,
                 favoriteSongs, completedSongs, completedLessons, mySongs,
                 securityQuestion, securityAnswer));
-
             }
 
             return users;
@@ -109,8 +98,11 @@ public class DataLoader extends DataConstants {
                 // Fill Genres list
                 JSONArray genresJSON = (JSONArray)songJSON.get(SONG_GENRES);
                 ArrayList<Genre> genres = new ArrayList<Genre>();
+                Genre genre;
                 for (int j = 0; j < genresJSON.size(); j++) {
-                    genres.add(getGenre(genresJSON.get(j).toString()));
+                    genre = getGenre(genresJSON.get(j).toString());
+                    if (genre != null)
+                        genres.add(genre);
                 }
     
                 // Fill Measures list
@@ -132,7 +124,6 @@ public class DataLoader extends DataConstants {
     
     public static ArrayList<Lesson> getLessons() {
         ArrayList<Lesson> lessons = new ArrayList<>();
-    
         try {
             FileReader reader = new FileReader(LESSON_FILE_NAME);
             JSONParser parser = new JSONParser();
@@ -149,7 +140,7 @@ public class DataLoader extends DataConstants {
                 JSONArray songsIDs = (JSONArray)lessonJSON.get(LESSON_SONGS);
                 ArrayList<Song> songs = new ArrayList<Song>();
                 for (int j = 0; j < songsIDs.size(); j++) {
-                    // songs.add(findSongById(UUID.fromString(songsIDs.get(j).toString())));
+                    songs.add(findSongById(UUID.fromString(songsIDs.get(j).toString())));
                 }
 
                 // Fill assignments list
@@ -167,19 +158,15 @@ public class DataLoader extends DataConstants {
         return lessons;
     }
 
-    private static User findUserById(UUID id) {
-        for (User user : getUsers()) {
-            if (user.getId().equals(id)) {
-                return user;
-            }
-        }
-        return new User("JohnDoe", "ABC123", "123@email.com", "John Doe", "What's your first pet's name?", "Spot");
-    }
-
     private static ArrayList<Song> getSongsFromUUIDs(JSONArray songUUIDs) {
-        ArrayList<Song> songs = new ArrayList<Song>();
-        for (Object uuid : songUUIDs) {
-            songs.add(findSongById(UUID.fromString((String) uuid)));
+        ArrayList<Song> songs = new ArrayList<>();
+        if (songUUIDs != null) {
+            for (int i = 0; i < songUUIDs.size(); i++) {
+                Song song = findSongById(UUID.fromString((String) songUUIDs.get(i)));
+                if (song != null) {
+                    songs.add(song);
+                }
+            }
         }
         return songs;
     }
@@ -193,7 +180,10 @@ public class DataLoader extends DataConstants {
     }
     
     private static Song findSongById(UUID id) {
-        for (Song song : getSongs()) {
+        if (songCache == null) {
+            songCache = Songlist.getInstance().getSongs();
+        }
+        for (Song song : songCache) {
             if (song.getId().equals(id))
                 return song;
         }
@@ -201,104 +191,21 @@ public class DataLoader extends DataConstants {
     }
     
     private static Lesson findLessonById(UUID id) {
-        for (Lesson lesson : getLessons()) {
+        if (lessonCache == null) {
+            lessonCache = DataLoader.getLessons();
+        }
+        for (Lesson lesson : lessonCache) {
             if (lesson.getId().equals(id))
                 return lesson;
         }
         return null;
     }
 
-    private static ArrayList<Review> getReviewsFromJSON(JSONArray reviewsJSON) {
-        ArrayList<Review> reviews = new ArrayList<>();
-        if (reviewsJSON != null) {
-            for (Object obj : reviewsJSON) {
-                JSONObject reviewJSON = (JSONObject) obj;
-                int rating = ((Long) reviewJSON.get(REVIEW_RATING)).intValue();
-                String comment = (String) reviewJSON.get(REVIEW_COMMENT);
-                UUID id = UUID.fromString((String) reviewJSON.get(REVIEW_AUTHOR));
-                User author = findUserById(id);
-                reviews.add(new Review(rating, comment, author));
-            }
-        }
-        return reviews;
-    }
-    
-    private static ArrayList<Genre> getGenresFromJSON(JSONArray genresJSON) {
-        ArrayList<Genre> genres = new ArrayList<>();
-        if (genresJSON != null) {
-            for (Object obj : genresJSON) {
-                genres.add(Genre.valueOf((String) obj)); // Convert String to Enum
-            }
-        }
-        return genres;
-    }
-
-    private static ArrayList<Measure> getMeasuresFromJSON(JSONArray measuresJSON) {
-        ArrayList<Measure> measures = new ArrayList<>();
-        if (measuresJSON != null) {
-            for (Object obj : measuresJSON) {
-                JSONObject measureJSON = (JSONObject) obj;
-                int timeSignatureTop = ((Long) measureJSON.get(MEASURE_TIME_SIGNATURE_TOP)).intValue();
-                int timeSignatureBottom = ((Long) measureJSON.get(MEASURE_TIME_SIGNATURE_BOTTOM)).intValue();
-    
-                // Parse Notes inside Measure
-                ArrayList<Sound> notes = getNotesFromJSON((JSONArray) measureJSON.get(MEASURE_NOTES));
-    
-                measures.add(new Measure(timeSignatureTop, timeSignatureBottom, notes));
-            }
-        }
-        return measures;
-    }
-
-    private static ArrayList<Sound> getNotesFromJSON(JSONArray notesJSON) {
-        ArrayList<Sound> notes = new ArrayList<>();
-        if (notesJSON != null) {
-            for (Object obj : notesJSON) {
-                JSONObject noteJSON = (JSONObject) obj;
-                String type = (String) noteJSON.get(NOTE_TYPE);
-                double length = (double) noteJSON.get(NOTE_LENGTH);
-                double pitch = (double) noteJSON.get(NOTE_PITCH);
-                int stringNumber = ((Long) noteJSON.get(NOTE_STRING)).intValue();
-                String fret = (String) noteJSON.get(NOTE_FRET);
-                notes.add(new Note(type, length, pitch, stringNumber, fret, "note"));
-                // edit this because sound could be a note or a chord !!!!
-            }
-        }
-        return notes;
-    }
-
-    private static ArrayList<Assignment> getAssignmentsFromJSON(JSONArray assignmentsJSON) {
-        ArrayList<Assignment> assignments = new ArrayList<>();
-        if (assignmentsJSON != null) {
-            for (Object obj : assignmentsJSON) {
-                JSONObject assignmentJSON = (JSONObject) obj;
-                double grade = (double) assignmentJSON.get(ASSIGNMENT_GRADE);
-                String teacherComment = (String) assignmentJSON.get(ASSIGNMENT_TEACHER_COMMENT);
-                String studentComment = (String) assignmentJSON.get(ASSIGNMENT_STUDENT_COMMENT);
-                Date dueDate = toDate((String) assignmentJSON.get(ASSIGNMENT_DUE_DATE)); // may need to read as string first
-                boolean complete = (boolean) assignmentJSON.get(ASSIGNMENT_COMPLETE);
-
-                assignments.add(new Assignment(grade, teacherComment, studentComment, dueDate, complete));
-            }
-        }
-        return assignments;
-    }
-
-    private static Date toDate(String date) {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-        try {
-            return formatter.parse(date);  // Parse the string into a Date object
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;  // Return null in case of an error
-        }
-    }
-
     private static Review createReview(String reviewString) {
         // Define regex patterns to extract the values
         String ratingPattern = "\"rating\":(\\d+)";
         String commentPattern = "\"comment\":\"([^\"]+)\"";
-        String idPattern = "\"id\":\"([^\"]+)\"";
+        String authorPattern = "\"author\":\"([^\"]+)\"";
 
         // Create a list to store the extracted values
         List<String> values = new ArrayList<>();
@@ -315,15 +222,14 @@ public class DataLoader extends DataConstants {
             values.add(commentMatcher.group(1)); // Add the comment value
         }
 
-        // Extract id
-        Matcher idMatcher = Pattern.compile(idPattern).matcher(reviewString);
-        if (idMatcher.find()) {
-            values.add(idMatcher.group(1)); // Add the id value
+        // Extract author
+        Matcher authorMatcher = Pattern.compile(authorPattern).matcher(reviewString);
+        if (authorMatcher.find()) {
+            values.add(authorMatcher.group(1)); // Add the author value
         }
 
         // create review object
-        User author = findUserById(UUID.fromString(values.get(2).toString()));
-        Review review = new Review(Double.parseDouble(values.get(0)), values.get(1), author);
+        Review review = new Review(Double.parseDouble(values.get(0)), values.get(1), values.get(2));
         return review;
     }
 
@@ -389,28 +295,42 @@ public class DataLoader extends DataConstants {
             JSONParser parser = new JSONParser();
             JSONObject assigmentJSON = (JSONObject) parser.parse(jsonString);
     
+            String title = (String)assigmentJSON.get(ASSIGNMENT_TITLE);
             double grade;
             if (assigmentJSON.get(ASSIGNMENT_GRADE) == null )
-                grade = 0;
+                grade = -1; // no grade
             else
                 grade = ((Number) assigmentJSON.get(ASSIGNMENT_GRADE)).doubleValue();
             String teacherComment = (String)assigmentJSON.get(ASSIGNMENT_TEACHER_COMMENT);
             String studentComment = (String)assigmentJSON.get(ASSIGNMENT_STUDENT_COMMENT);
-            Date date = new Date();     // Match FileWriter format later
+            String dateString = (String)assigmentJSON.get(ASSIGNMENT_DUE_DATE);
+            Date dueDate = createDate(dateString);
             boolean complete = (boolean)assigmentJSON.get(ASSIGNMENT_COMPLETE);
-
-            // Extract sounds array
-            JSONArray soundsJSON = (JSONArray) assigmentJSON.get(MEASURE_NOTES);
-            ArrayList<Sound> sounds = new ArrayList<>();
     
             // Create and return the Assignment object
-            return new Assignment(grade, teacherComment, studentComment, date, complete);
+            return new Assignment(title, grade, teacherComment, studentComment, dueDate, complete);
 
         } catch (org.json.simple.parser.ParseException e) {
                     e.printStackTrace();
                     return null;
                 }
     }    
+
+    private static Date createDate(String dateString) {
+        String[] formats = {"yyyy-MM-dd", "yyyy/MM/dd"}; // Allowed formats
+
+        for (String format : formats) {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat(format);
+                sdf.setLenient(false); // Prevents invalid dates like 2024-02-30
+                Date date = sdf.parse(dateString);
+                return date; // Converts to Date object
+            } catch (ParseException ignored) {
+                // Try next format
+            }
+        }
+        return new Date();
+    }
 
     private static Genre getGenre(String genreString) {
         Genre genre = null;
@@ -442,6 +362,9 @@ public class DataLoader extends DataConstants {
             case "INDIE":
                 genre = Genre.INDIE;
                 break;
+            case "FOLK":
+                genre = Genre.FOLK;
+                break;
         }
         return genre;
     }
@@ -467,5 +390,4 @@ public class DataLoader extends DataConstants {
         }
         
     }
-
 }

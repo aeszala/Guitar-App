@@ -7,7 +7,7 @@ public class UserList {
     private ArrayList<User> users;
 
     private UserList() {
-        users = new ArrayList<>();
+        users = DataLoader.getUsers();
     }
 
     public static UserList getInstance() {
@@ -15,6 +15,10 @@ public class UserList {
             userList = new UserList();
         }
         return userList;
+    }
+
+    public ArrayList<User> getUsers() {
+        return users;
     }
 
     public boolean addUser(String username, String password, String email, String name, String securityQuestion, String securityAnswer) {

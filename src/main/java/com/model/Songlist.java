@@ -7,7 +7,7 @@ public class Songlist {
     private ArrayList<Song> songs;
 
     private Songlist() {
-        songs = new ArrayList<>();
+        songs = DataLoader.getSongs();
     }
 
     public static Songlist getInstance() {
@@ -21,6 +21,10 @@ public class Songlist {
                         ArrayList<Genre> genres, Difficulty difficulty, ArrayList<Measure> measures) {
         Song newSong = new Song(title, artist, runLengthMin, runLengthSec, tempo, genres, difficulty, measures);
         songs.add(newSong);
+    }
+
+    public ArrayList<Song> getSongs() {
+        return songs;
     }
 
     public ArrayList<Song> getSongs(String keyword) {

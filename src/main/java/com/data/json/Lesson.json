@@ -1,1 +1,52 @@
-[{"assignments":[],"songs":[],"topic":"topic3","progress":0.0,"id":"694613ad-0f9a-4b10-aa10-51153b81facd","complete":false}]
+[
+  {
+    "assignments": [
+      {
+        "teacherComment": "Good job!",
+        "grade": 95.5,
+        "dueDate": "2025-03-20",
+        "studentComment": "It was challenging.",
+        "complete": true
+      },
+      {
+        "teacherComment": "Needs improvement.",
+        "grade": 85.0,
+        "dueDate": "2025-12-31",
+        "studentComment": "I learned a lot.",
+        "complete": false
+      }
+    ],
+    "songs": [
+      {
+        "difficulty": "BEGINNER",
+        "measures": [],
+        "artist": "ARTIST1",
+        "genres": [],
+        "rating": 0.0,
+        "tempo": 5,
+        "runLengthMin": 33,
+        "id": "e9937c74-4216-458c-8a16-4499ca09b626",
+        "runLengthSec": 44,
+        "metronomeOn": false,
+        "title": "TITLE1"
+      },
+      {
+        "difficulty": "ADVANCED",
+        "measures": [],
+        "artist": "artist2",
+        "genres": [],
+        "rating": 0.5,
+        "tempo": 7,
+        "runLengthMin": 12,
+        "id": "71f839e0-3080-423d-a6e9-cff5ea41e31a",
+        "runLengthSec": 25,
+        "metronomeOn": true,
+        "title": "title2"
+      }
+    ],
+    "topic": "Music",
+    "progress": 0.0,
+    "id": "d29ab8bc-fdcc-4554-acff-0c63d3be88e6",
+    "complete": false
+  }
+]
