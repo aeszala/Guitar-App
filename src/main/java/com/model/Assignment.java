@@ -22,6 +22,15 @@ public Assignment(String title, double grade, String teacherComment, String stud
     this.complete = complete;
 }
 
+public Assignment(String title, String teacherComment, Date dueDate) {
+    this.title = title;
+    this.grade = -1;  // no grade yet
+    this.teacherComment = teacherComment;
+    this.studentComment = null;
+    this.dueDate = dueDate;
+    this.complete = false;
+}
+
 public JSONObject toJson() {
     JSONObject assignmentObject = new JSONObject();
     assignmentObject.put("grade", grade);
@@ -123,7 +132,7 @@ public String toString() {
 
     return "Assignment {" +
             "Title='" + title + '\'' +
-            ", Grade=" + grade +
+            ", Grade=" + (grade >= 0 ? grade : "No grade") +
             ", Teacher Comment='" + (teacherComment != null ? teacherComment : "None") + '\'' +
             ", Student Comment='" + (studentComment != null ? studentComment : "None") + '\'' +
             ", Due Date=" + (dueDate != null ? dateFormat.format(dueDate) : "No due date") +
