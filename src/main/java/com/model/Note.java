@@ -21,8 +21,8 @@ public class Note extends Sound {
         this.soundType = "note";
     }
 
-    public Tab convertToTab(){
-        return new Tab();
+    public String toTab() {
+        return "String: " + string + " | Fret: " + fret + " (" + type + ", " + length + ")";
     }
 
     public void play(){
@@ -33,6 +33,7 @@ public class Note extends Sound {
     public String getType() {
         return type;
     }
+
     public void setType(String type) {
         this.type = type;
     }
@@ -40,6 +41,11 @@ public class Note extends Sound {
     public double getLength() {
         return length;
     }
+
+    public void setLength(double length) {
+        this.length = length;
+    }
+
     public double getPitch() {
         return pitch;
     }
@@ -50,6 +56,7 @@ public class Note extends Sound {
     public int getString() { 
         return string; 
     }
+
     public void setString(int string) { 
         this.string = string; 
     }
@@ -57,9 +64,11 @@ public class Note extends Sound {
     public int getFret() { 
         return fret; 
     }
+
     public void setFret(int fret) {
          this.fret = fret; 
     }
+    
     public String getSoundType() {
         return soundType;
     }
