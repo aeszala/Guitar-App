@@ -9,10 +9,18 @@ public class Measure {
     private int timeSignatureBottom;
     private ArrayList<Sound> notes;
 
+    // existing measure constructor
     public Measure(int timeSignatureTop, int timeSignatureBottom, ArrayList<Sound> notes) {
         this.timeSignatureTop = timeSignatureTop;
         this.timeSignatureBottom = timeSignatureBottom;
         this.notes = notes;
+    }
+
+    //default constructor
+    public Measure() {
+        this.timeSignatureTop = 4;
+        this.timeSignatureBottom = 4;
+        this.notes = new ArrayList<Sound>();
     }
 
     public JSONObject toJson() {
@@ -43,8 +51,21 @@ public class Measure {
         return timeSignatureBottom;
     }
 
-    public void setTimeSignatureTop(int timeSignatureTop){
+    public String getTimeSignature() {
+        return timeSignatureTop + "/" + timeSignatureBottom;
+    }
+
+    public void setTimeSignatureTop(int timeSignatureTop) {
         this.timeSignatureTop = timeSignatureTop;
+    }
+
+    public void setTimeSignatureBottom(int timeSignatureBottom) {
+        this.timeSignatureBottom = timeSignatureBottom;
+    }
+
+    public void setTimeSignature(int timeSignatureTop, int timeSignatureBottom) {
+        setTimeSignatureTop(timeSignatureTop);
+        setTimeSignatureBottom(timeSignatureBottom);
     }
 
     public ArrayList<Sound> getNotes(){
@@ -53,6 +74,10 @@ public class Measure {
 
     public void setNotes (ArrayList<Sound> notes){
         this.notes = notes;
+    }
+
+    public void addNote (Sound note) {
+        notes.add(note);
     }
 
     public void play() {
