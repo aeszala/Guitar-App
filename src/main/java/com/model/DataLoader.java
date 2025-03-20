@@ -15,7 +15,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class DataLoader extends DataConstants {
-    private static ArrayList<User> userCache = UserList.getInstance().getUsers();
     private static ArrayList<Song> songCache = Songlist.getInstance().getSongs();
     private static ArrayList<Lesson> lessonCache = LessonList.getInstance().getLessons();
 
@@ -159,19 +158,6 @@ public class DataLoader extends DataConstants {
         return lessons;
     }
 
-    private static User findUserById(UUID id) {
-        if (userCache == null) {
-            System.out.println("Creating userCache list");
-            userCache = UserList.getInstance().getUsers();
-        }
-        for (User user : userCache) {
-            if (user.getId().equals(id)) {
-                return user;
-            }
-        }
-        return null;
-    }
-
     private static ArrayList<Song> getSongsFromUUIDs(JSONArray songUUIDs) {
         ArrayList<Song> songs = new ArrayList<>();
         if (songUUIDs != null) {
@@ -213,64 +199,6 @@ public class DataLoader extends DataConstants {
                 return lesson;
         }
         return null;
-    }
-
-    private static ArrayList<Review> getReviewsFromJSON(JSONArray reviewsJSON) {
-        ArrayList<Review> reviews = new ArrayList<>();
-        if (reviewsJSON != null) {
-            for (Object obj : reviewsJSON) {
-                JSONObject reviewJSON = (JSONObject) obj;
-                int rating = ((Long) reviewJSON.get(REVIEW_RATING)).intValue();
-                String comment = (String) reviewJSON.get(REVIEW_COMMENT);
-                String author = (String) reviewJSON.get(REVIEW_AUTHOR);
-                reviews.add(new Review(rating, comment, author));
-            }
-        }
-        return reviews;
-    }
-    
-    private static ArrayList<Genre> getGenresFromJSON(JSONArray genresJSON) {
-        ArrayList<Genre> genres = new ArrayList<>();
-        if (genresJSON != null) {
-            for (Object obj : genresJSON) {
-                genres.add(Genre.valueOf((String) obj)); // Convert String to Enum
-            }
-        }
-        return genres;
-    }
-
-    private static ArrayList<Measure> getMeasuresFromJSON(JSONArray measuresJSON) {
-        ArrayList<Measure> measures = new ArrayList<>();
-        if (measuresJSON != null) {
-            for (Object obj : measuresJSON) {
-                JSONObject measureJSON = (JSONObject) obj;
-                int timeSignatureTop = ((Long) measureJSON.get(MEASURE_TIME_SIGNATURE_TOP)).intValue();
-                int timeSignatureBottom = ((Long) measureJSON.get(MEASURE_TIME_SIGNATURE_BOTTOM)).intValue();
-    
-                // Parse Notes inside Measure
-                ArrayList<Sound> notes = getNotesFromJSON((JSONArray) measureJSON.get(MEASURE_NOTES));
-    
-                measures.add(new Measure(timeSignatureTop, timeSignatureBottom, notes));
-            }
-        }
-        return measures;
-    }
-
-    private static ArrayList<Sound> getNotesFromJSON(JSONArray notesJSON) {
-        ArrayList<Sound> notes = new ArrayList<>();
-        if (notesJSON != null) {
-            for (Object obj : notesJSON) {
-                JSONObject noteJSON = (JSONObject) obj;
-                String type = (String) noteJSON.get(NOTE_TYPE);
-                double length = (double) noteJSON.get(NOTE_LENGTH);
-                double pitch = (double) noteJSON.get(NOTE_PITCH);
-                int stringNumber = ((Long) noteJSON.get(NOTE_STRING)).intValue();
-                String fret = (String) noteJSON.get(NOTE_FRET);
-                notes.add(new Note(type, length, pitch, stringNumber, fret, "note"));
-                // edit this because sound could be a note or a chord !!!!
-            }
-        }
-        return notes;
     }
 
     private static ArrayList<Assignment> getAssignmentsFromJSON(JSONArray assignmentsJSON) {
@@ -423,7 +351,6 @@ public class DataLoader extends DataConstants {
                 SimpleDateFormat sdf = new SimpleDateFormat(format);
                 sdf.setLenient(false); // Prevents invalid dates like 2024-02-30
                 Date date = sdf.parse(dateString);
-                System.out.println(date);
                 return date; // Converts to Date object
             } catch (ParseException ignored) {
                 // Try next format
