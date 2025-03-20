@@ -46,15 +46,9 @@ public JSONObject toJson() {
     return assignmentObject;
 }
 
-
 public void complete()
 {
     this.complete = true;
-}
-
-public double grade()
-{
-    return grade;
 }
 
 public double getGrade()
@@ -92,17 +86,17 @@ public Date getDueDate()
     return dueDate;
 }
 
+public void setDueDate(Date dueDate)
+{
+    this.dueDate = dueDate;
+}
+
 public String getTitle(){
     return title;
 }
 
 public void setTitle(String title){
     this.title = title;
-}
-
-public void setDueDate(Date dueDate)
-{
-    this.dueDate = dueDate;
 }
 
 public boolean isComplete()

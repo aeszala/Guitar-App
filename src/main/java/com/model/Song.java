@@ -43,6 +43,7 @@ public class Song {
         this.completed = false;
     }
 
+    // for existing songs
     public Song(UUID id, String title, String artist, int runLengthMin, int runLengthSec, 
                 int tempo, double rating, ArrayList<Review> reviews, boolean metronomeOn, 
                 ArrayList<Genre> genres, Difficulty difficulty, ArrayList<Measure> measures, 
