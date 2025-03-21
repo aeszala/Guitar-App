@@ -101,8 +101,6 @@ public class DataWriter {
             Song song1 = new Song(UUID.randomUUID(), "title1", "artist1", 5, 32, 112, 5.0, reviews1, false, genres1, Difficulty.BEGINNER, measures1, true);
             Song song2 = new Song(UUID.randomUUID(), "title2", "artist2", 12, 25, 7, 0.5, reviews2, true, genres2, Difficulty.ADVANCED, measures2, false);
             
-//            song1.getMeasures().add();
-
             // Creating Song List
             ArrayList<Song> songs = new ArrayList<>();
             songs.add(song1);

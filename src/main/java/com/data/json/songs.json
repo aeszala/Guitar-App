@@ -12,10 +12,10 @@
         "timeSignatureBottom": 4,
         "notes": [
           {
-            "type": "C"
+            "type": "note"
           },
           {
-            "type": "D"
+            "type": "note"
           }
         ],
         "timeSignatureTop": 4
@@ -38,7 +38,7 @@
       "POP"
     ],
     "runLengthMin": 5,
-    "id": "9ea68579-58ef-48f0-8948-2fecf534cd79",
+    "id": "4aeab310-4ae4-4792-8fac-ad1af29f2c21",
     "runLengthSec": 32
   },
   {
@@ -54,10 +54,10 @@
         "timeSignatureBottom": 4,
         "notes": [
           {
-            "type": "C"
+            "type": "note"
           },
           {
-            "type": "D"
+            "type": "note"
           }
         ],
         "timeSignatureTop": 3
@@ -80,7 +80,7 @@
       "CLASSICAL"
     ],
     "runLengthMin": 12,
-    "id": "f1b102d9-d3d8-4917-83e5-f8b9a34339ff",
+    "id": "e10af0a4-c0fd-4ef8-8b53-5add3944d601",
     "runLengthSec": 25
   }
 ]

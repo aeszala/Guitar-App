@@ -81,7 +81,7 @@ public class User {
 
     JSONArray completedLessonsArray = new JSONArray();
     for (Lesson lesson : this.completedLessons) {
-        completedLessonsArray.add(lesson.toJson());
+        completedLessonsArray.add(lesson.getId().toString());
     }
     userObject.put("completedLessons", completedLessonsArray);
 
