@@ -10,6 +10,8 @@ public class Sound {
         setType(type);
     }
 
+    public Sound() {}
+
     public void play() {
         // Implement sound playback logic here
     }
