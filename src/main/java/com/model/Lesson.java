@@ -39,6 +39,7 @@ public class Lesson {
 
     public JSONObject toJson() {
         JSONObject lessonObject = new JSONObject();
+        lessonObject.put("title", title);
         lessonObject.put("id", id.toString());
         lessonObject.put("topic", topic);
         lessonObject.put("progress", progress);

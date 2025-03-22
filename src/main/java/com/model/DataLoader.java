@@ -143,6 +143,7 @@ public class DataLoader extends DataConstants {
     
             for (int i = 0; i < lessonsJSON.size(); i++) {
                 JSONObject lessonJSON = (JSONObject)lessonsJSON.get(i);
+                String title = (String) lessonJSON.get(LESSON_TITLE);
                 UUID id = UUID.fromString((String) lessonJSON.get(LESSON_ID));
                 String topic = (String) lessonJSON.get(LESSON_TOPIC);
                 double progress = ((Number) lessonJSON.get(LESSON_PROGRESS)).doubleValue();
@@ -162,7 +163,7 @@ public class DataLoader extends DataConstants {
                     assignments.add(createAssignment(assignmentsJSON.get(j).toString()));
                 }
                 
-                lessons.add(new Lesson(id, songs, topic, assignments, progress, complete));
+                lessons.add(new Lesson(title, id, songs, topic, assignments, progress, complete));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -196,7 +197,9 @@ public class DataLoader extends DataConstants {
     private static ArrayList<Lesson> getLessonsFromUUIDs(JSONArray lessonUUIDs) {
         ArrayList<Lesson> lessons = new ArrayList<>();
         for (Object uuid : lessonUUIDs) {
-            lessons.add(findLessonById(UUID.fromString((String) uuid)));
+            Lesson lesson = findLessonById(UUID.fromString((String) uuid));
+            if (lesson != null)
+                lessons.add(lesson);
         }
         return lessons;
     }

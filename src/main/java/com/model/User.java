@@ -4,6 +4,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import java.util.UUID;
 import java.util.ArrayList;
+import java.util.List;
 
 public class User {
     private UUID id;
@@ -182,21 +183,40 @@ public class User {
         this.favoriteSongs = favoriteSongs;
     }
 
-    
-
-
-    
-    public String toString(){
+    @Override
+    public String toString() {
         return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                ", favoriteSongs=" + favoriteSongs.size() +
-                ", completedSongs=" + completedSongs.size() +
-                ", completedLessons=" + completedLessons.size() +
-                ", mySongs=" + mySongs.size() +
-                '}';
+            "id=" + id +
+            ", username='" + username + '\'' +
+            ", email='" + email + '\'' +
+            ", name='" + name + '\'' +
+            ", favoriteSongs=" + formatSongList(favoriteSongs) +
+            ", completedSongs=" + formatSongList(completedSongs) +
+            ", completedLessons=" + formatLessonList(completedLessons) +
+            ", mySongs=" + formatSongList(mySongs) +
+            '}';
+    }
+
+    // Helper method to format a list of Songs
+    private String formatSongList(ArrayList<Song> songs) {
+        if (songs == null || songs.isEmpty())
+            return "[]";
+        StringBuilder sb = new StringBuilder("[");
+        for (Song song : songs) {
+            sb.append(song.getTitle()).append(", ");
+        }
+        return sb.substring(0, sb.length() - 2) + "]"; // Remove last comma & space
+    }
+
+    // Helper method to format a list of Lessons
+    private String formatLessonList(ArrayList<Lesson> lessons) {
+        if (lessons == null || lessons.isEmpty())
+            return "[]";
+        StringBuilder sb = new StringBuilder("[");
+        for (Lesson lesson : lessons) {
+            sb.append(lesson.getTitle()).append(", ");
+        }
+        return sb.substring(0, sb.length() - 2) + "]"; // Remove last comma & space
     }
 
     public boolean login(String username2, String password2) {
