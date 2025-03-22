@@ -100,18 +100,24 @@ public class MusicAppFACADE {
     }
 
     public void addPlayAssignment(String Title, double grade, Date dueDate, boolean Complete){
-        assignment.getTitle();
-        assignment.getGrade();
-        assignment.getDueDate();
+        assignment.setTitle(Title);
+        assignment.setGrade(grade);
+        assignment.setDueDate(dueDate);
         assignment.complete();
     }
 
-    public void addQuestionAssignment(Assignment assignment){
-
+    public void addQuestionAssignment(String Title, double grade, Date dueDate, boolean Complete){
+        assignment.setTitle(Title);
+        assignment.setGrade(grade);
+        assignment.setDueDate(dueDate);
+        assignment.complete();
     }
 
-    public void addComposeAssignment(){
-
+    public void addComposeAssignment(String Title, double grade, Date dueDate, boolean Complete){
+        assignment.setTitle(Title);
+        assignment.setGrade(grade);
+        assignment.setDueDate(dueDate);
+        assignment.complete();
     }
 
     public void viewLesson(){
