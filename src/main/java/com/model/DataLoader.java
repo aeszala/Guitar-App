@@ -18,6 +18,10 @@ public class DataLoader extends DataConstants {
     private static ArrayList<Song> songCache = Songlist.getInstance().getSongs();
     private static ArrayList<Lesson> lessonCache = LessonList.getInstance().getLessons();
 
+    /**
+     * reads a users.json file and creates objects from it
+     * @return an ArrayList of Users
+     */
     public static ArrayList<User> getUsers() {
         ArrayList<User> users = new ArrayList<User>();
 
@@ -64,6 +68,10 @@ public class DataLoader extends DataConstants {
         return null;
     }  
 
+    /**
+     * reads a songs.json file and creates objects from it
+     * @return an Arraylist of Songs
+     */
     public static ArrayList<Song> getSongs() {
         ArrayList<Song> songs = new ArrayList<>();
     
@@ -122,6 +130,10 @@ public class DataLoader extends DataConstants {
         return songs;
     }
     
+    /**
+     * reads a Lesson.json file and creates objects from it
+     * @return an ArrayList of Lessons
+     */
     public static ArrayList<Lesson> getLessons() {
         ArrayList<Lesson> lessons = new ArrayList<>();
         try {
@@ -131,6 +143,7 @@ public class DataLoader extends DataConstants {
     
             for (int i = 0; i < lessonsJSON.size(); i++) {
                 JSONObject lessonJSON = (JSONObject)lessonsJSON.get(i);
+                String title = (String) lessonJSON.get(LESSON_TITLE);
                 UUID id = UUID.fromString((String) lessonJSON.get(LESSON_ID));
                 String topic = (String) lessonJSON.get(LESSON_TOPIC);
                 double progress = ((Number) lessonJSON.get(LESSON_PROGRESS)).doubleValue();
@@ -150,7 +163,7 @@ public class DataLoader extends DataConstants {
                     assignments.add(createAssignment(assignmentsJSON.get(j).toString()));
                 }
                 
-                lessons.add(new Lesson(id, songs, topic, assignments, progress, complete));
+                lessons.add(new Lesson(title, id, songs, topic, assignments, progress, complete));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -158,6 +171,11 @@ public class DataLoader extends DataConstants {
         return lessons;
     }
 
+    /**
+     * returns Song objects based on related UUID's
+     * @param songUUIDs a JSONArray containing songUUIDs to be searched
+     * @return corresponding Song objects which match the given UUIDs
+     */
     private static ArrayList<Song> getSongsFromUUIDs(JSONArray songUUIDs) {
         ArrayList<Song> songs = new ArrayList<>();
         if (songUUIDs != null) {
@@ -171,14 +189,26 @@ public class DataLoader extends DataConstants {
         return songs;
     }
     
+    /**
+     * returns Lesson objects based on related UUID's
+     * @param lessonUUIDs a JSONArray containing lessonUUIDs to be searched
+     * @return corresponding Lesson objects which match the given UUIDs
+     */
     private static ArrayList<Lesson> getLessonsFromUUIDs(JSONArray lessonUUIDs) {
         ArrayList<Lesson> lessons = new ArrayList<>();
         for (Object uuid : lessonUUIDs) {
-            lessons.add(findLessonById(UUID.fromString((String) uuid)));
+            Lesson lesson = findLessonById(UUID.fromString((String) uuid));
+            if (lesson != null)
+                lessons.add(lesson);
         }
         return lessons;
     }
     
+    /**
+     * searches for a Song which matches the given UUID arguent to return
+     * @param id the id of the song that is to be returned
+     * @return the song which matched the given UUID
+     */
     private static Song findSongById(UUID id) {
         if (songCache == null) {
             songCache = Songlist.getInstance().getSongs();
@@ -190,6 +220,11 @@ public class DataLoader extends DataConstants {
         return null;
     }
     
+    /**
+     * searches for a Lesson which matches the given UUID arguent to return
+     * @param id the id of the lesson that is to be returned
+     * @return the lesson which matched the given UUID
+     */
     private static Lesson findLessonById(UUID id) {
         if (lessonCache == null) {
             lessonCache = DataLoader.getLessons();
@@ -201,6 +236,11 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
+    /**
+     * reads the review section of the json file and constructs a review object
+     * @param reviewString a string containing all the info of the reviews
+     * @return a review constructed from the given info
+     */
     private static Review createReview(String reviewString) {
         // Define regex patterns to extract the values
         String ratingPattern = "\"rating\":(\\d+)";
@@ -233,6 +273,11 @@ public class DataLoader extends DataConstants {
         return review;
     }
 
+    /**
+     * reads the measure section of the json file and constructs a measure object
+     * @param jsonString a string containing all the info of the measures
+     * @return a measure constructed from the given info
+     */
     private static Measure createMeasure(String jsonString) {
         try {
             JSONParser parser = new JSONParser();
@@ -290,6 +335,11 @@ public class DataLoader extends DataConstants {
                 }
     }    
 
+    /**
+     * reads the assignment section of the json file and constructs an assignment object
+     * @param jsonString a string containing all the info of the assignments
+     * @return an assignment constructed from the given info
+     */
     private static Assignment createAssignment(String jsonString) {
         try {
             JSONParser parser = new JSONParser();
@@ -316,6 +366,11 @@ public class DataLoader extends DataConstants {
                 }
     }    
 
+    /**
+     * converts the date sting to a date object
+     * @param dateString a string formatted date
+     * @return the date as a Date object
+     */
     private static Date createDate(String dateString) {
         String[] formats = {"yyyy-MM-dd", "yyyy/MM/dd"}; // Allowed formats
 
@@ -332,6 +387,11 @@ public class DataLoader extends DataConstants {
         return new Date();
     }
 
+    /**
+     * converts the string Genre to a Genre within the enum Genre class
+     * @param genreString the Genre as a string
+     * @return the Genre as a Genre enum
+     */
     private static Genre getGenre(String genreString) {
         Genre genre = null;
         switch (genreString) {

@@ -253,10 +253,18 @@ public class Song {
     jsonObject.put("rating", rating);
     jsonObject.put("metronomeOn", metronomeOn);
     jsonObject.put("difficulty", difficulty.toString());
+    jsonObject.put("completed", completed);
+
+        // Convert Review Array
+        JSONArray reviewArray = new JSONArray();
+        for (Review review : reviews) {
+            reviewArray.add(review.toJson());
+        }
+        jsonObject.put("reviews", reviewArray);    
     
     JSONArray genreArray = new JSONArray();
     for (Genre genre : genres) {
-        genreArray.add(genre.toString());
+        genreArray.add(genre.name());
     }
     jsonObject.put("genres", genreArray);
 

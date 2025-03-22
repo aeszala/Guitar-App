@@ -1,1 +1,29 @@
-[{"assignments":[{"teacherComment":"Good job!","grade":95.5,"dueDate":"2025-03-20","studentComment":"It was challenging.","complete":true},{"teacherComment":"Needs improvement.","grade":85.0,"dueDate":"2025-12-31","studentComment":"I learned a lot.","complete":false}],"songs":["056b417f-c545-4e7b-b9ac-2c572d3ce14c","b38f462c-3381-40ae-b078-5f41c38f677c"],"topic":"Music","progress":0.0,"id":"9f329888-78a0-4d2a-baf1-c95d03c93a26","complete":false}]
+[
+  {
+    "assignments": [
+      {
+        "teacherComment": "Good job!",
+        "grade": 95.5,
+        "dueDate": "2025-03-20",
+        "studentComment": "It was challenging.",
+        "complete": true
+      },
+      {
+        "teacherComment": "Needs improvement.",
+        "grade": 85.0,
+        "dueDate": "2025-12-31",
+        "studentComment": "I learned a lot.",
+        "complete": false
+      }
+    ],
+    "songs": [
+      "da1bc523-fcfa-4ad2-be80-b4e155a0e8ff",
+      "bb629644-d876-46ed-a3bf-6573d96bee2a"
+    ],
+    "topic": "Music",
+    "progress": 0.0,
+    "id": "d1507cde-ef22-4043-a65b-0b14454b305f",
+    "title": "Lesson_Title",
+    "complete": false
+  }
+]

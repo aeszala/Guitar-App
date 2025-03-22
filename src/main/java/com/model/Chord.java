@@ -1,5 +1,7 @@
 package com.model;
 import java.util.ArrayList;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import javafx.scene.control.Tab;
 
@@ -41,6 +43,21 @@ public class Chord extends Sound {
     }
   }
 
+  public JSONObject toJson() {
+    JSONObject chordObject = new JSONObject();
+    chordObject.put("type", getType());
+    chordObject.put("soundType", getSoundType());
+    
+    // Convert notes to JSON
+    JSONArray noteArray = new JSONArray();
+    for (Note note : notes) {
+        noteArray.add(note.toJson());
+    }
+    chordObject.put("notes", noteArray);
+
+    return chordObject;
+}
+
   public String getType(){
     return type;
   }
@@ -58,6 +75,15 @@ public class Chord extends Sound {
 public void setNotes(ArrayList<Note> notes) 
   {
    this.notes = notes;
+  }
+
+  public String getSoundType(){
+    return soundType;
+  }
+
+  public void setSoundType(String type)
+  {
+    this.soundType = "chord";
   }
 
 }

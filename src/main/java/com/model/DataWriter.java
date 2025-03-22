@@ -68,18 +68,50 @@ public class DataWriter {
             assignments.add(assignment1);
             assignments.add(assignment2);
 
-            // Creating Songs
-            Song song1 = new Song("TITLE1", "ARTIST1", 33, 44, 5, new ArrayList<Genre>(), Difficulty.BEGINNER, new ArrayList<Measure>());
-            Song song2 = new Song(UUID.randomUUID(), "title2", "artist2", 12, 25, 7, 0.5, new ArrayList<Review>(), true, new ArrayList<Genre>(), Difficulty.ADVANCED, new ArrayList<Measure>(), false);
-            // Song song3 = new Song(UUID.randomUUID());
+            // Creating Songs with Genres
+            ArrayList<Genre> genres1 = new ArrayList<>();
+            genres1.add(Genre.ROCK);
+            genres1.add(Genre.POP);
 
+            ArrayList<Genre> genres2 = new ArrayList<>();
+            genres2.add(Genre.JAZZ);
+            genres2.add(Genre.CLASSICAL);
+
+            // Create Reviews
+            ArrayList<Review> reviews1 = new ArrayList<>();
+            reviews1.add(new Review(4.5, "Great song!", "John Doe"));
+            reviews1.add(new Review(3.8, "Pretty good.", "Jane Smith"));
+            
+            ArrayList<Review> reviews2 = new ArrayList<>();
+            reviews2.add(new Review(5.0, "Perfect!", "Bob Williams"));
+            reviews2.add(new Review(1.8, "Bad.", "Mary Watson"));
+
+            // Create Notes and Chords
+            ArrayList<Note> notes1 = new ArrayList<>();
+            notes1.add(new Note("C", 1.0, 440.0, 3, 5, "note"));
+            notes1.add(new Note("D", 0.5, 466.16, 4, 7, "note"));
+
+            Chord chord1 = new Chord("Major", notes1, "chord");
+
+            ArrayList<Measure> measures1 = new ArrayList<>();
+            measures1.add(new Measure(4, 4, new ArrayList<>(notes1)));
+            measures1.add(new Measure(4, 4, new ArrayList<>(notes1)));
+
+            ArrayList<Measure> measures2 = new ArrayList<>();
+            measures2.add(new Measure(3, 4, new ArrayList<>(notes1)));
+            measures2.add(new Measure(3, 4, new ArrayList<>(notes1)));
+            
+            // Creating Songs
+            Song song1 = new Song(UUID.randomUUID(), "title1", "artist1", 5, 32, 112, 5.0, reviews1, false, genres1, Difficulty.BEGINNER, measures1, true);
+            Song song2 = new Song(UUID.randomUUID(), "title2", "artist2", 12, 25, 7, 0.5, reviews2, true, genres2, Difficulty.ADVANCED, measures2, false);
+            
             // Creating Song List
             ArrayList<Song> songs = new ArrayList<>();
             songs.add(song1);
             songs.add(song2);
 
             // Creating Lesson with Songs and Assignments
-            Lesson lesson = new Lesson(songs, "Music", assignments);
+            Lesson lesson = new Lesson("Lesson_Title", songs, "Music", assignments);
             ArrayList<Lesson> lessons = new ArrayList<>();
             lessons.add(lesson);
 
