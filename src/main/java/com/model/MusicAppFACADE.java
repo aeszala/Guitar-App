@@ -60,9 +60,11 @@ public class MusicAppFACADE {
         student.comment(assignment, comment);
     }
 
+    public void viewGrade(Assignment assignment){
+        assignment.getGrade();
+    }
+
     
-
-
 
 
 }
