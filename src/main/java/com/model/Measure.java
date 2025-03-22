@@ -28,10 +28,14 @@ public class Measure {
         measureObject.put("timeSignatureTop", timeSignatureTop);
         measureObject.put("timeSignatureBottom", timeSignatureBottom);
 
-        // Convert notes to JSON
-        JSONArray noteArray = new JSONArray();
+    // Convert notes to JSON
+    JSONArray noteArray = new JSONArray();
         for (Sound sound : notes) {
-            noteArray.add(sound.toJson());
+            if (sound instanceof Note) {
+                noteArray.add(((Note) sound).toJson());
+            }   else if (sound instanceof Chord) {
+                noteArray.add(((Chord) sound).toJson());
+            }
         }
         measureObject.put("notes", noteArray);
 

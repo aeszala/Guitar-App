@@ -12,10 +12,42 @@
         "timeSignatureBottom": 4,
         "notes": [
           {
-            "type": "C"
+            "string": 3,
+            "length": 1.0,
+            "pitch": 440.0,
+            "fret": 5,
+            "type": "C",
+            "soundType": "note"
           },
           {
-            "type": "D"
+            "string": 4,
+            "length": 0.5,
+            "pitch": 466.16,
+            "fret": 7,
+            "type": "D",
+            "soundType": "note"
+          }
+        ],
+        "timeSignatureTop": 4
+      },
+      {
+        "timeSignatureBottom": 4,
+        "notes": [
+          {
+            "string": 3,
+            "length": 1.0,
+            "pitch": 440.0,
+            "fret": 5,
+            "type": "C",
+            "soundType": "note"
+          },
+          {
+            "string": 4,
+            "length": 0.5,
+            "pitch": 466.16,
+            "fret": 7,
+            "type": "D",
+            "soundType": "note"
           }
         ],
         "timeSignatureTop": 4
@@ -38,7 +70,7 @@
       "POP"
     ],
     "runLengthMin": 5,
-    "id": "9ea68579-58ef-48f0-8948-2fecf534cd79",
+    "id": "52568aa8-8f63-47b6-9f10-7cb712500608",
     "runLengthSec": 32
   },
   {
@@ -54,10 +86,42 @@
         "timeSignatureBottom": 4,
         "notes": [
           {
-            "type": "C"
+            "string": 3,
+            "length": 1.0,
+            "pitch": 440.0,
+            "fret": 5,
+            "type": "C",
+            "soundType": "note"
           },
           {
-            "type": "D"
+            "string": 4,
+            "length": 0.5,
+            "pitch": 466.16,
+            "fret": 7,
+            "type": "D",
+            "soundType": "note"
+          }
+        ],
+        "timeSignatureTop": 3
+      },
+      {
+        "timeSignatureBottom": 4,
+        "notes": [
+          {
+            "string": 3,
+            "length": 1.0,
+            "pitch": 440.0,
+            "fret": 5,
+            "type": "C",
+            "soundType": "note"
+          },
+          {
+            "string": 4,
+            "length": 0.5,
+            "pitch": 466.16,
+            "fret": 7,
+            "type": "D",
+            "soundType": "note"
           }
         ],
         "timeSignatureTop": 3
@@ -80,7 +144,7 @@
       "CLASSICAL"
     ],
     "runLengthMin": 12,
-    "id": "f1b102d9-d3d8-4917-83e5-f8b9a34339ff",
+    "id": "f636853b-076e-4cb6-88c6-d116a975e221",
     "runLengthSec": 25
   }
 ]

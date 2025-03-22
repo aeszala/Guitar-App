@@ -2,47 +2,22 @@
   {
     "password": "password1",
     "completedLessons": [
-      {
-        "assignments": [
-          {
-            "teacherComment": "Good job!",
-            "grade": 95.5,
-            "dueDate": "2025-03-20",
-            "studentComment": "It was challenging.",
-            "complete": true
-          },
-          {
-            "teacherComment": "Needs improvement.",
-            "grade": 85.0,
-            "dueDate": "2025-12-31",
-            "studentComment": "I learned a lot.",
-            "complete": false
-          }
-        ],
-        "songs": [
-          "9ea68579-58ef-48f0-8948-2fecf534cd79",
-          "f1b102d9-d3d8-4917-83e5-f8b9a34339ff"
-        ],
-        "topic": "Music",
-        "progress": 0.0,
-        "id": "e9ab0b93-aa08-4da8-87e9-ea1b4294aad9",
-        "complete": false
-      }
+      "f47b3685-2f3e-49e9-9ac7-de9bd4bfd5c3"
     ],
     "securityQuestion": "Question1",
     "securityAnswer": "Answer1",
     "mySongs": [
-      "9ea68579-58ef-48f0-8948-2fecf534cd79"
+      "52568aa8-8f63-47b6-9f10-7cb712500608"
     ],
     "name": "name1",
     "completedSongs": [
-      "f1b102d9-d3d8-4917-83e5-f8b9a34339ff"
+      "f636853b-076e-4cb6-88c6-d116a975e221"
     ],
-    "id": "80643d19-d6c6-45e2-8aca-6399562770d0",
+    "id": "333e6f7c-1aeb-4311-bc95-0f7e27269913",
     "email": "email1",
     "username": "username1",
     "favoriteSongs": [
-      "9ea68579-58ef-48f0-8948-2fecf534cd79"
+      "52568aa8-8f63-47b6-9f10-7cb712500608"
     ]
   }
 ]

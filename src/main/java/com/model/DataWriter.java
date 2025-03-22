@@ -86,23 +86,25 @@ public class DataWriter {
             reviews2.add(new Review(5.0, "Perfect!", "Bob Williams"));
             reviews2.add(new Review(1.8, "Bad.", "Mary Watson"));
 
-            // Create Measures
-            ArrayList<Sound> notes = new ArrayList<>();
-            notes.add(new Sound("C"));
-            notes.add(new Sound("D"));
+            // Create Notes and Chords
+            ArrayList<Note> notes1 = new ArrayList<>();
+            notes1.add(new Note("C", 1.0, 440.0, 3, 5, "note"));
+            notes1.add(new Note("D", 0.5, 466.16, 4, 7, "note"));
+
+            Chord chord1 = new Chord("Major", notes1, "chord");
 
             ArrayList<Measure> measures1 = new ArrayList<>();
-            measures1.add(new Measure(4, 4, notes));
+            measures1.add(new Measure(4, 4, new ArrayList<>(notes1)));
+            measures1.add(new Measure(4, 4, new ArrayList<>(notes1)));
 
             ArrayList<Measure> measures2 = new ArrayList<>();
-            measures2.add(new Measure(3, 4, notes));
+            measures2.add(new Measure(3, 4, new ArrayList<>(notes1)));
+            measures2.add(new Measure(3, 4, new ArrayList<>(notes1)));
             
             // Creating Songs
             Song song1 = new Song(UUID.randomUUID(), "title1", "artist1", 5, 32, 112, 5.0, reviews1, false, genres1, Difficulty.BEGINNER, measures1, true);
             Song song2 = new Song(UUID.randomUUID(), "title2", "artist2", 12, 25, 7, 0.5, reviews2, true, genres2, Difficulty.ADVANCED, measures2, false);
             
-//            song1.getMeasures().add();
-
             // Creating Song List
             ArrayList<Song> songs = new ArrayList<>();
             songs.add(song1);
