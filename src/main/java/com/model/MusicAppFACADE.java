@@ -11,33 +11,24 @@ public class MusicAppFACADE {
     private Song song;
     private Assignment assignment;
     private UserList userList = UserList.getInstance();
+    private Songlist songList = Songlist.getInstance();
     
    public void MusicApp(){
 
    }
 
-   public void findSongs(String keyword){
-
+   public ArrayList<Song> findSongs(String keyword){
+    if (songList == null)
+        songList = Songlist.getInstance();
+    return songList.getSongs(keyword);
    }
    
     public void createStudentAccount(String name, String username, String password, String email, Teacher teacher, String securityQuestion, String securityAnswer){
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setEmail(email);
-        user.setName(name);
-        user.setSecurityQuestion(securityQuestion);
-        user.setSecurityAnswer(securityAnswer);
-        student.getTeacher();
+        student = new Student(username, password, email, name, securityQuestion, securityAnswer, teacher);
    }
 
    public void createTeacherAccount(String name, String username, String password, String email, String securityQuestion, String securityAnswer){
-        teacher = new Teacher();
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setEmail(email);
-        user.setName(name);
-        user.setSecurityQuestion(securityQuestion);
-        user.setSecurityAnswer(securityAnswer);
+        teacher = new Teacher(username, password, email, name, securityQuestion, securityAnswer);
    }
 
    public void createAccount(String name, String username, String password, String email, String securityQuestion, String securityAnswer){
@@ -75,7 +66,6 @@ public class MusicAppFACADE {
         song.setArtist(artist);
         song.setRunLengthMin(runLengthMin);
         song.setRunLengthSec(runLengthSec);
-        song.setLyrics(Lyrics);
         song.setTempo(tempo);
     }
 
@@ -83,23 +73,24 @@ public class MusicAppFACADE {
         song.setTitle(title);
     }
 
-    public void reviewSong(Song song, int rating, String comment, Assignment assignment){
-        song.getTitle();
-        song.setRating(rating);
-        teacher.comment(assignment, student, comment, comment);
-        student.comment(assignment, comment);
+    public void reviewSong(Song song, int rating, String comment, Assignment assignment) {
+        song.addReview(new Review(rating, comment, user.getName()));
     }
 
     public void addGrade(){
-
+        
     }
 
     public void viewGrade(Assignment assignment){
         assignment.getGrade();
     }
 
-    public void turnIn(){
+    public void turnIn(Assignment assignment){
+        assignment.complete();
+    }
 
+    public void turnIn(Lesson lesson){
+        lesson.complete();
     }
 
     public void addPlayAssignment(String Title, double grade, Date dueDate, boolean Complete){
