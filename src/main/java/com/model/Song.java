@@ -3,6 +3,7 @@ package com.model;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import org.jfugue.player.Player;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -189,8 +190,9 @@ public class Song {
         throw new UnsupportedOperationException("Unimplemented method 'add'");
     }
 
-    public void play() 
+    public void play(Player player) 
     {
+        
         System.out.println("Playing song: " + title + " by " + artist);
         System.out.println("Tempo: " + tempo + " BPM");
     
@@ -199,7 +201,7 @@ public class Song {
         }
     
         System.out.println("Song playback finished.");
-
+    }
     // toString method
     @Override
     public String toString() {
