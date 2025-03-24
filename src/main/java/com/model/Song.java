@@ -15,6 +15,7 @@ public class Song {
     private String artist;
     private int runLengthMin;
     private int runLengthSec;
+    private String lyrics;
     private int tempo;
     private double rating;
     private ArrayList<Review> reviews;
@@ -44,6 +45,7 @@ public class Song {
         this.completed = false;
     }
 
+    // for existing songs
     public Song(UUID id, String title, String artist, int runLengthMin, int runLengthSec, 
                 int tempo, double rating, ArrayList<Review> reviews, boolean metronomeOn, 
                 ArrayList<Genre> genres, Difficulty difficulty, ArrayList<Measure> measures, 
@@ -61,6 +63,10 @@ public class Song {
         this.difficulty = difficulty;
         this.measures = measures;
         this.completed = completed;
+    }
+
+    public Song(UUID id) {
+        this.id = id;
     }
 
     // Method to play the song (stub)
@@ -119,6 +125,14 @@ public class Song {
 
     public void setRunLengthSec(int runLengthSec) {
         this.runLengthSec = runLengthSec;
+    }
+
+    public String getLyrics(){
+        return lyrics;
+    }
+
+    public void setLyrics(String lyrics){
+        this.lyrics = lyrics;
     }
 
     public int getTempo() {
@@ -202,9 +216,19 @@ public class Song {
     
         System.out.println("Song playback finished.");
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a0d6856d93f7e4dc3d6d7eaa266a5f4f8950a557
     // toString method
     @Override
     public String toString() {
+        if(this.title == null || this.difficulty == null) {
+            return "Song{" +
+            "id=" + id +
+            '}';
+        }
+        else {
         return "Song{" +
             "id=" + id +
             ", title='" + title + '\'' +
@@ -220,6 +244,7 @@ public class Song {
             ", measures=" + measures +
             ", completed=" + completed +
             '}';
+        }
     }
 
     public JSONObject toJson() {
@@ -233,10 +258,18 @@ public class Song {
     jsonObject.put("rating", rating);
     jsonObject.put("metronomeOn", metronomeOn);
     jsonObject.put("difficulty", difficulty.toString());
+    jsonObject.put("completed", completed);
+
+        // Convert Review Array
+        JSONArray reviewArray = new JSONArray();
+        for (Review review : reviews) {
+            reviewArray.add(review.toJson());
+        }
+        jsonObject.put("reviews", reviewArray);    
     
     JSONArray genreArray = new JSONArray();
     for (Genre genre : genres) {
-        genreArray.add(genre.toString());
+        genreArray.add(genre.name());
     }
     jsonObject.put("genres", genreArray);
 

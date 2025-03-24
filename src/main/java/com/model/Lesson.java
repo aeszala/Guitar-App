@@ -14,7 +14,9 @@ public class Lesson {
     private double progress;
     private boolean complete;
 
-    public Lesson(ArrayList<Song> songs, String topic, ArrayList<Assignment> assignments) {
+    // new Lesson Constructor
+    public Lesson(String title, ArrayList<Song> songs, String topic, ArrayList<Assignment> assignments) {
+        this.title = title;
         this.id = UUID.randomUUID();
         this.songs = songs;
         this.topic = topic;
@@ -23,8 +25,10 @@ public class Lesson {
         this.complete = false;
     }
 
-    public Lesson(UUID id, ArrayList<Song> songs, String topic,
+    // existing Lesson Constructor
+    public Lesson(String title, UUID id, ArrayList<Song> songs, String topic,
     ArrayList<Assignment> assignments, double progress, boolean complete) {
+        this.title = title;
         this.id = id;
         this.songs = songs;
         this.topic = topic;
@@ -35,21 +39,22 @@ public class Lesson {
 
     public JSONObject toJson() {
         JSONObject lessonObject = new JSONObject();
+        lessonObject.put("title", title);
         lessonObject.put("id", id.toString());
         lessonObject.put("topic", topic);
         lessonObject.put("progress", progress);
         lessonObject.put("complete", complete);
 
-        // Convert songs to JSON
-        JSONArray songArray = new JSONArray();
-        for (Song song : songs) {
-            songArray.add(song.toJson());
+        // Store only SongIDs
+        JSONArray songIdsArray = new JSONArray();
+        for (Song song : this.songs) {
+            songIdsArray.add(song.getId().toString());
         }
-        lessonObject.put("songs", songArray);
+        lessonObject.put("songs", songIdsArray);
 
         // Convert assignments to JSON
         JSONArray assignmentArray = new JSONArray();
-        for (Assignment assignment : assignments) {
+        for (Assignment assignment : this.assignments) {
             assignmentArray.add(assignment.toJson());
         }
         lessonObject.put("assignments", assignmentArray);
@@ -93,6 +98,10 @@ public class Lesson {
         return progress;
     }
 
+    public void setProgress(double progress) {
+        this.progress = progress;
+    }
+
     public boolean isComplete() {
         return complete;
     }
@@ -101,11 +110,9 @@ public class Lesson {
         return title;
     }
 
-    public void setTitle(title){
+    public void setTitle(String title){
         this.title = title;
     }
-
-
 
     @Override
     public String toString() {
@@ -129,5 +136,5 @@ public class Lesson {
         }
         return titles.substring(0, titles.length() - 2) + "]"; // Remove last comma and space
 }
-    
+
 }

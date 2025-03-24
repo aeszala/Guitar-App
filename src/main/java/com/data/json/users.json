@@ -1,1 +1,23 @@
-[{"password":"password1","completedLessons":[],"mySongs":[],"securityQuestion":"Question1","securityAnswer":"Answer1","name":"name1","completedSongs":[],"id":"04c0d1ce-f0ab-464f-8bd5-49a433816bc1","email":"email1","username":"username1","favoriteSongs":[]}]
+[
+  {
+    "password": "password1",
+    "completedLessons": [
+      "d1507cde-ef22-4043-a65b-0b14454b305f"
+    ],
+    "securityQuestion": "Question1",
+    "securityAnswer": "Answer1",
+    "mySongs": [
+      "da1bc523-fcfa-4ad2-be80-b4e155a0e8ff"
+    ],
+    "name": "name1",
+    "completedSongs": [
+      "bb629644-d876-46ed-a3bf-6573d96bee2a"
+    ],
+    "id": "8de6ad2a-63a3-40dc-a985-1647603e8e28",
+    "email": "email1",
+    "username": "username1",
+    "favoriteSongs": [
+      "da1bc523-fcfa-4ad2-be80-b4e155a0e8ff"
+    ]
+  }
+]

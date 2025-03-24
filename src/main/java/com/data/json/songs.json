@@ -1,304 +1,150 @@
 [
   {
-      "id": "e9b1a89d-3c72-4f9d-b5f4-1a9dfb6e8f71",
-      "title": "Moonlight Sonata",
-      "artist": "Ludwig V. Beethoven",
-      "runLengthMin": 6,
-      "runLengthSec": 6,
-      "tempo": 111,
-      "rating": 4.8,
-      "reviews": [
+    "artist": "artist1",
+    "rating": 5.0,
+    "tempo": 112,
+    "metronomeOn": false,
+    "completed": true,
+    "title": "title1",
+    "difficulty": "BEGINNER",
+    "measures": [
+      {
+        "timeSignatureBottom": 4,
+        "notes": [
           {
-              "rating": 5,
-              "id": "b743a92f-9e7d-4dd3-9c66-913f6e5141f2",
-              "comment": "Beautiful piece, sounds amazing on guitar!"
+            "string": 3,
+            "length": 1.0,
+            "pitch": 440.0,
+            "fret": 5,
+            "type": "C",
+            "soundType": "note"
           },
           {
-              "rating": 4,
-              "id": "a94c9e28-056a-4969-8a3e-6c5f7e48c6c4",
-              "comment": "Challenging but rewarding to learn."
+            "string": 4,
+            "length": 0.5,
+            "pitch": 466.16,
+            "fret": 7,
+            "type": "D",
+            "soundType": "note"
           }
-      ],
-      "metronomeOn": true,
-      "genres": [
-          "CLASSICAL"
-      ],
-      "difficulty": "INTERMEDIATE",
-      "measures": [
+        ],
+        "timeSignatureTop": 4
+      },
+      {
+        "timeSignatureBottom": 4,
+        "notes": [
           {
-              "timeSignatureTop": 4,
-              "timeSignatureBottom": 4,
-              "notes": [
-                  {
-                      "type": "E",
-                      "soundType": "note",
-                      "length": 1,
-                      "pitch": 659.25,
-                      "string": 1,
-                      "fret": 0
-                  },
-                  {
-                      "type": "D#",
-                      "soundType": "note",
-                      "length": 1,
-                      "pitch": 622.25,
-                      "string": 2,
-                      "fret": 4
-                  },
-                  {
-                      "type": "E",
-                      "soundType": "note",
-                      "length": 1,
-                      "pitch": 659.25,
-                      "string": 1,
-                      "fret": 0
-                  },
-                  {
-                      "type": "D#",
-                      "soundType": "note",
-                      "length": 1,
-                      "pitch": 622.25,
-                      "string": 2,
-                      "fret": 4
-                  }
-              ]
+            "string": 3,
+            "length": 1.0,
+            "pitch": 440.0,
+            "fret": 5,
+            "type": "C",
+            "soundType": "note"
           },
           {
-              "timeSignatureTop": 4,
-              "timeSignatureBottom": 4,
-              "notes": [
-                  {
-                      "type": "E",
-                      "soundType": "note",
-                      "length": 1,
-                      "pitch": 659.25,
-                      "string": 1,
-                      "fret": 0
-                  },
-                  {
-                      "type": "B",
-                      "soundType": "note",
-                      "length": 1,
-                      "pitch": 493.88,
-                      "string": 2,
-                      "fret": 0
-                  },
-                  {
-                      "type": "D",
-                      "soundType": "note",
-                      "length": 1,
-                      "pitch": 587.33,
-                      "string": 3,
-                      "fret": 0
-                  },
-                  {
-                      "type": "C",
-                      "soundType": "note",
-                      "length": 1,
-                      "pitch": 523.25,
-                      "string": 3,
-                      "fret": 5
-                  }
-              ]
-          },
-          {
-              "timeSignatureTop": 4,
-              "timeSignatureBottom": 4,
-              "notes": [
-                  {
-                      "type": "A",
-                      "soundType": "note",
-                      "length": 1,
-                      "pitch": 440,
-                      "string": 4,
-                      "fret": 2
-                  }
-              ]
+            "string": 4,
+            "length": 0.5,
+            "pitch": 466.16,
+            "fret": 7,
+            "type": "D",
+            "soundType": "note"
           }
-      ],
-      "completed": false
+        ],
+        "timeSignatureTop": 4
+      }
+    ],
+    "reviews": [
+      {
+        "author": "John Doe",
+        "rating": 4.5,
+        "comment": "Great song!"
+      },
+      {
+        "author": "Jane Smith",
+        "rating": 3.8,
+        "comment": "Pretty good."
+      }
+    ],
+    "genres": [
+      "ROCK",
+      "POP"
+    ],
+    "runLengthMin": 5,
+    "id": "da1bc523-fcfa-4ad2-be80-b4e155a0e8ff",
+    "runLengthSec": 32
   },
-
-    {
-        "id": "f3c5d6a2-89b7-4e6a-8c3f-2a4d5e6b7c8d",
-        "title": "You Are My Sunshine",
-        "artist": "Jimmie Davis",
-        "runLengthMin": 3,
-        "runLengthSec": 45,
-        "tempo": 100,
-        "rating": 4.7,
-        "reviews": [
-            {
-                "rating": 5,
-                "id": "a1b2c3d4-e5f6-7890-1234-56789abcdef0",
-                "comment": "Such a classic! Easy to play and sounds great."
-            },
-            {
-                "rating": 4,
-                "id": "b2c3d4e5-f678-9012-3456-789abcdef123",
-                "comment": "Great song, but took me some time to get the rhythm right."
-            }
+  {
+    "artist": "artist2",
+    "rating": 0.5,
+    "tempo": 7,
+    "metronomeOn": true,
+    "completed": false,
+    "title": "title2",
+    "difficulty": "ADVANCED",
+    "measures": [
+      {
+        "timeSignatureBottom": 4,
+        "notes": [
+          {
+            "string": 3,
+            "length": 1.0,
+            "pitch": 440.0,
+            "fret": 5,
+            "type": "C",
+            "soundType": "note"
+          },
+          {
+            "string": 4,
+            "length": 0.5,
+            "pitch": 466.16,
+            "fret": 7,
+            "type": "D",
+            "soundType": "note"
+          }
         ],
-        "metronomeOn": true,
-        "genres": [
-            "COUNTRY",
-            "FOLK"
+        "timeSignatureTop": 3
+      },
+      {
+        "timeSignatureBottom": 4,
+        "notes": [
+          {
+            "string": 3,
+            "length": 1.0,
+            "pitch": 440.0,
+            "fret": 5,
+            "type": "C",
+            "soundType": "note"
+          },
+          {
+            "string": 4,
+            "length": 0.5,
+            "pitch": 466.16,
+            "fret": 7,
+            "type": "D",
+            "soundType": "note"
+          }
         ],
-        "difficulty": "BEGINNER",
-        "measures": [
-            {
-                "timeSignatureTop": 4,
-                "timeSignatureBottom": 4,
-                "notes": [
-                    {
-                        "type": "C",
-                        "soundType": "note",
-                        "length": 1,
-                        "pitch": 523.25,
-                        "string": 2,
-                        "fret": 1
-                    },
-                    {
-                        "type": "C",
-                        "soundType": "note",
-                        "length": 1,
-                        "pitch": 523.25,
-                        "string": 2,
-                        "fret": 1
-                    },
-                    {
-                        "type": "C",
-                        "soundType": "note",
-                        "length": 1,
-                        "pitch": 523.25,
-                        "string": 2,
-                        "fret": 1
-                    },
-                    {
-                        "type": "D",
-                        "soundType": "note",
-                        "length": 1,
-                        "pitch": 587.33,
-                        "string": 2,
-                        "fret": 3
-                    }
-                ]
-            },
-            {
-                "timeSignatureTop": 4,
-                "timeSignatureBottom": 4,
-                "notes": [
-                    {
-                        "type": "E",
-                        "soundType": "note",
-                        "length": 1,
-                        "pitch": 659.25,
-                        "string": 1,
-                        "fret": 0
-                    },
-                    {
-                        "type": "E",
-                        "soundType": "note",
-                        "length": 1,
-                        "pitch": 659.25,
-                        "string": 1,
-                        "fret": 0
-                    },
-                    {
-                        "type": "D",
-                        "soundType": "note",
-                        "length": 1,
-                        "pitch": 587.33,
-                        "string": 2,
-                        "fret": 3
-                    },
-                    {
-                        "type": "C",
-                        "soundType": "note",
-                        "length": 1,
-                        "pitch": 523.25,
-                        "string": 2,
-                        "fret": 1
-                    }
-                ]
-            },
-            {
-                "timeSignatureTop": 4,
-                "timeSignatureBottom": 4,
-                "notes": [
-                    {
-                        "type": "A",
-                        "soundType": "note",
-                        "length": 1,
-                        "pitch": 440.00,
-                        "string": 3,
-                        "fret": 2
-                    },
-                    {
-                        "type": "A",
-                        "soundType": "note",
-                        "length": 1,
-                        "pitch": 440.00,
-                        "string": 3,
-                        "fret": 2
-                    },
-                    {
-                        "type": "C",
-                        "soundType": "note",
-                        "length": 1,
-                        "pitch": 523.25,
-                        "string": 2,
-                        "fret": 1
-                    },
-                    {
-                        "type": "D",
-                        "soundType": "note",
-                        "length": 1,
-                        "pitch": 587.33,
-                        "string": 2,
-                        "fret": 3
-                    }
-                ]
-            },
-            {
-                "timeSignatureTop": 4,
-                "timeSignatureBottom": 4,
-                "notes": [
-                    {
-                        "type": "E",
-                        "soundType": "note",
-                        "length": 1,
-                        "pitch": 659.25,
-                        "string": 1,
-                        "fret": 0
-                    },
-                    {
-                        "type": "C",
-                        "soundType": "note",
-                        "length": 1,
-                        "pitch": 523.25,
-                        "string": 2,
-                        "fret": 1
-                    },
-                    {
-                        "type": "A",
-                        "soundType": "note",
-                        "length": 1,
-                        "pitch": 440.00,
-                        "string": 3,
-                        "fret": 2
-                    },
-                    {
-                        "type": "G",
-                        "soundType": "note",
-                        "length": 1,
-                        "pitch": 392.00,
-                        "string": 3,
-                        "fret": 0
-                    }
-                ]
-            }
-        ],
-        "completed": false
-    }
+        "timeSignatureTop": 3
+      }
+    ],
+    "reviews": [
+      {
+        "author": "Bob Williams",
+        "rating": 5.0,
+        "comment": "Perfect!"
+      },
+      {
+        "author": "Mary Watson",
+        "rating": 1.8,
+        "comment": "Bad."
+      }
+    ],
+    "genres": [
+      "JAZZ",
+      "CLASSICAL"
+    ],
+    "runLengthMin": 12,
+    "id": "bb629644-d876-46ed-a3bf-6573d96bee2a",
+    "runLengthSec": 25
+  }
 ]

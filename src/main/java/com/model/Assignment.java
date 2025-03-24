@@ -22,6 +22,15 @@ public Assignment(String title, double grade, String teacherComment, String stud
     this.complete = complete;
 }
 
+public Assignment(String title, String teacherComment, Date dueDate) {
+    this.title = title;
+    this.grade = -1;  // no grade yet
+    this.teacherComment = teacherComment;
+    this.studentComment = null;
+    this.dueDate = dueDate;
+    this.complete = false;
+}
+
 public JSONObject toJson() {
     JSONObject assignmentObject = new JSONObject();
     assignmentObject.put("grade", grade);
@@ -37,15 +46,9 @@ public JSONObject toJson() {
     return assignmentObject;
 }
 
-
 public void complete()
 {
     this.complete = true;
-}
-
-public double grade()
-{
-    return grade;
 }
 
 public double getGrade()
@@ -83,17 +86,17 @@ public Date getDueDate()
     return dueDate;
 }
 
+public void setDueDate(Date dueDate)
+{
+    this.dueDate = dueDate;
+}
+
 public String getTitle(){
     return title;
 }
 
 public void setTitle(String title){
     this.title = title;
-}
-
-public void setDueDate(Date dueDate)
-{
-    this.dueDate = dueDate;
 }
 
 public boolean isComplete()
@@ -106,7 +109,6 @@ public void setComplete(boolean complete)
     this.complete = complete;
 }
 
-
 public void addComment(String comment, String role) {
     if ("teacher".equalsIgnoreCase(role)) {
         this.teacherComment = (teacherComment == null || teacherComment.isEmpty()) ? comment : teacherComment + " | " + comment;
@@ -115,6 +117,20 @@ public void addComment(String comment, String role) {
     } else {
         System.out.println("Invalid role. Please use 'teacher' or 'student'.");
     }
+}
+
+@Override
+public String toString() {
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd"); // Format the due date
+
+    return "Assignment {" +
+            "Title='" + title + '\'' +
+            ", Grade=" + (grade >= 0 ? grade : "No grade") +
+            ", Teacher Comment='" + (teacherComment != null ? teacherComment : "None") + '\'' +
+            ", Student Comment='" + (studentComment != null ? studentComment : "None") + '\'' +
+            ", Due Date=" + (dueDate != null ? dateFormat.format(dueDate) : "No due date") +
+            ", Complete=" + complete +
+            '}';
 }
 
 }

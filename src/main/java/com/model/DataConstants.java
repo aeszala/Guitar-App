@@ -49,6 +49,7 @@ public abstract class DataConstants {
 
     // lesson class constants
     protected static final String LESSON_FILE_NAME = "src/main/java/com/data/json/Lesson.json";
+    protected static final String LESSON_TITLE = "title";
     protected static final String LESSON_ID = "id";
     protected static final String LESSON_SONGS = "songs";
     protected static final String LESSON_TOPIC = "topic";
@@ -56,6 +57,7 @@ public abstract class DataConstants {
     protected static final String LESSON_PROGRESS = "progress";
     protected static final String LESSON_COMPLETE = "complete";
     // assignment class constants (used when reading lessons file)
+    protected static final String ASSIGNMENT_TITLE = "title";
     protected static final String ASSIGNMENT_GRADE = "grade";
     protected static final String ASSIGNMENT_TEACHER_COMMENT = "teacherComment";
     protected static final String ASSIGNMENT_STUDENT_COMMENT = "studentComment";

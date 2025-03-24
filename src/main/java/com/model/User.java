@@ -4,6 +4,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import java.util.UUID;
 import java.util.ArrayList;
+import java.util.List;
 
 public class User {
     private UUID id;
@@ -20,7 +21,7 @@ public class User {
     public boolean login;
 
     public User(UUID id, String username, String password, String email, String name, 
-                ArrayList<Song> farvoriteSongs, ArrayList<Song> completedSongs, 
+                ArrayList<Song> favoriteSongs, ArrayList<Song> completedSongs, 
                 ArrayList<Lesson> completedLessons, ArrayList<Song> mySongs, 
                 String securityQuestion, String securityAnswer){
         this.id = id;
@@ -30,7 +31,7 @@ public class User {
         this.name = name;
         this.securityQuestion = securityQuestion;
         this.securityAnswer = securityAnswer;
-        this.favoriteSongs = farvoriteSongs;
+        this.favoriteSongs = favoriteSongs;
         this.completedSongs = completedSongs;
         this.completedLessons = completedLessons;
         this.mySongs = mySongs;
@@ -51,41 +52,42 @@ public class User {
     }
 
     public JSONObject toJson() {
-        JSONObject userObject = new JSONObject();
-        userObject.put("id", this.id.toString());
-        userObject.put("username", this.username);
-        userObject.put("password", this.password);
-        userObject.put("email", this.email);
-        userObject.put("name", this.name);
-        userObject.put("securityQuestion", this.securityQuestion);
-        userObject.put("securityAnswer", this.securityAnswer);
+    JSONObject userObject = new JSONObject();
+    userObject.put("id", this.id.toString());
+    userObject.put("username", this.username);
+    userObject.put("password", this.password);
+    userObject.put("email", this.email);
+    userObject.put("name", this.name);
+    userObject.put("securityQuestion", this.securityQuestion);
+    userObject.put("securityAnswer", this.securityAnswer);
     
-        JSONArray favoriteSongsArray = new JSONArray();
-        for (Song song : this.favoriteSongs) {
-            favoriteSongsArray.add(song.toJson());
-        }
-        userObject.put("favoriteSongs", favoriteSongsArray);
-    
-        JSONArray completedSongsArray = new JSONArray();
-        for (Song song : this.completedSongs) {
-            completedSongsArray.add(song.toJson());
-        }
-        userObject.put("completedSongs", completedSongsArray);
-    
-        JSONArray completedLessonsArray = new JSONArray();
-        for (Lesson lesson : this.completedLessons) {
-            completedLessonsArray.add(lesson.toJson());
-        }
-        userObject.put("completedLessons", completedLessonsArray);
-    
-        JSONArray mySongsArray = new JSONArray();
-        for (Song song : this.mySongs) {
-            mySongsArray.add(song.toJson());
-        }
-        userObject.put("mySongs", mySongsArray);
-    
-        return userObject;
+    // Serialize only the Song IDs instead of full objects
+    JSONArray favoriteSongsArray = new JSONArray();
+    for (Song song : this.favoriteSongs) {
+        favoriteSongsArray.add(song.getId().toString());
     }
+    userObject.put("favoriteSongs", favoriteSongsArray);
+
+    JSONArray completedSongsArray = new JSONArray();
+    for (Song song : this.completedSongs) {
+        completedSongsArray.add(song.getId().toString());
+    }
+    userObject.put("completedSongs", completedSongsArray);
+
+    JSONArray mySongsArray = new JSONArray();
+    for (Song song : this.mySongs) {
+        mySongsArray.add(song.getId().toString());
+    }
+    userObject.put("mySongs", mySongsArray);
+
+    JSONArray completedLessonsArray = new JSONArray();
+    for (Lesson lesson : this.completedLessons) {
+        completedLessonsArray.add(lesson.getId().toString());
+    }
+    userObject.put("completedLessons", completedLessonsArray);
+
+    return userObject;
+}
 
     public boolean login(){
         return login;
@@ -153,19 +155,68 @@ public class User {
         return securityAnswer;
     }
 
+    public void setUsername(String username){
+        this.username = username;
+    }
 
-    
-    public String toString(){
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setSecurityQuestion(String securityQuestion){
+        this.securityQuestion = securityQuestion;
+    }
+
+    public void setSecurityAnswer(String securityAnswer){
+        this.securityAnswer = securityAnswer;
+    }
+
+    public void setMyfavoritesongs(ArrayList<Song> favoriteSongs){
+        this.favoriteSongs = favoriteSongs;
+    }
+
+    @Override
+    public String toString() {
         return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                ", favoriteSongs=" + favoriteSongs.size() +
-                ", completedSongs=" + completedSongs.size() +
-                ", completedLessons=" + completedLessons.size() +
-                ", mySongs=" + mySongs.size() +
-                '}';
+            "id=" + id +
+            ", username='" + username + '\'' +
+            ", email='" + email + '\'' +
+            ", name='" + name + '\'' +
+            ", favoriteSongs=" + formatSongList(favoriteSongs) +
+            ", completedSongs=" + formatSongList(completedSongs) +
+            ", completedLessons=" + formatLessonList(completedLessons) +
+            ", mySongs=" + formatSongList(mySongs) +
+            '}';
+    }
+
+    // Helper method to format a list of Songs
+    private String formatSongList(ArrayList<Song> songs) {
+        if (songs == null || songs.isEmpty())
+            return "[]";
+        StringBuilder sb = new StringBuilder("[");
+        for (Song song : songs) {
+            sb.append(song.getTitle()).append(", ");
+        }
+        return sb.substring(0, sb.length() - 2) + "]"; // Remove last comma & space
+    }
+
+    // Helper method to format a list of Lessons
+    private String formatLessonList(ArrayList<Lesson> lessons) {
+        if (lessons == null || lessons.isEmpty())
+            return "[]";
+        StringBuilder sb = new StringBuilder("[");
+        for (Lesson lesson : lessons) {
+            sb.append(lesson.getTitle()).append(", ");
+        }
+        return sb.substring(0, sb.length() - 2) + "]"; // Remove last comma & space
     }
 
     public boolean login(String username2, String password2) {

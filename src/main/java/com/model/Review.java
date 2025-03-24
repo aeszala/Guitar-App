@@ -1,11 +1,13 @@
 package com.model;
 
+import org.json.simple.JSONObject;
+
 public class Review {
   private Double rating;
-  private User author;
+  private String author;
   private String comment;
 
-  public Review(double rating, String comment, User author){
+  public Review(double rating, String comment, String author){
     this.rating = rating;
     this.comment = comment;
     this.author = author;
@@ -15,7 +17,7 @@ public class Review {
     return rating;
   }
 
-  public User getAuthor(){
+  public String getAuthor(){
     return author;
   }
 
@@ -27,7 +29,7 @@ public class Review {
     this.rating = rating;
   }
 
-  public void setAuthor(User author){
+  public void setAuthor(String author){
     this.author = author;
   }
 
@@ -35,10 +37,18 @@ public class Review {
     this.comment = comment;
   }
 
+  public JSONObject toJson() {
+    JSONObject reviewObject = new JSONObject();
+    reviewObject.put("rating", rating);
+    reviewObject.put("author", author);
+    reviewObject.put("comment", comment);
+    return reviewObject;
+}
+
   public String toString() {
     return "Review{" +
             "rating=" + rating +
-            ", author=" + author.getName() +  
+            ", author=" + author +  
             ", comment='" + comment + '\'' +
             '}';
   }

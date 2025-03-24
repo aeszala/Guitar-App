@@ -7,7 +7,7 @@ public class Songlist {
     private ArrayList<Song> songs;
 
     private Songlist() {
-        songs = new ArrayList<>();
+        songs = DataLoader.getSongs();
     }
 
     public static Songlist getInstance() {
@@ -21,7 +21,29 @@ public class Songlist {
                         ArrayList<Genre> genres, Difficulty difficulty, ArrayList<Measure> measures) {
         Song newSong = new Song(title, artist, runLengthMin, runLengthSec, tempo, genres, difficulty, measures);
         songs.add(newSong);
+<<<<<<< HEAD
         System.out.println("DEBUG: Added song - " + title);
+=======
+    }
+
+    public ArrayList<Song> getSongs() {
+        return songs;
+    }
+
+    public ArrayList<Song> getSongs(String keyword) {
+        ArrayList<Song> result = new ArrayList<>();
+        for (Song song : songs) {
+            if (song.getTitle().toLowerCase().contains(keyword.toLowerCase()) || 
+                song.getArtist().toLowerCase().contains(keyword.toLowerCase())) {
+                result.add(song);
+            }
+        }
+        return result;
+    }
+
+    public void saveSongs() {
+        System.out.println("Saving songs...");
+>>>>>>> a0d6856d93f7e4dc3d6d7eaa266a5f4f8950a557
     }
 
     public Song getSong(String title) {

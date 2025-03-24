@@ -9,10 +9,18 @@ public class Measure {
     private int timeSignatureBottom;
     private ArrayList<Sound> notes;
 
+    // existing measure constructor
     public Measure(int timeSignatureTop, int timeSignatureBottom, ArrayList<Sound> notes) {
         this.timeSignatureTop = timeSignatureTop;
         this.timeSignatureBottom = timeSignatureBottom;
         this.notes = notes;
+    }
+
+    //default constructor
+    public Measure() {
+        this.timeSignatureTop = 4;
+        this.timeSignatureBottom = 4;
+        this.notes = new ArrayList<Sound>();
     }
 
     public JSONObject toJson() {
@@ -20,10 +28,14 @@ public class Measure {
         measureObject.put("timeSignatureTop", timeSignatureTop);
         measureObject.put("timeSignatureBottom", timeSignatureBottom);
 
-        // Convert notes to JSON
-        JSONArray noteArray = new JSONArray();
+    // Convert notes to JSON
+    JSONArray noteArray = new JSONArray();
         for (Sound sound : notes) {
-            noteArray.add(sound.toJson());
+            if (sound instanceof Note) {
+                noteArray.add(((Note) sound).toJson());
+            }   else if (sound instanceof Chord) {
+                noteArray.add(((Chord) sound).toJson());
+            }
         }
         measureObject.put("notes", noteArray);
 
@@ -43,8 +55,21 @@ public class Measure {
         return timeSignatureBottom;
     }
 
-    public void setTimeSignatureTop(int timeSignatureTop){
+    public String getTimeSignature() {
+        return timeSignatureTop + "/" + timeSignatureBottom;
+    }
+
+    public void setTimeSignatureTop(int timeSignatureTop) {
         this.timeSignatureTop = timeSignatureTop;
+    }
+
+    public void setTimeSignatureBottom(int timeSignatureBottom) {
+        this.timeSignatureBottom = timeSignatureBottom;
+    }
+
+    public void setTimeSignature(int timeSignatureTop, int timeSignatureBottom) {
+        setTimeSignatureTop(timeSignatureTop);
+        setTimeSignatureBottom(timeSignatureBottom);
     }
 
     public ArrayList<Sound> getNotes(){
@@ -53,6 +78,10 @@ public class Measure {
 
     public void setNotes (ArrayList<Sound> notes){
         this.notes = notes;
+    }
+
+    public void addNote (Sound note) {
+        notes.add(note);
     }
 
     public void play() {
