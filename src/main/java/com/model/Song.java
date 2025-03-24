@@ -216,10 +216,9 @@ public class Song {
     
         System.out.println("Song playback finished.");
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> a0d6856d93f7e4dc3d6d7eaa266a5f4f8950a557
+
+
     // toString method
     @Override
     public String toString() {
