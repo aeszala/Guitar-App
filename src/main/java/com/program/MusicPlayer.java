@@ -57,9 +57,9 @@ public class MusicPlayer {
         // Verify if the song is in the list
         Song song = songlist.getSong("Moonlight Sonata");
         if (song != null) {
-            System.out.println("✅ Successfully added Moonlight Sonata!");
+            System.out.println(" Successfully added Moonlight Sonata!");
         } else {
-            System.out.println("❌ Failed to add Moonlight Sonata.");
+            System.out.println(" Failed to add Moonlight Sonata.");
         }
     
         // Play the song
