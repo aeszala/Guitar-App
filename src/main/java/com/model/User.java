@@ -222,4 +222,12 @@ public class User {
     public boolean login(String username2, String password2) {
         throw new UnsupportedOperationException("Unimplemented method 'login'");
     }
+
+    public boolean isMatch(String usernameString, String passwordString) {
+        UserList.getInstance();
+        User user = UserList.getUser(usernameString);
+        if (user != null && user.getPassword().equals(passwordString))
+            return true;
+        return false;
+    }
 }

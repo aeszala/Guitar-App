@@ -10,6 +10,7 @@ public class MusicAppFACADE {
     private Teacher teacher;
     private Song song;
     private Assignment assignment;
+    private UserList userList = UserList.getInstance();
     
    public void MusicApp(){
 
@@ -29,42 +30,44 @@ public class MusicAppFACADE {
         student.getTeacher();
    }
 
-   public void createTeacherAccount(String name, String username, String password, String email, Teacher teacher, String securityQuestion, String securityAnswer, ArrayList<Student> students){
+   public void createTeacherAccount(String name, String username, String password, String email, String securityQuestion, String securityAnswer){
+        teacher = new Teacher();
         user.setUsername(username);
         user.setPassword(password);
         user.setEmail(email);
         user.setName(name);
         user.setSecurityQuestion(securityQuestion);
         user.setSecurityAnswer(securityAnswer);
-        teacher.getStudents(students);
    }
 
-   public void createAccount(String name, String username, String password, String email, Teacher teacher, String securityQuestion, String securityAnswer, ArrayList<Student> students){
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setEmail(email);
-        user.setName(name);
-        user.setSecurityQuestion(securityQuestion);
-        user.setSecurityAnswer(securityAnswer);
+   public void createAccount(String name, String username, String password, String email, String securityQuestion, String securityAnswer){
+        if (userList == null)
+            userList = UserList.getInstance();
+        if (userList.addUser(username, password, email, username, securityQuestion, securityAnswer))
+            user = UserList.getUser(username);
     }
 
-    public void login(String username, String password, String securityQuestion, String SecurityAnswer){
-        user.getUsername();
-        user.getPassword();
-        user.getSecurityQuestion();
-        user.getSecurityAnswer();
+    public void login(String username, String password){
+        User tempUser = new User("", "", "", "", "", "");
+        if (tempUser.isMatch(username, password)) {
+            user = UserList.getUser(username);
+            System.out.println("Login Successful!");
+        } else {
+            System.out.println("Username or password incorrect.");
+        }
     }
 
     public void logOut(){
-
+        user = null;
+        System.out.println("Logout successful!");
     }
 
     public void getFavoriteSongs(ArrayList<Song> favoriteSongs){
-        
+        user.getFavoriteSongs();
     }
 
     public void getMySongs(ArrayList<Song> mySongs){
-        
+        user.getMySongs();
     }
 
     public void addSong(String title, String artist, int runLengthMin, int runLengthSec, String Lyrics, int tempo, Measure measure){

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class UserList {
     private static UserList userList = null;
-    private ArrayList<User> users;
+    private static ArrayList<User> users;
 
     private UserList() {
         users = DataLoader.getUsers();
@@ -33,7 +33,7 @@ public class UserList {
         return true;
     }
 
-    public User getUser(String username) {
+    public static User getUser(String username) {
         for (User user : users) {
             if (user.getUsername().equalsIgnoreCase(username)) {
                 return user;
