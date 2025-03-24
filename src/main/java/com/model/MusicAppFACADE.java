@@ -93,25 +93,18 @@ public class MusicAppFACADE {
         lesson.complete();
     }
 
-    public void addPlayAssignment(String Title, double grade, Date dueDate, boolean Complete){
-        assignment.setTitle(Title);
-        assignment.setGrade(grade);
-        assignment.setDueDate(dueDate);
-        assignment.complete();
+    public void addPlayAssignment(String title, String teacherComment, Date dueDate, Song song, int tempo){
+        student.addAssignment(new PlayAssignment(title, teacherComment, dueDate, song, tempo));
     }
 
-    public void addQuestionAssignment(String Title, double grade, Date dueDate, boolean Complete){
-        assignment.setTitle(Title);
-        assignment.setGrade(grade);
-        assignment.setDueDate(dueDate);
-        assignment.complete();
+    public void addQuestionAssignment(String title, String teacherComment, Date dueDate,
+                                        ArrayList<Question> questions){
+        student.addAssignment(new QuestionAssignment(title, teacherComment, dueDate, questions));
     }
 
-    public void addComposeAssignment(String Title, double grade, Date dueDate, boolean Complete){
-        assignment.setTitle(Title);
-        assignment.setGrade(grade);
-        assignment.setDueDate(dueDate);
-        assignment.complete();
+    public void addComposeAssignment(String title, String teacherComment, Date dueDate, Song song,
+                                    int tempo, String instructions){
+        student.addAssignment(new ComposeAssignment(title, teacherComment, dueDate, song, tempo, instructions));
     }
 
     public void viewLesson(){

@@ -1,12 +1,22 @@
 ﻿package com.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
-public class QuestionAssignment {
+public class QuestionAssignment extends Assignment {
     ArrayList<Question> questions;
 
-    public QuestionAssignment() {
-        this.questions = new ArrayList<>();
+    // Constructor for loading existing QuestionAssignments
+    public QuestionAssignment(String title, double grade, String teacherComment, String studentComment,
+            Date dueDate, boolean complete, ArrayList<Question> questions) {
+        super(title, grade, teacherComment, studentComment, dueDate, complete);
+        this.questions = questions;
+    }
+
+    // Constructor for new QuestionAssignments
+    public QuestionAssignment(String title, String teacherComment, Date dueDate, ArrayList<Question> questions) {
+        super(title, teacherComment, dueDate);
+        this.questions = questions;
     }
 
     public void addQuestion(Question q) {
@@ -36,6 +46,6 @@ public class QuestionAssignment {
                 correctCount++;
             }
         }
-        return correctCount;
+        return correctCount / questions.size() * 100;
     }
 }
