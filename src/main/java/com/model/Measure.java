@@ -90,6 +90,11 @@ public class Measure {
         }
     }
 
+    public String toSheetMusic() {
+        return SheetMusicGenerator.convertMeasureToSheet(this);
+    }
+
+
     @Override
     public String toString() {
         return "Measure{" +
