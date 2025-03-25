@@ -1,3 +1,7 @@
+/**
+ * @author Nolan Banks
+ */
+
 package com.model;
 
 import org.json.simple.parser.JSONParser;
