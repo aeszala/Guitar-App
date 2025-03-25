@@ -153,7 +153,7 @@ public class DataWriter {
             saveSongs(songs);
 
             // Example User
-            User user = new User("username1", "password1", "email1", "name1", "Question1", "Answer1");
+            User user = new User("ffredrickson", "password1", "email1", "name1", "Question1", "Answer1");
             user.getFavoriteSongs().add(song1);
             user.getCompletedSongs().add(song2);
             user.getCompletedLessons().add(lesson);
