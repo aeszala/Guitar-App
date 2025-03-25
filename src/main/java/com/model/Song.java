@@ -260,7 +260,6 @@ public class Song {
         System.out.println("Song playback finished.");
     }
 
-<<<<<<< HEAD
     public void printSheetMusic() {
         if (title != null || title != "") {
             StringBuilder sheetMusic = new StringBuilder();
@@ -279,8 +278,6 @@ public class Song {
         }
     }
 
-=======
->>>>>>> 743a4d3bb5d72646f6ab8b75e9fd13ad57d179b3
     // toString method
     @Override
     public String toString() {

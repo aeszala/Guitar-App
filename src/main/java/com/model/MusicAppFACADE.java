@@ -262,7 +262,6 @@ public class MusicAppFACADE {
         student.addAssignment(new ComposeAssignment(title, teacherComment, dueDate, song, tempo, instructions));
     }
 
-<<<<<<< HEAD
     public void printSheetMusic(String songTitle) {
         Song printSong = Songlist.getSong(songTitle);
         if (printSong != null) printSong.printSheetMusic();
@@ -271,13 +270,6 @@ public class MusicAppFACADE {
     
     public void viewLesson(){
         
-=======
-    /**
-     * Displays the lesson for the current student.
-     */
-    public void viewLesson() {
-        // Method implementation is missing
->>>>>>> 743a4d3bb5d72646f6ab8b75e9fd13ad57d179b3
     }
 
     /**
