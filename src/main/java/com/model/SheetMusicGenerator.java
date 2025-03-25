@@ -67,6 +67,42 @@ public class SheetMusicGenerator {
         return "♪"; // Eighth note
     }
 
+    public static String convertMeasureToSheet(Measure measure) {
+        String[] staff = STAFF_LINES.clone();
+        int position = 0; // Controls horizontal placement
+    
+        for (Sound sound : measure.getNotes()) {
+            if (sound instanceof Note) {
+                Note note = (Note) sound;
+                int index = getStaffLineIndex(note.getPitch());
+                String noteSymbol = getNoteSymbol(note.getLength());
+                int spacing = (int) (note.getLength() * 5);
+    
+                for (int i = 0; i < staff.length; i++) {
+                    if (i == index) {
+                        staff[i] += noteSymbol;
+                    } else {
+                        staff[i] += " ";
+                    }
+                }
+                position += spacing; // Move forward for next note
+    
+            } else if (sound instanceof Chord) {
+                Chord chord = (Chord) sound;
+                for (Note note : chord.getNotes()) {
+                    int index = getStaffLineIndex(note.getPitch());
+                    String noteSymbol = getNoteSymbol(note.getLength());
+    
+                    staff[index] += noteSymbol; // Stack chord notes on top of each other
+                }
+                position += 5; // Default spacing for chords
+            }
+        }
+    
+        return formatStaff(staff);
+    }
+        
+
     // Formats staff for display
     private static String formatStaff(String[] staff) {
         StringBuilder sheetMusic = new StringBuilder();

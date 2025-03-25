@@ -4,10 +4,12 @@ import org.json.simple.JSONObject;
 
 public class Sound {
     private String type;
+    private String soundType;
 
     // Constructor to initialize Sound type
-    public Sound(String type) {
+    public Sound(String type, String soundType) {
         setType(type);
+        setSoundType(soundType);
     }
 
     public Sound() {}
@@ -25,6 +27,15 @@ public class Sound {
             this.type = "chord";
         else
             this.type = "note";
+    }
+
+    public String getSoundType() {
+        return soundType;
+    }
+
+    public void setSoundType(String soundType) {
+        if (soundType.equalsIgnoreCase("note") || soundType.equalsIgnoreCase("chord"))
+            this.soundType = soundType;
     }
 
     public JSONObject toJson() {
