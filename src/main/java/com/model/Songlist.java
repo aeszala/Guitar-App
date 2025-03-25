@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Songlist {
     private static Songlist songList;
-    private ArrayList<Song> songs;
+    private static ArrayList<Song> songs;
 
     private Songlist() {
         songs = DataLoader.getSongs();
@@ -44,7 +44,7 @@ public class Songlist {
             System.out.println("Saving songs...");
         }
 
-        public Song getSong(String title) {
+        public static Song getSong(String title) {
             System.out.println("DEBUG: Searching for song - " + title);
             for (Song song : songs) {
                 System.out.println("DEBUG: Checking song: " + song.getTitle());
