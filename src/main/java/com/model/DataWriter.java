@@ -11,11 +11,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
+/**
+ * The DataWriter class provides methods to save lessons, users, and songs to JSON files.
+ */
 public class DataWriter {
     private static final String LESSONS_FILE = "src\\main\\java\\com\\data\\json\\Lesson.json";
     private static final String USERS_FILE = "src\\main\\java\\com\\data\\json\\users.json";
     private static final String SONGS_FILE = "src\\main\\java\\com\\data\\json\\songs.json";
 
+    /**
+     * Saves a list of lessons to a JSON file.
+     * 
+     * @param lessons The list of lessons to save.
+     */
     public static void saveLessons(ArrayList<Lesson> lessons) {
         JSONArray lessonArray = new JSONArray();
         for (Lesson lesson : lessons) {
@@ -24,6 +32,11 @@ public class DataWriter {
         writeToFile(LESSONS_FILE, lessonArray);
     }
 
+    /**
+     * Saves a list of users to a JSON file.
+     * 
+     * @param users The list of users to save.
+     */
     public static void saveUsers(ArrayList<User> users) {
         JSONArray userArray = new JSONArray();
         for (User user : users) {
@@ -32,6 +45,11 @@ public class DataWriter {
         writeToFile(USERS_FILE, userArray);
     }
 
+    /**
+     * Saves a list of songs to a JSON file.
+     * 
+     * @param songs The list of songs to save.
+     */
     public static void saveSongs(ArrayList<Song> songs) {
         JSONArray songArray = new JSONArray();
         for (Song song : songs) {
@@ -40,9 +58,14 @@ public class DataWriter {
         writeToFile(SONGS_FILE, songArray);
     }
 
+    /**
+     * Writes a JSON array to a file.
+     * 
+     * @param filename  The file path where the JSON data should be written.
+     * @param jsonArray The JSON array containing data to be written.
+     */
     private static void writeToFile(String filename, JSONArray jsonArray) {
         try (FileWriter file = new FileWriter(filename)) {
-            //Formatting
             JSONObject formattedJson = new JSONObject();
             formattedJson.put("data", jsonArray);
             file.write(jsonArray.toJSONString());
@@ -52,6 +75,12 @@ public class DataWriter {
         }
     }
 
+    /**
+     * Main method that demonstrates the functionality of saving lessons, users, and songs.
+     * It creates sample data and writes it to JSON files.
+     * 
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         try {
             // Creating Date object for assignment due dates
@@ -133,7 +162,6 @@ public class DataWriter {
             saveUsers(users);
 
             System.out.println("Users saved to users.json");
-
             System.out.println("Lessons and Songs saved successfully.");
         } catch (Exception e) {
             e.printStackTrace();
