@@ -260,6 +260,24 @@ public class Song {
         System.out.println("Song playback finished.");
     }
 
+    public void printSheetMusic() {
+        if (title != null || title != "") {
+            StringBuilder sheetMusic = new StringBuilder();
+            sheetMusic.append("Sheet Music for: ").append(this.title).append("\n\n");
+        
+            for (Measure measure : this.getMeasures()) {
+                sheetMusic.append(SheetMusicGenerator.convertMeasureToSheet(measure)).append("\n");
+            }
+        
+            // Print to console
+            System.out.println(sheetMusic.toString());
+        
+            // Write to file
+            SheetMusicGenerator.writeSheetToFile(this.title + "_SheetMusic.txt", sheetMusic.toString());
+    
+        }
+    }
+
     // toString method
     @Override
     public String toString() {

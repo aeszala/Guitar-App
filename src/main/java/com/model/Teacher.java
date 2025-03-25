@@ -36,7 +36,7 @@ public class Teacher extends User{
     }
 
     public void assignCreate(String instructions, int dueDate, Student student){
-        assignment.add(new Assignment("Create", instructions, dueDate, student));
+        assignment.add(new CAssignment("Create", instructions, dueDate, student));
     }
 
     public void assignCreate(String instructions, int dueDate){

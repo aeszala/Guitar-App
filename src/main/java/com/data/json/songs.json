@@ -16,7 +16,7 @@
             "length": 1.0,
             "pitch": 440.0,
             "fret": 5,
-            "type": "C",
+            "type": "A4",
             "soundType": "note"
           },
           {
@@ -24,7 +24,7 @@
             "length": 0.5,
             "pitch": 466.16,
             "fret": 7,
-            "type": "D",
+            "type": "A#4",
             "soundType": "note"
           }
         ],

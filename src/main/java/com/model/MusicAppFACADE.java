@@ -262,11 +262,14 @@ public class MusicAppFACADE {
         student.addAssignment(new ComposeAssignment(title, teacherComment, dueDate, song, tempo, instructions));
     }
 
-    /**
-     * Displays the lesson for the current student.
-     */
-    public void viewLesson() {
-        // Method implementation is missing
+    public void printSheetMusic(String songTitle) {
+        Song printSong = Songlist.getSong(songTitle);
+        if (printSong != null) printSong.printSheetMusic();
+    }
+    
+    
+    public void viewLesson(){
+        
     }
 
     /**
