@@ -24,14 +24,15 @@ public class Teacher extends User{
         this.students = new ArrayList<>();
     }
 
+    // assign to one student
     public void assignPlay(String title, String comment, int tempo, Song song, Date dueDate, Student student){
         student.addAssignment(new PlayAssignment(title, comment, dueDate, song, tempo));
     }
 
-    public void assignPlay(Song song, int dueDate){
-        for (Student student : students){
-            assignPlay(song, dueDate, student);
-        }
+    // assign to all students
+    public void assignPlay(String title, String comment, int tempo, Song song, Date dueDate) {
+        for (Student student : students)
+            student.addAssignment(new PlayAssignment(title, comment, dueDate, song, tempo));
     }
 
     public void assignCreate(String instructions, int dueDate, Student student){

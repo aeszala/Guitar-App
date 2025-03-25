@@ -14,6 +14,11 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+/**
+ * DataLoader class reads from a json file and converts json objects to objects used
+ * within the code
+ * @author aeszala
+ */
 public class DataLoader extends DataConstants {
     private static ArrayList<Song> songCache = Songlist.getInstance().getSongs();
     private static ArrayList<Lesson> lessonCache = LessonList.getInstance().getLessons();
@@ -108,11 +113,11 @@ public class DataLoader extends DataConstants {
                 ArrayList<Genre> genres = new ArrayList<Genre>();
                 Genre genre;
                 for (int j = 0; j < genresJSON.size(); j++) {
-                    genre = getGenre(genresJSON.get(j).toString());
+                    genre = Genre.valueOf(genresJSON.get(j).toString().toUpperCase());
                     if (genre != null)
                         genres.add(genre);
                 }
-    
+
                 // Fill Measures list
                 JSONArray measuresJSON = (JSONArray)songJSON.get(SONG_MEASURES);
                 ArrayList<Measure> measures = new ArrayList<Measure>();
@@ -385,48 +390,6 @@ public class DataLoader extends DataConstants {
             }
         }
         return new Date();
-    }
-
-    /**
-     * converts the string Genre to a Genre within the enum Genre class
-     * @param genreString the Genre as a string
-     * @return the Genre as a Genre enum
-     */
-    private static Genre getGenre(String genreString) {
-        Genre genre = null;
-        switch (genreString) {
-            case "ROCK":
-                genre = Genre.ROCK;
-                break;
-            case "POP":
-                genre = Genre.POP;
-                break;
-            case "COUNTRY":
-                genre = Genre.COUNTRY;
-                break;
-            case "HIPHOP":
-                genre = Genre.HIPHOP;
-                break;
-            case "ELECTRONIC":
-                genre = Genre.ELECTRONIC;
-                break;
-            case "JAZZ":
-                genre = Genre.JAZZ;
-                break;
-            case "CLASSICAL":
-                genre = Genre.CLASSICAL;
-                break;
-            case "SOUL":
-                genre = Genre.SOUL;
-                break;
-            case "INDIE":
-                genre = Genre.INDIE;
-                break;
-            case "FOLK":
-                genre = Genre.FOLK;
-                break;
-        }
-        return genre;
     }
 
     public static void main(String[] args) {
