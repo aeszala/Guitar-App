@@ -75,6 +75,4 @@ public class Teacher extends User{
     public void getStudents(ArrayList<Student> students){
         this.students = students;
     }
-
-    
 }
