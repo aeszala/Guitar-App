@@ -1,5 +1,5 @@
 ﻿/**
- * @author (name)
+ * @author Liamnp
  */
 
 package com.model;
@@ -14,6 +14,8 @@ import java.util.Date;
 public class Assignment {
 
     private String title;
+    private String type;
+    private Student student;
     private double grade;
     private String teacherComment;
     private String studentComment;
@@ -207,6 +209,13 @@ public class Assignment {
         } else {
             System.out.println("Invalid role. Please use 'teacher' or 'student'.");
         }
+    }
+
+    public void Assignment(String title, String type, Date dueDate, Student student){
+        this.title = title;
+        this.type = type;
+        this.dueDate = dueDate;
+        this.student = student;
     }
 
     /**
