@@ -1,30 +1,76 @@
 [
   {
-    "artist": "artist1",
-    "rating": 5.0,
-    "tempo": 112,
+    "artist": "Tom Petty",
+    "rating": 4.8,
+    "tempo": 115,
     "metronomeOn": false,
     "completed": true,
-    "title": "title1",
+    "title": "I Won't Back Down",
     "difficulty": "BEGINNER",
     "measures": [
       {
         "timeSignatureBottom": 4,
         "notes": [
           {
-            "string": 3,
+            "string": 6,
             "length": 1.0,
-            "pitch": 440.0,
+            "pitch": 98.0,
+            "fret": 3,
+            "type": "G",
+            "soundType": "chord"
+          },
+          {
+            "string": 5,
+            "length": 1.0,
+            "pitch": 146.8,
             "fret": 5,
-            "type": "A4",
+            "type": "D",
+            "soundType": "chord"
+          },
+          {
+            "string": 5,
+            "length": 1.0,
+            "pitch": 130.8,
+            "fret": 3,
+            "type": "C",
+            "soundType": "chord"
+          }
+        ],
+        "timeSignatureTop": 4
+      },
+      {
+        "timeSignatureBottom": 4,
+        "notes": [
+          {
+            "string": 6,
+            "length": 0.5,
+            "pitch": 82.41,
+            "fret": 3,
+            "type": "G",
+            "soundType": "note"
+          },
+          {
+            "string": 5,
+            "length": 0.5,
+            "pitch": 110.0,
+            "fret": 0,
+            "type": "A",
             "soundType": "note"
           },
           {
             "string": 4,
             "length": 0.5,
-            "pitch": 466.16,
-            "fret": 7,
-            "type": "A#4",
+            "pitch": 146.8,
+            "fret": 2,
+            "type": "D",
+            "soundType": "note"
+          },
+          {
+            "string": 6,
+            "length": 0.5,
+            "pitch": 98.0,
+            "fret": 3,
+            "type": "G",
             "soundType": "note"
           }
         ],
@@ -34,20 +80,88 @@
         "timeSignatureBottom": 4,
         "notes": [
           {
-            "string": 3,
-            "length": 1.0,
-            "pitch": 440.0,
+            "string": 5,
+            "length": 0.5,
+            "pitch": 146.8,
             "fret": 5,
-            "type": "C",
+            "type": "D",
             "soundType": "note"
           },
           {
             "string": 4,
             "length": 0.5,
-            "pitch": 466.16,
-            "fret": 7,
-            "type": "D",
+            "pitch": 130.8,
+            "fret": 3,
+            "type": "C",
             "soundType": "note"
+          },
+          {
+            "string": 6,
+            "length": 0.5,
+            "pitch": 82.41,
+            "fret": 3,
+            "type": "G",
+            "soundType": "note"
+          },
+          {
+            "string": 5,
+            "length": 0.5,
+            "pitch": 110.0,
+            "fret": 0,
+            "type": "A",
+            "soundType": "note"
+          }
+        ],
+        "timeSignatureTop": 4
+      },
+      {
+        "timeSignatureBottom": 4,
+        "notes": [
+          {
+            "string": 6,
+            "length": 1.0,
+            "pitch": 98.0,
+            "fret": 3,
+            "type": "G",
+            "soundType": "chord"
+          },
+          {
+            "string": 5,
+            "length": 1.0,
+            "pitch": 146.8,
+            "fret": 5,
+            "type": "D",
+            "soundType": "chord"
+          }
+        ],
+        "timeSignatureTop": 4
+      },
+      {
+        "timeSignatureBottom": 4,
+        "notes": [
+          {
+            "string": 4,
+            "length": 1.0,
+            "pitch": 146.8,
+            "fret": 2,
+            "type": "D",
+            "soundType": "chord"
+          },
+          {
+            "string": 3,
+            "length": 1.0,
+            "pitch": 196.0,
+            "fret": 2,
+            "type": "A",
+            "soundType": "chord"
+          },
+          {
+            "string": 2,
+            "length": 1.0,
+            "pitch": 220.0,
+            "fret": 3,
+            "type": "C",
+            "soundType": "chord"
           }
         ],
         "timeSignatureTop": 4
@@ -55,96 +169,104 @@
     ],
     "reviews": [
       {
-        "author": "John Doe",
-        "rating": 4.5,
-        "comment": "Great song!"
-      },
-      {
-        "author": "Jane Smith",
-        "rating": 3.8,
-        "comment": "Pretty good."
+        "author": "GuitarFan99",
+        "rating": 5.0,
+        "comment": "Classic and easy to play!"
       }
     ],
-    "genres": [
-      "ROCK",
-      "POP"
-    ],
-    "runLengthMin": 5,
-    "id": "631b2d75-d3d7-4b38-a5bb-1531b4cf65bf",
-    "runLengthSec": 32
+    "genres": ["ROCK"],
+    "runLengthMin": 2,
+    "id": "b4e8c0f9-9ac7-4c82-9e43-5a0bc2a8e7bc",
+    "runLengthSec": 59
   },
   {
-    "artist": "artist2",
-    "rating": 0.5,
-    "tempo": 7,
-    "metronomeOn": true,
-    "completed": false,
-    "title": "title2",
-    "difficulty": "ADVANCED",
+    "artist": "Tom Petty and the Heartbreakers",
+    "rating": 4.7,
+    "tempo": 87,
+    "metronomeOn": false,
+    "completed": true,
+    "title": "Mary Jane's Last Dance",
+    "difficulty": "INTERMEDIATE",
     "measures": [
       {
         "timeSignatureBottom": 4,
         "notes": [
           {
-            "string": 3,
+            "string": 5,
             "length": 1.0,
-            "pitch": 440.0,
-            "fret": 5,
-            "type": "C",
+            "pitch": 110.0,
+            "fret": 0,
+            "type": "A",
             "soundType": "note"
           },
           {
             "string": 4,
-            "length": 0.5,
-            "pitch": 466.16,
-            "fret": 7,
+            "length": 1.0,
+            "pitch": 146.8,
+            "fret": 2,
             "type": "D",
+            "soundType": "note"
+          },
+          {
+            "string": 3,
+            "length": 1.0,
+            "pitch": 196.0,
+            "fret": 2,
+            "type": "A",
+            "soundType": "note"
+          },
+          {
+            "string": 2,
+            "length": 1.0,
+            "pitch": 220.0,
+            "fret": 3,
+            "type": "C",
             "soundType": "note"
           }
         ],
-        "timeSignatureTop": 3
+        "timeSignatureTop": 4
       },
       {
         "timeSignatureBottom": 4,
         "notes": [
           {
-            "string": 3,
+            "string": 4,
             "length": 1.0,
-            "pitch": 440.0,
-            "fret": 5,
-            "type": "C",
+            "pitch": 146.8,
+            "fret": 2,
+            "type": "D",
             "soundType": "note"
           },
           {
-            "string": 4,
-            "length": 0.5,
-            "pitch": 466.16,
-            "fret": 7,
-            "type": "D",
+            "string": 3,
+            "length": 1.0,
+            "pitch": 196.0,
+            "fret": 2,
+            "type": "A",
+            "soundType": "note"
+          },
+          {
+            "string": 5,
+            "length": 1.0,
+            "pitch": 110.0,
+            "fret": 0,
+            "type": "A",
             "soundType": "note"
           }
         ],
-        "timeSignatureTop": 3
+        "timeSignatureTop": 4
       }
     ],
     "reviews": [
       {
-        "author": "Bob Williams",
-        "rating": 5.0,
-        "comment": "Perfect!"
-      },
-      {
-        "author": "Mary Watson",
-        "rating": 1.8,
-        "comment": "Bad."
+        "author": "StratMaster",
+        "rating": 4.5,
+        "comment": "Iconic riff, fun to play!"
       }
     ],
-    "genres": [
-      "JAZZ",
-      "CLASSICAL"
-    ],
-    "runLengthMin": 12,
-    "id": "1740d4e5-1eca-42d7-b1c6-fa72b1e0f7bf",
-    "runLengthSec": 25
+    "genres": ["ROCK"],
+    "runLengthMin": 4,
+    "id": "a1a5f378-c62a-4294-b828-6b9b29e1d97e",
+    "runLengthSec": 33
   }
 ]
