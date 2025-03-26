@@ -27,18 +27,18 @@ public class Driver {
      * @param args Command-line arguments (not used).
      */
     public static void main(String[] args) {
+        MusicAppFACADE app = new MusicAppFACADE();
         // Initialize song list and player
-        Songlist songlist = Songlist.getInstance();
-        songlist.addMoonlightSonata();  // Ensures the song is added
+        // Songlist songlist = app.getSonglistInstance();
+        // songlist.addMoonlightSonata();  // Ensures the song is added
 
         // Create a MusicPlayer instance
         MusicPlayer player = new MusicPlayer();
 
         // Play the song directly by its title
-        // player.playSong("Moonlight Sonata");
+        player.playSong("title1");
 
         // Logging in as a user scenario
-        MusicAppFACADE app = new MusicAppFACADE();
         app.login("username1", "password1");
 
         // Creating new account scenario

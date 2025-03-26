@@ -135,6 +135,9 @@ public class MusicAppFACADE {
      */
     public void logOut() {
         user = null;
+        Songlist.saveSongs();
+        UserList.saveUsers();
+        LessonList.saveLessons();
         System.out.println("Logout successful!");
     }
 
@@ -267,6 +270,13 @@ public class MusicAppFACADE {
         if (printSong != null) printSong.printSheetMusic();
     }
     
+    public Songlist getSonglistInstance() {
+        return Songlist.getInstance();
+    }
+
+    public UserList getUserListInstance() {
+        return UserList.getInstance();
+    }
     
     public void viewLesson(){
         

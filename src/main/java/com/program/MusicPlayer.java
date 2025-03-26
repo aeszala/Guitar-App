@@ -1,4 +1,4 @@
-package com.program;
+﻿package com.program;
 
 import org.jfugue.player.Player;
 import org.jfugue.pattern.Pattern;
