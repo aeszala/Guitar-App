@@ -64,7 +64,7 @@ public class Teacher extends User{
         assignment.setGrade(Grade);
     }
 
-    public void editAssignment(Assignment assignment){
+    public void editAssignment(Assignment assignment, String title){
         assignment.setTitle();
     }
 
