@@ -7,25 +7,27 @@ package com.model;
 import java.util.ArrayList;
 
 /**
- * The {@code Songlist} class represents a singleton collection of songs.
- * It provides methods to add, retrieve, and search for songs.
+ * Singleton class representing a collection of songs.
+ * Provides methods to add, retrieve, and search for songs based on keywords.
+ * It ensures that only one instance of the song list is maintained throughout the application.
  */
 public class Songlist {
     private static Songlist songList;
     private static ArrayList<Song> songs;
 
     /**
-     * Private constructor for the singleton class. 
-     * Initializes the song list by loading songs using DataLoader.
+     * Private constructor to prevent external instantiation.
+     * Initializes the song list using the DataLoader to fetch songs from the data source.
      */
     private Songlist() {
-        songs = DataLoader.getSongs();
+        songs = DataLoader.getSongs(); // Load songs from DataLoader
     }
 
     /**
-     * Provides access to the singleton instance of the Songlist class.
+     * Returns the singleton instance of Songlist.
+     * If the instance doesn't exist, it creates one.
      *
-     * @return the singleton instance of Songlist
+     * @return The single instance of Songlist.
      */
     public static Songlist getInstance() {
         if (songList == null) {
@@ -35,45 +37,50 @@ public class Songlist {
     }
 
     /**
-     * Adds a new song to the song list using the provided parameters.
+     * Adds a new song to the song list with the specified details.
      *
-     * @param title       the title of the song
-     * @param artist      the artist of the song
-     * @param runLengthMin the song's runtime in minutes
-     * @param runLengthSec the song's runtime in seconds
-     * @param tempo       the tempo of the song in BPM
-     * @param genres      the genres associated with the song
-     * @param difficulty  the difficulty level of the song
-     * @param measures    the measures representing the song's composition
+     * @param title        The title of the song.
+     * @param artist       The artist of the song.
+     * @param runLengthMin The duration of the song in minutes.
+     * @param runLengthSec The duration of the song in seconds.
+     * @param tempo        The tempo of the song in beats per minute (BPM).
+     * @param genres       A list of genres associated with the song.
+     * @param difficulty   The difficulty level of the song.
+     * @param measures     A list of measures representing the song's musical structure.
      */
-    public void addSongs(String title, String artist, int runLengthMin, int runLengthSec, int tempo,
-                          ArrayList<Genre> genres, Difficulty difficulty, ArrayList<Measure> measures) {
+    public void addSong(String title, String artist, int runLengthMin, int runLengthSec,
+                        int tempo, ArrayList<Genre> genres, Difficulty difficulty,
+                        ArrayList<Measure> measures) {
         Song newSong = new Song(title, artist, runLengthMin, runLengthSec, tempo, genres, difficulty, measures);
         songs.add(newSong);
-        System.out.println("DEBUG: Added song - " + title);
     }
 
     /**
-     * Retrieves all songs from the song list.
+     * Retrieves a song by its exact title (case-insensitive).
      *
-     * @return an ArrayList containing all songs
+     * @param title The title of the song to search for.
+     * @return The matching song if found, or {@code null} if no song with the title exists.
      */
-    public ArrayList<Song> getSongs() {
-        return songs;
+    public static Song getSong(String title) {
+        for (Song song : songs) {
+            if (song.getTitle().equalsIgnoreCase(title)) {
+                return song;
+            }
+        }
+        return null; // Return null if no song found
     }
 
     /**
-     * Searches for songs in the song list based on a keyword.
-     * The keyword is matched against both the song title and artist's name (case-insensitive).
+     * Retrieves a list of songs whose titles or artists contain the specified keyword (case-insensitive).
      *
-     * @param keyword the search keyword
-     * @return an ArrayList of songs that match the search criteria
+     * @param keyWord The keyword used for the search.
+     * @return An {@code ArrayList} of songs matching the search criteria. Returns an empty list if no matches are found.
      */
-    public ArrayList<Song> getSongs(String keyword) {
+    public ArrayList<Song> getSongs(String keyWord) {
         ArrayList<Song> result = new ArrayList<>();
         for (Song song : songs) {
-            if (song.getTitle().toLowerCase().contains(keyword.toLowerCase()) || 
-                song.getArtist().toLowerCase().contains(keyword.toLowerCase())) {
+            if (song.getTitle().toLowerCase().contains(keyWord.toLowerCase()) ||
+                song.getArtist().toLowerCase().contains(keyWord.toLowerCase())) {
                 result.add(song);
             }
         }
@@ -81,80 +88,20 @@ public class Songlist {
     }
 
     /**
-     * Saves the current state of the song list.
-     * This method can be further implemented to persist data using DataWriter.
+     * Returns the complete list of songs available in the system.
+     *
+     * @return An {@code ArrayList} containing all songs.
      */
-    public void saveSongs() {
-        System.out.println("Saving songs...");
+    public ArrayList<Song> getSongs() {
+        return songs;
     }
 
     /**
-     * Retrieves a specific song by its title.
-     * The search is case-insensitive.
-     *
-     * @param title the title of the song to search for
-     * @return the matching Song object, or null if no song is found
+     * Saves the current list of songs to the data storage using the DataWriter.
+     * It provides a confirmation message upon successful saving.
      */
-
-        public static Song getSong(String title) {
-            System.out.println("DEBUG: Searching for song - " + title);
-            for (Song song : songs) {
-                System.out.println("DEBUG: Checking song: " + song.getTitle());
-                if (song.getTitle().equalsIgnoreCase(title)) {
-                    System.out.println("DEBUG: Found song - " + song.getTitle());
-                    return song;
-                }
-            }
-            System.out.println("DEBUG: Song not found.");
-            return null;
-        }
-
-        public void addMoonlightSonata() {
-            System.out.println("DEBUG: Adding Moonlight Sonata...");
-        
-            ArrayList<Measure> measures = new ArrayList<>();
-        
-            // Measure 1 - Signature arpeggio pattern
-            ArrayList<Sound> measure1Notes = new ArrayList<>();
-            measure1Notes.add(new Note("C#", 1.0, 277.18, 3, 1, "note")); // Bass note
-            measure1Notes.add(new Note("G#", 1.0, 415.30, 4, 2, "note"));
-            measure1Notes.add(new Note("C#", 1.0, 554.37, 5, 3, "note"));
-            measure1Notes.add(new Note("E", 1.0, 659.25, 5, 4, "note"));
-            measures.add(new Measure(4, 4, measure1Notes));
-        
-            // Measure 2 - Repeating the arpeggio with slight variation
-            ArrayList<Sound> measure2Notes = new ArrayList<>();
-            measure2Notes.add(new Note("D#", 1.0, 311.13, 3, 1, "note"));
-            measure2Notes.add(new Note("A#", 1.0, 466.16, 4, 2, "note"));
-            measure2Notes.add(new Note("D#", 1.0, 622.25, 5, 3, "note"));
-            measure2Notes.add(new Note("F#", 1.0, 739.99, 5, 4, "note"));
-            measures.add(new Measure(4, 4, measure2Notes));
-        
-            // Measure 3 - Similar progression continues
-            ArrayList<Sound> measure3Notes = new ArrayList<>();
-            measure3Notes.add(new Note("C#", 1.0, 277.18, 3, 1, "note"));
-            measure3Notes.add(new Note("G#", 1.0, 415.30, 4, 2, "note"));
-            measure3Notes.add(new Note("C#", 1.0, 554.37, 5, 3, "note"));
-            measure3Notes.add(new Note("E", 1.0, 659.25, 5, 4, "note"));
-            measures.add(new Measure(4, 4, measure3Notes));
-        
-            // Measure 4 - Introducing the melody
-            ArrayList<Sound> measure4Notes = new ArrayList<>();
-            measure4Notes.add(new Note("B", 1.0, 246.94, 3, 1, "note"));
-            measure4Notes.add(new Note("G#", 1.0, 415.30, 4, 2, "note"));
-            measure4Notes.add(new Note("B", 1.0, 493.88, 5, 3, "note"));
-            measure4Notes.add(new Note("E", 1.0, 659.25, 5, 4, "note"));
-            measures.add(new Measure(4, 4, measure4Notes));
-        
-            // Continue adding more measures to complete the full piece...
-            for (int i = 0; i < 8; i++) {
-                measures.add(measures.get(i % 4)); // Repeat pattern to simulate more measures
-            }
-        
-            ArrayList<Genre> genres = new ArrayList<>();
-            genres.add(Genre.CLASSICAL);
-        
-            addSongs("Moonlight Sonata", "Ludwig van Beethoven", 6, 30, 60, genres, Difficulty.INTERMEDIATE, measures);
-            System.out.println("DEBUG: Moonlight Sonata added successfully.");
-        }
+    public static void saveSongs() {
+        DataWriter.saveSongs(songs);
+        System.out.println("Songs saved successfully!");
     }
+}

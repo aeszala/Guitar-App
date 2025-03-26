@@ -6,6 +6,9 @@ package com.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import com.program.MusicPlayer;
+
 import java.text.SimpleDateFormat;
 
 /**
@@ -135,6 +138,9 @@ public class MusicAppFACADE {
      */
     public void logOut() {
         user = null;
+        Songlist.saveSongs();
+        UserList.saveUsers();
+        LessonList.saveLessons();
         System.out.println("Logout successful!");
     }
 
@@ -267,6 +273,17 @@ public class MusicAppFACADE {
         if (printSong != null) printSong.printSheetMusic();
     }
     
+    public Songlist getSonglistInstance() {
+        return Songlist.getInstance();
+    }
+
+    public UserList getUserListInstance() {
+        return UserList.getInstance();
+    }
+
+    public void playSong(String title) {
+        MusicPlayer.playSong(title);
+    }
     
     public void viewLesson(){
         

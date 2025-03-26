@@ -22,7 +22,7 @@ import java.util.ArrayList;
  */
 public class LessonList {
     private static LessonList lessonListInstance = null;
-    private ArrayList<Lesson> lessons;
+    private static ArrayList<Lesson> lessons;
 
     /**
      * Private constructor to prevent instantiation from outside the class.
@@ -61,6 +61,11 @@ public class LessonList {
      */
     public void addLesson(Lesson lesson) {
         lessons.add(lesson);
+    }
+
+    public static void saveLessons() {
+        DataWriter.saveLessons(lessons);
+        System.out.println("Lessons saved succesfully!");
     }
 
     /**
