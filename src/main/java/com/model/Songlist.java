@@ -1,15 +1,32 @@
+/**
+ * @author (name)
+ */
+
 package com.model;
 
 import java.util.ArrayList;
 
+/**
+ * The {@code Songlist} class represents a singleton collection of songs.
+ * It provides methods to add, retrieve, and search for songs.
+ */
 public class Songlist {
     private static Songlist songList;
-    private ArrayList<Song> songs;
+    private static ArrayList<Song> songs;
 
+    /**
+     * Private constructor for the singleton class. 
+     * Initializes the song list by loading songs using DataLoader.
+     */
     private Songlist() {
         songs = DataLoader.getSongs();
     }
 
+    /**
+     * Provides access to the singleton instance of the Songlist class.
+     *
+     * @return the singleton instance of Songlist
+     */
     public static Songlist getInstance() {
         if (songList == null) {
             songList = new Songlist();
@@ -17,34 +34,69 @@ public class Songlist {
         return songList;
     }
 
+    /**
+     * Adds a new song to the song list using the provided parameters.
+     *
+     * @param title       the title of the song
+     * @param artist      the artist of the song
+     * @param runLengthMin the song's runtime in minutes
+     * @param runLengthSec the song's runtime in seconds
+     * @param tempo       the tempo of the song in BPM
+     * @param genres      the genres associated with the song
+     * @param difficulty  the difficulty level of the song
+     * @param measures    the measures representing the song's composition
+     */
     public void addSongs(String title, String artist, int runLengthMin, int runLengthSec, int tempo,
-                        ArrayList<Genre> genres, Difficulty difficulty, ArrayList<Measure> measures) {
+                          ArrayList<Genre> genres, Difficulty difficulty, ArrayList<Measure> measures) {
         Song newSong = new Song(title, artist, runLengthMin, runLengthSec, tempo, genres, difficulty, measures);
         songs.add(newSong);
-
         System.out.println("DEBUG: Added song - " + title);
-            }
-    
+    }
+
+    /**
+     * Retrieves all songs from the song list.
+     *
+     * @return an ArrayList containing all songs
+     */
     public ArrayList<Song> getSongs() {
-                return songs;
-            }
-        
+        return songs;
+    }
+
+    /**
+     * Searches for songs in the song list based on a keyword.
+     * The keyword is matched against both the song title and artist's name (case-insensitive).
+     *
+     * @param keyword the search keyword
+     * @return an ArrayList of songs that match the search criteria
+     */
     public ArrayList<Song> getSongs(String keyword) {
         ArrayList<Song> result = new ArrayList<>();
-            for (Song song : songs) {
-                if (song.getTitle().toLowerCase().contains(keyword.toLowerCase()) || 
-                        song.getArtist().toLowerCase().contains(keyword.toLowerCase())) {
-                        result.add(song);
-                    }
-                }
-                return result;
+        for (Song song : songs) {
+            if (song.getTitle().toLowerCase().contains(keyword.toLowerCase()) || 
+                song.getArtist().toLowerCase().contains(keyword.toLowerCase())) {
+                result.add(song);
             }
-        
-        public void saveSongs() {
-            System.out.println("Saving songs...");
         }
+        return result;
+    }
 
-        public Song getSong(String title) {
+    /**
+     * Saves the current state of the song list.
+     * This method can be further implemented to persist data using DataWriter.
+     */
+    public void saveSongs() {
+        System.out.println("Saving songs...");
+    }
+
+    /**
+     * Retrieves a specific song by its title.
+     * The search is case-insensitive.
+     *
+     * @param title the title of the song to search for
+     * @return the matching Song object, or null if no song is found
+     */
+
+        public static Song getSong(String title) {
             System.out.println("DEBUG: Searching for song - " + title);
             for (Song song : songs) {
                 System.out.println("DEBUG: Checking song: " + song.getTitle());

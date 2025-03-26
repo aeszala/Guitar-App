@@ -20,6 +20,7 @@ public class User {
     public String securityAnswer;
     public boolean login;
 
+    // existing user constructor
     public User(UUID id, String username, String password, String email, String name, 
                 ArrayList<Song> favoriteSongs, ArrayList<Song> completedSongs, 
                 ArrayList<Lesson> completedLessons, ArrayList<Song> mySongs, 
@@ -37,6 +38,7 @@ public class User {
         this.mySongs = mySongs;
     }
 
+    // new user constructor
     public User(String username, String password, String email, String name, String securityQuestion, String securityAnswer){
         this.id = UUID.randomUUID();
         this.username = username;
