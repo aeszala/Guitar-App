@@ -65,7 +65,7 @@ public class Teacher extends User{
     }
 
     public void editAssignment(Assignment assignment, String title){
-        assignment.setTitle();
+        assignment.setTitle(title);
     }
 
     public void comment(Assignment assignment, Student student, String comment, String role){
