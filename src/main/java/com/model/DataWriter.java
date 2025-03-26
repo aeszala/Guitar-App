@@ -121,8 +121,8 @@ public class DataWriter {
 
             // Create Notes and Chords
             ArrayList<Note> notes1 = new ArrayList<>();
-            notes1.add(new Note("C", 1.0, 440.0, 3, 5, "note"));
-            notes1.add(new Note("D", 0.5, 466.16, 4, 7, "note"));
+            notes1.add(new Note("C", 1.0, 440.0, 3, 5));
+            notes1.add(new Note("D", 0.5, 466.16, 4, 7));
 
             Chord chord1 = new Chord("Major", notes1, "chord");
 

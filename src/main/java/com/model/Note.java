@@ -20,7 +20,7 @@ public class Note extends Sound {
     private double pitch;
     private int string;
     private int fret;
-    public String soundType;
+    public String soundType = "note";
     
     /**
      * Constructor to create a {@code Note} object with the specified properties.
@@ -32,22 +32,11 @@ public class Note extends Sound {
      * @param fret The fret number on the instrument.
      * @param soundType The type of sound, which is always set to "note" for this class.
      */
-    public Note(String type, double length, double pitch, int string, int fret, String soundType) {
-        this.type = type;
-        this.length = length;
+    public Note(String type, double length, double pitch, int string, int fret) {
+        super(type, length);
         this.pitch = pitch;
         this.string = string;
         this.fret = fret;
-        this.soundType = "note";
-    }
-
-    /**
-     * Converts the note to a string-based tab representation.
-     * 
-     * @return A string that represents the note in tab format.
-     */
-    public String toTab() {
-        return "String: " + string + " | Fret: " + fret + " (" + type + ", " + length + ")";
     }
 
     /**
@@ -155,6 +144,31 @@ public class Note extends Sound {
      */
     public String getSoundType() {
         return soundType;
+    }
+
+    @Override
+    public void addToTab(String[] tabLines, int position) {
+        int stringIndex = 6 - string;
+        StringBuilder sb = new StringBuilder(tabLines[stringIndex]);
+        
+        // Pad with dashes up to position
+        while (sb.length() < position) {
+            sb.append("-");
+        }
+        
+        // Add the fret number
+        if (sb.length() == position) {
+            sb.append(fret);
+        } else {
+            sb.setCharAt(position, Integer.toString(fret).charAt(0));
+        }
+        
+        // Pad remaining space with dashes
+        while (sb.length() < position + 4) {
+            sb.append("-");
+        }
+        
+        tabLines[stringIndex] = sb.toString();
     }
     
     /**

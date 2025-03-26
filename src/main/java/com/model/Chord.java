@@ -13,29 +13,20 @@ public class Chord extends Sound {
   public String soundType;
 
   //Constructor
-  public Chord (String type, String soundType)
+  public Chord (String type)
   {
     this.type = type;
     this.notes = new ArrayList<>();
     this.soundType = "chord";
   }
 
-  //Constructor
+  // Constructor
   public Chord (String type, ArrayList<Note> notes, String soundType)
   {
     this.type = type;
     this.notes = notes;
     this.soundType = "chord";
   }
-
-  public Tab convertToTab()
-  {
-    StringBuilder tabRepresentation = new StringBuilder("Chord: " + type + " | ");
-        for (Note note : notes) {
-            tabRepresentation.append("[").append(note.getString()).append(":").append(note.getFret()).append("] ");
-        }
-        return new Tab(tabRepresentation.toString());
-  } 
 
   public void play() {
     Player player = new Player();
@@ -50,6 +41,38 @@ public class Chord extends Sound {
 
     chord.append("]"); // Close the chord notation
     player.play(chord.toString());
+}
+
+  public void addNote(Note note) {
+    notes.add(note);
+}
+
+@Override
+  public void addToTab(String[] tabLines, int position) {
+    // Add chord name above the tab
+    if (position == 0) {
+        StringBuilder sb = new StringBuilder(tabLines[0]);
+        while (sb.length() < position) {
+            sb.append("-");
+        }
+        sb.append(type);
+        while (sb.length() < 20) { // Fixed width for measure
+            sb.append("-");
+        }
+        tabLines[0] = sb.toString();
+    }
+    
+    // Add the chord notes
+    for (Note note : notes) {
+        note.addToTab(tabLines, position);
+    }
+}
+
+private String insertAtPosition(String original, int position, String text) {
+  if (original.length() <= position) {
+      return original + text;
+  }
+  return original.substring(0, position) + text + original.substring(position + text.length());
 }
 
   public JSONObject toJson() {

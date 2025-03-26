@@ -2,17 +2,27 @@ package com.model;
 
 import org.json.simple.JSONObject;
 
-public class Sound {
-    private String type;
-    private String soundType;
+public abstract class Sound {
+    protected String type;
+    protected double length;
 
     // Constructor to initialize Sound type
-    public Sound(String type, String soundType) {
-        setType(type);
-        setSoundType(soundType);
+    public Sound(String type, double length ) {
+        this.type = type;
+        this.length = length;
     }
 
     public Sound() {}
+
+    public abstract void addToTab(String[] tabLines, int position);
+    
+    public double getLength() {
+        return length;
+    }
+
+    public void setLength(double length) {
+        this.length = length;
+    }
 
     public void play() {
         // Implement sound playback logic here
@@ -27,15 +37,6 @@ public class Sound {
             this.type = "chord";
         else
             this.type = "note";
-    }
-
-    public String getSoundType() {
-        return soundType;
-    }
-
-    public void setSoundType(String soundType) {
-        if (soundType.equalsIgnoreCase("note") || soundType.equalsIgnoreCase("chord"))
-            this.soundType = soundType;
     }
 
     public JSONObject toJson() {

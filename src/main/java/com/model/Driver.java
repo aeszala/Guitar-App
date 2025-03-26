@@ -33,7 +33,7 @@ public class Driver {
         // songlist.addMoonlightSonata();  // Ensures the song is added
 
         // Play the song directly by its title
-        // app.playSong("I Won't Back Down");
+        app.playSong("I Won't Back Down");
 
         // Logging in as a user scenario
         app.login("username1", "password1");
