@@ -114,12 +114,10 @@ public class DataWriter {
 
             // Create Reviews
             ArrayList<Review> reviews1 = new ArrayList<>();
-            reviews1.add(new Review(4.5, "Great song!", "John Doe"));
-            reviews1.add(new Review(3.8, "Pretty good.", "Jane Smith"));
+            reviews1.add(new Review(5.0, "Classic and easy to play!", "GuitarFan69"));
 
             ArrayList<Review> reviews2 = new ArrayList<>();
-            reviews2.add(new Review(5.0, "Perfect!", "Bob Williams"));
-            reviews2.add(new Review(1.8, "Bad.", "Mary Watson"));
+            reviews2.add(new Review(4.5, "Iconic riff, fun to play!", "StratMaster"));
 
             // Notes and Chords for Song 1 - "I Won't Back Down"
             ArrayList<Note> notes1 = new ArrayList<>();
@@ -178,8 +176,8 @@ public class DataWriter {
             // Creating Songs
             Song song1 = new Song(UUID.randomUUID(), "I Won't Back Down", "Tom Petty", 2, 59, 115, 4.8, reviews1, false,
                     genres1, Difficulty.BEGINNER, measures1, true);
-            Song song2 = new Song(UUID.randomUUID(), "title2", "artist2", 12, 25, 7, 0.5, reviews2, true, genres2,
-                    Difficulty.ADVANCED, measures2, false);
+            Song song2 = new Song(UUID.randomUUID(), "title2", "Tom Petty and the Heartbreakers", 4, 33, 87, 4.7, reviews2, false, genres2,
+                    Difficulty.INTERMEDIATE, measures2, true);
 
             // Creating Song List
             ArrayList<Song> songs = new ArrayList<>();
