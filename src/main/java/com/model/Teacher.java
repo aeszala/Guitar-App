@@ -1,27 +1,42 @@
 ﻿package com.model;
 
 import java.util.ArrayList;
-public class Teacher {
+import java.util.Date;
+import java.util.UUID;
+public class Teacher extends User{
     ArrayList<Student> students;
-    ArrayList<Assignment> assignment;
 
-    public Teacher(){
+    // Existing teacher constructor
+        public Teacher(UUID id, String username, String password, String email, String name, 
+                   ArrayList<Song> favoriteSongs, ArrayList<Song> completedSongs, 
+                   ArrayList<Lesson> completedLessons, ArrayList<Song> mySongs, 
+                   String securityQuestion, String securityAnswer, 
+                   ArrayList<Student> students) {
+            super(id, username, password, email, name, favoriteSongs, completedSongs, 
+              completedLessons, mySongs, securityQuestion, securityAnswer);
+            this.students = students;
+    }
+
+    // New teacher constructor
+    public Teacher(String username, String password, String email, String name, 
+                   String securityQuestion, String securityAnswer) {
+        super(username, password, email, name, securityQuestion, securityAnswer);
         this.students = new ArrayList<>();
-        this.assignment = new ArrayList<>();
     }
 
-    public void assignPlay(Song song, int dueDate, Student student){
-        assignment.add(new Assignment("Play", song.getTitle(), dueDate, student));
+    // assign to one student
+    public void assignPlay(String title, String comment, int tempo, Song song, Date dueDate, Student student){
+        student.addAssignment(new PlayAssignment(title, comment, dueDate, song, tempo));
     }
 
-    public void assignPlay(Song song, int dueDate){
-        for (Student student : students){
-            assignPlay(song, dueDate, student);
-        }
+    // assign to all students
+    public void assignPlay(String title, String comment, int tempo, Song song, Date dueDate) {
+        for (Student student : students)
+            student.addAssignment(new PlayAssignment(title, comment, dueDate, song, tempo));
     }
 
     public void assignCreate(String instructions, int dueDate, Student student){
-        assignment.add(new Assignment("Create", instructions, dueDate, student));
+        assignment.add(new CAssignment("Create", instructions, dueDate, student));
     }
 
     public void assignCreate(String instructions, int dueDate){

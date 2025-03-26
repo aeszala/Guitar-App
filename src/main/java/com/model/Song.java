@@ -1,12 +1,20 @@
+/**
+ * @author (name)
+ */
+
 package com.model;
 
 import java.util.ArrayList;
 import java.util.UUID;
-
+import org.jfugue.player.Player;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-
+/**
+ * The {@code Song} class represents a song with various attributes such as title, artist, 
+ * tempo, difficulty, and reviews. It also contains methods for playing the song, 
+ * changing tempo, and generating JSON representations.
+ */
 public class Song {
     // Attributes
     private UUID id;
@@ -14,7 +22,6 @@ public class Song {
     private String artist;
     private int runLengthMin;
     private int runLengthSec;
-    private String lyrics;
     private int tempo;
     private double rating;
     private ArrayList<Review> reviews;
@@ -23,12 +30,22 @@ public class Song {
     private Difficulty difficulty;
     private ArrayList<Measure> measures;
     private boolean completed;
-    public String getTitle;
 
-    // Constructor for new songs
+    /**
+     * Constructor for new songs.
+     * 
+     * @param title The title of the song.
+     * @param artist The artist of the song.
+     * @param runLengthMin The song length in minutes.
+     * @param runLengthSec The song length in seconds.
+     * @param tempo The tempo of the song in beats per minute (BPM).
+     * @param genres A list of genres associated with the song.
+     * @param difficulty The difficulty level of the song.
+     * @param measures A list of measures in the song.
+     */
     public Song(String title, String artist, int runLengthMin, int runLengthSec, 
-                int tempo, ArrayList<Genre> genres, 
-                Difficulty difficulty, ArrayList<Measure> measures) {
+                int tempo, ArrayList<Genre> genres, Difficulty difficulty, 
+                ArrayList<Measure> measures) {
         this.id = UUID.randomUUID();
         this.title = title;
         this.artist = artist;
@@ -36,7 +53,7 @@ public class Song {
         this.runLengthSec = runLengthSec;
         this.tempo = tempo;
         this.rating = 0;
-        this.reviews = new ArrayList<Review>();
+        this.reviews = new ArrayList<>();
         this.metronomeOn = false;
         this.genres = genres;
         this.difficulty = difficulty;
@@ -44,7 +61,23 @@ public class Song {
         this.completed = false;
     }
 
-    // for existing songs
+    /**
+     * Constructor for existing songs.
+     * 
+     * @param id The unique identifier of the song.
+     * @param title The title of the song.
+     * @param artist The artist of the song.
+     * @param runLengthMin The song length in minutes.
+     * @param runLengthSec The song length in seconds.
+     * @param tempo The tempo of the song in beats per minute (BPM).
+     * @param rating The rating of the song.
+     * @param reviews A list of reviews for the song.
+     * @param metronomeOn Whether the metronome is on.
+     * @param genres A list of genres associated with the song.
+     * @param difficulty The difficulty level of the song.
+     * @param measures A list of measures in the song.
+     * @param completed Whether the song is completed.
+     */
     public Song(UUID id, String title, String artist, int runLengthMin, int runLengthSec, 
                 int tempo, double rating, ArrayList<Review> reviews, boolean metronomeOn, 
                 ArrayList<Genre> genres, Difficulty difficulty, ArrayList<Measure> measures, 
@@ -64,27 +97,39 @@ public class Song {
         this.completed = completed;
     }
 
+    /**
+     * Constructor to initialize song by UUID.
+     * 
+     * @param id The unique identifier of the song.
+     */
     public Song(UUID id) {
         this.id = id;
     }
 
-    // Method to play the song (stub)
+    // Methods
     public void playSong() {
         System.out.println("Playing song: " + title);
     }
 
-    // Method to change the tempo
     public void changeTempo(int tempo) {
         this.tempo = tempo;
         System.out.println("Tempo changed to: " + tempo);
     }
 
-    // Method to display the song as tab (stub)
+    /**
+     * Displays the song as a musical tab (stub method).
+     * 
+     * @return An empty list of Sound objects as a placeholder.
+     */
     public ArrayList<Sound> displayTab() {
         return new ArrayList<>(); // Placeholder return
     }
 
-    // Method to display the sheet music (stub)
+    /**
+     * Displays the song as sheet music (stub method).
+     * 
+     * @return An empty list of Sound objects as a placeholder.
+     */
     public ArrayList<Sound> displaySheet() {
         return new ArrayList<>(); // Placeholder return
     }
@@ -126,14 +171,6 @@ public class Song {
         this.runLengthSec = runLengthSec;
     }
 
-    public String getLyrics(){
-        return lyrics;
-    }
-
-    public void setLyrics(String lyrics){
-        this.lyrics = lyrics;
-    }
-
     public int getTempo() {
         return tempo;
     }
@@ -156,6 +193,10 @@ public class Song {
 
     public void setReviews(ArrayList<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public void addReview(Review review) {
+        reviews.add(review);
     }
 
     public boolean isMetronomeOn() {
@@ -199,61 +240,87 @@ public class Song {
     }
 
     public static void add(Song newSong) {
-        // TODO Auto-generated method stub
+        // Placeholder method for adding a song.
         throw new UnsupportedOperationException("Unimplemented method 'add'");
     }
 
-    public void play() 
-    {
+    /**
+     * Plays the song using a player, looping through each measure.
+     * 
+     * @param player The player object used for playing the song.
+     */
+    public void play(Player player) {
         System.out.println("Playing song: " + title + " by " + artist);
         System.out.println("Tempo: " + tempo + " BPM");
-    
+
         for (Measure measure : measures) {
-            measure.play();  // Calls the play method for each measure
+            measure.play(); // Calls the play method for each measure
         }
-    
+
         System.out.println("Song playback finished.");
+    }
+
+    public void printSheetMusic() {
+        if (title != null || title != "") {
+            StringBuilder sheetMusic = new StringBuilder();
+            sheetMusic.append("Sheet Music for: ").append(this.title).append("\n\n");
+        
+            for (Measure measure : this.getMeasures()) {
+                sheetMusic.append(SheetMusicGenerator.convertMeasureToSheet(measure)).append("\n");
+            }
+        
+            // Print to console
+            System.out.println(sheetMusic.toString());
+        
+            // Write to file
+            SheetMusicGenerator.writeSheetToFile(this.title + "_SheetMusic.txt", sheetMusic.toString());
+    
+        }
     }
 
     // toString method
     @Override
     public String toString() {
-        if(this.title == null || this.difficulty == null) {
+        if (this.title == null || this.difficulty == null) {
             return "Song{" +
-            "id=" + id +
-            '}';
-        }
-        else {
-        return "Song{" +
-            "id=" + id +
-            ", title='" + title + '\'' +
-            ", artist='" + artist + '\'' +
-            ", runLengthMin=" + runLengthMin +
-            ", runLengthSec=" + runLengthSec +
-            ", tempo=" + tempo +
-            ", rating=" + rating +
-            ", reviews=" + reviews +
-            ", metronomeOn=" + metronomeOn +
-            ", genres=" + genres +
-            ", difficulty=" + difficulty +
-            ", measures=" + measures +
-            ", completed=" + completed +
-            '}';
+                   "id=" + id +
+                   '}';
+        } else {
+            return "Song{" +
+                   "id=" + id +
+                   ", title='" + title + '\'' +
+                   ", artist='" + artist + '\'' +
+                   ", runLengthMin=" + runLengthMin +
+                   ", runLengthSec=" + runLengthSec +
+                   ", tempo=" + tempo +
+                   ", rating=" + rating +
+                   ", reviews=" + reviews +
+                   ", metronomeOn=" + metronomeOn +
+                   ", genres=" + genres +
+                   ", difficulty=" + difficulty +
+                   ", measures=" + measures +
+                   ", completed=" + completed +
+                   '}';
         }
     }
 
+    /**
+     * Converts the song object into a JSON representation.
+     * 
+     * @return A JSON object containing the song's data.
+     */
     public JSONObject toJson() {
-    JSONObject jsonObject = new JSONObject();
-    jsonObject.put("id", id.toString());
-    jsonObject.put("title", title);
-    jsonObject.put("artist", artist);
-    jsonObject.put("runLengthMin", runLengthMin);
-    jsonObject.put("runLengthSec", runLengthSec);
-    jsonObject.put("tempo", tempo);
-    jsonObject.put("rating", rating);
-    jsonObject.put("metronomeOn", metronomeOn);
-    jsonObject.put("difficulty", difficulty.toString());
-    jsonObject.put("completed", completed);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id", id.toString());
+        jsonObject.put("title", title);
+        jsonObject.put("artist", artist);
+        jsonObject.put("runLengthMin", runLengthMin);
+        jsonObject.put("runLengthSec", runLengthSec);
+        jsonObject.put("tempo", tempo);
+        jsonObject.put("rating", rating);
+        jsonObject.put("metronomeOn", metronomeOn);
+        jsonObject.put("difficulty", difficulty.toString());
+        jsonObject.put("completed", completed);
 
         // Convert Review Array
         JSONArray reviewArray = new JSONArray();
@@ -261,20 +328,21 @@ public class Song {
             reviewArray.add(review.toJson());
         }
         jsonObject.put("reviews", reviewArray);    
-    
-    JSONArray genreArray = new JSONArray();
-    for (Genre genre : genres) {
-        genreArray.add(genre.name());
-    }
-    jsonObject.put("genres", genreArray);
 
-    JSONArray measureArray = new JSONArray();
-    for (Measure measure : measures) {
-        measureArray.add(measure.toJson());
-    }
-    jsonObject.put("measures", measureArray);
-    
-    return jsonObject;
-}
-}
+        // Convert Genre Array
+        JSONArray genreArray = new JSONArray();
+        for (Genre genre : genres) {
+            genreArray.add(genre.name());
+        }
+        jsonObject.put("genres", genreArray);
 
+        // Convert Measure Array
+        JSONArray measureArray = new JSONArray();
+        for (Measure measure : measures) {
+            measureArray.add(measure.toJson());
+        }
+        jsonObject.put("measures", measureArray);
+
+        return jsonObject;
+    }
+}
