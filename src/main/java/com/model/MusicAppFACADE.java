@@ -6,6 +6,9 @@ package com.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import com.program.MusicPlayer;
+
 import java.text.SimpleDateFormat;
 
 /**
@@ -276,6 +279,10 @@ public class MusicAppFACADE {
 
     public UserList getUserListInstance() {
         return UserList.getInstance();
+    }
+
+    public void playSong(String title) {
+        MusicPlayer.playSong(title);
     }
     
     public void viewLesson(){

@@ -53,15 +53,16 @@ public class SheetMusicGenerator {
 
     // Maps pitch to correct staff line
     private static int getStaffLineIndex(double pitch) {
-        if (pitch >= 466.16) return 0; // A#4 (High F)
-        if (pitch >= 440.00) return 1; // A4 (D)
-        if (pitch >= 293.66) return 2; // D
-        if (pitch >= 246.94) return 3; // B
-        if (pitch >= 196.00) return 4; // G
-        if (pitch >= 164.81) return 5; // E
-        if (pitch >= 130.81) return 6; // C
-        return -1; // Out of range
+        if (pitch >= 466.16) return 0; // F
+        if (pitch >= 293.66) return 1; // D
+        if (pitch >= 246.94) return 2; // B
+        if (pitch >= 196.00) return 3; // G
+        if (pitch >= 164.81) return 4; // E
+        if (pitch >= 130.81) return 5; // C
+    
+        return 5; // Default to lowest staff line (C) 
     }
+    
 
     // Assigns note symbols based on duration
     private static String getNoteSymbol(double length) {
@@ -73,51 +74,46 @@ public class SheetMusicGenerator {
     }
     
     public static String convertMeasureToSheet(Measure measure) {
-        
         String[] staff = STAFF_LINES.clone();
-        int position = 0; // Controls horizontal placement
     
         for (Sound sound : measure.getNotes()) {
             if (sound instanceof Note) {
                 Note note = (Note) sound;
-                System.out.println("Note pitch: " + note.getPitch() + " → Staff index: " + getStaffLineIndex(note.getPitch()));
-                System.out.println("Note length: " + note.getLength() + " → Symbol: " + getNoteSymbol(note.getLength()));
-                int index = getStaffLineIndex(note.getPitch());
-                String noteSymbol = getNoteSymbol(note.getLength());
-                int spacing = (int) (note.getLength() * 5);
-    
-                for (int i = 0; i < staff.length; i++) {
-                    if (i == index) {
-                        staff[i] += noteSymbol;
-                    } else {
-                        staff[i] += " ";
-                    }
-                }
-                position += spacing; // Move forward for next note
-    
+                placeNoteOnStaff(note, staff);
             } else if (sound instanceof Chord) {
                 Chord chord = (Chord) sound;
                 for (Note note : chord.getNotes()) {
-                    int index = getStaffLineIndex(note.getPitch());
-                    String noteSymbol = getNoteSymbol(note.getLength());
-    
-                    staff[index] += noteSymbol; // Stack chord notes on top of each other
+                    placeNoteOnStaff(note, staff); // Stack chord notes vertically
                 }
-                position += 5; // Default spacing for chords
             }
         }
     
         return formatStaff(staff);
     }
+    
+    private static void placeNoteOnStaff(Note note, String[] staff) {
+        int index = getStaffLineIndex(note.getPitch()); // Get correct staff line
+        String noteSymbol = getNoteSymbol(note.getLength()); // Get note symbol
+        System.out.println("Placing note: " + note.getPitch() + " at index " + index);
+        if (index != -1) {
+            // Ensure each note is added in a column, not side-by-side
+            staff[index] = staff[index] + " " + noteSymbol;
+        } else {
+            System.out.println("Warning: Note pitch " + note.getPitch() + " is out of range!");
+        }
+    }
+    
 
-    // Formats staff for display
     private static String formatStaff(String[] staff) {
         StringBuilder sheetMusic = new StringBuilder();
+        
         for (String line : staff) {
-            sheetMusic.append(line).append("\n");
+            sheetMusic.append(String.format("%-20s", line)).append("\n"); // Align spacing
         }
+        
         return sheetMusic.toString();
     }
+    
 
     // Writes sheet music to a .txt file
     public static void writeSheetToFile(String filename, String content) {

@@ -32,11 +32,8 @@ public class Driver {
         // Songlist songlist = app.getSonglistInstance();
         // songlist.addMoonlightSonata();  // Ensures the song is added
 
-        // Create a MusicPlayer instance
-        MusicPlayer player = new MusicPlayer();
-
         // Play the song directly by its title
-        player.playSong("title1");
+        // app.playSong("I Won't Back Down");
 
         // Logging in as a user scenario
         app.login("username1", "password1");
@@ -45,7 +42,7 @@ public class Driver {
         app.createAccount("John", "John2004", "ILoveCats123", "John2004@gmail.com", "What was the name of your first cat?", "Muffin");
     
         // convert music to sheet music
-        app.printSheetMusic("title1");
+        app.printSheetMusic("I Won't Back Down");
 
     }
 }

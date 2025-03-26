@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class Songlist {
     private static Songlist songList;
-    private ArrayList<Song> songs;
+    private static ArrayList<Song> songs;
 
     /**
      * Private constructor to prevent external instantiation.
@@ -54,7 +54,7 @@ public class Songlist {
      * @param title The title of the song to retrieve.
      * @return The song matching the title, or null if not found.
      */
-    public Song getSong(String title) {
+    public static Song getSong(String title) {
         for (Song song : songs) {
             if (song.getTitle().equalsIgnoreCase(title)) {
                 return song;
@@ -86,5 +86,10 @@ public class Songlist {
      */
     public ArrayList<Song> getSongs() {
         return songs;
+    }
+
+    public static void saveSongs() {
+        DataWriter.saveSongs(songs);
+        System.out.println("Songs saved successfully!");
     }
 }
