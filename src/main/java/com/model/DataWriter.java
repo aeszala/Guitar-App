@@ -112,12 +112,21 @@ public class DataWriter {
             ArrayList<Genre> genres2 = new ArrayList<>();
             genres2.add(Genre.ROCK);
 
+            // Genres for Song 3
+            ArrayList<Genre> genres3 = new ArrayList<>();
+            genres3.add(Genre.ROCK);
+
             // Create Reviews
             ArrayList<Review> reviews1 = new ArrayList<>();
             reviews1.add(new Review(5.0, "Classic and easy to play!", "GuitarFan69"));
 
             ArrayList<Review> reviews2 = new ArrayList<>();
             reviews2.add(new Review(4.5, "Iconic riff, fun to play!", "StratMaster"));
+
+            // Reviews for Song 3
+            ArrayList<Review> reviews3 = new ArrayList<>();
+            reviews3.add(new Review(5.0, "Such a smooth song to play!", "PettyFan77"));
+            reviews3.add(new Review(4.8, "Really fun to strum along with!", "AcousticStrummerr"));
 
             // Notes and Chords for Song 1 - "I Won't Back Down"
             ArrayList<Note> notes1 = new ArrayList<>();
@@ -171,16 +180,50 @@ public class DataWriter {
             measures2.add(new Measure(4, 4, new ArrayList<>(notes6)));
             measures2.add(new Measure(4, 4, new ArrayList<>(notes7)));
 
+            // Notes and Chords for Song 3 - "Free Fallin"
+            ArrayList<Note> notes8 = new ArrayList<>();
+            notes8.add(new Note("D", 1.0, 98.0, 6, 3));
+            notes8.add(new Note("G", 1.0, 130.8, 5, 3));
+            notes8.add(new Note("A", 1.0, 146.8, 4, 0));
+
+            ArrayList<Note> notes9 = new ArrayList<>();
+            notes9.add(new Note("A", 0.5, 146.8, 4, 0));
+            notes9.add(new Note("D", 0.5, 196.0, 3, 2));
+            notes9.add(new Note("G", 0.5, 220.0, 2, 3));
+            notes9.add(new Note("D", 0.5, 196.0, 3, 2));
+
+            ArrayList<Note> notes10 = new ArrayList<>();
+            notes10.add(new Note("D", 1.0, 98.0, 6, 3));
+            notes10.add(new Note("G", 1.0, 130.8, 5, 3));
+
+            ArrayList<Note> notes11 = new ArrayList<>();
+            notes11.add(new Note("A", 0.5, 146.8, 4, 0));
+            notes11.add(new Note("D", 0.5, 196.0, 3, 2));
+            notes11.add(new Note("G", 0.5, 220.0, 2, 3));
+            notes11.add(new Note("D", 0.5, 196.0, 3, 2));
+
+            // Measures for Song 3
+            ArrayList<Measure> measures3 = new ArrayList<>();
+            measures3.add(new Measure(4, 4, new ArrayList<>(notes8)));
+            measures3.add(new Measure(4, 4, new ArrayList<>(notes9)));
+            measures3.add(new Measure(4, 4, new ArrayList<>(notes10)));
+            measures3.add(new Measure(4, 4, new ArrayList<>(notes11)));
+
             Chord chord1 = new Chord("Major", notes1, "chord");
 
             // Creating Songs
-            Song song1 = new Song(UUID.randomUUID(), "I Won't Back Down", "Tom Petty", 2, 59, 115, 4.8, reviews1, false, genres1, Difficulty.BEGINNER, measures1, true);
-            Song song2 = new Song(UUID.randomUUID(), "Mary Jane's Last Dance", "Tom Petty and the Heartbreakers", 4, 33, 87, 4.7, reviews2, false, genres2, Difficulty.INTERMEDIATE, measures2, true);
+            Song song1 = new Song(UUID.randomUUID(), "I Won't Back Down", "Tom Petty", 2, 59, 115, 4.8, reviews1, false,
+                    genres1, Difficulty.BEGINNER, measures1, true);
+            Song song2 = new Song(UUID.randomUUID(), "Mary Jane's Last Dance", "Tom Petty and the Heartbreakers", 4, 33,
+                    87, 4.7, reviews2, false, genres2, Difficulty.INTERMEDIATE, measures2, true);
+            Song song3 = new Song(UUID.fromString("c3b5e4f8-1234-4d56-9876-5f1a2b3c4d5e"), "Free Fallin", "Tom Petty",
+                    4, 14, 84, 4.9, reviews3, false, genres3, Difficulty.BEGINNER, measures3, false);
 
             // Creating Song List
             ArrayList<Song> songs = new ArrayList<>();
             songs.add(song1);
             songs.add(song2);
+            songs.add(song3);
 
             // Creating Lesson with Songs and Assignments
             Lesson lesson = new Lesson("Lesson_Title", songs, "Music", assignments);
