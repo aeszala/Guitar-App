@@ -29,11 +29,6 @@ public class Driver {
     public static void main(String[] args) {
         MusicAppFACADE app = new MusicAppFACADE();
         // Initialize song list and player
-        Songlist songlist = Songlist.getInstance();
-        
-
-        // Create a MusicPlayer instance
-        MusicPlayer player = new MusicPlayer();
 
         // Scenario 1
         app.createAccount("Fred Fredrickson", "FFredrickson", "I-love-dogs342", "ffredrickson@gmail.com", "What was the name of your first dog?", "Fluffy");
@@ -45,7 +40,7 @@ public class Driver {
         app.findSongs("Tom Petty");
         app.displaySongs();
         app.login("FFredrickson", "password1");
-        // app.playSong("Free Fallin");
+        app.playSong("Free Fallin");
         app.printTabSheet("Free Fallin");
 
         // Scenario 3
