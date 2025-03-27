@@ -216,7 +216,7 @@ public class DataWriter {
                     genres1, Difficulty.BEGINNER, measures1, true);
             Song song2 = new Song(UUID.randomUUID(), "Mary Jane's Last Dance", "Tom Petty and the Heartbreakers", 4, 33,
                     87, 4.7, reviews2, false, genres2, Difficulty.INTERMEDIATE, measures2, true);
-            Song song3 = new Song(UUID.fromString("c3b5e4f8-1234-4d56-9876-5f1a2b3c4d5e"), "Free Fallin", "Tom Petty",
+            Song song3 = new Song(UUID.randomUUID(), "Free Fallin", "Tom Petty",
                     4, 14, 84, 4.9, reviews3, false, genres3, Difficulty.BEGINNER, measures3, false);
 
             // Creating Song List
