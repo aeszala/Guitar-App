@@ -4,6 +4,7 @@
 
 package com.model;
 
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -249,6 +250,33 @@ public class Song {
     public void addMeasure(Measure measure) {
         measures.add(measure);
     }
+
+    public void printAndSaveSheetMusic() {
+        String filename = title + "_sheet.txt";  // Generate filename
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+        
+        for (int i = 0; i < measures.size(); i++) {  
+            char[][] formattedArray = measures.get(i).getFormattedMeasure();  // Get the measure
+
+            // Print & Write the measure
+            writer.write("Measure " + (i + 1) + ":\n");
+            System.out.println("Measure " + (i + 1) + ":");
+            
+            for (char[] row : formattedArray) {
+                String line = new String(row);
+                writer.write(line + "\n");  // Write to file
+                System.out.println(line);  // Print to console
+            }
+
+            writer.write("\n");  // Add spacing between measures
+            System.out.println();
+        }   
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * Plays the song using a player, looping through each measure.
