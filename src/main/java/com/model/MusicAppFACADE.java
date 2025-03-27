@@ -289,7 +289,8 @@ public class MusicAppFACADE {
     }
 
     public void playSong(String title) {
-        MusicPlayer.playSong(title);
+        MusicPlayer musicPlayer = new MusicPlayer();
+        musicPlayer.playSong(title);
     }
     
     public void viewLesson(){
