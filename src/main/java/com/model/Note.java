@@ -145,31 +145,6 @@ public class Note extends Sound {
     public String getSoundType() {
         return soundType;
     }
-
-    @Override
-    public void addToTab(String[] tabLines, int position) {
-        int stringIndex = 6 - string;
-        StringBuilder sb = new StringBuilder(tabLines[stringIndex]);
-        
-        // Pad with dashes up to position
-        while (sb.length() < position) {
-            sb.append("-");
-        }
-        
-        // Add the fret number
-        if (sb.length() == position) {
-            sb.append(fret);
-        } else {
-            sb.setCharAt(position, Integer.toString(fret).charAt(0));
-        }
-        
-        // Pad remaining space with dashes
-        while (sb.length() < position + 4) {
-            sb.append("-");
-        }
-        
-        tabLines[stringIndex] = sb.toString();
-    }
     
     /**
      * Converts the note to a JSON object.

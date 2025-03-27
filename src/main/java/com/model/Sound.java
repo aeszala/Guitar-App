@@ -5,6 +5,7 @@ import org.json.simple.JSONObject;
 public abstract class Sound {
     protected String type;
     protected double length;
+    protected int string;
 
     // Constructor to initialize Sound type
     public Sound(String type, double length ) {
@@ -13,12 +14,14 @@ public abstract class Sound {
     }
 
     public Sound() {}
-
-    public abstract void addToTab(String[] tabLines, int position);
     
     public double getLength() {
         return length;
     }
+
+    public int getString() {
+        return string;
+    } 
 
     public void setLength(double length) {
         this.length = length;

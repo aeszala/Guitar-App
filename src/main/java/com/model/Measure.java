@@ -7,6 +7,8 @@ package com.model;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -55,74 +57,62 @@ public class Measure {
         this.notes = new ArrayList<Sound>();
     }
 
-    public String[] getFormattedMeasure() {
-        String[][] tabArray = createTabArray();
-        int measureLength = notes.size();
-        String[] output = new String[8]; // Header + 6 strings + footer
-        
-        // Header
-        output[0] = "\n";
-        output[1] = "|" + repeat("-----|", measureLength);
-        
-        // String lines
-        for (int string = 0; string < 6; string++) {
-            StringBuilder line = new StringBuilder(STRING_NAMES[string] + "|");
-            for (int pos = 0; pos < measureLength; pos++) {
-                line.append(centerPad(tabArray[string][pos], 5)).append("|");
-            }
-            output[string + 2] = line.toString();
-        }
-        
-        // Footer
-        output[7] = "|" + repeat("-----|", measureLength);
-        
-        return output;
-    }
-
-    private String[][] createTabArray() {
-        int measureLength = notes.size();
-        String[][] tabArray = new String[6][measureLength];
-        
-        // Initialize with dashes
-        for (int string = 0; string < 6; string++) {
-            for (int pos = 0; pos < measureLength; pos++) {
-                tabArray[string][pos] = "-";
-            }
-        }
-        
-        // Fill array with note/chord data
-        for (int pos = 0; pos < measureLength; pos++) {
-            Sound sound = notes.get(pos);
-            
-            if (sound instanceof Note) {
-                Note note = (Note)sound;
-                int stringIndex = 6 - note.getString();
-                tabArray[stringIndex][pos] = String.valueOf(note.getFret());
-            } 
-            else if (sound instanceof Chord) {
-                Chord chord = (Chord)sound;
-                for (Note note : chord.getNotes()) {
-                    int stringIndex = 6 - note.getString();
-                    tabArray[stringIndex][pos] = String.valueOf(note.getFret());
-                }
-                if (pos == 0) {
-                    tabArray[0][pos] = chord.getType();
+    public char[][] getFormattedMeasure() {
+        char[][] tabArray = formatArray();  // Initialize tab structure
+    
+        for (int i = 1; i <= 6; i++) {  // i = Guitar string number (1-6)
+            for (int j = 2; j < notes.size() + 2; j++) {  // j = Note position (start at 2)
+                Sound sound = notes.get(j - 2);  // Get the sound at this position
+                
+                if (sound instanceof Note) {
+                    Note note = (Note) sound;
+                    if (note.getString() == i) {
+                        tabArray[i - 1][j] = Character.forDigit(note.getFret(), 10);
+                    } else {
+                        tabArray[i - 1][j] = '-';
+                    }
+                } else if (sound instanceof Chord) {
+                    Chord currentChord = (Chord) sound;
+                    if (currentChord.getStrings().contains(i)) {
+                        for (Note note : currentChord.getNotes()) {
+                            if (note.getString() == i) {
+                                tabArray[i - 1][j] = Character.forDigit(note.getFret(), 10);
+                            }
+                        }
+                    }
                 }
             }
         }
         return tabArray;
     }
+    
 
-    private String centerPad(String s, int width) {
-        if (s.length() >= width) return s;
-        int padding = width - s.length();
-        int left = padding / 2;
-        int right = padding - left;
-        return repeat("-", left) + s + repeat("-", right);
+    private char[][] formatArray() {
+        char[][] array = new char[6][notes.size()+2];
+        for (int i = 1; i <= 6; i++) {
+            array[i-1][0] = getLetter(i);
+            array[i-1][1] = '|';
+        }
+        return array;
     }
 
-    private String repeat(String str, int times) {
-        return new String(new char[Math.max(0, times)]).replace("\0", str);
+    private char getLetter(int i) {
+        switch(i) {
+            case 1:
+                return 'e';
+            case 2:
+                return 'B';
+            case 3:
+                return 'G';
+            case 4:
+                return 'D';
+            case 5:
+                return 'A';
+            case 6:
+                return 'E';
+            default:
+                return '?';
+        }
     }
 
     /**
@@ -276,4 +266,5 @@ public class Measure {
         }
         return types.substring(0, types.length() - 2) + "]"; // Remove last comma and space
     }
+    
 }

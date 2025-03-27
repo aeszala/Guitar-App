@@ -4,6 +4,8 @@
 
 package com.model;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 import org.jfugue.player.Player;
@@ -246,13 +248,6 @@ public class Song {
 
     public void addMeasure(Measure measure) {
         measures.add(measure);
-    }
-
-    public void printTabs() {
-        System.out.println("Song: " + title);
-        for (Measure measure : measures) {
-            measure.printTab();
-        }
     }
 
     /**
