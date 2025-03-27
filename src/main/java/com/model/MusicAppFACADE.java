@@ -173,7 +173,8 @@ public class MusicAppFACADE {
      * @param tempo       The tempo of the song.
      * @param measure     The measure of the song.
      */
-    public void addSong(String title, String artist, int runLengthMin, int runLengthSec, String Lyrics, int tempo, Measure measure) {
+    public void addSong(String title, String artist, int runLengthMin, int runLengthSec,int tempo, ArrayList<Genre> genres, Difficulty difficulty,
+    ArrayList<Measure> measures) {
         song.setTitle(title);
         song.setArtist(artist);
         song.setRunLengthMin(runLengthMin);
