@@ -83,6 +83,20 @@ public class MusicAppFACADE {
         }
     }
 
+    public void saveSong() {
+        if (measure != null)
+            saveMeasure();
+        Songlist.addSong(song);
+        Songlist.saveSongs();
+    }
+
+    public void save() {
+        if (measure != null)
+        saveMeasure();
+        Songlist.saveSongs();
+        UserList.saveUsers();
+    }
+
     public void createMeasure() {
         if (measure != null)
             saveMeasure();
