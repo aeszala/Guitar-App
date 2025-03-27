@@ -17,11 +17,13 @@
       }
     ],
     "songs": [
-      "c3b5e4f8-1234-4d56-9876-5f1a2b3c4d5e"
+      "e89fdabd-6662-4212-b1d6-bf5652afc18b",
+      "c5dcde64-82c8-4a41-96ec-6681c75754fc",
+      "f65a0a89-b457-4050-8520-3a069738aba0"
     ],
     "topic": "Music",
     "progress": 0.0,
-    "id": "847f2120-37dd-4af5-99a2-60a91559f886",
+    "id": "1ef8aa22-92b7-4189-8174-1b5e90340ec8",
     "title": "Lesson_Title",
     "complete": false
   }

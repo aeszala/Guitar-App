@@ -95,6 +95,10 @@ public class Songlist {
         }
     }
 
+    public static void addSong (Song song) {
+        songs.add(song);
+    }
+
     /**
      * Returns the complete list of songs available in the system.
      *

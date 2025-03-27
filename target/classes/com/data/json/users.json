@@ -2,17 +2,23 @@
   {
     "password": "password1",
     "completedLessons": [
-      "847f2120-37dd-4af5-99a2-60a91559f886"
+      "1ef8aa22-92b7-4189-8174-1b5e90340ec8"
     ],
     "securityQuestion": "Question1",
     "securityAnswer": "Answer1",
-    "mySongs": [],
-    "name": "name1",
-    "completedSongs": [],
-    "id": "50d3ae1d-813b-4bf6-94b3-0f5a94fd7458",
+    "mySongs": [
+      "e89fdabd-6662-4212-b1d6-bf5652afc18b"
+    ],
+    "name": "Felecia Fredrickson",
+    "completedSongs": [
+      "c5dcde64-82c8-4a41-96ec-6681c75754fc"
+    ],
+    "id": "fd1df9a6-7363-4677-9cd7-cb2033b6a796",
     "email": "email1",
     "username": "ffredrickson",
-    "favoriteSongs": []
+    "favoriteSongs": [
+      "e89fdabd-6662-4212-b1d6-bf5652afc18b"
+    ]
   },
   {
     "password": "I-love-dogs342",
@@ -22,7 +28,7 @@
     "mySongs": [],
     "name": "FFred",
     "completedSongs": [],
-    "id": "826825a1-67e7-448c-a0fb-cea18ae9e156",
+    "id": "82019980-52db-45eb-8be6-caf486c7ae67",
     "email": "ffredrickson@gmail.com",
     "username": "FFred",
     "favoriteSongs": []
