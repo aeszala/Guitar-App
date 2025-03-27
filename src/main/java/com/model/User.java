@@ -1,4 +1,8 @@
-﻿package com.model;
+﻿/**
+ * @author Liam
+ */
+
+package com.model;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

@@ -1,4 +1,8 @@
-﻿package com.model;
+﻿/**
+ * @author Liam
+ */
+
+package com.model;
 
 import java.util.ArrayList;
 import java.util.Date;
