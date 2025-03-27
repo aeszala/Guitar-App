@@ -1,4 +1,8 @@
-﻿package com.model;
+﻿/**
+ * @author Nolan
+ */
+
+package com.model;
 
 import java.util.UUID;
 

@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.Locale;
 import java.util.UUID;
 
 import org.json.simple.JSONArray;
@@ -326,7 +325,6 @@ public class DataLoader extends DataConstants {
                         int stringNumber = ((Long) soundJSON.get("string")).intValue();
                         int fret = ((Long) soundJSON.get("fret")).intValue();
                         Note newNote = new Note(type, length, pitch, stringNumber, fret);
-                        System.out.println(newNote);
                         sounds.add(newNote);
                     }
                 }
