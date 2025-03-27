@@ -179,6 +179,7 @@ public class MusicAppFACADE {
         song.setRunLengthMin(runLengthMin);
         song.setRunLengthSec(runLengthSec);
         song.setTempo(tempo);
+        songList.addSong(title, artist, runLengthMin, runLengthSec, tempo, null, null, null);
     }
 
     /**
@@ -268,9 +269,8 @@ public class MusicAppFACADE {
         student.addAssignment(new ComposeAssignment(title, teacherComment, dueDate, song, tempo, instructions));
     }
 
-    public void printSheetMusic(String songTitle) {
+    public void printSheetMusic(String songTitle, String fileName) {
         Song printSong = Songlist.getSong(songTitle);
-        if (printSong != null) printSong.printSheetMusic();
     }
     
     public Songlist getSonglistInstance() {

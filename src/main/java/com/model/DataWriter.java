@@ -121,30 +121,30 @@ public class DataWriter {
 
             // Notes and Chords for Song 1 - "I Won't Back Down"
             ArrayList<Note> notes1 = new ArrayList<>();
-            notes1.add(new Note("G", 1.0, 98.0, 6, 3, "chord"));
-            notes1.add(new Note("D", 1.0, 146.8, 5, 5, "chord"));
-            notes1.add(new Note("C", 1.0, 130.8, 5, 3, "chord"));
+            notes1.add(new Note("G", 1.0, 98.0, 6, 3));
+            notes1.add(new Note("D", 1.0, 146.8, 5, 5));
+            notes1.add(new Note("C", 1.0, 130.8, 5, 3));
 
             ArrayList<Note> notes2 = new ArrayList<>();
-            notes2.add(new Note("G", 0.5, 82.41, 6, 3, "note"));
-            notes2.add(new Note("A", 0.5, 110.0, 5, 0, "note"));
-            notes2.add(new Note("D", 0.5, 146.8, 4, 2, "note"));
-            notes2.add(new Note("G", 0.5, 98.0, 6, 3, "note"));
+            notes2.add(new Note("G", 0.5, 82.41, 6, 3));
+            notes2.add(new Note("A", 0.5, 110.0, 5, 0));
+            notes2.add(new Note("D", 0.5, 146.8, 4, 2));
+            notes2.add(new Note("G", 0.5, 98.0, 6, 3));
 
             ArrayList<Note> notes3 = new ArrayList<>();
-            notes3.add(new Note("D", 0.5, 146.8, 5, 5, "note"));
-            notes3.add(new Note("C", 0.5, 130.8, 4, 3, "note"));
-            notes3.add(new Note("G", 0.5, 82.41, 6, 3, "note"));
-            notes3.add(new Note("A", 0.5, 110.0, 5, 0, "note"));
+            notes3.add(new Note("D", 0.5, 146.8, 5, 5));
+            notes3.add(new Note("C", 0.5, 130.8, 4, 3));
+            notes3.add(new Note("G", 0.5, 82.41, 6, 3));
+            notes3.add(new Note("A", 0.5, 110.0, 5, 0));
 
             ArrayList<Note> notes4 = new ArrayList<>();
-            notes4.add(new Note("G", 1.0, 98.0, 6, 3, "chord"));
-            notes4.add(new Note("D", 1.0, 146.8, 5, 5, "chord"));
+            notes4.add(new Note("G", 1.0, 98.0, 6, 3));
+            notes4.add(new Note("D", 1.0, 146.8, 5, 5));
 
             ArrayList<Note> notes5 = new ArrayList<>();
-            notes5.add(new Note("D", 1.0, 146.8, 4, 2, "chord"));
-            notes5.add(new Note("A", 1.0, 196.0, 3, 2, "chord"));
-            notes5.add(new Note("C", 1.0, 220.0, 2, 3, "chord"));
+            notes5.add(new Note("D", 1.0, 146.8, 4, 2));
+            notes5.add(new Note("A", 1.0, 196.0, 3, 2));
+            notes5.add(new Note("C", 1.0, 220.0, 2, 3));
 
             // Measures for Song 1
             ArrayList<Measure> measures1 = new ArrayList<>();
@@ -156,15 +156,15 @@ public class DataWriter {
 
             // Notes for Song 2 - "Mary Jane's Last Dance"
             ArrayList<Note> notes6 = new ArrayList<>();
-            notes6.add(new Note("A", 1.0, 110.0, 5, 0, "note"));
-            notes6.add(new Note("D", 1.0, 146.8, 4, 2, "note"));
-            notes6.add(new Note("A", 1.0, 196.0, 3, 2, "note"));
-            notes6.add(new Note("C", 1.0, 220.0, 2, 3, "note"));
+            notes6.add(new Note("A", 1.0, 110.0, 5, 0));
+            notes6.add(new Note("D", 1.0, 146.8, 4, 2));
+            notes6.add(new Note("A", 1.0, 196.0, 3, 2));
+            notes6.add(new Note("C", 1.0, 220.0, 2, 3));
 
             ArrayList<Note> notes7 = new ArrayList<>();
-            notes7.add(new Note("D", 1.0, 146.8, 4, 2, "note"));
-            notes7.add(new Note("A", 1.0, 196.0, 3, 2, "note"));
-            notes7.add(new Note("A", 1.0, 110.0, 5, 0, "note"));
+            notes7.add(new Note("D", 1.0, 146.8, 4, 2));
+            notes7.add(new Note("A", 1.0, 196.0, 3, 2));
+            notes7.add(new Note("A", 1.0, 110.0, 5, 0));
 
             // Measures for Song 2
             ArrayList<Measure> measures2 = new ArrayList<>();

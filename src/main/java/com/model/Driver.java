@@ -33,7 +33,7 @@ public class Driver {
         // songlist.addMoonlightSonata();  // Ensures the song is added
 
         // Play the song directly by its title
-        // app.playSong("I Won't Back Down");
+        app.playSong("I Won't Back Down");
 
         // Logging in as a user scenario
         app.login("username1", "password1");
@@ -42,7 +42,14 @@ public class Driver {
         app.createAccount("John", "John2004", "ILoveCats123", "John2004@gmail.com", "What was the name of your first cat?", "Muffin");
     
         // convert music to sheet music
+<<<<<<< HEAD
+        // app.printSheetMusic("I Won't Back Down");
+=======
         app.printSheetMusic("I Won't Back Down");
+        
+        // adds song "horses journey"
+        app.addSong( "A horses journey", "Fellicia", 0, 0, null, 0, null);
+>>>>>>> 2cc3c60904cea2687e9448e4a569d7c0a1424792
 
     }
 }
