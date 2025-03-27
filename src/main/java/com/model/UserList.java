@@ -23,7 +23,7 @@ public class UserList {
 
     public boolean addUser(String username, String password, String email, String name, String securityQuestion, String securityAnswer) {
         if (getUser(username) != null) {
-            System.out.println("Username already exists.");
+            System.out.println("Username " + username + " already exists.");
             return false;
         }
 
@@ -60,7 +60,7 @@ public class UserList {
 
     public static void saveUsers() {
         DataWriter.saveUsers(users);
-        System.out.println("Users saved successfully.");
+        System.out.println("Users saved successfully!");
     }
 
     public void displayUsers() {

@@ -64,6 +64,22 @@ public class Song {
         this.completed = false;
     }
 
+    public Song(String title, String artist) {
+        this.id = UUID.randomUUID();
+        this.title = title;
+        this.artist = artist;
+        this.runLengthMin = 0;
+        this.runLengthSec = 0;
+        this.tempo = 0;
+        this.rating = 0;
+        this.reviews = new ArrayList<>();
+        this.metronomeOn = false;
+        this.genres = new ArrayList<Genre>();
+        this.difficulty = Difficulty.BEGINNER;
+        this.measures = new ArrayList<Measure>();
+        this.completed = false;
+    }
+
     /**
      * Constructor for existing songs.
      * 

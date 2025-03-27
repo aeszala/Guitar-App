@@ -91,7 +91,8 @@ public class Lesson {
         // Store only SongIDs
         JSONArray songIdsArray = new JSONArray();
         for (Song song : this.songs) {
-            songIdsArray.add(song.getId().toString());
+            if (song != null)
+                songIdsArray.add(song.getId().toString());
         }
         lessonObject.put("songs", songIdsArray);
 

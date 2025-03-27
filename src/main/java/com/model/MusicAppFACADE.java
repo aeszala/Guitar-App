@@ -49,6 +49,8 @@ public class MusicAppFACADE {
     private Assignment assignment;
     private UserList userList = UserList.getInstance();
     private Songlist songList = Songlist.getInstance();
+    private ArrayList<Song> songs = new ArrayList<Song>();
+    private Measure measure;
 
     /**
      * Constructor for MusicAppFACADE.
@@ -65,10 +67,36 @@ public class MusicAppFACADE {
      * @param keyword The keyword used to search for songs.
      * @return A list of {@link Song} objects that match the keyword.
      */
-    public ArrayList<Song> findSongs(String keyword) {
+    public void findSongs(String keyword) {
         if (songList == null)
             songList = Songlist.getInstance();
-        return songList.getSongs(keyword);
+        songs = songList.getSongs(keyword);
+    }
+
+    public void displaySongs() {
+        if (songs.isEmpty() || songs == null)
+            songs = Songlist.getInstance().getSongs();
+        int i = 1;
+        for (Song song : songs) {
+            System.out.println(i + ". " + song.getTitle() + " by " + song.getArtist());
+            i++;
+        }
+    }
+
+    public void createMeasure() {
+        if (measure != null)
+            saveMeasure();
+        measure = new Measure();
+        System.out.println("Measure created.");
+    }
+
+    public void saveMeasure() {
+        song.addMeasure(measure);
+        System.out.println("Measure added to song!");
+    }
+
+    public void addNote(String type, double length, double pitch, int string, int fret) {
+        measure.addSound(new Note(type, length, pitch, string, fret));
     }
 
     /**
@@ -149,6 +177,10 @@ public class MusicAppFACADE {
         UserList.saveUsers();
         LessonList.saveLessons();
         System.out.println("Logout successful!");
+    }
+
+    public void createSong(String title) {
+        song = new Song(title, user.getName());
     }
 
     /**
