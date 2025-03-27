@@ -20,6 +20,12 @@
     <dependencies>
 
         <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.github.JensPiegsa</groupId>
             <artifactId>jfugue</artifactId>
             <version>5.0.9</version>

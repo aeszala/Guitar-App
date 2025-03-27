@@ -1,1 +1,5 @@
+<<<<<<< HEAD
+error: unable to unlink old 'src/main/java/com/data/json/Lesson.json': Invalid argumen
+=======
 [{"assignments":[{"teacherComment":"Good job!","grade":95.5,"dueDate":"2025-03-20","studentComment":"It was challenging.","complete":true},{"teacherComment":"Needs improvement.","grade":85.0,"dueDate":"2025-12-31","studentComment":"I learned a lot.","complete":false}],"songs":["1b581302-4297-4590-bb10-a2cf22dfda3a","a144abb6-ebe8-4c95-99f5-bb37542ffaec","815a893f-9eb1-4e9d-a7d2-bd9c268e05f1"],"topic":"Music","progress":0.0,"id":"69ac07e4-8c5c-4872-b77e-b4aac93c956a","title":"Lesson_Title","complete":false}]
+>>>>>>> 16e016b1b0c92469431e4b3bdb3ceb97fa4afee8
