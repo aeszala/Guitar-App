@@ -2,35 +2,22 @@
   {
     "password": "password1",
     "completedLessons": [
-      "1ef8aa22-92b7-4189-8174-1b5e90340ec8"
+      "f092300b-524d-4d86-bce7-e71f857c9e4d"
     ],
     "securityQuestion": "Question1",
     "securityAnswer": "Answer1",
     "mySongs": [
-      "e89fdabd-6662-4212-b1d6-bf5652afc18b"
+      "c52b6dbf-8a9e-43d5-bc3a-94f69d40f08d"
     ],
     "name": "Felecia Fredrickson",
     "completedSongs": [
-      "c5dcde64-82c8-4a41-96ec-6681c75754fc"
+      "559e4aa9-2526-4ad5-92aa-f20aeb2daead"
     ],
-    "id": "fd1df9a6-7363-4677-9cd7-cb2033b6a796",
+    "id": "6682d912-6329-485f-89b5-184761e51c15",
     "email": "email1",
     "username": "ffredrickson",
     "favoriteSongs": [
-      "e89fdabd-6662-4212-b1d6-bf5652afc18b"
+      "c52b6dbf-8a9e-43d5-bc3a-94f69d40f08d"
     ]
-  },
-  {
-    "password": "I-love-dogs342",
-    "completedLessons": [],
-    "securityQuestion": "What was the name of your first dog?",
-    "securityAnswer": "Fluffy",
-    "mySongs": [],
-    "name": "FFred",
-    "completedSongs": [],
-    "id": "82019980-52db-45eb-8be6-caf486c7ae67",
-    "email": "ffredrickson@gmail.com",
-    "username": "FFred",
-    "favoriteSongs": []
   }
 ]

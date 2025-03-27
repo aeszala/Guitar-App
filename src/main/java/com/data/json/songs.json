@@ -178,7 +178,7 @@
       "ROCK"
     ],
     "runLengthMin": 2,
-    "id": "e89fdabd-6662-4212-b1d6-bf5652afc18b",
+    "id": "c52b6dbf-8a9e-43d5-bc3a-94f69d40f08d",
     "runLengthSec": 59
   },
   {
@@ -262,7 +262,7 @@
     "reviews": [
       {
         "author": "StratMaster",
-        "rating": 4.0,
+        "rating": 4.5,
         "comment": "Iconic riff, fun to play!"
       }
     ],
@@ -270,7 +270,7 @@
       "ROCK"
     ],
     "runLengthMin": 4,
-    "id": "c5dcde64-82c8-4a41-96ec-6681c75754fc",
+    "id": "559e4aa9-2526-4ad5-92aa-f20aeb2daead",
     "runLengthSec": 33
   },
   {
@@ -419,7 +419,7 @@
       },
       {
         "author": "AcousticStrummerr",
-        "rating": 4.0,
+        "rating": 4.8,
         "comment": "Really fun to strum along with!"
       }
     ],
@@ -427,219 +427,7 @@
       "ROCK"
     ],
     "runLengthMin": 4,
-    "id": "f65a0a89-b457-4050-8520-3a069738aba0",
+    "id": "4fcdd2cf-7d7d-4f99-a35e-ed4afc88414d",
     "runLengthSec": 14
-  },
-  {
-    "artist": "Felecia Fredrickson",
-    "rating": 0.0,
-    "tempo": 0,
-    "metronomeOn": false,
-    "completed": false,
-    "title": "A Horse's Journey",
-    "difficulty": "BEGINNER",
-    "measures": [
-      {
-        "timeSignatureBottom": 4,
-        "notes": [
-          {
-            "string": 1,
-            "length": 1.0,
-            "pitch": 523.25,
-            "fret": 3,
-            "type": "C5",
-            "soundType": "note"
-          },
-          {
-            "string": 2,
-            "length": 0.5,
-            "pitch": 587.33,
-            "fret": 5,
-            "type": "D5",
-            "soundType": "note"
-          },
-          {
-            "string": 3,
-            "length": 0.25,
-            "pitch": 659.25,
-            "fret": 7,
-            "type": "E5",
-            "soundType": "note"
-          }
-        ],
-        "timeSignatureTop": 4
-      },
-      {
-        "timeSignatureBottom": 4,
-        "notes": [
-          {
-            "string": 4,
-            "length": 1.0,
-            "pitch": 392.0,
-            "fret": 0,
-            "type": "G4",
-            "soundType": "note"
-          },
-          {
-            "string": 5,
-            "length": 0.5,
-            "pitch": 440.0,
-            "fret": 2,
-            "type": "A4",
-            "soundType": "note"
-          },
-          {
-            "string": 6,
-            "length": 0.25,
-            "pitch": 493.88,
-            "fret": 4,
-            "type": "B4",
-            "soundType": "note"
-          }
-        ],
-        "timeSignatureTop": 4
-      },
-      {
-        "timeSignatureBottom": 4,
-        "notes": [
-          {
-            "string": 4,
-            "length": 1.0,
-            "pitch": 392.0,
-            "fret": 0,
-            "type": "G4",
-            "soundType": "note"
-          },
-          {
-            "string": 5,
-            "length": 0.5,
-            "pitch": 440.0,
-            "fret": 2,
-            "type": "A4",
-            "soundType": "note"
-          },
-          {
-            "string": 6,
-            "length": 0.25,
-            "pitch": 493.88,
-            "fret": 4,
-            "type": "B4",
-            "soundType": "note"
-          }
-        ],
-        "timeSignatureTop": 4
-      }
-    ],
-    "reviews": [],
-    "genres": [],
-    "runLengthMin": 0,
-    "id": "753c131b-487b-476c-94f1-f670aa4b52d9",
-    "runLengthSec": 0
-  },
-  {
-    "artist": "Felecia Fredrickson",
-    "rating": 0.0,
-    "tempo": 0,
-    "metronomeOn": false,
-    "completed": false,
-    "title": "A Horse's Journey",
-    "difficulty": "BEGINNER",
-    "measures": [
-      {
-        "timeSignatureBottom": 4,
-        "notes": [
-          {
-            "string": 1,
-            "length": 1.0,
-            "pitch": 523.25,
-            "fret": 3,
-            "type": "C5",
-            "soundType": "note"
-          },
-          {
-            "string": 2,
-            "length": 0.5,
-            "pitch": 587.33,
-            "fret": 5,
-            "type": "D5",
-            "soundType": "note"
-          },
-          {
-            "string": 3,
-            "length": 0.25,
-            "pitch": 659.25,
-            "fret": 7,
-            "type": "E5",
-            "soundType": "note"
-          }
-        ],
-        "timeSignatureTop": 4
-      },
-      {
-        "timeSignatureBottom": 4,
-        "notes": [
-          {
-            "string": 4,
-            "length": 1.0,
-            "pitch": 392.0,
-            "fret": 0,
-            "type": "G4",
-            "soundType": "note"
-          },
-          {
-            "string": 5,
-            "length": 0.5,
-            "pitch": 440.0,
-            "fret": 2,
-            "type": "A4",
-            "soundType": "note"
-          },
-          {
-            "string": 6,
-            "length": 0.25,
-            "pitch": 493.88,
-            "fret": 4,
-            "type": "B4",
-            "soundType": "note"
-          }
-        ],
-        "timeSignatureTop": 4
-      },
-      {
-        "timeSignatureBottom": 4,
-        "notes": [
-          {
-            "string": 4,
-            "length": 1.0,
-            "pitch": 392.0,
-            "fret": 0,
-            "type": "G4",
-            "soundType": "note"
-          },
-          {
-            "string": 5,
-            "length": 0.5,
-            "pitch": 440.0,
-            "fret": 2,
-            "type": "A4",
-            "soundType": "note"
-          },
-          {
-            "string": 6,
-            "length": 0.25,
-            "pitch": 493.88,
-            "fret": 4,
-            "type": "B4",
-            "soundType": "note"
-          }
-        ],
-        "timeSignatureTop": 4
-      }
-    ],
-    "reviews": [],
-    "genres": [],
-    "runLengthMin": 0,
-    "id": "c2f5aae5-3ba0-4b73-9172-54ce9ae4a94f",
-    "runLengthSec": 0
   }
 ]
