@@ -1,5 +1,5 @@
 /**
- * @author (name)
+ * @author IDK
  */
 
 package com.model;
