@@ -16,7 +16,8 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
- * The DataWriter class provides methods to save lessons, users, and songs to JSON files.
+ * The DataWriter class provides methods to save lessons, users, and songs to
+ * JSON files.
  */
 public class DataWriter {
     private static final String LESSONS_FILE = "src\\main\\java\\com\\data\\json\\Lesson.json";
@@ -80,7 +81,8 @@ public class DataWriter {
     }
 
     /**
-     * Main method that demonstrates the functionality of saving lessons, users, and songs.
+     * Main method that demonstrates the functionality of saving lessons, users, and
+     * songs.
      * It creates sample data and writes it to JSON files.
      * 
      * @param args Command-line arguments (not used).
@@ -93,8 +95,10 @@ public class DataWriter {
             Date dueDate2 = sdf.parse("2025-12-31");
 
             // Creating Assignments
-            Assignment assignment1 = new Assignment("Music Practice", 95.5, "Good job!", "It was challenging.", dueDate, true);
-            Assignment assignment2 = new Assignment("Sheet Project", 85.0, "Needs improvement.", "I learned a lot.", dueDate2, false);
+            Assignment assignment1 = new Assignment("Music Practice", 95.5, "Good job!", "It was challenging.", dueDate,
+                    true);
+            Assignment assignment2 = new Assignment("Sheet Project", 85.0, "Needs improvement.", "I learned a lot.",
+                    dueDate2, false);
 
             // Creating Assignment List
             ArrayList<Assignment> assignments = new ArrayList<>();
@@ -104,40 +108,82 @@ public class DataWriter {
             // Creating Songs with Genres
             ArrayList<Genre> genres1 = new ArrayList<>();
             genres1.add(Genre.ROCK);
-            genres1.add(Genre.POP);
 
             ArrayList<Genre> genres2 = new ArrayList<>();
-            genres2.add(Genre.JAZZ);
-            genres2.add(Genre.CLASSICAL);
+            genres2.add(Genre.ROCK);
 
             // Create Reviews
             ArrayList<Review> reviews1 = new ArrayList<>();
-            reviews1.add(new Review(4.5, "Great song!", "John Doe"));
-            reviews1.add(new Review(3.8, "Pretty good.", "Jane Smith"));
-            
-            ArrayList<Review> reviews2 = new ArrayList<>();
-            reviews2.add(new Review(5.0, "Perfect!", "Bob Williams"));
-            reviews2.add(new Review(1.8, "Bad.", "Mary Watson"));
+            reviews1.add(new Review(5.0, "Classic and easy to play!", "GuitarFan69"));
 
-            // Create Notes and Chords
+            ArrayList<Review> reviews2 = new ArrayList<>();
+            reviews2.add(new Review(4.5, "Iconic riff, fun to play!", "StratMaster"));
+
+            // Notes and Chords for Song 1 - "I Won't Back Down"
             ArrayList<Note> notes1 = new ArrayList<>();
-            notes1.add(new Note("C", 1.0, 440.0, 3, 5, "note"));
-            notes1.add(new Note("D", 0.5, 466.16, 4, 7, "note"));
+<<<<<<< HEAD
+            notes1.add(new Note("C", 1.0, 440.0, 3, 5));
+            notes1.add(new Note("D", 0.5, 466.16, 4, 7));
+=======
+            notes1.add(new Note("G", 1.0, 98.0, 6, 3, "chord"));
+            notes1.add(new Note("D", 1.0, 146.8, 5, 5, "chord"));
+            notes1.add(new Note("C", 1.0, 130.8, 5, 3, "chord"));
+
+            ArrayList<Note> notes2 = new ArrayList<>();
+            notes2.add(new Note("G", 0.5, 82.41, 6, 3, "note"));
+            notes2.add(new Note("A", 0.5, 110.0, 5, 0, "note"));
+            notes2.add(new Note("D", 0.5, 146.8, 4, 2, "note"));
+            notes2.add(new Note("G", 0.5, 98.0, 6, 3, "note"));
+
+            ArrayList<Note> notes3 = new ArrayList<>();
+            notes3.add(new Note("D", 0.5, 146.8, 5, 5, "note"));
+            notes3.add(new Note("C", 0.5, 130.8, 4, 3, "note"));
+            notes3.add(new Note("G", 0.5, 82.41, 6, 3, "note"));
+            notes3.add(new Note("A", 0.5, 110.0, 5, 0, "note"));
+
+            ArrayList<Note> notes4 = new ArrayList<>();
+            notes4.add(new Note("G", 1.0, 98.0, 6, 3, "chord"));
+            notes4.add(new Note("D", 1.0, 146.8, 5, 5, "chord"));
+
+            ArrayList<Note> notes5 = new ArrayList<>();
+            notes5.add(new Note("D", 1.0, 146.8, 4, 2, "chord"));
+            notes5.add(new Note("A", 1.0, 196.0, 3, 2, "chord"));
+            notes5.add(new Note("C", 1.0, 220.0, 2, 3, "chord"));
+
+            // Measures for Song 1
+            ArrayList<Measure> measures1 = new ArrayList<>();
+            measures1.add(new Measure(4, 4, new ArrayList<>(notes1)));
+            measures1.add(new Measure(4, 4, new ArrayList<>(notes2)));
+            measures1.add(new Measure(4, 4, new ArrayList<>(notes3)));
+            measures1.add(new Measure(4, 4, new ArrayList<>(notes4)));
+            measures1.add(new Measure(4, 4, new ArrayList<>(notes5)));
+
+            // Notes for Song 2 - "Mary Jane's Last Dance"
+            ArrayList<Note> notes6 = new ArrayList<>();
+            notes6.add(new Note("A", 1.0, 110.0, 5, 0, "note"));
+            notes6.add(new Note("D", 1.0, 146.8, 4, 2, "note"));
+            notes6.add(new Note("A", 1.0, 196.0, 3, 2, "note"));
+            notes6.add(new Note("C", 1.0, 220.0, 2, 3, "note"));
+
+            ArrayList<Note> notes7 = new ArrayList<>();
+            notes7.add(new Note("D", 1.0, 146.8, 4, 2, "note"));
+            notes7.add(new Note("A", 1.0, 196.0, 3, 2, "note"));
+            notes7.add(new Note("A", 1.0, 110.0, 5, 0, "note"));
+
+            // Measures for Song 2
+            ArrayList<Measure> measures2 = new ArrayList<>();
+            measures2.add(new Measure(4, 4, new ArrayList<>(notes6)));
+            measures2.add(new Measure(4, 4, new ArrayList<>(notes7)));
+>>>>>>> 2cc3c60904cea2687e9448e4a569d7c0a1424792
 
             Chord chord1 = new Chord("Major", notes1, "chord");
 
-            ArrayList<Measure> measures1 = new ArrayList<>();
-            measures1.add(new Measure(4, 4, new ArrayList<>(notes1)));
-            measures1.add(new Measure(4, 4, new ArrayList<>(notes1)));
-
-            ArrayList<Measure> measures2 = new ArrayList<>();
-            measures2.add(new Measure(3, 4, new ArrayList<>(notes1)));
-            measures2.add(new Measure(3, 4, new ArrayList<>(notes1)));
-            
             // Creating Songs
-            Song song1 = new Song(UUID.randomUUID(), "title1", "artist1", 5, 32, 112, 5.0, reviews1, false, genres1, Difficulty.BEGINNER, measures1, true);
-            Song song2 = new Song(UUID.randomUUID(), "title2", "artist2", 12, 25, 7, 0.5, reviews2, true, genres2, Difficulty.ADVANCED, measures2, false);
-            
+            Song song1 = new Song(UUID.randomUUID(), "I Won't Back Down", "Tom Petty", 2, 59, 115, 4.8, reviews1, false,
+                    genres1, Difficulty.BEGINNER, measures1, true);
+            Song song2 = new Song(UUID.randomUUID(), "title2", "Tom Petty and the Heartbreakers", 4, 33, 87, 4.7, reviews2, false, genres2,
+                    Difficulty.INTERMEDIATE, measures2, true);
+
             // Creating Song List
             ArrayList<Song> songs = new ArrayList<>();
             songs.add(song1);

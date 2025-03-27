@@ -1,10 +1,14 @@
 /**
- * @author (name)
+ * @author liamnp
  */
 
 package com.model;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -28,6 +32,8 @@ public class Measure {
     private int timeSignatureTop;
     private int timeSignatureBottom;
     private ArrayList<Sound> notes;
+    private static final String[] STRING_NAMES = {"e", "B", "G", "D", "A", "E"};
+    private static final int BEAT_WIDTH = 5;
 
     /**
      * Constructs a {@code Measure} with a specified time signature and list of notes.
@@ -49,6 +55,64 @@ public class Measure {
         this.timeSignatureTop = 4;
         this.timeSignatureBottom = 4;
         this.notes = new ArrayList<Sound>();
+    }
+
+    public char[][] getFormattedMeasure() {
+        char[][] tabArray = formatArray();  // Initialize tab structure
+    
+        for (int i = 1; i <= 6; i++) {  // i = Guitar string number (1-6)
+            for (int j = 2; j < notes.size() + 2; j++) {  // j = Note position (start at 2)
+                Sound sound = notes.get(j - 2);  // Get the sound at this position
+                
+                if (sound instanceof Note) {
+                    Note note = (Note) sound;
+                    if (note.getString() == i) {
+                        tabArray[i - 1][j] = Character.forDigit(note.getFret(), 10);
+                    } else {
+                        tabArray[i - 1][j] = '-';
+                    }
+                } else if (sound instanceof Chord) {
+                    Chord currentChord = (Chord) sound;
+                    if (currentChord.getStrings().contains(i)) {
+                        for (Note note : currentChord.getNotes()) {
+                            if (note.getString() == i) {
+                                tabArray[i - 1][j] = Character.forDigit(note.getFret(), 10);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return tabArray;
+    }
+    
+
+    private char[][] formatArray() {
+        char[][] array = new char[6][notes.size()+2];
+        for (int i = 1; i <= 6; i++) {
+            array[i-1][0] = getLetter(i);
+            array[i-1][1] = '|';
+        }
+        return array;
+    }
+
+    private char getLetter(int i) {
+        switch(i) {
+            case 1:
+                return 'e';
+            case 2:
+                return 'B';
+            case 3:
+                return 'G';
+            case 4:
+                return 'D';
+            case 5:
+                return 'A';
+            case 6:
+                return 'E';
+            default:
+                return '?';
+        }
     }
 
     /**
@@ -162,7 +226,7 @@ public class Measure {
      * 
      * @param note A {@link Sound} object (Note or Chord) to add to the measure.
      */
-    public void addNote(Sound note) {
+    public void addSound(Sound note) {
         notes.add(note);
     }
 
@@ -174,15 +238,6 @@ public class Measure {
         for (Sound note : notes) {
             note.play();  // Assuming Sound class has a play() method
         }
-    }
-
-    /**
-     * Converts the measure to sheet music format using the {@link SheetMusicGenerator}.
-     * 
-     * @return A string representing the measure in sheet music format.
-     */
-    public String toSheetMusic() {
-        return SheetMusicGenerator.convertMeasureToSheet(this);
     }
 
     /**
@@ -211,4 +266,5 @@ public class Measure {
         }
         return types.substring(0, types.length() - 2) + "]"; // Remove last comma and space
     }
+    
 }

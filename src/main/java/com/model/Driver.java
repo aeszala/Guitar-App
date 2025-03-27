@@ -27,6 +27,7 @@ public class Driver {
      * @param args Command-line arguments (not used).
      */
     public static void main(String[] args) {
+        MusicAppFACADE app = new MusicAppFACADE();
         // Initialize song list and player
         Songlist songlist = Songlist.getInstance();
         
@@ -35,17 +36,23 @@ public class Driver {
         MusicPlayer player = new MusicPlayer();
 
         // Play the song directly by its title
-        // player.playSong("Moonlight Sonata");
+        app.playSong("I Won't Back Down");
 
         // Logging in as a user scenario
-        MusicAppFACADE app = new MusicAppFACADE();
         app.login("username1", "password1");
 
         // Creating new account scenario
         app.createAccount("John", "John2004", "ILoveCats123", "John2004@gmail.com", "What was the name of your first cat?", "Muffin");
     
         // convert music to sheet music
-        app.printSheetMusic("title1");
+<<<<<<< HEAD
+        // app.printSheetMusic("I Won't Back Down");
+=======
+        app.printSheetMusic("I Won't Back Down");
+        
+        // adds song "horses journey"
+        app.addSong( "A horses journey", "Fellicia", 0, 0, null, 0, null);
+>>>>>>> 2cc3c60904cea2687e9448e4a569d7c0a1424792
 
     }
 }

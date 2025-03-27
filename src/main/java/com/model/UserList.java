@@ -58,8 +58,9 @@ public class UserList {
         return user != null && user.login(user.getUsername(), password);
     }
 
-    public void saveUsers() {
-        System.out.println("Users saved successfully. (Implement file/database storage here)");
+    public static void saveUsers() {
+        DataWriter.saveUsers(users);
+        System.out.println("Users saved successfully.");
     }
 
     public void displayUsers() {

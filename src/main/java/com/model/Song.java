@@ -1,9 +1,11 @@
 /**
- * @author (name)
+ * @author liamnp
  */
 
 package com.model;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 import org.jfugue.player.Player;
@@ -244,6 +246,10 @@ public class Song {
         throw new UnsupportedOperationException("Unimplemented method 'add'");
     }
 
+    public void addMeasure(Measure measure) {
+        measures.add(measure);
+    }
+
     /**
      * Plays the song using a player, looping through each measure.
      * 
@@ -258,24 +264,6 @@ public class Song {
         }
 
         System.out.println("Song playback finished.");
-    }
-
-    public void printSheetMusic() {
-        if (title != null || title != "") {
-            StringBuilder sheetMusic = new StringBuilder();
-            sheetMusic.append("Sheet Music for: ").append(this.title).append("\n\n");
-        
-            for (Measure measure : this.getMeasures()) {
-                sheetMusic.append(SheetMusicGenerator.convertMeasureToSheet(measure)).append("\n");
-            }
-        
-            // Print to console
-            System.out.println(sheetMusic.toString());
-        
-            // Write to file
-            SheetMusicGenerator.writeSheetToFile(this.title + "_SheetMusic.txt", sheetMusic.toString());
-    
-        }
     }
 
     // toString method
