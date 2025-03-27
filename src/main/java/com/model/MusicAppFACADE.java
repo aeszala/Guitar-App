@@ -179,6 +179,7 @@ public class MusicAppFACADE {
         song.setRunLengthMin(runLengthMin);
         song.setRunLengthSec(runLengthSec);
         song.setTempo(tempo);
+        songList.addSong(title, artist, runLengthMin, runLengthSec, tempo, null, null, null);
     }
 
     /**

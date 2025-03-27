@@ -44,7 +44,7 @@ public class Driver {
         // convert music to sheet music
         app.printSheetMusic("I Won't Back Down");
         
-        // adds song
+        // adds song "horses journey"
         app.addSong( "A horses journey", "Fellicia", 0, 0, null, 0, null);
 
     }
