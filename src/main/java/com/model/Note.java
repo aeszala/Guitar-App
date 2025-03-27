@@ -33,7 +33,8 @@ public class Note extends Sound {
      * @param soundType The type of sound, which is always set to "note" for this class.
      */
     public Note(String type, double length, double pitch, int string, int fret) {
-        super(type, length);
+        this.type = type;
+        this.length = length;
         this.pitch = pitch;
         this.string = string;
         this.fret = fret;

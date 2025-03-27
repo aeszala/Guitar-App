@@ -326,6 +326,7 @@ public class DataLoader extends DataConstants {
                         int stringNumber = ((Long) soundJSON.get("string")).intValue();
                         int fret = ((Long) soundJSON.get("fret")).intValue();
                         Note newNote = new Note(type, length, pitch, stringNumber, fret);
+                        System.out.println(newNote);
                         sounds.add(newNote);
                     }
                 }
