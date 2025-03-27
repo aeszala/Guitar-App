@@ -29,8 +29,11 @@ public class Driver {
     public static void main(String[] args) {
         MusicAppFACADE app = new MusicAppFACADE();
         // Initialize song list and player
-        // Songlist songlist = app.getSonglistInstance();
-        // songlist.addMoonlightSonata();  // Ensures the song is added
+        Songlist songlist = Songlist.getInstance();
+        
+
+        // Create a MusicPlayer instance
+        MusicPlayer player = new MusicPlayer();
 
         // Play the song directly by its title
         app.playSong("I Won't Back Down");
@@ -42,10 +45,17 @@ public class Driver {
         app.createAccount("John", "John2004", "ILoveCats123", "John2004@gmail.com", "What was the name of your first cat?", "Muffin");
     
         // convert music to sheet music
+<<<<<<< HEAD
         app.printSheetMusic("I Won't Back Down");
         
         // adds song "horses journey"
         app.addSong("A horses journey", "Fellicia", 0, 0, 0, null, null, null);;
+=======
+        app.printTabSheet("I Won't Back Down");
+        
+        // adds song "horses journey"
+        // app.addSong( "A horses journey", "Fellicia", 0, 0, null, 0, null);
+>>>>>>> 61c87e32c1de8fb17311c15ae904bcfcd3f1c854
 
     }
 }

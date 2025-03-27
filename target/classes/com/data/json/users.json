@@ -2,22 +2,22 @@
   {
     "password": "password1",
     "completedLessons": [
-      "bc424a81-80df-478a-946c-a10f339df45a"
+      "847f2120-37dd-4af5-99a2-60a91559f886"
     ],
     "securityQuestion": "Question1",
     "securityAnswer": "Answer1",
     "mySongs": [
-      "631b2d75-d3d7-4b38-a5bb-1531b4cf65bf"
+      "d4ce62c4-18db-4603-a778-19759014b48f"
     ],
     "name": "name1",
     "completedSongs": [
-      "1740d4e5-1eca-42d7-b1c6-fa72b1e0f7bf"
+      "720e5393-8d60-45c3-9b94-5d444b384b89"
     ],
-    "id": "ddb7a4ce-5754-4527-88b0-0d9ff00cbb25",
+    "id": "50d3ae1d-813b-4bf6-94b3-0f5a94fd7458",
     "email": "email1",
-    "username": "username1",
+    "username": "ffredrickson",
     "favoriteSongs": [
-      "631b2d75-d3d7-4b38-a5bb-1531b4cf65bf"
+      "d4ce62c4-18db-4603-a778-19759014b48f"
     ]
   }
 ]

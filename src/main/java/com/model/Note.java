@@ -25,7 +25,7 @@ public class Note extends Sound {
     /**
      * Constructor to create a {@code Note} object with the specified properties.
      * 
-     * @param type The type of the note (e.g., "quarter", "eighth").
+     * @param type The type of the note (e.g., "A", "C").
      * @param length The length of the note (duration).
      * @param pitch The pitch of the note in Hertz.
      * @param string The string number on the instrument (e.g., 1 for the highest string).
@@ -33,7 +33,8 @@ public class Note extends Sound {
      * @param soundType The type of sound, which is always set to "note" for this class.
      */
     public Note(String type, double length, double pitch, int string, int fret) {
-        super(type, length);
+        this.type = type;
+        this.length = length;
         this.pitch = pitch;
         this.string = string;
         this.fret = fret;
@@ -50,7 +51,7 @@ public class Note extends Sound {
     /**
      * Gets the type of the note.
      * 
-     * @return The type of the note (e.g., "quarter", "eighth").
+     * @return The type of the note (e.g., "A", "C").
      */
     public String getType() {
         return type;
@@ -59,7 +60,7 @@ public class Note extends Sound {
     /**
      * Sets the type of the note.
      * 
-     * @param type The type to set for the note (e.g., "quarter", "eighth").
+     * @param type The type to set for the note (e.g., "A", "C").
      */
     public void setType(String type) {
         this.type = type;

@@ -133,6 +133,13 @@ public class MusicAppFACADE {
         }
     }
 
+    public void printTabSheet(String songTitle) {
+        if (songList == null)
+            songList = Songlist.getInstance();
+        Song song = songList.getSong(songTitle);
+        song.printAndSaveSheetMusic();
+    }
+
     /**
      * Logs out the current user.
      */
