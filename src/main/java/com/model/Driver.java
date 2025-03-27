@@ -29,8 +29,11 @@ public class Driver {
     public static void main(String[] args) {
         MusicAppFACADE app = new MusicAppFACADE();
         // Initialize song list and player
-        // Songlist songlist = app.getSonglistInstance();
-        // songlist.addMoonlightSonata();  // Ensures the song is added
+        Songlist songlist = Songlist.getInstance();
+        
+
+        // Create a MusicPlayer instance
+        MusicPlayer player = new MusicPlayer();
 
         // Play the song directly by its title
         // app.playSong("I Won't Back Down");
