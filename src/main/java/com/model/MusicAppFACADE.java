@@ -1,5 +1,5 @@
 ﻿/**
- * @author (name)
+ * @author Everyone
  */
 
 package com.model;
