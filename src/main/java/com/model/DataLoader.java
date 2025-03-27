@@ -313,7 +313,7 @@ public class DataLoader extends DataConstants {
                             int stringNumber = ((Long) noteJSON.get("string")).intValue();
                             int fret = ((Long) noteJSON.get("fret")).intValue();
     
-                            chordNotes.add(new Note(noteType, length, pitch, stringNumber, fret, "note"));
+                            chordNotes.add(new Note(noteType, length, pitch, stringNumber, fret));
                         }
                         // Create a Chord object and add to sounds list
                         sounds.add(new Chord(type, chordNotes, "chord"));
@@ -325,7 +325,7 @@ public class DataLoader extends DataConstants {
                         double pitch = ((Number) soundJSON.get("pitch")).doubleValue();
                         int stringNumber = ((Long) soundJSON.get("string")).intValue();
                         int fret = ((Long) soundJSON.get("fret")).intValue();
-                        Note newNote = new Note(type, length, pitch, stringNumber, fret, "note");
+                        Note newNote = new Note(type, length, pitch, stringNumber, fret);
                         sounds.add(newNote);
                     }
                 }

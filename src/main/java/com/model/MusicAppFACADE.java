@@ -269,9 +269,8 @@ public class MusicAppFACADE {
         student.addAssignment(new ComposeAssignment(title, teacherComment, dueDate, song, tempo, instructions));
     }
 
-    public void printSheetMusic(String songTitle) {
+    public void printSheetMusic(String songTitle, String fileName) {
         Song printSong = Songlist.getSong(songTitle);
-        if (printSong != null) printSong.printSheetMusic();
     }
     
     public Songlist getSonglistInstance() {

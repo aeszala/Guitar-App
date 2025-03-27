@@ -59,6 +59,14 @@ public class Chord extends Sound {
     return new Tab(tabRepresentation.toString());
   }
 
+  public ArrayList<Integer> getStrings() {
+    ArrayList<Integer> strings = new ArrayList<Integer>();
+    for (Note note : notes) {
+      strings.add(note.getString());
+    }
+    return strings;
+  }
+
   /**
    * Plays the chord using the JFugue music player.
    * Each note in the chord is played simultaneously.
