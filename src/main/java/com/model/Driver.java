@@ -45,7 +45,7 @@ public class Driver {
         app.findSongs("Tom Petty");
         app.displaySongs();
         app.login("FFredrickson", "password1");
-        // app.playSong("Free Fallin");
+        app.playSong("Free Fallin");
         app.printTabSheet("Free Fallin");
 
         // Scenario 3
