@@ -174,10 +174,8 @@ public class DataWriter {
             Chord chord1 = new Chord("Major", notes1, "chord");
 
             // Creating Songs
-            Song song1 = new Song(UUID.randomUUID(), "I Won't Back Down", "Tom Petty", 2, 59, 115, 4.8, reviews1, false,
-                    genres1, Difficulty.BEGINNER, measures1, true);
-            Song song2 = new Song(UUID.randomUUID(), "title2", "Tom Petty and the Heartbreakers", 4, 33, 87, 4.7, reviews2, false, genres2,
-                    Difficulty.INTERMEDIATE, measures2, true);
+            Song song1 = new Song(UUID.randomUUID(), "I Won't Back Down", "Tom Petty", 2, 59, 115, 4.8, reviews1, false, genres1, Difficulty.BEGINNER, measures1, true);
+            Song song2 = new Song(UUID.randomUUID(), "Mary Jane's Last Dance", "Tom Petty and the Heartbreakers", 4, 33, 87, 4.7, reviews2, false, genres2, Difficulty.INTERMEDIATE, measures2, true);
 
             // Creating Song List
             ArrayList<Song> songs = new ArrayList<>();
