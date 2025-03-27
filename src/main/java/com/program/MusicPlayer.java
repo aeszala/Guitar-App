@@ -78,7 +78,7 @@ public class MusicPlayer {
         MusicPlayer player = new MusicPlayer();
 
         // Define a song title to search and play
-        String songTitle = "Mary Jane's Last Dance"; // Replace this with the actual song title you want to play
+        String songTitle = "Free Fallin"; // Replace this with the actual song title you want to play
 
         // Play the song
         player.playSong(songTitle);
