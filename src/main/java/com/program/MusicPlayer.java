@@ -1,5 +1,6 @@
 ﻿package com.program;
 
+
 import org.jfugue.player.Player;
 import org.jfugue.pattern.Pattern;
 import com.model.*;
@@ -9,7 +10,7 @@ import com.model.*;
  * It retrieves songs from the Songlist and constructs musical patterns to be played.
  */
 public class MusicPlayer {
-    private static Player player;
+    private Player player;
 
     /**
      * Constructs a MusicPlayer object and initializes the JFugue Player.
@@ -23,9 +24,7 @@ public class MusicPlayer {
      *
      * @param songTitle The title of the song to play.
      */
-    public static void playSong(String songTitle) {
-        if (player == null)
-            player = new Player();
+    public void playSong(String songTitle) {
         // Retrieve the Songlist instance
         Songlist songlist = Songlist.getInstance();
 

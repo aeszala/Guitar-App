@@ -36,7 +36,7 @@ public class Driver {
         MusicPlayer player = new MusicPlayer();
 
         // Play the song directly by its title
-        // app.playSong("I Won't Back Down");
+        app.playSong("I Won't Back Down");
 
         // Logging in as a user scenario
         app.login("username1", "password1");
