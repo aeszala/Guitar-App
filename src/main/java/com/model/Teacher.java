@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.UUID;
 public class Teacher extends User{
     ArrayList<Student> students;
+    public Assignment assignment;
 
     // Existing teacher constructor
         public Teacher(UUID id, String username, String password, String email, String name, 
@@ -63,8 +64,8 @@ public class Teacher extends User{
         assignment.setGrade(Grade);
     }
 
-    public void editAssignment(Assignment assignment){
-
+    public void editAssignment(Assignment assignment, String title){
+        assignment.setTitle(title);
     }
 
     public void comment(Assignment assignment, Student student, String comment, String role){
@@ -74,6 +75,4 @@ public class Teacher extends User{
     public void getStudents(ArrayList<Student> students){
         this.students = students;
     }
-
-    
 }
