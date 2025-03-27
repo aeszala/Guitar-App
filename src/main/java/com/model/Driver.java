@@ -48,6 +48,7 @@ public class Driver {
         app.playSong("Free Fallin");
         app.printTabSheet("Free Fallin");
 
+<<<<<<< HEAD
         // Scenario 3
         app.login("FFredrickson", "password1");
         app.createSong("A Horse's Journey");
@@ -61,6 +62,23 @@ public class Driver {
         app.addNote("B4", 0.25, 493.88, 6, 4);
         app.playSong("A Horse's Journey");
         app.logOut();
+=======
+        // Creating new account scenario
+        app.createAccount("John", "John2004", "ILoveCats123", "John2004@gmail.com", "What was the name of your first cat?", "Muffin");
+    
+        // convert music to sheet music
+<<<<<<< HEAD
+        app.printSheetMusic("I Won't Back Down");
+        
+        // adds song "horses journey"
+        app.addSong("A horses journey", "Fellicia", 0, 0, 0, null, null, null);;
+=======
+        app.printTabSheet("I Won't Back Down");
+        
+        // adds song "horses journey"
+        // app.addSong( "A horses journey", "Fellicia", 0, 0, null, 0, null);
+>>>>>>> 61c87e32c1de8fb17311c15ae904bcfcd3f1c854
+>>>>>>> 5c539fb95696aa8db67988eef74e9b8fc545878d
 
     }
 }

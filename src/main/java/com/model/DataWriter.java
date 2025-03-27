@@ -130,6 +130,10 @@ public class DataWriter {
 
             // Notes and Chords for Song 1 - "I Won't Back Down"
             ArrayList<Note> notes1 = new ArrayList<>();
+<<<<<<< HEAD
+            notes1.add(new Note("C", 1.0, 440.0, 3, 5));
+            notes1.add(new Note("D", 0.5, 466.16, 4, 7));
+=======
             notes1.add(new Note("G", 1.0, 98.0, 6, 3));
             notes1.add(new Note("D", 1.0, 146.8, 5, 5));
             notes1.add(new Note("C", 1.0, 130.8, 5, 3));
@@ -208,6 +212,7 @@ public class DataWriter {
             measures3.add(new Measure(4, 4, new ArrayList<>(notes9)));
             measures3.add(new Measure(4, 4, new ArrayList<>(notes10)));
             measures3.add(new Measure(4, 4, new ArrayList<>(notes11)));
+>>>>>>> 61c87e32c1de8fb17311c15ae904bcfcd3f1c854
 
             Chord chord1 = new Chord("Major", notes1, "chord");
 
