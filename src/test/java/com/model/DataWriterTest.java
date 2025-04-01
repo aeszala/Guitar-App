@@ -71,7 +71,7 @@ class DataWriterTest {
         DataWriter.saveUsers(userList);
 
         // Check if the file exists after writing
-        File file = new File("src\\main\\java\\com\\data\\json\\users.json"); // Adjust path if needed
+        File file = new File("src\\main\\java\\com\\data\\json\\users.json");
         assertTrue("File should exist after writing users", file.exists());
     }
 
@@ -134,7 +134,7 @@ class DataWriterTest {
         DataWriter.saveSongs(songList);
 
         // Check if the song file exists after writing
-        File file = new File("src\\main\\java\\com\\data\\json\\songs.json"); // Adjust path if needed
+        File file = new File("src\\main\\java\\com\\data\\json\\songs.json");
         assertTrue("File should exist after writing songs", file.exists());
     }
 
@@ -215,7 +215,7 @@ class DataWriterTest {
         DataWriter.saveLessons(lessonList);
 
         // Check if the lesson file exists after writing
-        File file = new File("src\\main\\java\\com\\data\\json\\Lesson.json"); // Adjust path if needed
+        File file = new File("src\\main\\java\\com\\data\\json\\Lesson.json");
         assertTrue("File should exist after writing lessons", file.exists());
     }
 }
