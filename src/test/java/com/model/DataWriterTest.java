@@ -73,7 +73,7 @@ class DataWriterTest {
         DataWriter.saveUsers(userList);
         userList = DataLoader.getUsers();
 
-        assertNull(DataLoader.getUsers().get(0).getUsername());
+        assertNull(userList.get(0).getUsername());
     }
 
     @Test
@@ -147,7 +147,7 @@ class DataWriterTest {
         DataWriter.saveSongs(songList);
         songList = DataLoader.getSongs();
 
-        assertNull(DataLoader.getSongs().get(0).getTitle());
+        assertNull(songList.get(0).getTitle());
     }
 
     @Test
