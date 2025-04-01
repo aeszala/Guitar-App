@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.experimental.theories.suppliers.TestedOn;
+import org.junit.Test;
 
 class DataWriterTest {
     private ArrayList<User> userList;
@@ -24,20 +24,20 @@ class DataWriterTest {
         DataWriter.saveUsers(userList);
     }
 
-    @org.junit.Test
+    @Test
     void testWritingZeroUsers() {
         userList = DataLoader.getUsers();
         assertEquals(0, userList.size());
     }
 
-    @org.junit.Test
+    @Test
     void testWritingOneUser() {
         userList.add(new User("asmith", "password1", "asmith@example.com", "Amy Smith", "Question", "Answer"));
         DataWriter.saveUsers(userList);
         assertEquals("asmith", DataLoader.getUsers().get(0).getUsername());
     }
 
-    @org.junit.Test
+    @Test
     void testWritingFiveUsers() {
         userList.add(new User("asmith", "password1", "asmith@example.com", "Amy Smith", "Question1", "Answer1"));
         userList.add(new User("bsmith", "password2", "bsmith@example.com", "Bob Smith", "Question2", "Answer2"));
@@ -48,14 +48,14 @@ class DataWriterTest {
         assertEquals("esmith", DataLoader.getUsers().get(4).getUsername());
     }
 
-    @org.junit.Test
+    @Test
     void testWritingEmptyUser() {
         userList.add(new User("", "", "", "", "", ""));
         DataWriter.saveUsers(userList);
         assertEquals("", DataLoader.getUsers().get(0).getUsername());
     }
 
-    @org.junit.Test
+    @Test
     void testWritingNullUser() {
         User nullUser = new User(null, null, null, null, null, null);
         userList.add(nullUser);
