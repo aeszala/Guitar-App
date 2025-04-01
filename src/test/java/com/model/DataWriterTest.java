@@ -115,4 +115,72 @@ class DataWriterTest {
         DataWriter.saveSongs(songList);
         assertNull(DataLoader.getSongs().get(0).getTitle());
     }
+
+    private ArrayList<Lesson> lessonList;
+
+    @Before
+    public void setupLesson() {
+        lessonList = new ArrayList<>();
+        DataWriter.saveLessons(lessonList);
+    }
+
+    @After
+    public void tearDownLesson() {
+        lessonList.clear();
+        DataWriter.saveLessons(lessonList);
+    }
+
+    @Test
+    void testWritingZeroLessons() {
+        lessonList = DataLoader.getLessons();
+        assertEquals(0, lessonList.size());
+    }
+
+    @Test
+    public void testWritingOneLesson() {
+        ArrayList<Song> songList = new ArrayList<>();
+        ArrayList<Assignment> assignmentList = new ArrayList<>();
+
+        lessonList.add(new Lesson("lesson1", songList, "topic1", assignmentList));
+        DataWriter.saveLessons(lessonList);
+
+        lessonList = DataLoader.getLessons();
+        assertEquals("lesson1", lessonList.get(0).getTitle());
+    }
+
+    @Test
+    public void testWritingFiveLessons() {
+        ArrayList<Song> songList = new ArrayList<>();
+        ArrayList<Assignment> assignmentList = new ArrayList<>();
+
+        lessonList.add(new Lesson("lesson1", songList, "topic1", assignmentList));
+        lessonList.add(new Lesson("lesson2", songList, "topic2", assignmentList));
+        lessonList.add(new Lesson("lesson3", songList, "topic3", assignmentList));
+        lessonList.add(new Lesson("lesson4", songList, "topic4", assignmentList));
+        lessonList.add(new Lesson("lesson5", songList, "topic5", assignmentList));
+
+        DataWriter.saveLessons(lessonList);
+        lessonList = DataLoader.getLessons();
+
+        assertEquals(5, lessonList.size());
+        assertEquals("lesson5", lessonList.get(4).getTitle());
+    }
+
+    @Test
+    public void testWritingEmptyLesson() {
+        lessonList.add(new Lesson("null", new ArrayList<Song>(), "null", new ArrayList<Assignment>()));
+        DataWriter.saveLessons(lessonList);
+
+        lessonList = DataLoader.getLessons();
+        assertEquals("null", lessonList.get(0).getTitle());  // Expect "null", not ""
+    }
+
+    @Test
+    public void testWritingNullLesson() {
+        lessonList.add(new Lesson(null, null, null, null));
+        DataWriter.saveLessons(lessonList);
+
+        lessonList = DataLoader.getLessons();
+        assertNull(lessonList.get(0).getTitle());
+    }
 }
