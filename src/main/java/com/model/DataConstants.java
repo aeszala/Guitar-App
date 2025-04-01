@@ -24,7 +24,7 @@ public abstract class DataConstants {
 
     /** Path to the JSON file storing user data. */
     protected static final String USER_FILE_NAME = "src/main/java/com/data/json/users.json";
-    protected static final String USER_FILE_NAME_JSON = "src/test/java/com/data/json/users.json";
+    protected static final String USER_FILE_NAME_JSON = "/data/json/users.json";
 
     /** JSON key for the user ID. */
     protected static final String USER_ID = "id";
@@ -63,7 +63,7 @@ public abstract class DataConstants {
 
     /** Path to the JSON file storing song data. */
     protected static final String SONG_FILE_NAME = "src/main/java/com/data/json/songs.json";
-    protected static final String SONG_FILE_NAME_JSON = "src/test/java/com/data/json/songs.json";
+    protected static final String SONG_FILE_NAME_JSON = "/data/json/songs.json";
 
     /** JSON key for the song ID. */
     protected static final String SONG_ID = "id";
@@ -147,7 +147,7 @@ public abstract class DataConstants {
 
     /** Path to the JSON file storing lesson data. */
     protected static final String LESSON_FILE_NAME = "src/main/java/com/data/json/Lesson.json";
-    protected static final String LESSON_FILE_NAME_JSON = "src/test/java/com/data/json/Lesson.json";
+    protected static final String LESSON_FILE_NAME_JSON = "/data/json/Lesson.json";
 
     /** JSON key for the lesson title. */
     protected static final String LESSON_TITLE = "title";
