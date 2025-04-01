@@ -13,6 +13,11 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// for each method have 4-5 tests
+
+/**
+ * @author aeszala
+ */
 public class DataLoaderTest {
   
 	@BeforeClass
@@ -34,5 +39,38 @@ public class DataLoaderTest {
 	public void tearDown() {
 		//runs after each test
 	}
+
+    @Test
+    public void testGetSongsFromUUIDS() {
+
+    }
+
+    @Test void testGetLessonsFromUUIDS() {
+
+    }
+
+    @Test void testFindSongById() {
+
+    }
+
+    @Test void testFindLessonById() {
+
+    }
+
+    @Test void testCreateReview() {
+
+    }
+
+    @Test void testCreateMeasure() {
+
+    }
+
+    @Test void testCreateAssignment() {
+
+    }
+
+    @Test void testCreateDate() {
+
+    }
 
 }
