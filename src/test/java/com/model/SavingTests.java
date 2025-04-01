@@ -1,3 +1,5 @@
-﻿public class SavingTests {
+﻿package com.model;
+
+public class SavingTests {
     
 }
