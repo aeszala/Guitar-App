@@ -13,13 +13,13 @@ class DataWriterTest {
     private ArrayList<User> userList;
 
     @Before
-    public void setup() {
+    public void setupUser() {
         userList = new ArrayList<>();
         DataWriter.saveUsers(userList);
     }
 
     @After
-    public void tearDown() {
+    public void tearDownUser() {
         userList.clear();
         DataWriter.saveUsers(userList);
     }
@@ -61,5 +61,58 @@ class DataWriterTest {
         userList.add(nullUser);
         DataWriter.saveUsers(userList);
         assertNull(DataLoader.getUsers().get(0).getUsername());
+    }
+
+    private ArrayList<Song> songList;
+
+    @Before
+    public void setupSong() {
+        songList = new ArrayList<>();
+        DataWriter.saveSongs(songList);
+    }
+
+    @After
+    public void tearDownSong() {
+        songList.clear();
+        DataWriter.saveSongs(songList);
+    }
+
+    @Test
+    void testWritingZeroSongs() {
+        songList = DataLoader.getSongs();
+        assertEquals(0, songList.size());
+    }
+
+    @Test
+    void testWritingOneSong() {
+        songList.add(new Song("title1", "artist1"));
+        DataWriter.saveSongs(songList);
+        assertEquals("asmith", DataLoader.getSongs().get(0).getTitle());
+    }
+
+    @Test
+    void testWritingFiveSongs() {
+        songList.add(new Song("title1", "artist1"));
+        songList.add(new Song("title2", "artist2"));
+        songList.add(new Song("title3", "artist3"));
+        songList.add(new Song("title4", "artist4"));
+        songList.add(new Song("title5", "artist5"));
+        DataWriter.saveSongs(songList);
+        assertEquals("title5", DataLoader.getSongs().get(4).getTitle());
+    }
+
+    @Test
+    void testWritingEmptySong() {
+        songList.add(new Song("", ""));
+        DataWriter.saveSongs(songList);
+        assertEquals("", DataLoader.getSongs().get(0).getTitle());
+    }
+
+    @Test
+    void testWritingNullSong() {
+        Song nullSong = new Song(null, null);
+        songList.add(nullSong);
+        DataWriter.saveSongs(songList);
+        assertNull(DataLoader.getSongs().get(0).getTitle());
     }
 }
