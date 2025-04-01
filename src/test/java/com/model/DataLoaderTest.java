@@ -41,6 +41,14 @@ public class DataLoaderTest {
 	}
 
     @Test
+    public void testGetSongsFromUUIDSValidSong() {
+
+    }
+    @Test
+    public void testGetSongsFromUUIDSInvalidSong() {
+
+    }
+    @Test
     public void testGetSongsFromUUIDS() {
 
     }
