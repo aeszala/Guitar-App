@@ -2,8 +2,10 @@ package com.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.io.File;
 
 import org.junit.After;
 import org.junit.Before;
@@ -63,6 +65,16 @@ class DataWriterTest {
         assertNull(DataLoader.getUsers().get(0).getUsername());
     }
 
+    @Test
+    public void testWriteUsersToFile() {
+        userList.add(new User("testuser", "password123", "testuser@example.com", "Test User", "Test Question", "Test Answer"));
+        DataWriter.saveUsers(userList);
+
+        // Check if the file exists after writing
+        File file = new File("src\\main\\java\\com\\data\\json\\users.json"); // Adjust path if needed
+        assertTrue("File should exist after writing users", file.exists());
+    }
+
     private ArrayList<Song> songList;
 
     @Before
@@ -114,6 +126,16 @@ class DataWriterTest {
         songList.add(nullSong);
         DataWriter.saveSongs(songList);
         assertNull(DataLoader.getSongs().get(0).getTitle());
+    }
+
+    @Test
+    public void testWriteSongsToFile() {
+        songList.add(new Song("testTitle", "testArtist"));
+        DataWriter.saveSongs(songList);
+
+        // Check if the song file exists after writing
+        File file = new File("src\\main\\java\\com\\data\\json\\songs.json"); // Adjust path if needed
+        assertTrue("File should exist after writing songs", file.exists());
     }
 
     private ArrayList<Lesson> lessonList;
@@ -182,5 +204,18 @@ class DataWriterTest {
 
         lessonList = DataLoader.getLessons();
         assertNull(lessonList.get(0).getTitle());
+    }
+
+    @Test
+    public void testWriteLessonsToFile() {
+        ArrayList<Song> songList = new ArrayList<>();
+        ArrayList<Assignment> assignmentList = new ArrayList<>();
+    
+        lessonList.add(new Lesson("testLesson", songList, "testTopic", assignmentList));
+        DataWriter.saveLessons(lessonList);
+
+        // Check if the lesson file exists after writing
+        File file = new File("src\\main\\java\\com\\data\\json\\Lesson.json"); // Adjust path if needed
+        assertTrue("File should exist after writing lessons", file.exists());
     }
 }
