@@ -1,4 +1,8 @@
-﻿package com.program;
+﻿/**
+ * @author Tre
+ */
+
+package com.program;
 
 
 import org.jfugue.player.Player;

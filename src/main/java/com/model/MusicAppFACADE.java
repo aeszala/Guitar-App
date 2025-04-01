@@ -1,5 +1,5 @@
 ﻿/**
- * @author (name)
+ * @author Everyone
  */
 
 package com.model;
@@ -49,6 +49,8 @@ public class MusicAppFACADE {
     private Assignment assignment;
     private UserList userList = UserList.getInstance();
     private Songlist songList = Songlist.getInstance();
+    private ArrayList<Song> songs = new ArrayList<Song>();
+    private Measure measure;
 
     /**
      * Constructor for MusicAppFACADE.
@@ -65,10 +67,50 @@ public class MusicAppFACADE {
      * @param keyword The keyword used to search for songs.
      * @return A list of {@link Song} objects that match the keyword.
      */
-    public ArrayList<Song> findSongs(String keyword) {
+    public void findSongs(String keyword) {
         if (songList == null)
             songList = Songlist.getInstance();
-        return songList.getSongs(keyword);
+        songs = songList.getSongs(keyword);
+    }
+
+    public void displaySongs() {
+        if (songs.isEmpty() || songs == null)
+            songs = Songlist.getInstance().getSongs();
+        int i = 1;
+        for (Song song : songs) {
+            System.out.println(i + ". " + song.getTitle() + " by " + song.getArtist());
+            i++;
+        }
+    }
+
+    public void saveSong() {
+        if (measure != null)
+            saveMeasure();
+        Songlist.addSong(song);
+        Songlist.saveSongs();
+    }
+
+    public void save() {
+        if (measure != null)
+        saveMeasure();
+        Songlist.saveSongs();
+        UserList.saveUsers();
+    }
+
+    public void createMeasure() {
+        if (measure != null)
+            saveMeasure();
+        measure = new Measure();
+        System.out.println("Measure created.");
+    }
+
+    public void saveMeasure() {
+        song.addMeasure(measure);
+        System.out.println("Measure added to song!");
+    }
+
+    public void addNote(String type, double length, double pitch, int string, int fret) {
+        measure.addSound(new Note(type, length, pitch, string, fret));
     }
 
     /**
@@ -151,6 +193,10 @@ public class MusicAppFACADE {
         System.out.println("Logout successful!");
     }
 
+    public void createSong(String title) {
+        song = new Song(title, user.getName());
+    }
+
     /**
      * Retrieves the favorite songs of the current user.
      * 
@@ -180,7 +226,8 @@ public class MusicAppFACADE {
      * @param tempo       The tempo of the song.
      * @param measure     The measure of the song.
      */
-    public void addSong(String title, String artist, int runLengthMin, int runLengthSec, String Lyrics, int tempo, Measure measure) {
+    public void addSong(String title, String artist, int runLengthMin, int runLengthSec,int tempo, ArrayList<Genre> genres, Difficulty difficulty,
+    ArrayList<Measure> measures) {
         song.setTitle(title);
         song.setArtist(artist);
         song.setRunLengthMin(runLengthMin);
@@ -289,7 +336,8 @@ public class MusicAppFACADE {
     }
 
     public void playSong(String title) {
-        MusicPlayer.playSong(title);
+        MusicPlayer musicPlayer = new MusicPlayer();
+        musicPlayer.playSong(title);
     }
     
     public void viewLesson(){

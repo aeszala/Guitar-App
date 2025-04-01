@@ -87,6 +87,18 @@ public class Songlist {
         return result;
     }
 
+    public void displaySongs(ArrayList<Song> songs) {
+        if (songs != null) {
+            for (Song song : songs) {
+                System.out.println(song);
+            }
+        }
+    }
+
+    public static void addSong (Song song) {
+        songs.add(song);
+    }
+
     /**
      * Returns the complete list of songs available in the system.
      *

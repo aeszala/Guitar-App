@@ -1,5 +1,5 @@
 ﻿/**
- * @author (name)
+ * @author aeszala
  */
 
 package com.model;
@@ -29,26 +29,40 @@ public class Driver {
     public static void main(String[] args) {
         MusicAppFACADE app = new MusicAppFACADE();
         // Initialize song list and player
-        Songlist songlist = Songlist.getInstance();
-        
 
-        // Create a MusicPlayer instance
-        MusicPlayer player = new MusicPlayer();
+        // Scenario 1
+        app.createAccount("Fred Fredrickson", "FFredrickson", "I-love-dogs342", "ffredrickson@gmail.com", "What was the name of your first dog?", "Fluffy");
+        app.createAccount("Fred Fredrickson", "FFred", "I-love-dogs342", "ffredrickson@gmail.com", "What was the name of your first dog?", "Fluffy");
+        app.logOut();
+        app.login("FFred", "I-love-dogs342");
 
-        // Play the song directly by its title
-        app.playSong("I Won't Back Down");
+        // Scenario 2
+        app.findSongs("Tom Petty");
+        app.displaySongs();
+        app.login("FFredrickson", "password1");
+        app.playSong("Free Fallin");
+        app.printTabSheet("Free Fallin");
 
-        // Logging in as a user scenario
-        app.login("username1", "password1");
+        // Scenario 3
+        app.login("FFredrickson", "password1");
+        app.createSong("A Horse's Journey");
+        app.createMeasure();
+        app.addNote("C5", 1.0, 523.25, 1, 3);
+        app.addNote("D5", 0.5, 587.33, 2, 5);
+        app.addNote("E5", 0.25, 659.25, 3, 7);
+        app.createMeasure();
+        app.addNote("G4", 1.0, 392.00, 4, 0);
+        app.addNote("A4", 0.5, 440.00, 5, 2);
+        app.addNote("B4", 0.25, 493.88, 6, 4);
+        app.saveSong();
+        app.save();
+        app.playSong("A Horse's Journey");
+        app.logOut();
 
-        // Creating new account scenario
-        app.createAccount("John", "John2004", "ILoveCats123", "John2004@gmail.com", "What was the name of your first cat?", "Muffin");
-    
-        // convert music to sheet music
-        app.printTabSheet("I Won't Back Down");
-        
-        // adds song "horses journey"
-        // app.addSong( "A horses journey", "Fellicia", 0, 0, null, 0, null);
+        // Scenario 4
+        app.login("FFred", "I-love-dogs342");
+        app.findSongs("A Horse's Journey");
+        app.playSong("A Horse's Journey");
 
     }
 }
