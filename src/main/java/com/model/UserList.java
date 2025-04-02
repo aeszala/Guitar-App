@@ -58,10 +58,10 @@
      // Edit an existing user's details
      public void editUser(User user, String username, String name, String password, String email) {
          if (user != null) {
-             user = getUser(user.getUsername()); // Get user by their current username
-             if (user != null) {
-                 // Update user details
-                 user = new User(username, password, email, name, user.getSecurityQuestion(), user.getSecurityAnswer());
+             user.setUsername(username)
+             user.setName(name)
+             user.setPassword(password)
+             user.setEmail(email)
                  System.out.println("User details updated successfully.");
              }
          } else {
