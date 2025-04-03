@@ -19,65 +19,206 @@ import org.junit.Test;
  * @author aeszala
  */
 public class DataLoaderTest {
-  
-	@BeforeClass
-	public void oneTimeSetup() {
-		
-	}
-	
-	@AfterClass
-	public void oneTimeTearDown() {
-		
-	}
-	
-	@Before
-	public void setup() {
-		//runs before each test
-	}
-	
-	@After
-	public void tearDown() {
-		//runs after each test
-	}
+
+    @BeforeClass
+    public void oneTimeSetup() {
+
+    }
+
+    @AfterClass
+    public void oneTimeTearDown() {
+
+    }
+
+    @Before
+    public void setup() {
+        // runs before each test
+    }
+
+    @After
+    public void tearDown() {
+        // runs after each test
+    }
+
+
+    // GetSongsFromUUIDs test
+    @Test
+    public void testGetSongsFromUUIDsValidSongsValid() {
+        assertTrue(true);
+    }
 
     @Test
-    public void testGetSongsFromUUIDSValidSong() {
+    public void testGetSongsFromUUIDsInvalidSongsOnly() {
+
+    }
+
+    @Test
+    public void testGetSongsFromUUIDsSomeValid() {
+
+    }
+
+    @Test
+    public void testGetSongsFromUUIDsEmptyList() {
+
+    }
+
+    @Test
+    public void testGetSongsFromUUIDsContainsNull() {
+
+    }
+
+    //getLessonsFromUUIDs tests
+    @Test
+    public void testGetLessonsFromUUIDsValidSongsValid() {
+
+    }
+
+    @Test
+    public void testGetLessonsFromUUIDsInvalidSongsOnly() {
+
+    }
+
+    @Test
+    public void testGetLessonsFromUUIDsSomeValid() {
+
+    }
+
+    @Test
+    public void testGetLessonsFromUUIDsEmptyList() {
+
+    }
+
+    @Test
+    public void testGetLessonsFromUUIDsContainsNull() {
+
+    }
+
+
+    //findSongById tests
+    @Test
+    void testFindSongByIdValidSong() {
+
+    }
+
+    @Test
+    void testFindSongByIdInvalidSong() {
+
+    }
+
+    @Test
+    void testFindSongByIdNull() {
+
+    }
+
+    @Test
+    void testFindSongById() {
+
+    }
+
+
+    // findLessonById tests
+    @Test
+    void testFindLessonById() {
+
+    }
+
+    // createReview tests
+    @Test
+    void testCreateReviewValidString() {
+
+    }
+
+    @Test
+    void testCreateReviewInvalidFormat() {
+
+    }
+
+    @Test
+    void testCreateReviewEmptyString() {
+
+    }
+
+    @Test
+    void testCreateReviewNullString() {
 
     }
     @Test
-    public void testGetSongsFromUUIDSInvalidSong() {
+    void testCreateReviewMissingContent() {
+
+    }
+
+    // createMeasure tests
+    @Test
+    void testCreateMeasureValidString() {
+
+    }
+
+    @Test
+    void testCreateMeasureInvalidFormat() {
+
+    }
+
+    @Test
+    void testCreateMeasureEmptyString() {
+
+    }
+
+    @Test
+    void testCreateMeasureNullString() {
 
     }
     @Test
-    public void testGetSongsFromUUIDS() {
+    void testCreateMeasureMissingContent() {
 
     }
 
-    @Test void testGetLessonsFromUUIDS() {
+    // createAssignment tests
+    @Test
+    void testCreateAssignmentValidString() {
 
     }
 
-    @Test void testFindSongById() {
+    @Test
+    void testCreateAssignmentInvalidFormat() {
 
     }
 
-    @Test void testFindLessonById() {
+    @Test
+    void testCreateAssignmentEmptyString() {
 
     }
 
-    @Test void testCreateReview() {
+    @Test
+    void testCreatsAssignmentNullString() {
+
+    }
+    @Test
+    void testCreateAssignmentMissingContent() {
 
     }
 
-    @Test void testCreateMeasure() {
+    // createDate tests
+    @Test
+    void testCreateDateValidString() {
 
     }
 
-    @Test void testCreateAssignment() {
+    @Test
+    void testCreateDateInvalidFormat() {
 
     }
 
-    @Test void testCreateDate() {
+    @Test
+    void testCreateDateEmptyString() {
+
+    }
+
+    @Test
+    void testCreatsDateNullString() {
+
+    }
+    @Test
+    void testCreateDateMissingContent() {
 
     }
 

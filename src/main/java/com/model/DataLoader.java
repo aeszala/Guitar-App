@@ -31,6 +31,7 @@ public class DataLoader extends DataConstants {
 
         try {
             FileReader reader = new FileReader(USER_FILE_NAME);
+            // FileReader reader = getReaderFromFileName(USER_FILE_NAME, USER_FILE_NAME_JSON);
 			JSONParser parser = new JSONParser();	
 			JSONArray peopleJSON = (JSONArray)new JSONParser().parse(reader);
 
@@ -389,6 +390,21 @@ public class DataLoader extends DataConstants {
             }
         }
         return new Date();
+    }
+
+    private static FileReader getReaderFromFileName(String fileName, String jsonFileName) {
+        try {
+            if(isJUnitTest()) {
+                FileReader reader = new FileReader(USER_FILE_NAME_JSON);
+                return reader;
+            } else {
+                FileReader reader = new FileReader(USER_FILE_NAME);
+                return reader;
+            }
+        } catch(Exception e) {
+			System.out.println("Can't load");
+			return null;
+        }
     }
 
     public static void main(String[] args) {
