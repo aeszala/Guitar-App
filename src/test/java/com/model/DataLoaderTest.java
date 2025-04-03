@@ -7,13 +7,12 @@ import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertNotNull;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.UUID;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsInAnyOrder;
-
-// ...
 
 // for each method have 4-5 tests
 
@@ -21,239 +20,195 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
  * @author aeszala
  */
 public class DataLoaderTest {
-/*
-    @BeforeClass
-    public void oneTimeSetup() {
-
-    }
-
-    @AfterClass
-    public void oneTimeTearDown() {
-
-    }
+    private ArrayList<User> userList;
+    private ArrayList<User> userListTest;
+    private ArrayList<Song> songList;
+    private ArrayList<Song> songListTest;
+    private ArrayList<Lesson> lessonList;
+    private ArrayList<Lesson> lessonListTest;
 
     @Before
-    public void setup() {
-        // runs before each test
+    public void setupUser() {
+        userList = new ArrayList<>();
+        songList = new ArrayList<>();
+        lessonList = new ArrayList<>();
+        DataWriter.saveUsers(userList);
+        DataWriter.saveSongs(songList);
+        DataWriter.saveLessons(lessonList);
     }
 
     @After
     public void tearDown() {
-        // runs after each test
+        userList.clear();
+        songList.clear();
+        lessonList.clear();
+        DataWriter.saveUsers(userList);
+        DataWriter.saveSongs(songList);
+        DataWriter.saveLessons(lessonList);
     }
- */
+
     @Test
     public void testingTest() {
         assertTrue(true);
     }
 
+    // Tests for getUsers method
     @Test
-    public void testGetSongsFromUUIDsValid() {
-        
-        ArrayList<User> users1 = DataLoader.getUsers();
-        ArrayList<User> users2 = new ArrayList<User>();
-        User user1 = new User(UUID.fromString("6c7a0a9d-8f50-4c15-b84f-acbaa9e3db55"), "ffredrickson", "password1", "email1", "Felecia Fredrickson", new ArrayList<Song>(),
-        new ArrayList<Song>(), new ArrayList<Lesson>(), new ArrayList<Song>(), "Question1", "Answer1");
-        User user2 = new User(UUID.fromString("2d1bd126-b967-4494-9e1f-ab266f938361"), "FFred", "I-love-dogs342", "ffredrickson@gmail.com", "FFred", new ArrayList<Song>(),
-        new ArrayList<Song>(), new ArrayList<Lesson>(), new ArrayList<Song>(), "What was the name of your first dog?", "Fluffy");
-        users2.add(user1);
-        users2.add(user2);
-        assertEquals(users1, users2);
+    public void testLoadingZeroUsers() {
+        userListTest = DataLoader.getUsers();
+        assertEquals(userList, userListTest);
     }
 
     @Test
-    public void testGetSongsFromUUIDsInvalidName() {
-        ArrayList<User> users1 = DataLoader.getUsers();
-        ArrayList<User> users2 = new ArrayList<User>();
-        User user1 = new User(UUID.fromString("6c7a0a9d-8f50-4c15-b84f-acbaa9e3db55"), "username", "password", "email", "name", new ArrayList<Song>(),
-        new ArrayList<Song>(), new ArrayList<Lesson>(), new ArrayList<Song>(), "secQue", "secAns");
-        User user2 = new User(UUID.fromString("2d1bd126-b967-4494-9e1f-ab266f938361"), "username", "password", "email", "name", new ArrayList<Song>(),
-        new ArrayList<Song>(), new ArrayList<Lesson>(), new ArrayList<Song>(), "secQue", "secAns");
-        users2.add(user1);
-        users2.add(user2);
-        assertEquals(users1, users2);
-    }
-/*
-    // GetSongsFromUUIDs test
-    @Test
-    public void testGetSongsFromUUIDsValidSongsValid() {
-        //ArrayList<User> users = DataLoader.getUsers();
-        assertTrue(true);
+    public void testLoadingOneUser() {
+        userList.add(new User(UUID.fromString("6149dd93-1fe0-47e1-ae4a-fbce60258bbf"), "asmith", "password1", 
+        "asmith@example.com", "Amy Smith", new ArrayList<Song>(), new ArrayList<Song>(), new ArrayList<Lesson>(), 
+        new ArrayList<Song>(), "Question1", "Answer1"));
+        DataWriter.saveUsers(userList);
+        userListTest = DataLoader.getUsers();
+        assertEquals(userList, userListTest);
     }
 
     @Test
-    public void testGetSongsFromUUIDsInvalidSongsOnly() {
-        assertTrue(true);
+    public void testLoadingFiveUsers() {
+        userList.add(new User(UUID.fromString("6149dd93-1fe0-47e1-ae4a-fbce60258bbf"), "asmith", "password1", 
+        "asmith@example.com", "Amy Smith", new ArrayList<Song>(), new ArrayList<Song>(), new ArrayList<Lesson>(), 
+        new ArrayList<Song>(), "Question1", "Answer1"));
+        userList.add(new User(UUID.fromString("520ca5c0-839e-4c9f-a3f9-550c3ac0f028"), "bsmith", "password1", 
+        "asmith@example.com", "Amy Smith", new ArrayList<Song>(), new ArrayList<Song>(), new ArrayList<Lesson>(), 
+        new ArrayList<Song>(), "Question1", "Answer1"));
+        userList.add(new User(UUID.fromString("a35ac2bf-22ff-45f6-815b-1597c605931e"), "csmith", "password1", 
+        "asmith@example.com", "Amy Smith", new ArrayList<Song>(), new ArrayList<Song>(), new ArrayList<Lesson>(), 
+        new ArrayList<Song>(), "Question1", "Answer1"));
+        userList.add(new User(UUID.fromString("f16be192-34e7-4e05-8eed-bf02e5e41414"), "dsmith", "password1", 
+        "asmith@example.com", "Amy Smith", new ArrayList<Song>(), new ArrayList<Song>(), new ArrayList<Lesson>(), 
+        new ArrayList<Song>(), "Question1", "Answer1"));
+        userList.add(new User(UUID.fromString("ea28098a-5922-4899-b70e-a8b0424d9962"), "esmith", "password1", 
+        "asmith@example.com", "Amy Smith", new ArrayList<Song>(), new ArrayList<Song>(), new ArrayList<Lesson>(), 
+        new ArrayList<Song>(), "Question1", "Answer1"));
+        DataWriter.saveUsers(userList);
+        userListTest = DataLoader.getUsers();
+        assertEquals(userList, userListTest);
     }
 
     @Test
-    public void testGetSongsFromUUIDsSomeValid() {
-
+    public void testLoadingCorruptedUsersFile() {
+        userList.add(new User(UUID.fromString("6149dd93-1fe0-47e1-ae4a-fbce60258bbf"), "asmith", "password1", 
+        "asmith@example.com", "Amy Smith", new ArrayList<Song>(), new ArrayList<Song>(), new ArrayList<Lesson>(), 
+        new ArrayList<Song>(), "Question1", "Answer1"));
+        DataWriter.saveUsers(userList);
+        TestHelper.corruptFile(DataConstants.USER_FILE_NAME);
+        userListTest = DataLoader.getUsers();
+        assertEquals(new ArrayList<User>(), userListTest);
     }
 
     @Test
-    public void testGetSongsFromUUIDsEmptyList() {
+    public void testMissingInfoInJSONUsers() {
+        userList.add(new User(UUID.fromString("6149dd93-1fe0-47e1-ae4a-fbce60258bbf"), "asmith", "password1", 
+        "asmith@example.com", "Amy Smith", new ArrayList<Song>(), new ArrayList<Song>(), new ArrayList<Lesson>(), 
+        new ArrayList<Song>(), "Question1", "Answer1"));
+        userList.add(new User(UUID.fromString("520ca5c0-839e-4c9f-a3f9-550c3ac0f028"), "bsmith", "password1", 
+        "asmith@example.com", "Amy Smith", new ArrayList<Song>(), new ArrayList<Song>(), new ArrayList<Lesson>(), 
+        new ArrayList<Song>(), "Question1", "Answer1"));
+        DataWriter.saveUsers(userList);
+        TestHelper.writeIncompleteUsersFile(DataConstants.USER_FILE_NAME);
+        userListTest = DataLoader.getUsers();
+        userList.remove(0);
+        assertEquals(userList, userListTest);
+    }
 
+    // Tests for getSongs method
+    @Test
+    public void testLoadingZeroSongs() {
+        songListTest = DataLoader.getSongs();
+        assertEquals(songList, songListTest);
     }
 
     @Test
-    public void testGetSongsFromUUIDsContainsNull() {
-
-    }
-
-    //getLessonsFromUUIDs tests
-    @Test
-    public void testGetLessonsFromUUIDsValidSongsValid() {
-
+    public void testLoadingOneSong() {
+        songList.add(new Song("Title1", "Artist1"));
+        DataWriter.saveSongs(songList);
+        songListTest = DataLoader.getSongs();
+        assertEquals(songList, songListTest);
     }
 
     @Test
-    public void testGetLessonsFromUUIDsInvalidSongsOnly() {
-
+    public void testLoadingFiveSongs() {
+        songList.add(new Song("Title1", "Artist1"));
+        songList.add(new Song("Title2", "Artist2"));
+        songList.add(new Song("Title3", "Artist3"));
+        songList.add(new Song("Title4", "Artist4"));
+        songList.add(new Song("Title5", "Artist5"));
+        DataWriter.saveUsers(userList);
+        userListTest = DataLoader.getUsers();
+        assertEquals(userList, userListTest);
     }
 
     @Test
-    public void testGetLessonsFromUUIDsSomeValid() {
-
+    public void testLoadingCorruptedSongsFile() {
+        songList.add(new Song("Song1", "Artist1"));
+        DataWriter.saveSongs(songList);
+        TestHelper.corruptFile(DataConstants.SONG_FILE_NAME);
+        songListTest = DataLoader.getSongs();
+        assertEquals(new ArrayList<Song>(), songListTest);
     }
 
     @Test
-    public void testGetLessonsFromUUIDsEmptyList() {
+    public void testMissingInfoInJSONSongs() {
+        songList.add(new Song("Song1", "Artist1"));
+        songList.add(new Song("Song2", "Artist2"));
+        DataWriter.saveSongs(songList);
+        TestHelper.writeIncompleteSongsFile(DataConstants.SONG_FILE_NAME);
+        songListTest = DataLoader.getSongs();
+        songList.remove(0);
+        assertEquals(songList, songListTest);
+    }
 
+    // Tests for getLessons method
+    @Test
+    public void testLoadingZeroLessons() {
+        lessonListTest = DataLoader.getLessons();
+        assertEquals(lessonList, lessonListTest);
     }
 
     @Test
-    public void testGetLessonsFromUUIDsContainsNull() {
-
-    }
-
-
-    //findSongById tests
-    @Test
-    void testFindSongByIdValidSong() {
-
+    public void testLoadingOneLesson() {
+        lessonList.add(new Lesson("Title1", new ArrayList<Song>(), "Topic1", new ArrayList<Assignment>()));
+        DataWriter.saveLessons(lessonList);
+        lessonListTest = DataLoader.getLessons();
+        assertEquals(lessonList, lessonListTest);
     }
 
     @Test
-    void testFindSongByIdInvalidSong() {
-
+    public void testLoadingFiveLessons() {
+        lessonList.add(new Lesson("Title1", new ArrayList<Song>(), "Topic1", new ArrayList<Assignment>()));
+        lessonList.add(new Lesson("Title2", new ArrayList<Song>(), "Topic2", new ArrayList<Assignment>()));
+        lessonList.add(new Lesson("Title3", new ArrayList<Song>(), "Topic3", new ArrayList<Assignment>()));
+        lessonList.add(new Lesson("Title4", new ArrayList<Song>(), "Topic4", new ArrayList<Assignment>()));
+        lessonList.add(new Lesson("Title5", new ArrayList<Song>(), "Topic5", new ArrayList<Assignment>()));
+        DataWriter.saveLessons(lessonList);
+        lessonListTest = DataLoader.getLessons();
+        assertEquals(lessonList, lessonListTest);
     }
 
     @Test
-    void testFindSongByIdNull() {
-
+    public void testLoadingCorruptedLessonsFile() {
+        lessonList.add(new Lesson("Title1", new ArrayList<Song>(), "Topic1", new ArrayList<Assignment>()));
+        DataWriter.saveLessons(lessonList);
+        TestHelper.corruptFile(DataConstants.LESSON_FILE_NAME);
+        lessonListTest = DataLoader.getLessons();
+        assertEquals(new ArrayList<Lesson>(), lessonListTest);
     }
 
     @Test
-    void testFindSongById() {
-
+    public void testMissingInfoInJSONLessons() {
+        lessonList.add(new Lesson("Title1", new ArrayList<Song>(), "Topic1", new ArrayList<Assignment>()));
+        lessonList.add(new Lesson("Title2", new ArrayList<Song>(), "Topic2", new ArrayList<Assignment>()));
+        DataWriter.saveLessons(lessonList);
+        TestHelper.writeIncompleteLessonsFile(DataConstants.LESSON_FILE_NAME);
+        lessonListTest = DataLoader.getLessons();
+        lessonList.remove(0);
+        assertEquals(lessonList, lessonListTest);
     }
 
-
-    // findLessonById tests
-    @Test
-    void testFindLessonById() {
-
-    }
-
-    // createReview tests
-    @Test
-    void testCreateReviewValidString() {
-
-    }
-
-    @Test
-    void testCreateReviewInvalidFormat() {
-
-    }
-
-    @Test
-    void testCreateReviewEmptyString() {
-
-    }
-
-    @Test
-    void testCreateReviewNullString() {
-
-    }
-    @Test
-    void testCreateReviewMissingContent() {
-
-    }
-
-    // createMeasure tests
-    @Test
-    void testCreateMeasureValidString() {
-
-    }
-
-    @Test
-    void testCreateMeasureInvalidFormat() {
-
-    }
-
-    @Test
-    void testCreateMeasureEmptyString() {
-
-    }
-
-    @Test
-    void testCreateMeasureNullString() {
-
-    }
-    @Test
-    void testCreateMeasureMissingContent() {
-
-    }
-
-    // createAssignment tests
-    @Test
-    void testCreateAssignmentValidString() {
-
-    }
-
-    @Test
-    void testCreateAssignmentInvalidFormat() {
-
-    }
-
-    @Test
-    void testCreateAssignmentEmptyString() {
-
-    }
-
-    @Test
-    void testCreatsAssignmentNullString() {
-
-    }
-    @Test
-    void testCreateAssignmentMissingContent() {
-
-    }
-
-    // createDate tests
-    @Test
-    void testCreateDateValidString() {
-
-    }
-
-    @Test
-    void testCreateDateInvalidFormat() {
-
-    }
-
-    @Test
-    void testCreateDateEmptyString() {
-
-    }
-
-    @Test
-    void testCreatsDateNullString() {
-
-    }
-    @Test
-    void testCreateDateMissingContent() {
-
-    }
- */
 }

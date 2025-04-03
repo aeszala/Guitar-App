@@ -8,14 +8,17 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.UUID;
 import org.jfugue.player.Player;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /**
- * The {@code Song} class represents a song with various attributes such as title, artist, 
- * tempo, difficulty, and reviews. It also contains methods for playing the song, 
+ * The {@code Song} class represents a song with various attributes such as
+ * title, artist,
+ * tempo, difficulty, and reviews. It also contains methods for playing the
+ * song,
  * changing tempo, and generating JSON representations.
  */
 public class Song {
@@ -37,18 +40,18 @@ public class Song {
     /**
      * Constructor for new songs.
      * 
-     * @param title The title of the song.
-     * @param artist The artist of the song.
+     * @param title        The title of the song.
+     * @param artist       The artist of the song.
      * @param runLengthMin The song length in minutes.
      * @param runLengthSec The song length in seconds.
-     * @param tempo The tempo of the song in beats per minute (BPM).
-     * @param genres A list of genres associated with the song.
-     * @param difficulty The difficulty level of the song.
-     * @param measures A list of measures in the song.
+     * @param tempo        The tempo of the song in beats per minute (BPM).
+     * @param genres       A list of genres associated with the song.
+     * @param difficulty   The difficulty level of the song.
+     * @param measures     A list of measures in the song.
      */
-    public Song(String title, String artist, int runLengthMin, int runLengthSec, 
-                int tempo, ArrayList<Genre> genres, Difficulty difficulty, 
-                ArrayList<Measure> measures) {
+    public Song(String title, String artist, int runLengthMin, int runLengthSec,
+            int tempo, ArrayList<Genre> genres, Difficulty difficulty,
+            ArrayList<Measure> measures) {
         this.id = UUID.randomUUID();
         this.title = title;
         this.artist = artist;
@@ -83,24 +86,24 @@ public class Song {
     /**
      * Constructor for existing songs.
      * 
-     * @param id The unique identifier of the song.
-     * @param title The title of the song.
-     * @param artist The artist of the song.
+     * @param id           The unique identifier of the song.
+     * @param title        The title of the song.
+     * @param artist       The artist of the song.
      * @param runLengthMin The song length in minutes.
      * @param runLengthSec The song length in seconds.
-     * @param tempo The tempo of the song in beats per minute (BPM).
-     * @param rating The rating of the song.
-     * @param reviews A list of reviews for the song.
-     * @param metronomeOn Whether the metronome is on.
-     * @param genres A list of genres associated with the song.
-     * @param difficulty The difficulty level of the song.
-     * @param measures A list of measures in the song.
-     * @param completed Whether the song is completed.
+     * @param tempo        The tempo of the song in beats per minute (BPM).
+     * @param rating       The rating of the song.
+     * @param reviews      A list of reviews for the song.
+     * @param metronomeOn  Whether the metronome is on.
+     * @param genres       A list of genres associated with the song.
+     * @param difficulty   The difficulty level of the song.
+     * @param measures     A list of measures in the song.
+     * @param completed    Whether the song is completed.
      */
-    public Song(UUID id, String title, String artist, int runLengthMin, int runLengthSec, 
-                int tempo, double rating, ArrayList<Review> reviews, boolean metronomeOn, 
-                ArrayList<Genre> genres, Difficulty difficulty, ArrayList<Measure> measures, 
-                boolean completed) {
+    public Song(UUID id, String title, String artist, int runLengthMin, int runLengthSec,
+            int tempo, double rating, ArrayList<Review> reviews, boolean metronomeOn,
+            ArrayList<Genre> genres, Difficulty difficulty, ArrayList<Measure> measures,
+            boolean completed) {
         this.id = id;
         this.title = title;
         this.artist = artist;
@@ -268,31 +271,30 @@ public class Song {
     }
 
     public void printAndSaveSheetMusic() {
-        String filename = title + "_sheet.txt";  // Generate filename
+        String filename = title + "_sheet.txt"; // Generate filename
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
-        
-        for (int i = 0; i < measures.size(); i++) {  
-            char[][] formattedArray = measures.get(i).getFormattedMeasure();  // Get the measure
 
-            // Print & Write the measure
-            writer.write("Measure " + (i + 1) + ":\n");
-            System.out.println("Measure " + (i + 1) + ":");
-            
-            for (char[] row : formattedArray) {
-                String line = new String(row);
-                writer.write(line + "\n");  // Write to file
-                System.out.println(line);  // Print to console
+            for (int i = 0; i < measures.size(); i++) {
+                char[][] formattedArray = measures.get(i).getFormattedMeasure(); // Get the measure
+
+                // Print & Write the measure
+                writer.write("Measure " + (i + 1) + ":\n");
+                System.out.println("Measure " + (i + 1) + ":");
+
+                for (char[] row : formattedArray) {
+                    String line = new String(row);
+                    writer.write(line + "\n"); // Write to file
+                    System.out.println(line); // Print to console
+                }
+
+                writer.write("\n"); // Add spacing between measures
+                System.out.println();
             }
-
-            writer.write("\n");  // Add spacing between measures
-            System.out.println();
-        }   
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
     /**
      * Plays the song using a player, looping through each measure.
@@ -315,24 +317,24 @@ public class Song {
     public String toString() {
         if (this.title == null || this.difficulty == null) {
             return "Song{" +
-                   "id=" + id +
-                   '}';
+                    "id=" + id +
+                    '}';
         } else {
             return "Song{" +
-                   "id=" + id +
-                   ", title='" + title + '\'' +
-                   ", artist='" + artist + '\'' +
-                   ", runLengthMin=" + runLengthMin +
-                   ", runLengthSec=" + runLengthSec +
-                   ", tempo=" + tempo +
-                   ", rating=" + rating +
-                   ", reviews=" + reviews +
-                   ", metronomeOn=" + metronomeOn +
-                   ", genres=" + genres +
-                   ", difficulty=" + difficulty +
-                   ", measures=" + measures +
-                   ", completed=" + completed +
-                   '}';
+                    "id=" + id +
+                    ", title='" + title + '\'' +
+                    ", artist='" + artist + '\'' +
+                    ", runLengthMin=" + runLengthMin +
+                    ", runLengthSec=" + runLengthSec +
+                    ", tempo=" + tempo +
+                    ", rating=" + rating +
+                    ", reviews=" + reviews +
+                    ", metronomeOn=" + metronomeOn +
+                    ", genres=" + genres +
+                    ", difficulty=" + difficulty +
+                    ", measures=" + measures +
+                    ", completed=" + completed +
+                    '}';
         }
     }
 
@@ -359,7 +361,7 @@ public class Song {
         for (Review review : reviews) {
             reviewArray.add(review.toJson());
         }
-        jsonObject.put("reviews", reviewArray);    
+        jsonObject.put("reviews", reviewArray);
 
         // Convert Genre Array
         JSONArray genreArray = new JSONArray();
@@ -377,4 +379,33 @@ public class Song {
 
         return jsonObject;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Song song = (Song) o;
+        return runLengthMin == song.runLengthMin &&
+                runLengthSec == song.runLengthSec &&
+                tempo == song.tempo &&
+                Double.compare(song.rating, rating) == 0 &&
+                metronomeOn == song.metronomeOn &&
+                completed == song.completed &&
+                Objects.equals(id, song.id) &&
+                Objects.equals(title, song.title) &&
+                Objects.equals(artist, song.artist) &&
+                Objects.equals(reviews, song.reviews) &&
+                Objects.equals(genres, song.genres) &&
+                difficulty == song.difficulty &&
+                Objects.equals(measures, song.measures);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, artist, runLengthMin, runLengthSec, tempo,
+                rating, reviews, metronomeOn, genres, difficulty, measures, completed);
+    }
+
 }
