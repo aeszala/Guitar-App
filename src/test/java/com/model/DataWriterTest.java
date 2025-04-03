@@ -11,7 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-class DataWriterTest {
+public class DataWriterTest {
     private ArrayList<User> userList;
 
     @Before
@@ -180,7 +180,7 @@ class DataWriterTest {
     }
 
     @Test
-    void testWritingZeroLessons() {
+    public void testWritingZeroLessons() {
         lessonList = DataLoader.getLessons();
         assertEquals(0, lessonList.size());
     }
