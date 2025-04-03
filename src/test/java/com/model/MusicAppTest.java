@@ -104,6 +104,21 @@ public class MusicAppTest {
         assertFalse(app.addSong("Another Space Song", "Failure", -3, 80, 130, new ArrayList<>(), Difficulty.INTERMEDIATE, new ArrayList<>()));
     }
 
+    @Test
+    public void testAddInvalidTempoSong() {
+        assertFalse(app.addSong("Another Space Song", "Failure", 3, 28, -20, new ArrayList<>(), Difficulty.INTERMEDIATE, new ArrayList<>()));
+    }
+
+    @Test
+    public void testAddSongWithNullArguments() {
+        assertFalse(app.addSong(null, null, 3, 28, 120, null, null, null));
+    }
+
+    @Test
+    public void testAddSongWithEmptyArguments() {
+        assertFalse(app.addSong("", "", 3, 28, -20, new ArrayList<>(), Difficulty.INTERMEDIATE, new ArrayList<>()));
+    }
+
     // saveMeasure Tests
     @Test
     public void testSaveMeasureOneValidNote() {
