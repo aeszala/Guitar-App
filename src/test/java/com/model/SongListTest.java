@@ -8,6 +8,9 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+/**
+ * @author Tre
+ */
 public class SongListTest {
     private Songlist songlist;
 
