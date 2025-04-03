@@ -27,6 +27,11 @@ class DataWriterTest {
     }
 
     @Test
+    public void testingTest() {
+        assertTrue(true);
+    }
+
+    @Test
     public void testWritingZeroUsers() {
         userList = DataLoader.getUsers();
         assertEquals(0, userList.size());
