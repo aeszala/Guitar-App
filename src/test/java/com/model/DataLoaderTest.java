@@ -92,6 +92,13 @@ public class DataLoaderTest {
     }
 
     @Test
+    public void testLoadingBlankUsersFile() {
+        TestHelper.createBlankFile(DataConstants.USER_FILE_NAME);
+        userListTest = DataLoader.getUsers();
+        assertEquals(new ArrayList<User>(), userListTest);
+    }
+
+    @Test
     public void testLoadingCorruptedUsersFile() {
         userList.add(new User(UUID.fromString("6149dd93-1fe0-47e1-ae4a-fbce60258bbf"), "asmith", "password1", 
         "asmith@example.com", "Amy Smith", new ArrayList<Song>(), new ArrayList<Song>(), new ArrayList<Lesson>(), 
@@ -111,7 +118,7 @@ public class DataLoaderTest {
         "asmith@example.com", "Amy Smith", new ArrayList<Song>(), new ArrayList<Song>(), new ArrayList<Lesson>(), 
         new ArrayList<Song>(), "Question1", "Answer1"));
         DataWriter.saveUsers(userList);
-        TestHelper.writeIncompleteUsersFile(DataConstants.USER_FILE_NAME);
+        TestHelper.writeIncompleteUsersFile(DataConstants.USER_FILE_NAME);  // remove attributes of first element
         userListTest = DataLoader.getUsers();
         userList.remove(0);
         assertEquals(userList, userListTest);
@@ -142,6 +149,13 @@ public class DataLoaderTest {
         DataWriter.saveUsers(userList);
         userListTest = DataLoader.getUsers();
         assertEquals(userList, userListTest);
+    }
+
+    @Test
+    public void testLoadingBlankSongsFile() {
+        TestHelper.createBlankFile(DataConstants.SONG_FILE_NAME);
+        songListTest = DataLoader.getSongs();
+        assertEquals(new ArrayList<Song>(), songListTest);
     }
 
     @Test
@@ -189,6 +203,13 @@ public class DataLoaderTest {
         DataWriter.saveLessons(lessonList);
         lessonListTest = DataLoader.getLessons();
         assertEquals(lessonList, lessonListTest);
+    }
+
+    @Test
+    public void testLoadingBlankLessonsFile() {
+        TestHelper.createBlankFile(DataConstants.LESSON_FILE_NAME);
+        lessonListTest = DataLoader.getLessons();
+        assertEquals(new ArrayList<Lesson>(), lessonListTest);
     }
 
     @Test

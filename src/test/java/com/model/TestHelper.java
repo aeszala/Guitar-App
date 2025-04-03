@@ -25,6 +25,15 @@ public class TestHelper {
         }
     }
 
+    public static void createBlankFile(String filePath) {
+        try (FileWriter writer = new FileWriter(filePath, false)) {
+
+            writer.write("");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 public static void writeIncompleteUsersFile(String filePath) {
     try {
         JSONParser parser = new JSONParser();
