@@ -1,3 +1,7 @@
+﻿/**
+ * @author Liam
+ */
+
 package com.model;
 
 import static org.junit.Assert.*;
