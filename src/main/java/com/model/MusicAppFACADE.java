@@ -67,13 +67,14 @@ public class MusicAppFACADE {
      * @param keyword The keyword used to search for songs.
      * @return A list of {@link Song} objects that match the keyword.
      */
-    public void findSongs(String keyword) {
+    public boolean findSongs(String keyword) {
         if (songList == null)
             songList = Songlist.getInstance();
         songs = songList.getSongs(keyword);
+        return (!songs.isEmpty());
     }
 
-    public void displaySongs() {
+    public boolean displaySongs() {
         if (songs.isEmpty() || songs == null)
             songs = Songlist.getInstance().getSongs();
         int i = 1;
@@ -81,13 +82,15 @@ public class MusicAppFACADE {
             System.out.println(i + ". " + song.getTitle() + " by " + song.getArtist());
             i++;
         }
+        return (!songs.isEmpty());
     }
 
-    public void saveSong() {
+    public boolean saveSong() {
         if (measure != null)
             saveMeasure();
         Songlist.addSong(song);
         Songlist.saveSongs();
+        return (Songlist.getSong(song.getTitle())!=null);
     }
 
     public void save() {
@@ -104,9 +107,10 @@ public class MusicAppFACADE {
         System.out.println("Measure created.");
     }
 
-    public void saveMeasure() {
+    public boolean saveMeasure() {
         song.addMeasure(measure);
         System.out.println("Measure added to song!");
+        return (song.getMeasures().contains(measure));
     }
 
     public void addNote(String type, double length, double pitch, int string, int fret) {
@@ -152,11 +156,14 @@ public class MusicAppFACADE {
      * @param securityQuestion The security question for account recovery.
      * @param securityAnswer   The answer to the security question.
      */
-    public void createAccount(String name, String username, String password, String email, String securityQuestion, String securityAnswer) {
+    public boolean createAccount(String name, String username, String password, String email, String securityQuestion, String securityAnswer) {
         if (userList == null)
             userList = UserList.getInstance();
-        if (userList.addUser(username, password, email, username, securityQuestion, securityAnswer))
+        if (userList.addUser(username, password, email, username, securityQuestion, securityAnswer)) {
             user = UserList.getUser(username);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -165,13 +172,15 @@ public class MusicAppFACADE {
      * @param username The username of the user.
      * @param password The password of the user.
      */
-    public void login(String username, String password) {
+    public boolean login(String username, String password) {
         User tempUser = new User("", "", "", "", "", "");
         if (tempUser.isMatch(username, password)) {
             user = UserList.getUser(username);
             System.out.println("Login Successful!");
+            return true;
         } else {
             System.out.println("Username or password incorrect.");
+            return false;
         }
     }
 
@@ -195,6 +204,10 @@ public class MusicAppFACADE {
 
     public void createSong(String title) {
         song = new Song(title, user.getName());
+    }
+
+    public void createSong(String title, String author) {
+        song = new Song(title, author);
     }
 
     /**
@@ -226,14 +239,11 @@ public class MusicAppFACADE {
      * @param tempo       The tempo of the song.
      * @param measure     The measure of the song.
      */
-    public void addSong(String title, String artist, int runLengthMin, int runLengthSec,int tempo, ArrayList<Genre> genres, Difficulty difficulty,
+    public boolean addSong(String title, String artist, int runLengthMin, int runLengthSec,int tempo, ArrayList<Genre> genres, Difficulty difficulty,
     ArrayList<Measure> measures) {
-        song.setTitle(title);
-        song.setArtist(artist);
-        song.setRunLengthMin(runLengthMin);
-        song.setRunLengthSec(runLengthSec);
-        song.setTempo(tempo);
-        songList.addSong(title, artist, runLengthMin, runLengthSec, tempo, null, null, null);
+        song = new Song(title, artist, runLengthMin, runLengthSec, tempo, genres, difficulty, measures);
+        songList.addSong(song);
+        return (songList.getSong(title)!=null);
     }
 
     /**
