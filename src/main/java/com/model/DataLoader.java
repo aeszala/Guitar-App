@@ -1,5 +1,9 @@
 ﻿package com.model;
+import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,11 +32,8 @@ public class DataLoader extends DataConstants {
      */
     public static ArrayList<User> getUsers() {
         ArrayList<User> users = new ArrayList<User>();
-
+        BufferedReader reader = getReaderFromFile(USER_FILE_NAME, USER_FILE_NAME_JSON);
         try {
-            FileReader reader = new FileReader(USER_FILE_NAME);
-            // FileReader reader = getReaderFromFileName(USER_FILE_NAME, USER_FILE_NAME_JSON);
-			JSONParser parser = new JSONParser();	
 			JSONArray peopleJSON = (JSONArray)new JSONParser().parse(reader);
 
             for (int i = 0; i < peopleJSON.size(); i++) {
@@ -392,19 +393,36 @@ public class DataLoader extends DataConstants {
         return new Date();
     }
 
-    private static FileReader getReaderFromFileName(String fileName, String jsonFileName) {
-        try {
-            if(isJUnitTest()) {
-                FileReader reader = new FileReader(USER_FILE_NAME_JSON);
-                return reader;
-            } else {
-                FileReader reader = new FileReader(USER_FILE_NAME);
-                return reader;
-            }
-        } catch(Exception e) {
+	private static String getFileWritingPath(String PATH_NAME, String JUNIT_PATH_NAME) {
+		try {
+			if(isJUnitTest()){
+				URI url = DataLoader.class.getResource(JUNIT_PATH_NAME).toURI();
+				return url.getPath();
+			} else {
+				return PATH_NAME;
+			}
+		} catch(Exception e){
+			System.out.println("Difficulty getting resource path");
+			return "";
+		}
+	}
+
+	private static BufferedReader getReaderFromFile(String fileName, String jsonFileName){
+		try {
+			if(isJUnitTest()){
+				FileReader reader = new FileReader(fileName);
+				return new BufferedReader(reader);
+				// InputStream inputStream = DataLoader.class.getResourceAsStream(jsonFileName);
+				// InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+				// return new BufferedReader(inputStreamReader);
+			} else {
+				FileReader reader = new FileReader(fileName);
+				return new BufferedReader(reader);
+			}
+		} catch(Exception e){
 			System.out.println("Can't load");
 			return null;
-        }
+		}
     }
 
     public static void main(String[] args) {
