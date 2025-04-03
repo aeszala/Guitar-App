@@ -117,7 +117,7 @@ public class DataWriterTest {
         DataWriter.saveSongs(songList);
         
         songList = DataLoader.getSongs();
-        assertEquals("asmith", DataLoader.getSongs().get(0).getTitle());
+        assertEquals("title1", DataLoader.getSongs().get(0).getTitle());
     }
 
     @Test
