@@ -41,7 +41,7 @@ public class Driver {
         app.displaySongs();
         app.login("FFredrickson", "password1");
         app.playSong("Free Fallin");
-        app.printTabSheet("Free Fallin");
+        app.printTabSheet("I will back down");
 
         // Scenario 3
         app.login("FFredrickson", "password1");
