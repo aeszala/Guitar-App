@@ -1,1 +1,28 @@
-[{"password":"I-love-dogs342","completedLessons":[],"securityQuestion":"What was the name of your first dog?","securityAnswer":"Fluffy","mySongs":[],"name":"FFredrickson","completedSongs":[],"id":"08f16b6d-8e41-4f4b-809d-e88b4c36245b","email":"ffredrickson@gmail.com","username":"FFredrickson","favoriteSongs":[]},{"password":"I-love-dogs342","completedLessons":[],"securityQuestion":"What was the name of your first dog?","securityAnswer":"Fluffy","mySongs":[],"name":"FFred","completedSongs":[],"id":"a75e18a3-4137-471d-b599-ba5a92f6b254","email":"ffredrickson@gmail.com","username":"FFred","favoriteSongs":[]}]
+[
+    {
+        "password": "I-love-dogs342",
+        "completedLessons": [],
+        "securityQuestion": "What was the name of your first dog?",
+        "securityAnswer": "Fluffy",
+        "mySongs": [],
+        "name": "FFredrickson",
+        "completedSongs": [],
+        "id": "08f16b6d-8e41-4f4b-809d-e88b4c36245b",
+        "email": "ffredrickson@gmail.com",
+        "username": "FFredrickson",
+        "favoriteSongs": []
+    },
+    {
+        "password": "I-love-dogs342",
+        "completedLessons": [],
+        "securityQuestion": "What was the name of your first dog?",
+        "securityAnswer": "Fluffy",
+        "mySongs": [],
+        "name": "FFred",
+        "completedSongs": [],
+        "id": "a75e18a3-4137-471d-b599-ba5a92f6b254",
+        "email": "ffredrickson@gmail.com",
+        "username": "FFred",
+        "favoriteSongs": []
+    }
+]
