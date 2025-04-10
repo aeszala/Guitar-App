@@ -3,6 +3,6 @@ An app for students, teachers, or anyone who wants to learn or advance their gui
 
 Backend Video: https://www.youtube.com/watch?v=7SfFXZmLbag
 
-Prototype Video:
+Prototype Video: https://youtu.be/DxOsn6pH0IE
 
 Prototype: https://aeszala.github.io/Guitar-App/
