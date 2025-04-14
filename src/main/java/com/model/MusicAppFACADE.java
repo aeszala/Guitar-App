@@ -6,6 +6,7 @@ package com.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.program.MusicPlayer;
 
@@ -210,6 +211,15 @@ public class MusicAppFACADE {
         song = new Song(title, author);
     }
 
+    public String getLoggedInUsername() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getLoggedInUsername'");
+    }
+
+    public void getCompletedSongs(ArrayList<Song> completedSongs) {
+        user.getCompletedSongs();
+    }
+
     /**
      * Retrieves the favorite songs of the current user.
      * 
@@ -360,4 +370,11 @@ public class MusicAppFACADE {
     public void viewAssignments() {
         // Method implementation is missing
     }
+
+    public User getUserByUsername(String username) {
+      // TODO Auto-generated method stub
+      throw new UnsupportedOperationException("Unimplemented method 'getUserByUsername'");
+    }
+
+
 }
