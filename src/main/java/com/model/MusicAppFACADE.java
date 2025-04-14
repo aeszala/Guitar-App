@@ -216,8 +216,8 @@ public class MusicAppFACADE {
         throw new UnsupportedOperationException("Unimplemented method 'getLoggedInUsername'");
     }
 
-    public void getCompletedSongs(ArrayList<Song> completedSongs) {
-        user.getCompletedSongs();
+    public ArrayList<Song> getCompletedSongs(ArrayList<Song> completedSongs) {
+        return user.getCompletedSongs();
     }
 
     /**
@@ -225,8 +225,8 @@ public class MusicAppFACADE {
      * 
      * @param favoriteSongs The list to store the favorite songs.
      */
-    public void getFavoriteSongs(ArrayList<Song> favoriteSongs) {
-        user.getFavoriteSongs();
+    public ArrayList<Song> getFavoriteSongs(ArrayList<Song> favoriteSongs) {
+        return user.getFavoriteSongs();
     }
 
     /**
