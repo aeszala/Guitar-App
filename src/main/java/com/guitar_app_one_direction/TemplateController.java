@@ -1,4 +1,6 @@
-﻿import javafx.fxml.FXML;
+﻿package com.guitar_app_one_direction;
+
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
