@@ -7,7 +7,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/8.0.171" 
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="your.package.name.TemplateController">
+            fx:controller="com.guitar_app_one_direction.TemplateController">
     <!-- Top navigation bar -->
     <top>
         <HBox style="-fx-background-color: #f4f4f4; -fx-padding: 10;">

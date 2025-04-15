@@ -1,8 +1,9 @@
-﻿import javafx.fxml.FXML;
+﻿package com.guitar_app_one_direction;
+
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
-
 import java.io.IOException;
 import java.util.Stack;
 
@@ -12,11 +13,10 @@ public class TemplateController {
     
     private Stack<Node> pageHistory = new Stack<>();
     
-    // Method to set the content of the template
     public void setContent(String fxmlPath) {
         try {
             // Load the new content
-            Node content = FXMLLoader.load(getClass().getResource(fxmlPath));
+            Node content = FXMLLoader.load(App.class.getResource(fxmlPath + ".fxml"));
             
             // Add current page to history (if there is one)
             if (!contentPane.getChildren().isEmpty()) {
@@ -41,10 +41,11 @@ public class TemplateController {
     
     @FXML
     private void handleHomeButton() {
-        // Load your home page
-        setContent("home.fxml");
-        
-        // Clear history since we're going to home
-        pageHistory.clear();
+        try {
+            App.setContent("primary");
+            pageHistory.clear();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
