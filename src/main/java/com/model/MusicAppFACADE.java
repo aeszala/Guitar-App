@@ -174,8 +174,7 @@ public class MusicAppFACADE {
      * @param password The password of the user.
      */
     public boolean login(String username, String password) {
-        User tempUser = new User("", "", "", "", "", "");
-        if (tempUser.isMatch(username, password)) {
+        if (User.isMatch(username, password)) {
             user = UserList.getUser(username);
             System.out.println("Login Successful!");
             return true;
