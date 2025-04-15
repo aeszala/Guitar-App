@@ -19,11 +19,15 @@
         <Separator/>
 
         <VBox fx:id="vboxFavorites" spacing="10.0">
-            <Label text="🎵 Favorite Songs:" style="-fx-font-weight: bold;" />
+            <Label text="Favorite Songs:" style="-fx-font-weight: bold;" />
         </VBox>
 
         <VBox fx:id="vboxCompleted" spacing="10.0">
             <Label text="Completed Songs:" style="-fx-font-weight: bold;" />
+        </VBox>
+
+         <VBox fx:id="vboxMySongs" spacing="10.0">
+            <Label text="My Songs:" style="-fx-font-weight: bold;" />
         </VBox>
     </children>
     <padding>

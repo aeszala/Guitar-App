@@ -234,8 +234,8 @@ public class MusicAppFACADE {
      * 
      * @param mySongs The list to store the user's songs.
      */
-    public void getMySongs(ArrayList<Song> mySongs) {
-        user.getMySongs();
+    public ArrayList<Song> getMySongs(ArrayList<Song> mySongs) {
+        return user.getMySongs();
     }
 
     /**
