@@ -31,6 +31,7 @@ public class User {
     public String securityQuestion;
     public String securityAnswer;
     public boolean login;
+    private string profilePicture;
 
     /**
      * Constructor for creating an existing user with all attributes initialized.
@@ -62,6 +63,7 @@ public class User {
         this.completedSongs = completedSongs;
         this.completedLessons = completedLessons;
         this.mySongs = mySongs;
+        this.profilePicture = "/images/default_profile.png";
     }
 
     /**
@@ -197,6 +199,11 @@ public class User {
         return name;
     }
 
+    public String getProfilePicturePath() {
+        return profilePicture;
+    }
+}
+
     public ArrayList<Song> getFavoriteSongs() {
         return favoriteSongs;
     }
@@ -311,7 +318,7 @@ public class User {
      * @return Throws an UnsupportedOperationException as it is not yet implemented.
      */
     public boolean login(String username2, String password2) {
-        throw new UnsupportedOperationException("Unimplemented method 'login'");
+        return this.username.equals(username2) && this.password.equals(password2);
     }
 
     /**

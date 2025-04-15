@@ -26,6 +26,9 @@ public class HomeController implements Initializable {
     @FXML
     private VBox vboxCompleted;
 
+    @FXML
+    private VBox vboxMySongs;
+
     private MusicAppFACADE facade;
 
     @Override
@@ -36,19 +39,6 @@ public class HomeController implements Initializable {
         String username = facade.getLoggedInUsername();
         lblWelcome.setText("Welcome, " + username + "!");
 
-        // Load favorite songs
-        List<Song> favorites = facade.getFavoriteSongs(null);
-        for (Song song : favorites) {
-            Label songLabel = new Label(song.getTitle());
-            vboxFavorites.getChildren().add(songLabel);
-        }
-
-        // Load completed songs
-        List<Song> completed = facade.getCompletedSongs(null);
-        for (Song song : completed) {
-            Label songLabel = new Label(song.getTitle());
-            vboxCompleted.getChildren().add(songLabel);
-        }
     }
 
     @FXML

@@ -43,6 +43,7 @@ import java.text.SimpleDateFormat;
  * </ul>
  */
 public class MusicAppFACADE {
+    private static MusicAppFACADE instance;
     private User user;
     private Student student;
     private Teacher teacher;
@@ -59,8 +60,22 @@ public class MusicAppFACADE {
      * This constructor currently does nothing as the object is intended to be initialized with 
      * data through various methods.
      */
-    public void MusicApp() {
+    private void MusicAppFACADE() {
     }
+
+    public static synchronized MusicAppFACADE getInstance() {
+        if (instance == null) {
+            instance = new MusicAppFACADE();
+        }
+        return instance;
+    }
+
+    public String getProfilePicturePath() {
+        return user != null 
+            ? user.getProfilePicturePath() 
+            : "/images/default_profile.png"; // Default path in resources
+    }
+}
 
     /**
      * Finds songs based on a keyword.
@@ -174,8 +189,7 @@ public class MusicAppFACADE {
      * @param password The password of the user.
      */
     public boolean login(String username, String password) {
-        User tempUser = new User("", "", "", "", "", "");
-        if (tempUser.isMatch(username, password)) {
+        if (User.isMatch(username, password)) {
             user = UserList.getUser(username);
             System.out.println("Login Successful!");
             return true;
@@ -371,9 +385,9 @@ public class MusicAppFACADE {
         // Method implementation is missing
     }
 
-    public User getUserByUsername(String username) {
-      // TODO Auto-generated method stub
-      throw new UnsupportedOperationException("Unimplemented method 'getUserByUsername'");
+    public String getUserName() {
+        if (user != null)
+      return user.getName();
     }
 
 

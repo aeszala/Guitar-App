@@ -7,6 +7,14 @@ package com.model;
 import java.util.ArrayList;
 
 public class UserList {
+/*    Shows the available users 
+{
+
+    users = DataLoader.getUsers(); // Load users from data
+    // Debugging: Print the list of users loaded
+    System.out.println("Loaded users: " + users);
+}
+*/
     // Singleton instance of UserList
     private static UserList userList = null;
     // List to store users
@@ -86,3 +94,5 @@ public class UserList {
         }
     }
 }
+
+

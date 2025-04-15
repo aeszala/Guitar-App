@@ -1,39 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.HomeController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
-
-    <children>
-        <Label fx:id="lblWelcome" text="Welcome!" style="-fx-font-size: 20px;" />
-
-        <Button fx:id="primaryButton" text="Switch to Secondary View" onAction="#switchToSecondary"/>
-
-        <Separator/>
-
-        <VBox fx:id="vboxFavorites" spacing="10.0">
-            <Label text="Favorite Songs:" style="-fx-font-weight: bold;" />
-        </VBox>
-
-        <VBox fx:id="vboxCompleted" spacing="10.0">
-            <Label text="Completed Songs:" style="-fx-font-weight: bold;" />
-        </VBox>
-
-         <VBox fx:id="vboxMySongs" spacing="10.0">
-            <Label text="My Songs:" style="-fx-font-weight: bold;" />
-        </VBox>
-    </children>
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
-    <stylesheets>
-        <URL value="@styles.css" />
-    </stylesheets>
+<VBox xmlns="http://javafx.com/javafx/8.0.171" 
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.guitar_app_one_direction.HomeController"
+      alignment="center" 
+      spacing="20" 
+      style="-fx-background-color: #f5f5f5; -fx-padding: 40;">
+    
+    <HBox alignment="CENTER_RIGHT" spacing="20">
+        <Label fx:id="welcomeLabel" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        <ImageView fx:id="profilePicture" 
+                   fitHeight="50" 
+                   fitWidth="50"
+                   onMouseClicked="#goToProfile"
+                   style="-fx-cursor: hand; -fx-border-radius: 25; -fx-border-color: #ccc;"/>
+    </HBox>
+    
+    <VBox spacing="10" alignment="CENTER">
+        <Button text="Find a Song" onAction="#goToSearch" 
+                style="-fx-font-size: 16px; -fx-min-width: 200px; -fx-min-height: 40px;"/>
+        
+        <Button text="Create a Song" onAction="#goToCreateSong" 
+                style="-fx-font-size: 16px; -fx-min-width: 200px; -fx-min-height: 40px;"/>
+    </VBox>
 </VBox>
