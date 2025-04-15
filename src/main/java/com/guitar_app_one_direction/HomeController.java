@@ -26,6 +26,9 @@ public class HomeController implements Initializable {
     @FXML
     private VBox vboxCompleted;
 
+    @FXML
+    private VBox vboxMySongs;
+
     private MusicAppFACADE facade;
 
     @Override
@@ -48,6 +51,13 @@ public class HomeController implements Initializable {
         for (Song song : completed) {
             Label songLabel = new Label(song.getTitle());
             vboxCompleted.getChildren().add(songLabel);
+        }
+        
+        // Load my songs
+        List<Song> mySongs = facade.getMySongs(null);
+        for (Song song : mySongs) {
+            Label songLabel = new Label(song.getTitle());
+            vboxMySongs.getChildren().add(songLabel);
         }
     }
 
