@@ -311,7 +311,7 @@ public class User {
      * @return Throws an UnsupportedOperationException as it is not yet implemented.
      */
     public boolean login(String username2, String password2) {
-        throw new UnsupportedOperationException("Unimplemented method 'login'");
+        return this.username.equals(username2) && this.password.equals(password2);
     }
 
     /**
