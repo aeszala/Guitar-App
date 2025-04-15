@@ -31,6 +31,7 @@ public class User {
     public String securityQuestion;
     public String securityAnswer;
     public boolean login;
+    private string profilePicture;
 
     /**
      * Constructor for creating an existing user with all attributes initialized.
@@ -62,6 +63,7 @@ public class User {
         this.completedSongs = completedSongs;
         this.completedLessons = completedLessons;
         this.mySongs = mySongs;
+        this.profilePicture = "/images/default_profile.png";
     }
 
     /**
@@ -196,6 +198,11 @@ public class User {
     public String getName() {
         return name;
     }
+
+    public String getProfilePicturePath() {
+        return profilePicture;
+    }
+}
 
     public ArrayList<Song> getFavoriteSongs() {
         return favoriteSongs;
