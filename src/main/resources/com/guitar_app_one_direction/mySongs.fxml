@@ -10,7 +10,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/8.0.171" 
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="your.package.name.MySongsController">
+            fx:controller="com.guitar_app_one_direction.MySongsController">
     <!-- Top navigation bar -->
     <top>
         <HBox style="-fx-background-color: #f4f4f4; -fx-padding: 10;">
@@ -32,7 +32,8 @@
                     <Label text="Frog Song" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
                     <HBox spacing="10">
                         <Label text="By John Smith" style="-fx-font-size: 14;"/>
-                        <Label text="" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #2a52be;"/>
+                        <Label text="Intermediate" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #2a52be;"/>
+                        <Label text="Classic" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #2a52be;"/>
                     </HBox>
                 </VBox>
                 
@@ -41,7 +42,8 @@
                     <Label text="February is Cool" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
                     <HBox spacing="10">
                         <Label text="By John Smith" style="-fx-font-size: 14;"/>
-                        <Label text="" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #2a52be;"/>
+                        <Label text="Advanced" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #2a52be;"/>
+                        <Label text="ROCK" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #2a52be;"/>
                     </HBox>
                 </VBox>
                 

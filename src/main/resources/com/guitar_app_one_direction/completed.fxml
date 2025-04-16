@@ -1,16 +1,74 @@
-<?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.CompletedController">
-    <children>
-        <Label text="Secondary View" />
-        <Button fx:id="secondaryButton" text="Switch to Primary View" onAction="#switchToPrimary" />
-    </children>
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-</VBox>
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.guitar_app_one_direction.CompletedController"
+            style="-fx-background-color: linear-gradient(to bottom, #003333, #cc3300);">
+
+    <!-- Top title -->
+    <top>
+        <Label text="Completed" style="-fx-font-size: 28px; -fx-text-fill: white; -fx-padding: 20 0 10 20;" />
+    </top>
+
+    <!-- Main song list -->
+    <center>
+        <VBox spacing="20" alignment="TOP_LEFT" style="-fx-padding: 20;">
+            <!-- Mary Jane's Last Dance -->
+            <HBox spacing="10" style="-fx-background-color: #113c3c; -fx-padding: 15; -fx-background-radius: 12;">
+                <VBox spacing="5">
+                    <Label text="Mary Jane's Last Dance" style="-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;" />
+                    <Label text="By Tom Petty and the Heartbreakers" style="-fx-text-fill: white;" />
+                    <HBox spacing="10">
+                        <Label text="Intermediate" style="-fx-background-color: #ffcc00; -fx-padding: 4 8; -fx-background-radius: 10;" />
+                        <Label text="Rock" style="-fx-background-color: #3366ff; -fx-text-fill: white; -fx-padding: 4 8; -fx-background-radius: 10;" />
+                    </HBox>
+                </VBox>
+                <ImageView fitHeight="60" fitWidth="60">
+                    <image>
+                        <!-- Replace with actual image path -->
+                        <Image url="@/images/tompetty1.jpg" />
+                    </image>
+                </ImageView>
+            </HBox>
+
+            <!-- Free Fallin' -->
+            <HBox spacing="10" style="-fx-background-color: #113c3c; -fx-padding: 15; -fx-background-radius: 12;">
+                <VBox spacing="5">
+                    <Label text="Free Fallin'" style="-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;" />
+                    <Label text="By Tom Petty" style="-fx-text-fill: white;" />
+                    <HBox spacing="10">
+                        <Label text="Intermediate" style="-fx-background-color: #ffcc00; -fx-padding: 4 8; -fx-background-radius: 10;" />
+                        <Label text="Rock" style="-fx-background-color: #3366ff; -fx-text-fill: white; -fx-padding: 4 8; -fx-background-radius: 10;" />
+                    </HBox>
+                </VBox>
+                <ImageView fitHeight="60" fitWidth="60">
+                    <image>
+                        <!-- Replace with actual image path -->
+                        <Image url="@/images/tompetty2.jpg" />
+                    </image>
+                </ImageView>
+            </HBox>
+        </VBox>
+    </center>
+
+    <!-- Bottom navigation icons -->
+    <bottom>
+        <HBox alignment="CENTER" spacing="200" style="-fx-padding: 10;">
+            <ImageView fitWidth="30" fitHeight="30">
+                <image>
+                    <Image url="@/images/lightning.png" />
+                </image>
+            </ImageView>
+            <ImageView fitWidth="30" fitHeight="30">
+                <image>
+                    <Image url="@/images/lightning.png" />
+                </image>
+            </ImageView>
+        </HBox>
+    </bottom>
+</BorderPane>
