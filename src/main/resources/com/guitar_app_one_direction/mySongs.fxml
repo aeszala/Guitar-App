@@ -29,10 +29,10 @@
             <VBox spacing="15" style="-fx-padding: 10;">
                 <!-- Song 1 -->
                 <VBox spacing="5" style="-fx-padding: 10; -fx-background-color: #f8f8f8; -fx-border-color: #e0e0e0; -fx-border-radius: 5;">
-                    <Label text="Fred Song" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+                    <Label text="Frog Song" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
                     <HBox spacing="10">
-                        <Label text="By John Bae" style="-fx-font-size: 14;"/>
-                        <Label text="MURRAY" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #2a52be;"/>
+                        <Label text="By John Smith" style="-fx-font-size: 14;"/>
+                        <Label text="" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #2a52be;"/>
                     </HBox>
                 </VBox>
                 
@@ -40,8 +40,8 @@
                 <VBox spacing="5" style="-fx-padding: 10; -fx-background-color: #f8f8f8; -fx-border-color: #e0e0e0; -fx-border-radius: 5;">
                     <Label text="February is Cool" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
                     <HBox spacing="10">
-                        <Label text="By John Bae" style="-fx-font-size: 14;"/>
-                        <Label text="MURRAY" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #2a52be;"/>
+                        <Label text="By John Smith" style="-fx-font-size: 14;"/>
+                        <Label text="" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #2a52be;"/>
                     </HBox>
                 </VBox>
                 
