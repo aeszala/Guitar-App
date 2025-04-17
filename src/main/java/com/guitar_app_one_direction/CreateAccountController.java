@@ -1,64 +1,77 @@
-package com.controller;
+package com.guitar_app_one_direction;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.Label;
 
 import com.model.User;
-import org.w3c.dom.*;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import java.io.File;
+
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamWriter;
+import java.io.FileOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class CreateAccountController {
 
-    private static final String XML_FILE = "users.xml";
+    @FXML private TextField txtUsername;
+    @FXML private PasswordField txtPassword;
+    @FXML private TextField txtEmail;
+    @FXML private TextField txtName;
+    @FXML private TextField txtSecurityQuestion;
+    @FXML private TextField txtSecurityAnswer;
+    @FXML private Label lblStatus;
 
-    public static void createUser(User user) {
+    @FXML
+    private void handleCreateAccount() {
         try {
-            File xmlFile = new File(XML_FILE);
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();
+            User user = new User(
+                txtUsername.getText(),
+                txtPassword.getText(),
+                txtEmail.getText(),
+                txtName.getText(),
+                txtSecurityQuestion.getText(),
+                txtSecurityAnswer.getText()
+            );
 
-            Document doc;
-            Element root;
-
-            if (xmlFile.exists()) {
-                doc = builder.parse(xmlFile);
-                root = doc.getDocumentElement();
-            } else {
-                doc = builder.newDocument();
-                root = doc.createElement("users");
-                doc.appendChild(root);
-            }
-
-            Element userElement = doc.createElement("user");
-
-            addChildElement(doc, userElement, "id", user.getId().toString());
-            addChildElement(doc, userElement, "username", user.getUsername());
-            addChildElement(doc, userElement, "password", user.getPassword());
-            addChildElement(doc, userElement, "email", user.getEmail());
-            addChildElement(doc, userElement, "name", user.getName());
-            addChildElement(doc, userElement, "securityQuestion", user.getSecurityQuestion());
-            addChildElement(doc, userElement, "securityAnswer", user.getSecurityAnswer());
-
-            root.appendChild(userElement);
-
-            // Write to XML
-            Transformer transformer = TransformerFactory.newInstance().newTransformer();
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            transformer.transform(new DOMSource(doc), new StreamResult(xmlFile));
-
-            System.out.println("User created successfully and saved to XML.");
-
+            saveUserToXML(user);
+            lblStatus.setText("Account created and saved!");
         } catch (Exception e) {
+            lblStatus.setText("Error: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    private static void addChildElement(Document doc, Element parent, String tag, String value) {
-        Element element = doc.createElement(tag);
-        element.appendChild(doc.createTextNode(value));
-        parent.appendChild(element);
+    private void saveUserToXML(User user) throws Exception {
+        String filePath = "user_" + user.getUsername() + ".xml";
+
+        try (FileOutputStream fos = new FileOutputStream(filePath)) {
+            XMLOutputFactory factory = XMLOutputFactory.newInstance();
+            XMLStreamWriter writer = factory.createXMLStreamWriter(fos, "UTF-8");
+
+            writer.writeStartDocument("UTF-8", "1.0");
+            writer.writeStartElement("user");
+
+            writeElement(writer, "id", user.getId().toString());
+            writeElement(writer, "username", user.getUsername());
+            writeElement(writer, "password", user.getPassword());
+            writeElement(writer, "email", user.getEmail());
+            writeElement(writer, "name", user.getName());
+            writeElement(writer, "securityQuestion", user.getSecurityQuestion());
+            writeElement(writer, "securityAnswer", user.getSecurityAnswer());
+
+            writer.writeEndElement(); // </user>
+            writer.writeEndDocument();
+
+            writer.flush();
+            writer.close();
+        }
+    }
+
+    private void writeElement(XMLStreamWriter writer, String name, String value) throws Exception {
+        writer.writeStartElement(name);
+        writer.writeCharacters(value != null ? value : "");
+        writer.writeEndElement();
     }
 }
