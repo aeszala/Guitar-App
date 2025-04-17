@@ -20,9 +20,8 @@
                    fitWidth="50"
                    onMouseClicked="#goToProfile"
                    style="-fx-cursor: hand; -fx-border-radius: 25; -fx-border-color: #ccc;"/>
-    <Label fx:id="welcomeLabel" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
     </HBox>
-    
+    <Label fx:id="welcomeLabel" text="Welcome!" styleClass="welcome-text"/>
     <VBox spacing="10" alignment="CENTER">
         <Button text="Find a Song" onAction="#goToSearch" 
                 style="-fx-font-size: 16px; -fx-min-width: 200px; -fx-min-height: 40px;"/>
