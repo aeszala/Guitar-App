@@ -75,7 +75,6 @@ public class MusicAppFACADE {
             ? user.getProfilePicturePath() 
             : "/images/default_profile.png"; // Default path in resources
     }
-}
 
     /**
      * Finds songs based on a keyword.
@@ -88,6 +87,14 @@ public class MusicAppFACADE {
             songList = Songlist.getInstance();
         songs = songList.getSongs(keyword);
         return (!songs.isEmpty());
+    }
+
+    public ArrayList<Song> getSongs() {
+        return songs;
+    }
+
+    public Song getSong() {
+        return song;
     }
 
     public boolean displaySongs() {
@@ -197,6 +204,10 @@ public class MusicAppFACADE {
             System.out.println("Username or password incorrect.");
             return false;
         }
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public void printTabSheet(String songTitle) {
@@ -387,7 +398,8 @@ public class MusicAppFACADE {
 
     public String getUserName() {
         if (user != null)
-      return user.getName();
+            return user.getName();
+        return "John Doe";
     }
 
 
