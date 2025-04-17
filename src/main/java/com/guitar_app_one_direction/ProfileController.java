@@ -51,7 +51,7 @@ public class ProfileController implements Initializable {
         btnCompleted.setOnAction(e -> openFXML("completed.fxml"));
         btnMySongs.setOnAction(e -> openFXML("mySongs.fxml"));
 
-        // loadSongs();
+        loadSongs();
     }
 
     private void loadSongs() {
