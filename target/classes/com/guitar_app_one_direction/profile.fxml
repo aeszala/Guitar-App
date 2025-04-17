@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.HomeController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.HomeController">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
     <children>
-        <Button fx:id="primaryButton" text="Switch to Secondary View" onAction="#switchToSecondary"/>
-
-        <Separator/>
-
-        <VBox fx:id="vboxFavorites" spacing="10.0">
-            <Label text="Favorite Songs:" style="-fx-font-weight: bold;" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+        <VBox alignment="CENTER" spacing="5">
+            <Label fx:id="nameLabel" text="Name" />
+            <Label fx:id="usernameLabel" text="Username: " />
+            <Label fx:id="emailLabel" text="Email: " />
+            <Label fx:id="securityQuestionLabel" text="Security question set?" />
         </VBox>
+      <Button fx:id="mySongsButton" mnemonicParsing="false" onAction="#goToMySongs" text="My Songs" />
+      <Button fx:id="favoriteSongsButton" mnemonicParsing="false" onAction="#goToFavoriteSongs" text="Favorite Songs" />
+        <Separator />
+      <Button fx:id="completedSongsButton" mnemonicParsing="false" onAction="#goToCompletedSongs" text="Completed Songs" />
+      <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#goToPrimary" text="Log Out" />
 
-        <VBox fx:id="vboxCompleted" spacing="10.0">
-            <Label text="Completed Songs:" style="-fx-font-weight: bold;" />
-        </VBox>
+        <VBox fx:id="vboxFavorites" spacing="10.0" />
 
-         <VBox fx:id="vboxMySongs" spacing="10.0">
-            <Label text="My Songs:" style="-fx-font-weight: bold;" />
-        </VBox>
+        <VBox fx:id="vboxCompleted" spacing="10.0" />
+
+         <VBox fx:id="vboxMySongs" spacing="10.0" />
     </children>
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <stylesheets>
         <URL value="@styles.css" />
