@@ -51,7 +51,7 @@ public class ProfileController implements Initializable {
         btnCompleted.setOnAction(e -> openFXML("completed.fxml"));
         btnMySongs.setOnAction(e -> openFXML("mySongs.fxml"));
 
-        // loadSongs();
+        loadSongs();
     }
 
     private void loadSongs() {
@@ -79,13 +79,14 @@ public class ProfileController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Parent root = loader.load();
 
-            // Optional: pass user to next controller if needed
-            if (fxmlFile.equals("favorites.fxml") && loader.getController() instanceof FavoritesController favController) {
-                favController.setUser(currentUser);
-            } else if (fxmlFile.equals("completed.fxml") && loader.getController() instanceof CompletedController compController) {
-                compController.setUser(currentUser);
-            } else if (fxmlFile.equals("mySongs.fxml") && loader.getController() instanceof MySongsController mySongsController) {
-                mySongsController.setUser(currentUser);
+            Object controller = loader.getController();
+
+            if (fxmlFile.equals("favorites.fxml") && controller instanceof FavoritesController) {
+                ((FavoritesController) controller).setUser(currentUser);
+            } else if (fxmlFile.equals("completed.fxml") && controller instanceof CompletedController) {
+                ((CompletedController) controller).setUser(currentUser);
+            } else if (fxmlFile.equals("mySongs.fxml") && controller instanceof MySongsController) {
+                ((MySongsController) controller).setUser(currentUser);
             }
 
             Stage stage = (Stage) btnFavorites.getScene().getWindow();
