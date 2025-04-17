@@ -1,100 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.DropdownButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<VBox xmlns="http://javafx.com/javafx/8.0.171" 
-      xmlns:fx="http://javafx.com/fxml/1" 
-      fx:controller="com.guitar_app_one_direction.CreateSongController"
-      spacing="15" alignment="TOP_CENTER"
-      style="-fx-background-color: linear-gradient(to bottom, #154c50, #73472d);"
-      prefWidth="400" prefHeight="900">
+<VBox alignment="TOP_CENTER" prefHeight="900" prefWidth="400" spacing="15" style="-fx-background-color: linear-gradient(to bottom, #154c50, #73472d);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.CreateSongController">
 
     <!-- Page Title -->
-    <Label text="Create a Song" style="-fx-font-size: 28; -fx-text-fill: white;" />
+    <Label style="-fx-font-size: 28; -fx-text-fill: white;" text="Create a Song" />
 
     <!-- Song Title Field -->
-    <TextField fx:id="titleField" promptText="Song Title" maxWidth="300" />
-
-    <!-- Tempo, Difficulty, Genre + Image Upload -->
-    <!-- <HBox spacing="20" alignment="CENTER">
-        <VBox spacing="10" alignment="CENTER_LEFT">
-            <HBox spacing="5">
-                <Label text="Tempo:" style="-fx-text-fill: white;" />
-                <ComboBox fx:id="tempoBox">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="60 BPM" />
-                            <String fx:value="70 BPM" />
-                            <String fx:value="80 BPM" />
-                            <String fx:value="90 BPM" />
-                            <String fx:value="100 BPM" />
-                            <String fx:value="110 BPM" />
-                            <String fx:value="120 BPM" />
-                            <String fx:value="130 BPM" />
-                            <String fx:value="140 BPM" />
-                            <String fx:value="150 BPM" />
-                        </FXCollections>
-                    </items>
-                </ComboBox>
-            </HBox>
-            <HBox spacing="5">
-                <Label text="Difficulty:" style="-fx-text-fill: white;" />
-                <ComboBox fx:id="difficultyBox">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Beginner" />
-                            <String fx:value="Intermediate" />
-                            <String fx:value="Advanced" />
-                        </FXCollections>
-                    </items>
-                </ComboBox>
-            </HBox>
-            <HBox spacing="5">
-                <Label text="Genres:" style="-fx-text-fill: white;" />
-                <ComboBox fx:id="genreBox">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Rock" />
-                            <String fx:value="Pop" />
-                            <String fx:value="Country" />
-                            <String fx:value="HipHop" />
-                            <String fx:value="Electronic" />
-                            <String fx:value="Jazz" />
-                            <String fx:value="Classical" />
-                            <String fx:value="Soul" />
-                            <String fx:value="Indie" />
-                            <String fx:value="Folk" />
-                        </FXCollections>
-                    </items>
-                </ComboBox>
-            </HBox>
-        </VBox> -->
-
-        <!-- Upload Photo -->
-        <!-- <VBox alignment="CENTER">
-            <Button fx:id="uploadPhotoButton" text="Upload Photo" prefWidth="100" />
-            <ImageView fx:id="photoPreview" fitWidth="100" fitHeight="100" />
-        </VBox>
-    </HBox> -->
-
-    <!-- Measures Section -->
-    <Label text="Measure 1" style="-fx-text-fill: white;" />
-    <ScrollPane fitToWidth="true" prefHeight="350" maxHeight="400">
+    <TextField fx:id="titleField" maxWidth="300" promptText="Song Title" />
+   <HBox prefHeight="113.0" prefWidth="400.0">
+      <children>
+         <VBox prefHeight="173.0" prefWidth="72.0">
+            <children>
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tempo:" />
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulty:" />
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Genre:" />
+            </children>
+         </VBox>
+         <VBox prefHeight="153.0" prefWidth="100.0">
+            <children>
+               <TextField fx:id="tempoTextField" promptText="Choose tempo" />
+               <DropdownButton fx:id="difficultyDropdown">
+                   <items>
+                       <MenuItem text="Choice 1" />
+                       <MenuItem text="Choice 2" />
+                       <MenuItem text="Choice 3" />
+                   </items>
+               </DropdownButton>
+               <DropdownButton fx:id="genreDropdown">
+                   <items>
+                       <MenuItem text="Choice 1" />
+                       <MenuItem text="Choice 2" />
+                       <MenuItem text="Choice 3" />
+                   </items>
+               </DropdownButton>
+            </children>
+         </VBox>
+         <VBox alignment="TOP_RIGHT" prefHeight="173.0" prefWidth="169.0">
+            <children>
+               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            </children>
+         </VBox>
+      </children>
+   </HBox>
+    <ScrollPane fitToWidth="true" maxHeight="400" prefHeight="358.0" prefWidth="400.0">
         <VBox fx:id="measureContainer" spacing="10">
             <padding>
-                <Insets top="10" right="10" bottom="10" left="10" />
+                <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
-            <!-- Measures added dynamically, first empty one already exists -->
-            <HBox spacing="5" alignment="CENTER_LEFT">
-                <TextField prefWidth="40" />
-                <TextField prefWidth="40" />
-                <TextField prefWidth="40" />
-                <TextField prefWidth="40" />
-            </HBox>
+      
+          <!-- Measures Section -->
+          <Label style="-fx-text-fill: white;" text="Measure 1" />
+         <HBox prefHeight="100.0" prefWidth="200.0" />
         </VBox>
     </ScrollPane>
 
@@ -102,11 +70,11 @@
     <Button fx:id="addMeasureButton" text="Add Measure" />
 
     <!-- Action Buttons -->
-    <HBox spacing="20" alignment="CENTER">
-        <Button text="▶ Play Song" onAction="#playCreateSong" />
-        <Button text="🎼 Create Tabs" onAction="#goToTabsForCreateSong" />
+    <HBox alignment="CENTER" spacing="20">
+        <Button onAction="#playCreateSong" text="▶ Play Song" />
+        <Button onAction="#goToTabsForCreateSong" text="🎼 Create Tabs" />
     </HBox>
 
-    <Button text="Upload Song" onAction="#uploadSong" maxWidth="200" />
+    <Button maxWidth="200" onAction="#uploadSong" text="Upload Song" />
 
 </VBox>
