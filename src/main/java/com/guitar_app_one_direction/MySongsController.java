@@ -10,36 +10,38 @@ import com.model.User;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.ListView;
 
 public class MySongsController implements Initializable {
 
     @FXML
-    private VBox vboxMySongs;
+    private ListView<String> mySongsListView;  // ListView to display the songs
 
     private MusicAppFACADE facade;
     private User currentUser;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        facade = new MusicAppFACADE();
+        facade = new MusicAppFACADE();  // Initialize the facade to interact with music data
     }
 
     public void setUser(User user) {
-        this.currentUser = user;
-        loadMySongs();
+        this.currentUser = user;  // Set the current user
+        loadMySongs();  // Load the user's songs
     }
 
     private void loadMySongs() {
-        if (currentUser == null) return;
+        if (currentUser == null) return;  // If no user is set, do nothing
 
+        // Fetch the list of songs for the current user
         List<Song> mySongs = facade.getMySongs(currentUser);
-        vboxMySongs.getChildren().clear();
 
+        // Clear the existing items in the ListView
+        mySongsListView.getItems().clear();
+
+        // Add each song's title to the ListView
         for (Song song : mySongs) {
-            Label label = new Label(song.getTitle());
-            vboxMySongs.getChildren().add(label);
+            mySongsListView.getItems().add(song.getTitle());  // Add song title to the ListView
         }
     }
 }
