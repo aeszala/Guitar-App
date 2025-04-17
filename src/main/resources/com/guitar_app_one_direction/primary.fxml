@@ -7,7 +7,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="login_pane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.PrimaryController">
+<AnchorPane id="AnchorPane" fx:id="login_pane"
+   xmlns="http://javafx.com/javafx/23.0.1"
+   xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="com.guitar_app_one_direction.PrimaryController"
+   prefWidth="400" 
+   prefHeight="900">
    <children>
       <Label layoutX="23.0" layoutY="14.0" text="Login">
          <font>
