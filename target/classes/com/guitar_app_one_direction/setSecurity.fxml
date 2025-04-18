@@ -10,12 +10,16 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/8.0.171" 
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.guitar_app_one_direction.SetSecurityController">
+            fx:controller="com.guitar_app_one_direction.SetSecurityController"
+            style="-fx-background-color: linear-gradient(to bottom, #296B73, #BF532C);">
+
     <!-- Top navigation bar -->
     <top>
-        <HBox style="-fx-background-color: #f4f4f4; -fx-padding: 10;">
-            <Button text="Back" fx:id="backButton" onAction="#handleBackToProfile" />
-            <Button text="Home" fx:id="homeButton" onAction="#handleHomeButton" style="-fx-margin-left: 10;"/>
+        <HBox style="-fx-background-color: transparent; -fx-padding: 10;">
+            <Button text="Back" fx:id="backButton" onAction="#handleBackToProfile" 
+                    style="-fx-text-fill: black;"/>
+            <Button text="Home" fx:id="homeButton" onAction="#handleHomeButton" 
+                    style="-fx-text-fill: black; -fx-margin-left: 10;"/>
         </HBox>
     </top>
     
@@ -23,23 +27,24 @@
     <center>
         <VBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
             <VBox alignment="CENTER" spacing="5">
-                <Label text="Set Security Question" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
-                <Label text="and Answer" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+                <Label text="Set Security Question" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                <Label text="and Answer" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white;"/>
             </VBox>
             
             <VBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10; -fx-min-width: 300;">
-                <Label text="Security Question" style="-fx-font-weight: bold;"/>
+                <Label text="Security Question" style="-fx-font-weight: bold; -fx-text-fill: white;"/>
                 <TextField fx:id="securityQuestionField" style="-fx-min-width: 300;"/>
                 
-                <Label text="Security Answer" style="-fx-font-weight: bold; -fx-padding: 10 0 0 0;"/>
+                <Label text="Security Answer" style="-fx-font-weight: bold; -fx-padding: 10 0 0 0; -fx-text-fill: white;"/>
                 <TextField fx:id="securityAnswerField" style="-fx-min-width: 300;"/>
             </VBox>
             
             <Label text="Remember: Security Questions should be something only you know the answer to!" 
                    style="-fx-font-style: italic; -fx-text-fill: #555; -fx-wrap-text: true; -fx-max-width: 300;"/>
             
+            <!-- Done Button with Updated Background Color -->
             <Button text="Done" fx:id="doneButton" onAction="#handleDone" 
-                    style="-fx-padding: 8 25; -fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                    style="-fx-padding: 8 25; -fx-background-color: #296B73; -fx-text-fill: white; -fx-font-weight: bold;"/>
         </VBox>
     </center>
 </BorderPane>
