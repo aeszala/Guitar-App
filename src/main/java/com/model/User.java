@@ -31,6 +31,7 @@ public class User {
     public String securityQuestion;
     public String securityAnswer;
     public boolean login;
+    private String profilePicture;
 
     /**
      * Constructor for creating an existing user with all attributes initialized.
@@ -62,6 +63,7 @@ public class User {
         this.completedSongs = completedSongs;
         this.completedLessons = completedLessons;
         this.mySongs = mySongs;
+        this.profilePicture = "/images/default_profile.png";
     }
 
     /**
@@ -197,6 +199,10 @@ public class User {
         return name;
     }
 
+    public String getProfilePicturePath() {
+        return profilePicture;
+    }
+
     public ArrayList<Song> getFavoriteSongs() {
         return favoriteSongs;
     }
@@ -321,7 +327,7 @@ public class User {
      * @param passwordString The password to check.
      * @return True if the username and password match, false otherwise.
      */
-    public boolean isMatch(String usernameString, String passwordString) {
+    public static boolean isMatch(String usernameString, String passwordString) {
         UserList.getInstance();
         User user = UserList.getUser(usernameString);
         if (user != null && user.getPassword().equals(passwordString))

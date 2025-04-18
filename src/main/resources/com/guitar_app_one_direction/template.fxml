@@ -5,19 +5,31 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.171" 
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.guitar_app_one_direction.TemplateController">
-    <!-- Top navigation bar -->
+<BorderPane fx:id="mainLayout" 
+            xmlns:fx="http://javafx.com/fxml" 
+            fx:controller="com.guitar_app_one_direction.TemplateController"
+            stylesheets="@template.css"
+            prefWidth="400" 
+            prefHeight="900">
+    
     <top>
-        <HBox style="-fx-background-color: #f4f4f4; -fx-padding: 10;">
-            <Button text="Back" fx:id="backButton" onAction="#handleBackButton" />
-            <Button text="Home" fx:id="homeButton" onAction="#handleHomeButton" style="-fx-margin-left: 10;"/>
+        <HBox alignment="CENTER_RIGHT" styleClass="top-nav-bar">
+            <Button fx:id="profileButton" text="👨" onAction="#goToProfile" 
+                   styleClass="profile-button"/>
         </HBox>
     </top>
     
-    <!-- Content container -->
     <center>
-        <StackPane fx:id="contentPane" />
+        <StackPane fx:id="contentPane" styleClass="content-pane"/>
     </center>
+    
+    <bottom>
+        <HBox alignment="CENTER" styleClass="bottom-nav-bar">
+            <Button fx:id="backButton" text="back" onAction="#handleBack" 
+                   styleClass="nav-button back-button"/>
+            <Pane HBox.hgrow="ALWAYS"/> <!-- Spacer -->
+            <Button fx:id="homeButton" text="🏠" onAction="#goToHome" 
+                   styleClass="nav-button home-button"/>
+        </HBox>
+    </bottom>
 </BorderPane>

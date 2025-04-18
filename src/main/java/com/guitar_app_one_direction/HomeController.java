@@ -39,26 +39,6 @@ public class HomeController implements Initializable {
         String username = facade.getLoggedInUsername();
         lblWelcome.setText("Welcome, " + username + "!");
 
-        // Load favorite songs
-        List<Song> favorites = facade.getFavoriteSongs(null);
-        for (Song song : favorites) {
-            Label songLabel = new Label(song.getTitle());
-            vboxFavorites.getChildren().add(songLabel);
-        }
-
-        // Load completed songs
-        List<Song> completed = facade.getCompletedSongs(null);
-        for (Song song : completed) {
-            Label songLabel = new Label(song.getTitle());
-            vboxCompleted.getChildren().add(songLabel);
-        }
-        
-        // Load my songs
-        List<Song> mySongs = facade.getMySongs(null);
-        for (Song song : mySongs) {
-            Label songLabel = new Label(song.getTitle());
-            vboxMySongs.getChildren().add(songLabel);
-        }
     }
 
     @FXML

@@ -43,6 +43,7 @@ import java.text.SimpleDateFormat;
  * </ul>
  */
 public class MusicAppFACADE {
+    private static MusicAppFACADE instance;
     private User user;
     private Student student;
     private Teacher teacher;
@@ -59,7 +60,20 @@ public class MusicAppFACADE {
      * This constructor currently does nothing as the object is intended to be initialized with 
      * data through various methods.
      */
-    public void MusicApp() {
+    private void MusicAppFACADE() {
+    }
+
+    public static synchronized MusicAppFACADE getInstance() {
+        if (instance == null) {
+            instance = new MusicAppFACADE();
+        }
+        return instance;
+    }
+
+    public String getProfilePicturePath() {
+        return user != null 
+            ? user.getProfilePicturePath() 
+            : "/images/default_profile.png"; // Default path in resources
     }
 
     /**
@@ -73,6 +87,14 @@ public class MusicAppFACADE {
             songList = Songlist.getInstance();
         songs = songList.getSongs(keyword);
         return (!songs.isEmpty());
+    }
+
+    public ArrayList<Song> getSongs() {
+        return songs;
+    }
+
+    public Song getSong() {
+        return song;
     }
 
     public boolean displaySongs() {
@@ -182,6 +204,10 @@ public class MusicAppFACADE {
             System.out.println("Username or password incorrect.");
             return false;
         }
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public void printTabSheet(String songTitle) {
@@ -370,9 +396,10 @@ public class MusicAppFACADE {
         // Method implementation is missing
     }
 
-    public User getUserByUsername(String username) {
-      // TODO Auto-generated method stub
-      throw new UnsupportedOperationException("Unimplemented method 'getUserByUsername'");
+    public String getUserName() {
+        if (user != null)
+            return user.getName();
+        return "John Doe";
     }
 
 
