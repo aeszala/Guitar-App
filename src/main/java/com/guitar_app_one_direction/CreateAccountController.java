@@ -1,77 +1,80 @@
 package com.guitar_app_one_direction;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 
 import com.model.User;
-
-import javax.xml.stream.XMLOutputFactory;
-import javax.xml.stream.XMLStreamWriter;
-import java.io.FileOutputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import com.model.UserList;
 
 public class CreateAccountController {
 
-    @FXML private TextField txtUsername;
-    @FXML private PasswordField txtPassword;
-    @FXML private TextField txtEmail;
-    @FXML private TextField txtName;
-    @FXML private TextField txtSecurityQuestion;
-    @FXML private TextField txtSecurityAnswer;
-    @FXML private Label lblStatus;
+    @FXML
+    private TextField txtUsername;
 
     @FXML
+    private PasswordField txtPassword;
+
+    @FXML
+    private TextField txtEmail;
+
+    @FXML
+    private TextField txtName;
+
+    @FXML
+    private TextField txtSecurityQuestion;
+
+    @FXML
+    private TextField txtSecurityAnswer;
+
+    @FXML
+    private Button btnCreate;
+
+    private final UserList userList = UserList.getInstance();
+
+    @FXML
+    private void initialize() {
+        btnCreate.setOnAction(e -> handleCreateAccount());
+    }
+
     private void handleCreateAccount() {
-        try {
-            User user = new User(
-                txtUsername.getText(),
-                txtPassword.getText(),
-                txtEmail.getText(),
-                txtName.getText(),
-                txtSecurityQuestion.getText(),
-                txtSecurityAnswer.getText()
-            );
+        String username = txtUsername.getText().trim();
+        String password = txtPassword.getText().trim();
+        String email = txtEmail.getText().trim();
+        String name = txtName.getText().trim();
+        String securityQuestion = txtSecurityQuestion.getText().trim();
+        String securityAnswer = txtSecurityAnswer.getText().trim();
 
-            saveUserToXML(user);
-            lblStatus.setText("Account created and saved!");
-        } catch (Exception e) {
-            lblStatus.setText("Error: " + e.getMessage());
-            e.printStackTrace();
+        if (username.isEmpty() || password.isEmpty() || email.isEmpty() || name.isEmpty() ||
+                securityQuestion.isEmpty() || securityAnswer.isEmpty()) {
+            showAlert(AlertType.ERROR, "Please fill in all fields.");
+            return;
+        }
+
+        boolean success = userList.addUser(username, password, email, name, securityQuestion, securityAnswer);
+
+        if (success) {
+            UserList.saveUsers();
+            showAlert(AlertType.INFORMATION, "Account created successfully!");
+            clearForm();
+        } else {
+            showAlert(AlertType.WARNING, "Username already exists. Please choose another.");
         }
     }
 
-    private void saveUserToXML(User user) throws Exception {
-        String filePath = "user_" + user.getUsername() + ".xml";
-
-        try (FileOutputStream fos = new FileOutputStream(filePath)) {
-            XMLOutputFactory factory = XMLOutputFactory.newInstance();
-            XMLStreamWriter writer = factory.createXMLStreamWriter(fos, "UTF-8");
-
-            writer.writeStartDocument("UTF-8", "1.0");
-            writer.writeStartElement("user");
-
-            writeElement(writer, "id", user.getId().toString());
-            writeElement(writer, "username", user.getUsername());
-            writeElement(writer, "password", user.getPassword());
-            writeElement(writer, "email", user.getEmail());
-            writeElement(writer, "name", user.getName());
-            writeElement(writer, "securityQuestion", user.getSecurityQuestion());
-            writeElement(writer, "securityAnswer", user.getSecurityAnswer());
-
-            writer.writeEndElement(); // </user>
-            writer.writeEndDocument();
-
-            writer.flush();
-            writer.close();
-        }
+    private void clearForm() {
+        txtUsername.clear();
+        txtPassword.clear();
+        txtEmail.clear();
+        txtName.clear();
+        txtSecurityQuestion.clear();
+        txtSecurityAnswer.clear();
     }
 
-    private void writeElement(XMLStreamWriter writer, String name, String value) throws Exception {
-        writer.writeStartElement(name);
-        writer.writeCharacters(value != null ? value : "");
-        writer.writeEndElement();
+    private void showAlert(AlertType type, String message) {
+        Alert alert = new Alert(type);
+        alert.setTitle("Account Creation");
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
