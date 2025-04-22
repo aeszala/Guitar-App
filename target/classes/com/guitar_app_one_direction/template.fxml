@@ -25,7 +25,7 @@
     
     <bottom>
         <HBox alignment="CENTER" styleClass="bottom-nav-bar">
-            <Button fx:id="backButton" text="back" onAction="#handleBack" 
+            <Button fx:id="backButton" text="back" onAction="#handleBackButton" 
                    styleClass="nav-button back-button"/>
             <Pane HBox.hgrow="ALWAYS"/> <!-- Spacer -->
             <Button fx:id="homeButton" text="🏠" onAction="#goToHome" 

@@ -1,12 +1,5 @@
 package com.guitar_app_one_direction;
 
-<<<<<<< HEAD
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-
-public class CompletedController {
-  
-=======
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -51,5 +44,4 @@ public class CompletedController implements Initializable {
             completedListView.getItems().add(song.getTitle());  // Add song title to the ListView
         }
     }
->>>>>>> 1701a3438ce38652a3dc7d119967d7d1ec6153d9
 }
