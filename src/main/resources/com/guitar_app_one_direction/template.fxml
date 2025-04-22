@@ -4,6 +4,8 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.Pane?>
+
 
 <BorderPane fx:id="mainLayout" 
             xmlns:fx="http://javafx.com/fxml" 
