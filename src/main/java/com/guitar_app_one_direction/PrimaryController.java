@@ -10,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+
 import com.guitar_app_one_direction.App;
 import com.model.*;
 
@@ -23,6 +25,19 @@ public class PrimaryController implements Initializable {
     
     @FXML
     private Label lbl_error;
+
+    @FXML
+    private AnchorPane login_pane;
+
+    // Define the setContent method to change content dynamically
+    public void setContent(String fxml) throws IOException {
+        // Load the new FXML file
+        Parent newContent = FXMLLoader.load(getClass().getResource(fxml + ".fxml"));
+        
+        // You can set this content in a specific layout container
+        // Example, assuming login_pane is your layout pane in primary.fxml:
+        login_pane.getChildren().setAll(newContent);
+    }
 
     @FXML
     private void btnLoginClicked(MouseEvent event) throws IOException {
