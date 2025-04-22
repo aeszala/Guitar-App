@@ -42,7 +42,7 @@ public class PrimaryController implements Initializable {
         }
 
     // Get the logged-in user
-    User user = library.getUserByUsername(username);
+    User user = library.getUser();
 
     // Load home.fxml and pass the user
     FXMLLoader loader = new FXMLLoader(App.class.getResource("home.fxml"));
