@@ -27,7 +27,7 @@ public class App extends Application {
         scene = new Scene(root, 800, 600);
         stage.setWidth(400);
         stage.setHeight(900);
-        stage.setResizable(false);  // Prevent resizing
+        stage.setResizable(true);  // Prevent resizing
         stage.setScene(scene);
         stage.setTitle("Guitar App");
         stage.show();
