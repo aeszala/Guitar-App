@@ -4,7 +4,6 @@
 
 package com.program;
 
-
 import org.jfugue.player.Player;
 import org.jfugue.pattern.Pattern;
 import com.model.*;
@@ -43,28 +42,26 @@ public class MusicPlayer {
 
         // Display the song information
         System.out.println("Playing: " + song.getTitle() + " by " + song.getArtist());
+        System.out.println("Tempo: " + song.getTempo() + " BPM");
 
-        // Create a Pattern to represent the song's musical structure
-        Pattern pattern = new Pattern("I[Guitar] "); // Set instrument to Guitar
+        // Create a Pattern to represent the song's musical structure, include instrument and tempo
+        Pattern pattern = new Pattern("I[Guitar] T" + song.getTempo() + " "); // Set instrument and tempo
 
         // Loop through the song's measures and add the sounds to the pattern
         for (Measure measure : song.getMeasures()) {
-            // Assuming you have a method like getNotes() in Measure
-            for (Sound sound : measure.getNotes()) {  // Change getNotes() to match your actual method
+            for (Sound sound : measure.getNotes()) {
                 if (sound instanceof Note) {
                     Note note = (Note) sound;
-                    // Add the note directly to the pattern (JFugue automatically handles the notation)
-                    pattern.add(note.getType() + "/" + note.getLength() + " "); // Example: "C#/1.0"
+                    pattern.add(note.getType() + "/" + note.getLength() + " ");
                 } else if (sound instanceof Chord) {
                     Chord chord = (Chord) sound;
                     StringBuilder chordPattern = new StringBuilder("[");
 
-                    // Add each note of the chord to the pattern
                     for (Note note : chord.getNotes()) {
                         chordPattern.append(note.getType()).append(" ");
                     }
                     chordPattern.append("]/").append(chord.getNotes().get(0).getLength()).append(" ");
-                    pattern.add(chordPattern.toString()); // Add the chord to the pattern
+                    pattern.add(chordPattern.toString());
                 }
             }
         }
@@ -77,13 +74,8 @@ public class MusicPlayer {
      * Main method for testing the MusicPlayer functionality.
      */
     public static void main(String[] args) {
-        // Create an instance of MusicPlayer
         MusicPlayer player = new MusicPlayer();
-
-        // Define a song title to search and play
-        String songTitle = "Free Fallin"; // Replace this with the actual song title you want to play
-
-        // Play the song
+        String songTitle = "Mary Jane's Last Dance"; // Change as needed
         player.playSong(songTitle);
     }
 }
