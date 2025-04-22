@@ -9,34 +9,33 @@ import java.io.IOException;
 
 public class App extends Application {
     private static Scene scene;
-    private static TemplateController templateController;
+    private static PrimaryController primaryController;
 
     @Override
     public void start(Stage stage) throws IOException {
-        // Load the template (which contains the nav bar and content container)
+        // Load the primary screen
         FXMLLoader loader = new FXMLLoader(getClass().getResource("primary.fxml"));
         Parent root = loader.load();
-        
-        // Store the template controller reference
-        templateController = loader.getController();
-        
+    
+        // Store the primary controller reference
+        primaryController = loader.getController();
+    
         // Set initial content
-        templateController.setContent("primary");
-        
+        primaryController.setContent("primary");
+    
         // Create scene
         scene = new Scene(root, 800, 600);
-        // In your Java code where you create the Stage
-        stage.setWidth(400);  // pixels
+        stage.setWidth(400);
         stage.setHeight(900);
-        stage.setResizable(false);  // Prevents user resizing
+        stage.setResizable(false);  // Prevent resizing
         stage.setScene(scene);
         stage.setTitle("Guitar App");
         stage.show();
     }
 
     public static void setContent(String fxml) throws IOException {
-        if (templateController != null) {
-            templateController.setContent(fxml);
+        if (primaryController != null) {
+            primaryController.setContent(fxml);
         }
     }
     
