@@ -88,3 +88,51 @@
     -fx-text-fill: #e74c3c; /* Red for error messages */
     -fx-font-size: 12px;
 }
+
+#findSongBtn {
+    -fx-background-color: #D95032; 
+    -fx-text-fill: white;          /* Text color */
+    
+    /* Font */
+    -fx-font-family: "Arial";      /* Font family */
+    -fx-font-size: 28px;           /* Font size */
+    
+    /* Rounded Corners */
+    -fx-background-radius: 60px;   /* Corner radius */
+    -fx-border-radius: 60px;       /* For border radius if using border */
+    
+    /* Drop Shadow */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.2, 0, 1);
+    /* Parameters: shadow-type, color, radius, spread, x-offset, y-offset */
+    
+    /* Padding & Size */
+    -fx-padding: 8px 16px;         /* Vertical and horizontal padding */
+    -fx-min-width: 100px;          /* Minimum width */
+    
+    /* Hover Effect */
+    -fx-cursor: hand;
+}
+
+#createSongBtn {
+    -fx-background-color: #296B73; 
+    -fx-text-fill: white;          /* Text color */
+    
+    /* Font */
+    -fx-font-family: "Arial";      /* Font family */
+    -fx-font-size: 28px;           /* Font size */
+    
+    /* Rounded Corners */
+    -fx-background-radius: 60px;   /* Corner radius */
+    -fx-border-radius: 60px;       /* For border radius if using border */
+    
+    /* Drop Shadow */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.2, 0, 1);
+    /* Parameters: shadow-type, color, radius, spread, x-offset, y-offset */
+    
+    /* Padding & Size */
+    -fx-padding: 8px 16px;         /* Vertical and horizontal padding */
+    -fx-min-width: 100px;          /* Minimum width */
+    
+    /* Hover Effect */
+    -fx-cursor: hand;
+}
