@@ -56,5 +56,10 @@ public class TemplateController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-}
+    }
+
+    @FXML
+    private void goToHome() {
+        handleHomeButton();
+    }
 }
