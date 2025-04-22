@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXML2.java to edit this template
- */
 package com.guitar_app_one_direction;
 
 import java.io.IOException;
@@ -18,17 +14,24 @@ import com.guitar_app_one_direction.App;
 import com.model.*;
 
 /**
- *
- * @author portia
+ * Controller for the Primary Screen (Login screen)
  */
 public class PrimaryController implements Initializable {
+    
     @FXML
     private TextField txt_username;
+    
     @FXML
     private TextField txt_password;
+    
     @FXML
     private Label lbl_error;
 
+    /**
+     * Login button click event handler.
+     * @param event The mouse event triggered by the login button.
+     * @throws IOException If the FXML loading fails.
+     */
     @FXML
     private void btnLoginClicked(MouseEvent event) throws IOException {
         String username = txt_username.getText();
@@ -41,21 +44,39 @@ public class PrimaryController implements Initializable {
             return;
         }
 
-    // Get the logged-in user
-    User user = library.getUser();
+        // Get the logged-in user
+        User user = library.getUser();
 
-    // Load home.fxml and pass the user
-    FXMLLoader loader = new FXMLLoader(App.class.getResource("home.fxml"));
-    Parent root = loader.load();
+        // Load home.fxml and pass the user
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("home.fxml"));
+        Parent root = loader.load();
 
-    HomeController homeController = loader.getController();
-    homeController.setUser(user);
+        HomeController homeController = loader.getController();
+        homeController.setUser(user);
 
-    App.getScene().setRoot(root);
-
-        App.setRoot("home");
+        // Set the root to the home screen
+        App.getScene().setRoot(root);
     }
 
+    /**
+     * Create Account button click event handler.
+     * @param event The mouse event triggered by the create account button.
+     * @throws IOException If the FXML loading fails.
+     */
+    @FXML
+    private void btnCreateAccountClicked(MouseEvent event) throws IOException {
+        // For now, just print something to indicate the button was clicked
+        System.out.println("Create Account button clicked");
+
+        // Optional: route to a signup screen later
+        // App.setRoot("signup");
+    }
+
+    /**
+     * Back button click event handler.
+     * @param event The mouse event triggered by the back button.
+     * @throws IOException If the FXML loading fails.
+     */
     @FXML
     private void back(MouseEvent event) throws IOException {
         App.setRoot("home");
@@ -63,5 +84,6 @@ public class PrimaryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // Initialization logic (if any) can be added here
     }
 }
