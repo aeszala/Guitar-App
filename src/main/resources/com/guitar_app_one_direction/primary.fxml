@@ -7,26 +7,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="login_pane"
-   xmlns="http://javafx.com/javafx/23.0.1"
-   xmlns:fx="http://javafx.com/fxml/1"
-   fx:controller="com.guitar_app_one_direction.PrimaryController"
-   prefWidth="400" 
-   prefHeight="900">
+<AnchorPane id="AnchorPane" fx:id="login_pane" prefHeight="900" prefWidth="400" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.PrimaryController">
    <children>
-      <Label layoutX="23.0" layoutY="14.0" text="Login">
+      <Label fx:id="MelodexTxt" layoutX="108.0" layoutY="144.0" text="Melodex" textFill="WHITE">
          <font>
-            <Font size="30.0" />
+            <Font name="Berlin Sans FB Demi Bold" size="50.0" />
          </font>
       </Label>
-      <Label layoutX="84.0" layoutY="71.0" text="Username:" />
-      <Label layoutX="86.0" layoutY="116.0" text="Password:" />
-      <Button layoutX="107.0" layoutY="145.0" mnemonicParsing="false" onAction="#btnLoginClicked" onMouseClicked="#btnLoginClicked" prefHeight="24.0" prefWidth="173.0" text="Login" />
-      <Button layoutX="107.0" layoutY="178.0" mnemonicParsing="false" onAction="#btnCreateAccountClicked" onMouseClicked="#btnCreateAccountClicked" prefHeight="24.0" prefWidth="173.0" text="Create Account" />
-      <TextField fx:id="txt_username" layoutX="148.0" layoutY="67.0" />
-      <TextField fx:id="txt_password" layoutX="148.0" layoutY="112.0" />
+      <Button fx:id="loginBtn" layoutX="110.0" layoutY="447.0" mnemonicParsing="false" onAction="#btnLoginClicked" onMouseClicked="#btnLoginClicked" prefHeight="48.0" prefWidth="180.0" text="Login" />
+      <Button fx:id="createAccountBtn" layoutX="110.0" layoutY="516.0" mnemonicParsing="false" onAction="#btnCreateAccountClicked" onMouseClicked="#btnCreateAccountClicked" prefHeight="42.0" prefWidth="180.0" text="Sign Up" />
+      <TextField fx:id="txt_username" layoutX="47.0" layoutY="291.0" prefHeight="58.0" prefWidth="306.0" promptText="Username">
+         <font>
+            <Font size="20.0" />
+         </font></TextField>
+      <TextField fx:id="txt_password" layoutX="47.0" layoutY="361.0" prefHeight="58.0" prefWidth="306.0" promptText="Password">
+         <font>
+            <Font size="20.0" />
+         </font></TextField>
       <Label fx:id="lbl_error" layoutX="212.0" layoutY="235.0" prefHeight="16.0" prefWidth="170.0" />
-      <Button layoutX="138.0" layoutY="211.0" mnemonicParsing="false" onAction="#goToSecurity" text="Forgot Password?" />
+      <Button fx:id="forgotPasswordBtn" layoutX="135.0" layoutY="854.0" mnemonicParsing="false" onAction="#goToSecurity" text="Forgot Password?" />
    </children>
    <stylesheets>
       <URL value="@styles.css" />
