@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXML2.java to edit this template
- */
 package com.guitar_app_one_direction;
 
 import java.io.IOException;
@@ -17,15 +13,14 @@ import javafx.scene.input.MouseEvent;
 import com.guitar_app_one_direction.App;
 import com.model.*;
 
-/**
- *
- * @author portia
- */
 public class PrimaryController implements Initializable {
+    
     @FXML
     private TextField txt_username;
+    
     @FXML
     private TextField txt_password;
+    
     @FXML
     private Label lbl_error;
 
@@ -41,19 +36,21 @@ public class PrimaryController implements Initializable {
             return;
         }
 
-    // Get the logged-in user
-    User user = library.getUserByUsername(username);
+        User user = library.getUser();
 
-    // Load home.fxml and pass the user
-    FXMLLoader loader = new FXMLLoader(App.class.getResource("home.fxml"));
-    Parent root = loader.load();
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("home.fxml"));
+        Parent root = loader.load();
 
-    HomeController homeController = loader.getController();
-    homeController.setUser(user);
+        HomeController homeController = loader.getController();
+        homeController.setUser(user);
 
-    App.getScene().setRoot(root);
+        App.getScene().setRoot(root);
+    }
 
-        App.setRoot("home");
+    @FXML
+    private void btnCreateAccountClicked(MouseEvent event) throws IOException {
+        System.out.println("Create Account button clicked");
+        // App.setRoot("signup");
     }
 
     @FXML
@@ -61,7 +58,17 @@ public class PrimaryController implements Initializable {
         App.setRoot("home");
     }
 
+    @FXML
+    private void goToSecurity(MouseEvent event) throws IOException {
+        // Handle the event when the "Go to Security" button is clicked
+        System.out.println("Going to Security screen...");
+        
+        // Optional: Route to the security screen
+        // App.setRoot("security");
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // Initialization logic
     }
 }

@@ -14,7 +14,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         // Load the template (which contains the nav bar and content container)
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("template.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("primary.fxml"));
         Parent root = loader.load();
         
         // Store the template controller reference
@@ -25,6 +25,10 @@ public class App extends Application {
         
         // Create scene
         scene = new Scene(root, 800, 600);
+        // In your Java code where you create the Stage
+        stage.setWidth(400);  // pixels
+        stage.setHeight(900);
+        stage.setResizable(false);  // Prevents user resizing
         stage.setScene(scene);
         stage.setTitle("Guitar App");
         stage.show();
@@ -35,9 +39,19 @@ public class App extends Application {
             templateController.setContent(fxml);
         }
     }
+    
 
     public static Scene getScene() {
         return scene;
+    }
+
+    public static void setRoot(String fxml) throws IOException {
+        scene.setRoot(loadFXML(fxml));
+    }
+
+    private static Parent loadFXML(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        return fxmlLoader.load();
     }
 
     public static void main(String[] args) {

@@ -48,4 +48,18 @@ public class TemplateController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void goToProfile() {
+        try {
+            App.setContent("profile"); // or whatever the FXML file for the profile screen is
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void goToHome() {
+        handleHomeButton();
+    }
 }
