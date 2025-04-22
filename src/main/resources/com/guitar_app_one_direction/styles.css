@@ -1,3 +1,61 @@
-﻿.label {
-    -fx-text-fill: #549df9;
+﻿.root {
+    -fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);
+}
+
+#login_pane {
+    -fx-background-color: transparent;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);
+    -fx-padding: 20px;
+    -fx-max-width: 400px;
+    -fx-max-height: 400px;
+}
+
+.label {
+    -fx-text-fill: #333333; /* Dark gray text */
+    -fx-font-family: "Arial";
+}
+
+.label:first-child { /* Targeting the "Login" title */
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50; /* Dark blue-gray */
+    -fx-padding: 0 0 20px 0;
+}
+
+.text-field {
+    -fx-background-color: #f8f9fa; /* Very light gray */
+    -fx-border-color: #ced4da; /* Light gray border */
+    -fx-border-radius: 5px;
+    -fx-padding: 8px;
+    -fx-font-size: 14px;
+}
+
+.text-field:focused {
+    -fx-border-color: #6c757d; /* Darker gray when focused */
+    -fx-effect: dropshadow(three-pass-box, rgba(108,117,125,0.2), 5, 0, 0, 0);
+}
+
+.button {
+    -fx-background-color: #2c3e50; /* Dark blue-gray */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #34495e; /* Slightly lighter blue-gray */
+}
+
+.button:pressed {
+    -fx-background-color: #1a252f; /* Darker blue-gray */
+}
+
+#lbl_error {
+    -fx-text-fill: #e74c3c; /* Red for error messages */
+    -fx-font-size: 12px;
 }
