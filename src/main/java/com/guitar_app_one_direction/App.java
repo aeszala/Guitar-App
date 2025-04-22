@@ -39,7 +39,6 @@ public class App extends Application {
         }
     }
     
-
     public static Scene getScene() {
         return scene;
     }
