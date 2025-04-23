@@ -3,6 +3,8 @@ package com.guitar_app_one_direction;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -40,7 +42,8 @@ public class PrimaryController implements Initializable {
     }
 
     @FXML
-    private void btnLoginClicked(MouseEvent event) throws IOException {
+    void btnLoginClicked(ActionEvent event) throws IOException{
+        System.out.println("In login");
         String username = txt_username.getText();
         String password = txt_password.getText();
 
@@ -53,13 +56,7 @@ public class PrimaryController implements Initializable {
 
         User user = library.getUser();
 
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("home.fxml"));
-        Parent root = loader.load();
-
-        HomeController homeController = loader.getController();
-        homeController.setUser(user);
-
-        App.getScene().setRoot(root);
+        App.setRoot("home");
     }
 
     @FXML
