@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="TOP_CENTER" prefHeight="900" prefWidth="400" spacing="15" style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.CreateSongController">
+<VBox alignment="TOP_CENTER" prefHeight="800" prefWidth="400" spacing="15" style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.CreateSongController">
 
     <!-- Page Title -->
     <Label prefHeight="53.0" prefWidth="358.0" style="-fx-font-size: 36; -fx-text-fill: white; -fx-font-weight: bold;" text="Create a Song">
@@ -68,12 +68,12 @@
          </VBox>
          <VBox alignment="TOP_RIGHT" prefHeight="173.0" prefWidth="169.0">
             <children>
-               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+               <ImageView id="newCover" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
             </children>
          </VBox>
       </children>
    </HBox>
-    <ScrollPane fitToWidth="true" maxHeight="400" prefHeight="358.0" prefWidth="400.0" style="-fx-background-color: transparent;">
+    <ScrollPane fitToWidth="true" maxHeight="400" prefHeight="382.0" prefWidth="400.0" style="-fx-background-color: transparent;">
         <VBox fx:id="measureContainer" spacing="10" style="-fx-background-color: transparent;">
             <padding>
                 <Insets bottom="10" left="10" right="10" top="10" />
@@ -86,14 +86,17 @@
     </ScrollPane>
 
     <!-- Add Measure Button -->
-    <Button fx:id="addMeasureButton" text="Add Measure" />
+    <Button fx:id="addMeasureButton" prefHeight="38.0" prefWidth="178.0" style="-fx-background-color: #143437; -fx-font-size: 20; -fx-background-radius: 30;" text="Add Measure +" />
 
     <!-- Action Buttons -->
     <HBox alignment="CENTER" spacing="20">
-        <Button fx:id="playSongBtn" onAction="#playCreateSong" text="▶ Play Song" />
-        <Button fx:id="createTabsBtn" onAction="#goToTabsForCreateSong" text="🎼 Create Tabs" />
+        <Button fx:id="playSongBtn" onAction="#playCreateSong" style="-fx-background-color: white; -fx-text-fill: #1C1C1F; -fx-font-size: 20; -fx-background-radius: 30;" text="▶ Play Song" textFill="#1c1c1f">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+        <Button fx:id="createTabsBtn" onAction="#goToTabsForCreateSong" style="-fx-text-fill: #1C1C1F; -fx-background-color: white; -fx-font-size: 20; -fx-background-radius: 30;" text="🎼 Create Tabs" />
     </HBox>
 
-    <Button fx:id="uploadSongBtn" maxWidth="200" onAction="#uploadSong" text="Upload Song" />
+    <Button fx:id="uploadSongBtn" maxWidth="345.0" onAction="#uploadSong" prefHeight="38.0" prefWidth="345.0" style="-fx-background-color: #296B73; -fx-font-size: 20; -fx-background-radius: 30;" text="Upload Song" />
 
 </VBox>

@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.171" 
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.guitar_app_one_direction.SearchController"
-            stylesheets="@search.css">
+<BorderPane style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C); -fx-pref-height: 800; -fx-pref-width: 400;" stylesheets="@search.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.SearchController">
     
     <!-- Top Navigation Bar (from template) -->
     <top>
-        <HBox style="-fx-background-color: #f4f4f4; -fx-padding: 10;" alignment="CENTER_LEFT">
-            <!-- Template Navigation -->
-            <Button text="Back" fx:id="backButton" onAction="#handleBackButton" />
-            <Button text="Home" fx:id="homeButton" onAction="#handleHomeButton" style="-fx-margin-left: 10;"/>
-            
-            <!-- Page Title -->
-            <Label text="Search" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 0 0 0 30;"/>
+        <HBox alignment="CENTER_LEFT" style="-fx-padding: 10;">
             
             <!-- Spacer and Profile Picture -->
-            <Pane HBox.hgrow="ALWAYS"/>
-            <ImageView fx:id="profilePicture" 
-                       fitHeight="40" 
-                       fitWidth="40"
-                       onMouseClicked="#goToProfile"
-                       style="-fx-cursor: hand; -fx-border-radius: 20; -fx-border-color: #ccc;"/>
+            <Pane HBox.hgrow="ALWAYS">
+            <children>
+                  
+                  <!-- Page Title -->
+                  <Label layoutX="-31.0" layoutY="3.0" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-padding: 0 0 0 30;" text="Search" textFill="WHITE">
+                  <font>
+                     <Font size="36.0" />
+                  </font>
+               </Label>
+            </children></Pane>
+            <ImageView fx:id="profilePicture" fitHeight="53.0" fitWidth="56.0" onMouseClicked="#goToProfile" style="-fx-cursor: hand; -fx-border-radius: 20; -fx-border-color: #ccc;">
+            <image>
+               <Image url="@../images/defaultProfile.png" />
+            </image></ImageView>
         </HBox>
     </top>
     
@@ -35,17 +40,14 @@
     <center>
         <VBox spacing="20" style="-fx-padding: 20;">
             <!-- Search Bar -->
-            <TextField fx:id="searchField" 
-                     promptText="Search for Song Title or Artist Name"
-                     style="-fx-font-size: 16px; -fx-background-radius: 20; -fx-padding: 8 15;"
-                     onAction="#handleSearch">
+            <TextField fx:id="searchField" onAction="#handleSearch" promptText="Search for Song Title or Artist Name" style="-fx-font-size: 16px; -fx-padding: 8 15; -fx-background-radius: 0; -fx-background-color: #1C1C1F;">
                 <padding>
-                    <Insets top="8" right="15" bottom="8" left="15"/>
+                    <Insets bottom="8" left="15" right="15" top="8" />
                 </padding>
             </TextField>
             
             <!-- Song Results ListView -->
-            <ListView fx:id="songsListView" style="-fx-background-color: transparent;">
+            <ListView fx:id="songsListView" prefHeight="679.0" prefWidth="360.0" style="-fx-background-color: transparent;">
                 <!-- Custom cell factory will be set in controller -->
             </ListView>
         </VBox>
