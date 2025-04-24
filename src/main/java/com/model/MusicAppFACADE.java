@@ -237,8 +237,11 @@ public class MusicAppFACADE {
     }
 
     public String getLoggedInUsername() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getLoggedInUsername'");
+        if (user != null) {
+            return user.getUsername();
+        } else {
+            return "Guest"; // or handle it however you want
+        }
     }
 
     // public ArrayList<Song> getCompletedSongs(ArrayList<Song> completedSongs) {
