@@ -35,8 +35,8 @@ public class SearchController {
         App.setRoot("profile");
 }
 
-
-    private void handleSearch() {
+    @FXML
+    public void handleSearch() {
         String keyword = txtKeyword.getText().trim();
         ObservableList<String> songDisplayList = FXCollections.observableArrayList();
 
