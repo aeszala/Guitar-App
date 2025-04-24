@@ -12,7 +12,7 @@
     <top>
         <HBox alignment="CENTER_RIGHT" styleClass="top-nav-bar" />
     </top>
-    
+     linear-gradient(to bottom, #4F4F47, #995235)
     <center>
         <StackPane fx:id="contentPane" styleClass="content-pane" />
     </center>
