@@ -24,5 +24,18 @@
         "email": "ffredrickson@gmail.com",
         "username": "FFred",
         "favoriteSongs": []
+    },
+    {
+        "password": "pass",
+        "completedLessons": [],
+        "securityQuestion": "question",
+        "securityAnswer": "answer",
+        "mySongs": [],
+        "name": "name",
+        "completedSongs": [],
+        "id": "08f16a6d-8e41-4f4b-809d-e88b4c36245b",
+        "email": "ffredrickson@gmail.com",
+        "username": "user",
+        "favoriteSongs": []
     }
 ]

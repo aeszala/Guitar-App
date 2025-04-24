@@ -25,7 +25,7 @@ public class SearchController {
 
     @FXML
     private void initialize() {
-        btnSearch.setOnAction(e -> handleSearch());
+        // btnSearch.setOnAction(e -> handleSearch());
     }
 
     @FXML
