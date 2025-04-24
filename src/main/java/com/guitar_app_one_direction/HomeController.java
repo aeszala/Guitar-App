@@ -10,6 +10,7 @@ import com.model.MusicAppFACADE;
 import com.model.Song;
 import com.model.User;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -18,7 +19,7 @@ import javafx.scene.layout.VBox;
 public class HomeController implements Initializable {
 
     @FXML
-    private Label lblWelcome;
+    private Label welcomeLabel;
 
     @FXML
     private VBox vboxFavorites;
@@ -37,14 +38,29 @@ public class HomeController implements Initializable {
 
         // Get current logged-in user
         String username = facade.getLoggedInUsername();
-        lblWelcome.setText("Welcome, " + username + "!");
+        welcomeLabel.setText("Welcome, " + username + "!");
 
     }
 
     @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
+    private void goToProfile() throws IOException {
+        System.out.println("Profile clicked!");
+        // TODO: Implement navigation to the profile screen
+        App.setRoot("profile");
     }
+
+    @FXML
+    private void goToSearch(ActionEvent event) throws IOException{
+        System.out.println("Search clicked");
+        App.setRoot("search");
+    }
+
+    @FXML
+    private void goToCreateSong(ActionEvent event) throws IOException {
+        System.out.println("Create Song clicked");
+        App.setRoot("createSong");
+}
+
 
     public void setUser(User user) {
         // TODO Auto-generated method stub

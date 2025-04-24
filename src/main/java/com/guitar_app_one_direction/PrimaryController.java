@@ -62,7 +62,7 @@ public class PrimaryController implements Initializable {
     @FXML
     private void btnCreateAccountClicked(MouseEvent event) throws IOException {
         System.out.println("Create Account button clicked");
-        // App.setRoot("signup");
+        App.setRoot("createAccount");
     }
 
     @FXML
@@ -75,8 +75,7 @@ public class PrimaryController implements Initializable {
         // Handle the event when the "Go to Security" button is clicked
         System.out.println("Going to Security screen...");
         
-        // Optional: Route to the security screen
-        // App.setRoot("security");
+        App.setRoot("security");
     }
 
     @Override
