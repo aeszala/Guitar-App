@@ -10,7 +10,9 @@
 <BorderPane xmlns="http://javafx.com/javafx/8.0.171"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.guitar_app_one_direction.FavoritesController"
-            style="-fx-background-color: linear-gradient(to bottom, #296B73, #BF532C);">
+            prefHeight="800" 
+            prefWidth="400" 
+            style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);">
     
     <!-- Top navigation bar -->
     <top>

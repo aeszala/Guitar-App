@@ -8,29 +8,29 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="center" prefHeight="900" prefWidth="400" spacing="20" style="-fx-background-color: #f5f5f5; -fx-padding: 40;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.HomeController">
-     <ImageView fx:id="profilePicture" fitHeight="159.0" fitWidth="165.0" onMouseClicked="#goToProfile" style="-fx-cursor: hand; -fx-border-radius: 25; -fx-border-color: #ccc;">
+<VBox alignment="center" prefHeight="900" prefWidth="400" spacing="20" style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.HomeController">
+     <ImageView fx:id="profilePicture" fitHeight="159.0" fitWidth="165.0" onMouseClicked="#goToProfile" style="-fx-cursor: hand; -fx-border-radius: 25; -fx-border-color: #ccc; -fx-translate-y: -20;">
       <image>
          <Image url="@../images/defaultProfile.png" />
       </image></ImageView>
       
     <HBox alignment="CENTER_RIGHT" spacing="20" />
-    <Label fx:id="welcomeLabel" styleClass="welcome-text" text="Welcome!" textFill="WHITE">
+    <Label fx:id="welcomeLabel" style="-fx-translate-y: -40;" styleClass="welcome-text" text="Welcome!" textFill="WHITE">
       <font>
          <Font name="Arial Nova Bold" size="36.0" />
       </font></Label>
-     <Button fx:id="findSongBtn" onAction="#goToSearch" prefHeight="92.0" prefWidth="249.0" style="-fx-font-size: 16px; -fx-min-width: 200px; -fx-min-height: 40px;" text="Find a Song" textFill="WHITE">
+     <Button fx:id="findSongBtn" onAction="#goToSearch" prefHeight="92.0" prefWidth="249.0" style="-fx-font-size: 28px; -fx-min-width: 200px; -fx-min-height: 40px;" text="Find a Song" textFill="WHITE">
       <font>
          <Font size="28.0" />
       </font>
    </Button>
      
-        <Button fx:id="createSongBtn" onAction="#goToCreateSong" prefHeight="99.0" prefWidth="249.0" style="-fx-font-size: 16px; -fx-min-width: 200px; -fx-min-height: 40px;" text="Create a Song" textFill="WHITE">
+        <Button fx:id="createSongBtn" onAction="#goToCreateSong" prefHeight="99.0" prefWidth="249.0" style="-fx-font-size: 28px; -fx-min-width: 200px; -fx-min-height: 40px;" text="Create a Song" textFill="WHITE">
       <font>
          <Font name="Arial Nova" size="28.0" />
       </font>
    </Button>
-   <ImageView fitHeight="140.0" fitWidth="260.0">
+   <ImageView fitHeight="140.0" fitWidth="308.0" style="-fx-rotate: -15; -fx-translate-y: 20;">
       <image>
          <Image url="@../images/guitar.png" />
       </image>

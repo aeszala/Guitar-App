@@ -4,28 +4,54 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="login_pane" prefHeight="900" prefWidth="400" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.CreateAccountController">
+<AnchorPane id="AnchorPane" fx:id="login_pane" prefHeight="900" prefWidth="400" style="-fx-pref-width: 400; -fx-pref-height: 800; -fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.CreateAccountController">
    <children>
       <Label fx:id="lbl_error" layoutX="212.0" layoutY="235.0" prefHeight="16.0" prefWidth="170.0" />
-      <VBox layoutX="6.0" layoutY="268.0" prefHeight="200.0" prefWidth="383.0">
+      <VBox alignment="TOP_CENTER" layoutX="6.0" layoutY="197.0" prefHeight="200.0" prefWidth="368.0" style="-fx-pref-width: 320; -fx-translate-x: 33; -fx-pref-height: 300;">
          <children>
-            <TextField fx:id="txt_email" promptText="Email" />
-            <TextField fx:id="txt_username" promptText="Username" />
-            <TextField fx:id="txt_password" promptText="Password" />
-            <TextField fx:id="txt_password2" promptText="Confirm Password" />
+            <TextField fx:id="txt_email" prefHeight="63.0" prefWidth="320.0" promptText="Email" style="-fx-background-radius: 0; -fx-border-color: white; -fx-pref-height: 60;">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txt_username" prefHeight="63.0" prefWidth="320.0" promptText="Username" style="-fx-translate-y: 20; -fx-background-radius: 0; -fx-border-color: white; -fx-pref-height: 60;">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
+            <TextField fx:id="txt_password" prefHeight="63.0" prefWidth="320.0" promptText="Password" style="-fx-translate-y: 40; -fx-background-radius: 0; -fx-border-color: white; -fx-pref-height: 60;">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
+            <TextField fx:id="txt_password2" prefHeight="64.0" prefWidth="320.0" promptText="Confirm Password" style="-fx-translate-y: 60; -fx-background-radius: 0; -fx-border-color: white; -fx-pref-height: 60;">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
          </children>
       </VBox>
-      <Button fx:id="signUpButton" layoutX="113.0" layoutY="475.0" mnemonicParsing="false" onAction="#signUpClicked" onMouseClicked="#btnLoginClicked" prefHeight="24.0" prefWidth="173.0" text="Sign Up" />
-      <Button layoutX="14.0" layoutY="860.0" mnemonicParsing="false" onAction="#goToPrimary" text="&lt;" />
-      <Label layoutX="143.0" layoutY="157.0" text="Melodex">
+      <Button fx:id="signUpButton" layoutX="105.0" layoutY="522.0" mnemonicParsing="false" onAction="#signUpClicked" onMouseClicked="#btnLoginClicked" prefHeight="46.0" prefWidth="192.0" style="-fx-background-color: #296B73; -fx-background-radius: 30;" text="Sign Up" textFill="WHITE">
          <font>
-            <Font size="30.0" />
+            <Font size="22.0" />
+         </font></Button>
+      <Button ellipsisString="&lt;" layoutY="748.0" mnemonicParsing="false" onAction="#goToPrimary" prefHeight="94.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-pref-height: 30;" text="&lt;" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="45.0" />
+         </font></Button>
+      <Label fx:id="MelodexTxt" layoutX="109.0" layoutY="96.0" text="Melodex" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="50.0" />
          </font>
       </Label>
+      <ImageView fitHeight="126.0" fitWidth="282.0" layoutX="60.0" layoutY="617.0" style="-fx-rotate: -15;">
+         <image>
+            <Image url="@../images/guitar.png" />
+         </image>
+      </ImageView>
    </children>
    <stylesheets>
       <URL value="@styles.css" />

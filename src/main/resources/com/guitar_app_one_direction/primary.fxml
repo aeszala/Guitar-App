@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="login_pane" prefHeight="900" prefWidth="400" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.PrimaryController">
+<AnchorPane id="AnchorPane" fx:id="login_pane" prefHeight="900" prefWidth="400" style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.PrimaryController">
    <children>
       <Label fx:id="MelodexTxt" layoutX="108.0" layoutY="137.0" text="Melodex" textFill="WHITE">
          <font>
@@ -18,17 +18,17 @@
       </Label>
       <Button fx:id="loginBtn" layoutX="109.0" layoutY="440.0" mnemonicParsing="false" onAction="#btnLoginClicked" prefHeight="48.0" prefWidth="180.0" text="Login" />
       <Button fx:id="createAccountBtn" layoutX="111.0" layoutY="508.0" mnemonicParsing="false" onAction="#btnCreateAccountClicked" onMouseClicked="#btnCreateAccountClicked" prefHeight="42.0" prefWidth="180.0" text="Sign Up" />
-      <TextField fx:id="txt_username" layoutX="46.0" layoutY="261.0" prefHeight="58.0" prefWidth="306.0" promptText="Username">
+      <TextField fx:id="txt_username" layoutX="46.0" layoutY="261.0" prefHeight="58.0" prefWidth="306.0" promptText="Username" style="-fx-background-radius: 0; -fx-border-color: white;">
          <font>
             <Font size="20.0" />
          </font></TextField>
-      <TextField fx:id="txt_password" layoutX="46.0" layoutY="338.0" prefHeight="58.0" prefWidth="306.0" promptText="Password">
+      <TextField fx:id="txt_password" layoutX="46.0" layoutY="338.0" prefHeight="58.0" prefWidth="306.0" promptText="Password" style="-fx-border-radius: 0; -fx-border-color: white;">
          <font>
             <Font size="20.0" />
          </font></TextField>
       <Label fx:id="lbl_error" layoutX="212.0" layoutY="235.0" prefHeight="16.0" prefWidth="170.0" />
-      <Button fx:id="forgotPasswordBtn" layoutX="135.0" layoutY="854.0" mnemonicParsing="false" onAction="#goToSecurity" text="Forgot Password?" />
-      <ImageView fitHeight="151.0" fitWidth="290.0" layoutX="56.0" layoutY="584.0">
+      <Button fx:id="forgotPasswordBtn" layoutX="136.0" layoutY="854.0" mnemonicParsing="false" onAction="#goToSecurity" text="Forgot Password?" />
+      <ImageView fitHeight="151.0" fitWidth="329.0" layoutX="35.0" layoutY="602.0" style="-fx-rotate: -15;">
          <image>
             <Image url="@../images/guitar.png" />
          </image>

@@ -23,13 +23,13 @@
             <children>
                   
                   <!-- Page Title -->
-                  <Label layoutX="-31.0" layoutY="3.0" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-padding: 0 0 0 30;" text="Search" textFill="WHITE">
+                  <Label layoutX="-13.0" layoutY="4.0" style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-padding: 0 0 0 30; -fx-translate-y: 5;" stylesheets="@styles.css" text="Search" textFill="WHITE">
                   <font>
-                     <Font size="36.0" />
+                     <Font size="30.0" />
                   </font>
                </Label>
             </children></Pane>
-            <ImageView fx:id="profilePicture" fitHeight="53.0" fitWidth="56.0" onMouseClicked="#goToProfile" style="-fx-cursor: hand; -fx-border-radius: 20; -fx-border-color: #ccc;">
+            <ImageView fx:id="profilePicture" fitHeight="53.0" fitWidth="56.0" onMouseClicked="#goToProfile" style="-fx-cursor: hand; -fx-border-radius: 20; -fx-border-color: #ccc; -fx-translate-x: -10;">
             <image>
                <Image url="@../images/defaultProfile.png" />
             </image></ImageView>
@@ -40,7 +40,7 @@
     <center>
         <VBox spacing="20" style="-fx-padding: 20;">
             <!-- Search Bar -->
-            <TextField fx:id="searchField" onAction="#handleSearch" promptText="Search for Song Title or Artist Name" style="-fx-font-size: 16px; -fx-padding: 8 15; -fx-background-radius: 0; -fx-background-color: #1C1C1F;">
+            <TextField fx:id="searchField" onAction="#handleSearch" prefHeight="38.0" prefWidth="360.0" promptText="Search for Song Title or Artist Name" style="-fx-font-size: 16px; -fx-padding: 8 15; -fx-background-radius: 0; -fx-background-color: #1C1C1F; -fx-translate-y: -20;">
                 <padding>
                     <Insets bottom="8" left="15" right="15" top="8" />
                 </padding>

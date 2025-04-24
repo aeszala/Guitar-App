@@ -13,9 +13,9 @@
             xmlns:fx="http://javafx.com/fxml" 
             fx:controller="com.guitar_app_one_direction.TemplateController"
             stylesheets="@template.css"
+            prefHeight="900" 
             prefWidth="400" 
-            prefHeight="900"
-            style="-fx-background-color: linear-gradient(to bottom, #296B73, #BF532C);">
+            style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);">
     
     <top>
         <HBox alignment="CENTER_LEFT" styleClass="top-nav-bar">

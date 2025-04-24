@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="mainLayout" prefHeight="900" prefWidth="400" style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);" stylesheets="@template.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.TemplateController">
     
@@ -18,7 +19,10 @@
     
     <bottom>
         <HBox alignment="CENTER" styleClass="bottom-nav-bar">
-            <Button fx:id="backButton" ellipsisString="&lt;" onAction="#handleBackButton" style="-fx-background-color: transparent; -fx-font-size: 40;" styleClass="nav-button back-button" text="&lt;" textFill="WHITE" textOverrun="WORD_ELLIPSIS" />
+            <Button fx:id="backButton" ellipsisString="&lt;" onAction="#handleBackButton" style="-fx-background-color: transparent; -fx-font-size: 40; -fx-font-style: bold;" styleClass="nav-button back-button" text="&lt;" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font></Button>
             <Pane HBox.hgrow="ALWAYS" /> <!-- Spacer -->
             <Button fx:id="homeButton" ellipsisString="🏠" onAction="#goToHome" style="-fx-pref-height: 40; -fx-pref-width: 40; -fx-font-size: 40; -fx-background-color: transparent;" styleClass="nav-button home-button" text="🏠" textFill="WHITE" textOverrun="WORD_ELLIPSIS" />
         </HBox>

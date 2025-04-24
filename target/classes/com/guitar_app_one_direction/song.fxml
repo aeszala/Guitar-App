@@ -9,7 +9,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" prefHeight="900" prefWidth="400" spacing="10" style="-fx-background-color: linear-gradient(to bottom, #154c50, #73472d);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.SongController">
+<VBox alignment="TOP_CENTER" 
+prefHeight="800" 
+prefWidth="400" 
+style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);"
+xmlns="http://javafx.com/javafx/23.0.1" 
+xmlns:fx="http://javafx.com/fxml/1" 
+fx:controller="com.guitar_app_one_direction.SongController">
 
     <!-- Completion Status -->
     <Label fx:id="statusLabel" alignment="CENTER" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 5 15; -fx-background-radius: 20;" text="Not Complete" />

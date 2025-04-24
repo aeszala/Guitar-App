@@ -136,3 +136,7 @@
     /* Hover Effect */
     -fx-cursor: hand;
 }
+
+#signUpButton {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.2, 0, 1);
+}
