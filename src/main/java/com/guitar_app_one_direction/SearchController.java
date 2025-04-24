@@ -6,6 +6,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import com.model.*;
 
+import java.io.IOError;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class SearchController {
@@ -25,6 +27,14 @@ public class SearchController {
     private void initialize() {
         btnSearch.setOnAction(e -> handleSearch());
     }
+
+    @FXML
+    private void goToProfile() throws IOException{
+        // Logic for navigating to the profile page
+        System.out.println("Navigating to profile...");
+        App.setRoot("profile");
+}
+
 
     private void handleSearch() {
         String keyword = txtKeyword.getText().trim();
