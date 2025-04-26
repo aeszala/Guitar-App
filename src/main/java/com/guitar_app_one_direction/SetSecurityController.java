@@ -40,7 +40,7 @@ public class SetSecurityController {
             boolean success = setSecurityDetails(currentUsername, securityQuestion, securityAnswer);
             if (success) {
                 System.out.println("Security details updated successfully!");
-                App.setRoot("profile"); // Navigate back to profile page (optional)
+                App.setRoot("profile");
             } else {
                 System.out.println("Failed to update security details.");
             }
