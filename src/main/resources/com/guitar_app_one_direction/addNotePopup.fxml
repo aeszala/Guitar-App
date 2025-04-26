@@ -54,7 +54,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-alignment: Center; -fx-translate-y: -20;">
                <children>
-                  <Button fx:id="addNoteBtn" mnemonicParsing="false" prefHeight="53.0" prefWidth="103.0" style="-fx-background-color: #D95032; -fx-background-radius: 30; -fx-translate-x: -20;" text="Add" textFill="WHITE">
+                  <Button fx:id="addNoteBtn" mnemonicParsing="false" prefHeight="53.0" prefWidth="103.0" style="-fx-background-color: #D95032; -fx-background-radius: 30; -fx-translate-x: -20; -fx-text-fill: white;" text="Add" textFill="WHITE">
                      <font>
                         <Font size="25.0" />
                      </font>

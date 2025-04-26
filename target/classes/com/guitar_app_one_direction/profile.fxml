@@ -4,34 +4,64 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" 
-spacing="20.0" 
-prefHeight="900" 
-prefWidth="400" 
-style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);"
-xmlns="http://javafx.com/javafx/23.0.1" 
-xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="com.guitar_app_one_direction.HomeController">
+<VBox alignment="CENTER" prefHeight="900" prefWidth="400" spacing="20.0" style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.HomeController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
     <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-        <VBox alignment="CENTER" spacing="5">
-            <Label fx:id="nameLabel" text="Name" />
-            <Label fx:id="usernameLabel" text="Username: " />
-            <Label fx:id="emailLabel" text="Email: " />
-            <Label fx:id="securityQuestionLabel" text="Security question set?" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" style="-fx-fit-height: 185; -fx-fit-width: 185;">
+         <image>
+            <Image url="@../images/defaultProfile.png" />
+         </image></ImageView>
+        <VBox alignment="CENTER_LEFT" prefHeight="186.0" prefWidth="360.0" spacing="5">
+         <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+                  <Label fx:id="nameLabel" text="Name" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="28.0" />
+                  </font>
+               </Label>
+            </children>
+         </HBox>
+         <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+               <Label text="Username:  " textFill="WHITE">
+                  <font>
+                     <Font size="20.0" />
+                  </font>
+               </Label>
+                  <Label fx:id="usernameLabel" style="-fx-text-fill: white; -fx-font-size: 20;" text="username" />
+            </children>
+         </HBox>
+         <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+               <Label text="Email:  " textFill="WHITE">
+                  <font>
+                     <Font size="20.0" />
+                  </font>
+               </Label>
+                  <Label fx:id="emailLabel" style="-fx-font-size: 20; -fx-text-fill: white;" text="email@gmail.com" />
+            </children>
+         </HBox>
+         <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+                  <Label fx:id="securityQuestionLabel" style="-fx-font-size: 20; -fx-text-fill: white;" text="Security Question Set:  " />
+               <Label fx:id="securityQuestionSet" style="-fx-text-fill: white; -fx-font-size: 20;" text="No" />
+               <Button fx:id="securityQuestionSetBtn" mnemonicParsing="false" onAction="#goToSetSecurityQuestion" style="-fx-background-color: #BD522C; -fx-font-size: 15; -fx-text-fill: white; -fx-background-radius: 60; -fx-translate-x: 15;" text="Set?" />
+            </children>
+         </HBox>
         </VBox>
-      <Button fx:id="mySongsButton" mnemonicParsing="false" onAction="#goToMySongs" text="My Songs" />
-      <Button fx:id="favoriteSongsButton" mnemonicParsing="false" onAction="#goToFavoriteSongs" text="Favorite Songs" />
-        <Separator />
-      <Button fx:id="completedSongsButton" mnemonicParsing="false" onAction="#goToCompletedSongs" text="Completed Songs" />
-      <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#goToPrimary" text="Log Out" />
+      <Button fx:id="mySongsBtn" mnemonicParsing="false" onAction="#goToMySongs" prefHeight="25.0" prefWidth="360.0" style="-fx-background-color: #296B73; -fx-text-fill: white; -fx-pref-height: 70; -fx-background-radius: 30; -fx-font-size: 20;" text="My Songs" />
+      <Button fx:id="favoriteSongsBtn" mnemonicParsing="false" onAction="#goToFavoriteSongs" prefHeight="25.0" prefWidth="388.0" style="-fx-background-color: #296B73; -fx-text-fill: white; -fx-pref-height: 70; -fx-background-radius: 30; -fx-font-size: 20;" text="Favorite Songs" />
+      <Button fx:id="completedSongsBtn" mnemonicParsing="false" onAction="#goToCompletedSongs" prefHeight="25.0" prefWidth="388.0" style="-fx-background-color: #296B73; -fx-text-fill: white; -fx-pref-height: 70; -fx-background-radius: 30; -fx-font-size: 20;" text="Completed Songs" />
+      <Button fx:id="logOutBtn" mnemonicParsing="false" onAction="#goToPrimary" prefHeight="44.0" prefWidth="136.0" style="-fx-background-color: #D95032; -fx-text-fill: white; -fx-font-size: 20; -fx-background-radius: 30; -fx-translate-y: 80;" text="Log Out" />
 
         <VBox fx:id="vboxFavorites" spacing="10.0" />
 

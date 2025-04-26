@@ -38,7 +38,7 @@
          <font>
             <Font size="22.0" />
          </font></Button>
-      <Button ellipsisString="&lt;" layoutY="748.0" mnemonicParsing="false" onAction="#goToPrimary" prefHeight="94.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-pref-height: 30;" text="&lt;" textFill="WHITE">
+      <Button fx:id="signUpBackBtn" ellipsisString="&lt;" layoutY="748.0" mnemonicParsing="false" onAction="#goToPrimary" prefHeight="94.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-pref-height: 30;" text="&lt;" textFill="WHITE">
          <font>
             <Font name="System Bold" size="45.0" />
          </font></Button>

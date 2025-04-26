@@ -137,7 +137,14 @@
     -fx-cursor: hand;
 }
 
-#signUpButton, #addNoteBtn, #cancelNoteBtn {
+#signUpButton,
+#addNoteBtn,
+#cancelNoteBtn,
+#mySongsBtn,
+#favoriteSongsBtn,
+#completedSongsBtn,
+#securityQuestionSetBtn,
+#logOutBtn {
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.2, 0, 1);
 }
 
