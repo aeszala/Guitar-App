@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane style="-fx-pref-height: 420; -fx-pref-width: 380; -fx-background-radius: 30; -fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane style="-fx-pref-height: 420; -fx-pref-width: 380; -fx-background-radius: 30; -fx-background-color: white;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="440.0" prefWidth="380.0">
          <children>
@@ -19,7 +19,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <ComboBox prefWidth="65.0" style="-fx-background-color: #296B73; -fx-background-radius: 30; -fx-translate-x: 53; -fx-pref-height: 40; -fx-translate-y: -5;" />
+                  <ComboBox fx:id="soundTypeComboBox" prefWidth="75.0" style="-fx-background-color: #296B73; -fx-background-radius: 30; -fx-translate-x: 53; -fx-pref-height: 40; -fx-translate-y: -5;" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-translate-x: 35; -fx-translate-y: 20;">
@@ -29,7 +29,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <ComboBox prefWidth="140.0" style="-fx-background-color: #296B73; -fx-background-radius: 30; -fx-pref-height: 40; -fx-translate-y: -5; -fx-translate-x: 33;" />
+                  <ComboBox fx:id="soundLengthComboBox" prefWidth="138.0" style="-fx-background-color: #296B73; -fx-background-radius: 30; -fx-pref-height: 40; -fx-translate-y: -5; -fx-translate-x: 33;" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-translate-x: 35; -fx-translate-y: 10;">
@@ -39,7 +39,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <ComboBox prefWidth="65.0" style="-fx-background-color: #296B73; -fx-background-radius: 30; -fx-pref-height: 40; -fx-translate-y: -5; -fx-translate-x: 107;" />
+                  <ComboBox fx:id="stringComboBox" prefWidth="75.0" style="-fx-background-color: #296B73; -fx-background-radius: 30; -fx-pref-height: 40; -fx-translate-y: -5; -fx-translate-x: 107;" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-translate-x: 35;">
@@ -49,27 +49,17 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <ComboBox prefWidth="65.0" style="-fx-background-color: #296B73; -fx-background-radius: 30; -fx-translate-y: -5; -fx-pref-height: 40; -fx-translate-x: 127;" />
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="380.0" style="-fx-translate-x: 35; -fx-translate-y: -10;">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pitch:">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Text>
-                  <ComboBox prefWidth="104.0" style="-fx-background-color: #296B73; -fx-background-radius: 30; -fx-translate-y: -5; -fx-pref-height: 40; -fx-translate-x: 117;" />
+                  <ComboBox fx:id="fretComboBox" prefWidth="75.0" style="-fx-background-color: #296B73; -fx-background-radius: 30; -fx-translate-y: -5; -fx-pref-height: 40; -fx-translate-x: 127;" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-alignment: Center; -fx-translate-y: -20;">
                <children>
-                  <Button fx:id="addNoteBtn" ellipsisString="Add" mnemonicParsing="false" onAction="#addNoteToMeasure" prefHeight="53.0" prefWidth="103.0" style="-fx-background-color: #D95032; -fx-background-radius: 30; -fx-translate-x: -20;" text="Add" textFill="WHITE">
+                  <Button fx:id="addNoteBtn" mnemonicParsing="false" prefHeight="53.0" prefWidth="103.0" style="-fx-background-color: #D95032; -fx-background-radius: 30; -fx-translate-x: -20;" text="Add" textFill="WHITE">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Button>
-                  <Button fx:id="cancelNoteBtn" mnemonicParsing="false" onAction="#cancelNotePopup" prefHeight="53.0" prefWidth="138.0" style="-fx-background-radius: 30; -fx-background-color: #D95032; -fx-translate-x: 20;" text="Cancel" textFill="WHITE">
+                  <Button fx:id="cancelNoteBtn" mnemonicParsing="false" prefHeight="53.0" prefWidth="138.0" style="-fx-background-radius: 30; -fx-background-color: #D95032; -fx-translate-x: 20;" text="Cancel" textFill="WHITE">
                      <font>
                         <Font size="25.0" />
                      </font>

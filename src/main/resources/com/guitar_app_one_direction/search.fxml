@@ -40,7 +40,7 @@
     <center>
         <VBox spacing="20" style="-fx-padding: 20;">
             <!-- Search Bar -->
-            <TextField fx:id="searchField" onAction="#handleSearch" prefHeight="38.0" prefWidth="360.0" promptText="Search for Song Title or Artist Name" style="-fx-font-size: 16px; -fx-padding: 8 15; -fx-background-radius: 0; -fx-background-color: #1C1C1F; -fx-translate-y: -20;">
+            <TextField fx:id="songSearchField" onAction="#handleSearch" prefHeight="38.0" prefWidth="360.0" promptText="Search for Song Title or Artist Name" style="-fx-font-size: 16px; -fx-padding: 8 15; -fx-background-radius: 0; -fx-background-color: #1C1C1F; -fx-translate-y: -20;">
                 <padding>
                     <Insets bottom="8" left="15" right="15" top="8" />
                 </padding>

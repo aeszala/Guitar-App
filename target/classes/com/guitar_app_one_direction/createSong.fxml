@@ -32,7 +32,7 @@
    </HBox>
 
     <!-- Song Title Field -->
-    <TextField fx:id="titleField" maxWidth="363.0" prefHeight="30.0" prefWidth="363.0" promptText="Song Title" style="-fx-background-color: #1C1C1F; -fx-font-size: 20; -fx-pref-width: 350;">
+    <TextField fx:id="SongTitleField" maxWidth="363.0" prefHeight="30.0" prefWidth="363.0" promptText="Song Title" style="-fx-background-color: #1C1C1F; -fx-font-size: 20; -fx-pref-width: 350;">
       <font>
          <Font size="20.0" />
       </font></TextField>
@@ -59,12 +59,12 @@
          </VBox>
          <VBox prefHeight="153.0" prefWidth="100.0" style="-fx-translate-x: 30; -fx-pref-width: 150;">
             <children>
-               <TextField fx:id="tempoTextField" prefHeight="32.0" prefWidth="119.0" promptText="Choose tempo" style="-fx-background-color: #143437; -fx-pref-width: 50;">
+               <TextField fx:id="tempoTextField" prefHeight="32.0" prefWidth="119.0" promptText="Choose tempo" style="-fx-background-color: #143437; -fx-pref-width: 50; -fx-pref-height: 30;">
                   <font>
                      <Font size="20.0" />
                   </font></TextField>
-               <ComboBox prefWidth="150.0" promptText="Choose Difficulty" style="-fx-background-color: #143437; -fx-translate-y: 5;" />
-               <ComboBox prefWidth="150.0" promptText="Choose Genre" style="-fx-background-color: #143437; -fx-translate-y: 10;" />
+               <ComboBox fx:id="comboDifficulty" prefHeight="0.0" prefWidth="150.0" promptText="Choose Difficulty" style="-fx-background-color: #143437; -fx-translate-y: 5; -fx-pref-height: 30;" />
+               <ComboBox fx:id="comboGenre" prefWidth="150.0" promptText="Choose Genre" style="-fx-background-color: #143437; -fx-translate-y: 10; -fx-pref-height: 30;" />
             </children>
          </VBox>
          <ImageView fitHeight="97.0" fitWidth="100.0" style="-fx-translate-x: 50;">
@@ -75,7 +75,7 @@
       </children>
    </HBox>
     <ScrollPane fitToWidth="true" maxHeight="400" prefHeight="370.0" prefWidth="400.0" style="-fx-background-color: transparent; -fx-translate-y: -20;">
-        <VBox fx:id="measureContainer" prefHeight="371.0" prefWidth="388.0" spacing="10" style="-fx-background-color: linear-gradient(to bottom, #4F4F47, #995235);">
+        <VBox fx:id="measureContainer" prefHeight="371.0" prefWidth="398.0" spacing="10" style="-fx-background-color: linear-gradient(to bottom, #4F4F47, #995235);">
             <padding>
                 <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
@@ -87,7 +87,7 @@
             </font></Label>
          <HBox prefHeight="57.0" prefWidth="368.0" style="-fx-background-color: #1D3435; -fx-pref-height: 60;">
             <children>
-               <Button id="addNoteBtn" mnemonicParsing="false" prefHeight="55.0" prefWidth="59.0" style="-fx-font-size: 25; -fx-border-color: #1D3435; -fx-pref-height: 59; -fx-pref-width: 59; -fx-background-color: white; -fx-border-width: 2; -fx-border-insets: -1;" text="➕" textFill="#bd522c">
+               <Button id="addNoteBtn" fx:id="addNoteBtn" mnemonicParsing="false" onAction="#openNotePopup" prefHeight="55.0" prefWidth="59.0" style="-fx-font-size: 25; -fx-border-color: #1D3435; -fx-pref-height: 59; -fx-pref-width: 59; -fx-background-color: white; -fx-border-width: 2; -fx-border-insets: -1;" text="➕" textFill="#bd522c">
                   <font>
                      <Font size="20.0" />
                   </font>
@@ -100,7 +100,7 @@
          </Label>
          <HBox prefHeight="68.0" prefWidth="368.0" style="-fx-background-color: #1D3435; -fx-pref-height: 60;">
             <children>
-               <Button id="addNoteBtn" mnemonicParsing="false" prefHeight="50.0" prefWidth="59.0" style="-fx-font-size: 25; -fx-border-color: #1D3435; -fx-pref-height: 59; -fx-pref-width: 59; -fx-background-color: white; -fx-border-width: 2; -fx-border-insets: -1;" text="➕" textFill="#bd522c">
+               <Button id="addNoteBtn" fx:id="addNoteBtn" mnemonicParsing="false" onAction="#openNotePopup" prefHeight="50.0" prefWidth="59.0" style="-fx-font-size: 25; -fx-border-color: #1D3435; -fx-pref-height: 59; -fx-pref-width: 59; -fx-background-color: white; -fx-border-width: 2; -fx-border-insets: -1;" text="➕" textFill="#bd522c">
                   <font>
                      <Font size="20.0" />
                   </font>
@@ -109,7 +109,7 @@
          </HBox>
       
              <!-- Add Measure Button -->
-          <Button fx:id="addMeasureButton" prefHeight="37.0" prefWidth="200.0" style="-fx-background-color: #143437; -fx-font-size: 20; -fx-background-radius: 30; -fx-translate-y: 5;" text="Add Measure ➕" />
+          <Button fx:id="addMeasureButton" onAction="#addMeasure" prefHeight="37.0" prefWidth="200.0" style="-fx-background-color: #143437; -fx-font-size: 20; -fx-background-radius: 30; -fx-translate-y: 5;" text="Add Measure ➕" />
         </VBox>
     </ScrollPane>
 

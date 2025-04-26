@@ -13,8 +13,10 @@ import com.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 public class HomeController implements Initializable {
 
@@ -22,13 +24,13 @@ public class HomeController implements Initializable {
     private Label welcomeLabel;
 
     @FXML
-    private VBox vboxFavorites;
+    private Button createSongBtn;
 
     @FXML
-    private VBox vboxCompleted;
+    private Button findSongBtn;
 
     @FXML
-    private VBox vboxMySongs;
+    private ImageView profilePicture;
 
     private MusicAppFACADE facade;
 
@@ -43,9 +45,8 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void goToProfile() throws IOException {
-        System.out.println("Profile clicked!");
-        // TODO: Implement navigation to the profile screen
+    private void goToProfile(MouseEvent event) throws IOException {
+        System.out.println("Profile clicked");
         App.setRoot("profile");
     }
 

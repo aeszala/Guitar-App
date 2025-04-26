@@ -137,6 +137,40 @@
     -fx-cursor: hand;
 }
 
-#signUpButton {
+#signUpButton, #addNoteBtn, #cancelNoteBtn {
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.2, 0, 1);
+}
+
+#fretComboBox, #stringComboBox, #soundLengthComboBox, #soundTypeComboBox {
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+}
+
+#addNoteBtn {
+    -fx-text-fill: #BD522C;
+}
+
+#songTitleField, #songSearchField {
+    -fx-text-fill: white;
+}
+
+/* Target the entire ScrollPane's scroll bars */
+.scroll-pane .scroll-bar:horizontal,
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent; /* Background of the bar track */
+}
+
+/* The main scroll bar track (background) */
+.scroll-pane .scroll-bar .track {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10em; /* Rounded corners */
+}
+
+#tempoTextField, #comboDifficulty, #comboGenre {
+    -fx-font-size: 12px;
+    -fx-text-fill: white;
+}
+
+.combo-box {
+    -fx-text-fill: white;
 }
