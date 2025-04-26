@@ -63,5 +63,18 @@
         "email": "meow@gmail.com",
         "username": "meowmeow",
         "favoriteSongs": []
+    },
+    {
+        "password": "testing",
+        "completedLessons": [],
+        "securityQuestion": null,
+        "securityAnswer": null,
+        "mySongs": [],
+        "name": "Test",
+        "completedSongs": [],
+        "id": "588a46e6-9a92-4fdb-921b-02ec4d18ae67",
+        "email": "test@email.com",
+        "username": "testing",
+        "favoriteSongs": []
     }
 ]

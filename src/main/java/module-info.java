@@ -4,6 +4,7 @@ module com.guitar_app_one_direction {
     requires json.simple;
     requires jfugue;
     requires junit;
+    requires javafx.graphics;
 
     opens com.guitar_app_one_direction to javafx.fxml;
     exports com.guitar_app_one_direction;
