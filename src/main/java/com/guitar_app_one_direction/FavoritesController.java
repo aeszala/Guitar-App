@@ -46,7 +46,7 @@ public class FavoritesController implements Initializable {
         }
     }
 
-        @FXML
+    @FXML
     private void handleBack() throws IOException {
         App.setRoot("profile");
     }
