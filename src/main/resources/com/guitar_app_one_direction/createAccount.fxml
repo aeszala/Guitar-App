@@ -13,7 +13,7 @@
 <AnchorPane id="AnchorPane" fx:id="login_pane" prefHeight="900" prefWidth="400" style="-fx-pref-width: 400; -fx-pref-height: 800; -fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.CreateAccountController">
    <children>
       <Label fx:id="lbl_error" layoutX="212.0" layoutY="235.0" prefHeight="16.0" prefWidth="170.0" />
-      <VBox alignment="TOP_CENTER" layoutX="6.0" layoutY="197.0" prefHeight="200.0" prefWidth="368.0" style="-fx-pref-width: 320; -fx-translate-x: 33; -fx-pref-height: 300;">
+      <VBox alignment="TOP_CENTER" layoutX="6.0" layoutY="197.0" prefHeight="428.0" prefWidth="368.0" style="-fx-pref-width: 320; -fx-translate-x: 33; -fx-pref-height: 400; -fx-translate-y: 60;">
          <children>
             <TextField fx:id="txt_email" prefHeight="63.0" prefWidth="320.0" promptText="Email" style="-fx-background-radius: 0; -fx-border-color: white; -fx-pref-height: 60;">
                <font>
@@ -32,9 +32,14 @@
                <font>
                   <Font size="20.0" />
                </font></TextField>
+            <TextField fx:id="txt_name" prefHeight="63.0" prefWidth="320.0" promptText="Name" style="-fx-background-radius: 0; -fx-border-color: white; -fx-pref-height: 60; -fx-translate-y: -320;">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
          </children>
       </VBox>
-      <Button fx:id="signUpButton" layoutX="105.0" layoutY="522.0" mnemonicParsing="false" onAction="#signUpClicked" onMouseClicked="#btnLoginClicked" prefHeight="46.0" prefWidth="192.0" style="-fx-background-color: #296B73; -fx-background-radius: 30;" text="Sign Up" textFill="WHITE">
+      <Button fx:id="signUpButton" layoutX="105.0" layoutY="522.0" mnemonicParsing="false" onAction="#signUpClicked" prefHeight="46.0" prefWidth="192.0" style="-fx-background-color: #296B73; -fx-background-radius: 30; -fx-translate-y: 60;" text="Sign Up" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font></Button>
@@ -47,7 +52,7 @@
             <Font name="Berlin Sans FB Demi Bold" size="50.0" />
          </font>
       </Label>
-      <ImageView fitHeight="126.0" fitWidth="282.0" layoutX="60.0" layoutY="617.0" style="-fx-rotate: -15;">
+      <ImageView fitHeight="114.0" fitWidth="254.0" layoutX="74.0" layoutY="672.0" style="-fx-rotate: -15;">
          <image>
             <Image url="@../images/guitar.png" />
          </image>

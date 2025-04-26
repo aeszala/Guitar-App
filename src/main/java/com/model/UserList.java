@@ -54,6 +54,20 @@ public class UserList {
         return true; // Return true after adding the user
     }
 
+    public boolean addUser(String username, String password, String email, String name) {
+        // Check if the username already exists
+        if (getUser(username) != null) {
+            System.out.println("Username " + username + " already exists.");
+            return false; // Return false if username is taken
+        }
+
+        // Create a new user and add to the list
+        User newUser = new User(username, password, email, name, null, null);
+        users.add(newUser);
+        System.out.println("User " + username + " added successfully.");
+        return true; // Return true after adding the user
+    }
+
     // Retrieve a user by their username
     public static User getUser(String username) {
         for (User user : users) {

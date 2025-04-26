@@ -8,48 +8,44 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class App extends Application {
-    private static Scene scene;
-    private static PrimaryController primaryController;
+    private static Stage primaryStage;  // Store the main stage
+    private static Scene scene;        // Store the main scene
 
     @Override
     public void start(Stage stage) throws IOException {
-        // Load the primary screen
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("primary.fxml"));
-        Parent root = loader.load();
-    
-        // Store the primary controller reference
-        primaryController = loader.getController();
-    
-        // Set initial content
-        primaryController.setContent("primary");
-    
-        // Create scene
-        scene = new Scene(root, 800, 600);
+        primaryStage = stage;  // Store the stage for global access
+        
+        // Load the initial screen ("primary.fxml")
+        setRoot("primary");  
+
+        // Configure stage
         stage.setWidth(400);
         stage.setHeight(900);
-        stage.setResizable(true);  // Set to false to prevent resizing
-        stage.setScene(scene);
+        stage.setResizable(true);
         stage.setTitle("Guitar App");
         stage.show();
     }
 
-    public static void setContent(String fxml) throws IOException {
-        if (primaryController != null) {
-            primaryController.setContent(fxml);
+    // Method to change screens (replaces setContent)
+    public static void setRoot(String fxml) throws IOException {
+        Parent root = loadFXML(fxml);
+        if (scene == null) {
+            scene = new Scene(root);
+            primaryStage.setScene(scene);
+        } else {
+            scene.setRoot(root);
         }
     }
-    
-    public static Scene getScene() {
-        return scene;
-    }
 
-    public static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
+    // Helper to load FXML files
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
+        FXMLLoader loader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        return loader.load();
+    }
+
+    // Get the primary stage (for controllers to use)
+    public static Stage getPrimaryStage() {
+        return primaryStage;
     }
 
     public static void main(String[] args) {

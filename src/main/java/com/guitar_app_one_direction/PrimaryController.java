@@ -73,7 +73,7 @@ public class PrimaryController implements Initializable {
     }
 
     @FXML
-    private void btnCreateAccountClicked(MouseEvent event) throws IOException {
+    private void btnCreateAccountClicked(ActionEvent event) throws IOException {
         System.out.println("Create Account button clicked");
         App.setRoot("createAccount");
     }

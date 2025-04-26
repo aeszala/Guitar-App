@@ -1,74 +1,79 @@
 package com.guitar_app_one_direction;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.AnchorPane;
+
+import java.io.IOException;
 
 import com.model.User;
 import com.model.UserList;
 
 public class CreateAccountController {
 
-    @FXML
-    private TextField txtUsername;
-
-    @FXML
-    private PasswordField txtPassword;
-
-    @FXML
-    private TextField txtEmail;
-
-    @FXML
-    private TextField txtName;
-
-    @FXML
-    private TextField txtSecurityQuestion;
-
-    @FXML
-    private TextField txtSecurityAnswer;
-
-    @FXML
-    private Button btnCreate;
+    @FXML private TextField txt_username;
+    @FXML private TextField txt_password;
+    @FXML private TextField txt_password2;
+    @FXML private TextField txt_email;
+    @FXML private TextField txt_name;
+    @FXML private Label MelodexTxt;
+    @FXML private Label lbl_error;
+    @FXML private AnchorPane login_pane;
+    @FXML private Button signUpBackBtn;
+    @FXML private Button signUpButton;
 
     private final UserList userList = UserList.getInstance();
 
     @FXML
     private void initialize() {
-        btnCreate.setOnAction(e -> handleCreateAccount());
+        System.out.println("CreateAccountController loaded!");
+    }
+
+    @FXML
+    void signUpClicked(ActionEvent event) {
+        System.out.println("Sign Up button clicked!");
+        handleCreateAccount();
     }
 
     private void handleCreateAccount() {
-        String username = txtUsername.getText().trim();
-        String password = txtPassword.getText().trim();
-        String email = txtEmail.getText().trim();
-        String name = txtName.getText().trim();
-        String securityQuestion = txtSecurityQuestion.getText().trim();
-        String securityAnswer = txtSecurityAnswer.getText().trim();
+        try {
+            String username = txt_username.getText().trim();
+            String password = txt_password.getText().trim();
+            String confirmPassword = txt_password2.getText().trim();
+            String email = txt_email.getText().trim();
+            String name = txt_name.getText().trim();
 
-        if (username.isEmpty() || password.isEmpty() || email.isEmpty() || name.isEmpty() ||
-                securityQuestion.isEmpty() || securityAnswer.isEmpty()) {
-            showAlert(AlertType.ERROR, "Please fill in all fields.");
-            return;
-        }
+            // Validate fields
+            if (username.isEmpty() || password.isEmpty() || email.isEmpty() || name.isEmpty()) {
+                showAlert(AlertType.ERROR, "Please fill in all fields.");
+                return;
+            }
 
-        boolean success = userList.addUser(username, password, email, name, securityQuestion, securityAnswer);
+            if (!password.equals(confirmPassword)) {
+                showAlert(AlertType.ERROR, "Passwords do not match!");
+                return;
+            }
 
-        if (success) {
-            UserList.saveUsers();
-            showAlert(AlertType.INFORMATION, "Account created successfully!");
-            clearForm();
-        } else {
-            showAlert(AlertType.WARNING, "Username already exists. Please choose another.");
+            // Create account
+            boolean success = userList.addUser(username, password, email, name);
+            if (success) {
+                UserList.saveUsers();
+                showAlert(AlertType.INFORMATION, "Account created successfully!");
+                App.setRoot("home"); // Navigate to home screen
+            } else {
+                showAlert(AlertType.WARNING, "Username already exists.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert(AlertType.ERROR, "Error: " + e.getMessage());
         }
     }
 
-    private void clearForm() {
-        txtUsername.clear();
-        txtPassword.clear();
-        txtEmail.clear();
-        txtName.clear();
-        txtSecurityQuestion.clear();
-        txtSecurityAnswer.clear();
+    @FXML
+    void goToPrimary(ActionEvent event) throws IOException {
+        App.setRoot("primary");
     }
 
     private void showAlert(AlertType type, String message) {
