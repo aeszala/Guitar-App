@@ -47,7 +47,7 @@ public class MusicAppFACADE {
     private static User user;
     private Student student;
     private Teacher teacher;
-    private Song song;
+    private static Song song;
     private Assignment assignment;
     private UserList userList = UserList.getInstance();
     private Songlist songList = Songlist.getInstance();
@@ -79,6 +79,14 @@ public class MusicAppFACADE {
     public static boolean setUser(User u) {
         if (u != null) {
             user = u;
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean setSong(Song s) {
+        if (s != null) {
+            song = s;
             return true;
         }
         return false;
