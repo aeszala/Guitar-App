@@ -10,6 +10,15 @@ import java.io.IOException;
 public class App extends Application {
     private static Stage primaryStage;  // Store the main stage
     private static Scene scene;        // Store the main scene
+    private static String currentUsername;
+
+    public static void setCurrentUsername(String username) {
+        currentUsername = username;
+    }
+
+    public static String getCurrentUsername() {
+        return currentUsername;
+    }
 
     @Override
     public void start(Stage stage) throws IOException {

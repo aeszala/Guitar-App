@@ -69,6 +69,7 @@ public class PrimaryController implements Initializable {
 
         User user = library.getUser();
 
+        App.setCurrentUsername(username);
         App.setRoot("home");
     }
 
