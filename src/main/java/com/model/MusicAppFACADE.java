@@ -44,7 +44,7 @@ import java.text.SimpleDateFormat;
  */
 public class MusicAppFACADE {
     private static MusicAppFACADE instance;
-    private User user;
+    private static User user;
     private Student student;
     private Teacher teacher;
     private Song song;
@@ -74,6 +74,14 @@ public class MusicAppFACADE {
         return user != null 
             ? user.getProfilePicturePath() 
             : "/images/default_profile.png"; // Default path in resources
+    }
+
+    public static boolean setUser(User u) {
+        if (u != null) {
+            user = u;
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -236,11 +244,11 @@ public class MusicAppFACADE {
         song = new Song(title, author);
     }
 
-    public String getLoggedInUsername() {
+    public String getLoggedInName() {
         if (user != null) {
-            return user.getUsername();
+            return user.getName();
         } else {
-            return "Guest"; // or handle it however you want
+            return "Guest";
         }
     }
 

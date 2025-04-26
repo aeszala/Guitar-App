@@ -39,8 +39,8 @@ public class HomeController implements Initializable {
         facade = new MusicAppFACADE();
 
         // Get current logged-in user
-        String username = facade.getLoggedInUsername();
-        welcomeLabel.setText("Welcome, " + username + "!");
+        String name = facade.getLoggedInName();
+        welcomeLabel.setText("Welcome, " + name + "!");
 
     }
 

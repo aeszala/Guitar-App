@@ -8,6 +8,7 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
+import com.model.MusicAppFACADE;
 import com.model.User;
 import com.model.UserList;
 
@@ -60,8 +61,10 @@ public class CreateAccountController {
             boolean success = userList.addUser(username, password, email, name);
             if (success) {
                 UserList.saveUsers();
-                showAlert(AlertType.INFORMATION, "Account created successfully!");
-                App.setRoot("home"); // Navigate to home screen
+                if (MusicAppFACADE.setUser(UserList.getUser(username))) {
+                    showAlert(AlertType.INFORMATION, "Account created successfully!");
+                    App.setRoot("home"); // Navigate to home screen
+                }
             } else {
                 showAlert(AlertType.WARNING, "Username already exists.");
             }
