@@ -59,6 +59,26 @@ public class ProfileController implements Initializable {
         App.setRoot("mySongs");
     }
 
+    @FXML
+    private void goToSetSecurity() throws IOException {
+        App.setRoot("setSecurity");
+    }
+
+    @FXML
+    private void goToFavoriteSongs() throws IOException {
+        App.setRoot("favorites");
+    }
+
+    @FXML
+    private void goToCompletedSongs() throws IOException {
+        App.setRoot("completed");
+    }
+
+    @FXML
+    private void goToPrimary() throws IOException {
+        App.setRoot("primary");
+    }
+
     private void loadSongs() {
         List<Song> favorites = facade.getFavoriteSongs(currentUser);
         for (Song song : favorites) {
