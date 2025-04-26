@@ -144,7 +144,8 @@
 #favoriteSongsBtn,
 #completedSongsBtn,
 #securityQuestionSetBtn,
-#logOutBtn {
+#logOutBtn,
+#doneButton {
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.2, 0, 1);
 }
 

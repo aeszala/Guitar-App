@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -30,6 +31,18 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private AnchorPane login_pane;
+
+    @FXML
+    private Label MelodexTxt;
+
+    @FXML
+    private Button createAccountBtn;
+
+    @FXML
+    private Button forgotPasswordBtn;
+
+    @FXML
+    private Button loginBtn;
 
     // Define the setContent method to change content dynamically
     public void setContent(String fxml) throws IOException {
@@ -66,12 +79,7 @@ public class PrimaryController implements Initializable {
     }
 
     @FXML
-    private void back(MouseEvent event) throws IOException {
-        App.setRoot("home");
-    }
-
-    @FXML
-    private void goToSecurity(MouseEvent event) throws IOException {
+    private void goToSecurity(ActionEvent event) throws IOException {
         // Handle the event when the "Go to Security" button is clicked
         System.out.println("Going to Security screen...");
         

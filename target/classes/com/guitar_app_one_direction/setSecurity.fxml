@@ -4,49 +4,38 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.171" 
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.guitar_app_one_direction.SetSecurityController"
-            prefHeight="800" 
-            prefWidth="400" 
-            style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);">
-
-    <!-- Top navigation bar -->
-    <top>
-        <HBox style="-fx-background-color: transparent; -fx-padding: 10;">
-            <Button text="Back" fx:id="backButton" onAction="#handleBackToProfile" 
-                    style="-fx-text-fill: black;"/>
-            <Button text="Home" fx:id="homeButton" onAction="#handleHomeButton" 
-                    style="-fx-text-fill: black; -fx-margin-left: 10;"/>
-        </HBox>
-    </top>
+<BorderPane prefHeight="800" prefWidth="400" style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.SetSecurityController">
     
     <!-- Content container -->
     <center>
         <VBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
-            <VBox alignment="CENTER" spacing="5">
-                <Label text="Set Security Question" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white;"/>
-                <Label text="and Answer" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <VBox spacing="5">
+                <Label style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: white;" text="Set Security Question">
+               <font>
+                  <Font size="28.0" />
+               </font></Label>
+                <Label style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: white;" text="and Answer" />
             </VBox>
             
-            <VBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10; -fx-min-width: 300;">
-                <Label text="Security Question" style="-fx-font-weight: bold; -fx-text-fill: white;"/>
-                <TextField fx:id="securityQuestionField" style="-fx-min-width: 300;"/>
-                
-                <Label text="Security Answer" style="-fx-font-weight: bold; -fx-padding: 10 0 0 0; -fx-text-fill: white;"/>
-                <TextField fx:id="securityAnswerField" style="-fx-min-width: 300;"/>
+            <VBox alignment="CENTER_LEFT" prefHeight="131.0" prefWidth="409.0" spacing="10" style="-fx-min-width: 300; -fx-min-width: 300;">
+                <TextField fx:id="securityQuestionField" prefHeight="50.0" prefWidth="355.0" promptText="Security Question" style="-fx-min-width: 330; -fx-background-radius: 0; -fx-min-height: 50; -fx-font-size: 20; -fx-translate-y: -10;" />
+                <TextField fx:id="securityAnswerField" promptText="Security Answer" style="-fx-min-width: 300; -fx-font-size: 20; -fx-min-height: 50; -fx-background-radius: 0;" />
             </VBox>
-            
-            <Label text="Remember: Security Questions should be something only you know the answer to!" 
-                   style="-fx-font-style: italic; -fx-text-fill: #555; -fx-wrap-text: true; -fx-max-width: 300;"/>
-            
-            <!-- Done Button with Updated Background Color -->
-            <Button text="Done" fx:id="doneButton" onAction="#handleDone" 
-                    style="-fx-padding: 8 25; -fx-background-color: #296B73; -fx-text-fill: white; -fx-font-weight: bold;"/>
+         <Pane prefHeight="102.0" prefWidth="360.0" style="-fx-background-color: #3B3E37; -fx-background-radius: 45;">
+            <children>
+                  
+                  <Label prefHeight="81.0" prefWidth="292.0" style="-fx-text-fill: white; -fx-wrap-text: true; -fx-max-width: 300; -fx-font-size: 18; -fx-translate-x: 40; -fx-translate-y: 10;" text="Remember: Security Questions should be something only you know the answer to!" textFill="WHITE" />
+            </children>
+         </Pane>
+         <Button fx:id="doneButton1" onAction="#handleSubmit" prefHeight="56.0" prefWidth="202.0" style="-fx-padding: 8 25; -fx-background-color: #296B73; -fx-text-fill: white; -fx-background-radius: 30; -fx-translate-y: 160;" text="Done">
+            <font>
+               <Font size="28.0" />
+            </font>
+         </Button>
         </VBox>
     </center>
 </BorderPane>

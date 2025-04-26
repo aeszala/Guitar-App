@@ -4,56 +4,41 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="mainLayout" 
-            xmlns:fx="http://javafx.com/fxml" 
-            fx:controller="com.guitar_app_one_direction.TemplateController"
-            stylesheets="@template.css"
-            prefHeight="900" 
-            prefWidth="400" 
-            style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);">
-    
-    <top>
-        <HBox alignment="CENTER_LEFT" styleClass="top-nav-bar">
-            <Button fx:id="backButton" text="Back" onAction="#handleBack" 
-                   style="-fx-text-fill: black;" styleClass="nav-button back-button"/>
-            <Button fx:id="homeButton" text="Home" onAction="#handleHome" 
-                   style="-fx-text-fill: black;" styleClass="nav-button home-button"/>
-        </HBox>
-    </top>
-    
-    <center>
-        <VBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
-            <!-- Title Section -->
-            <VBox alignment="CENTER" spacing="5">
-                <Label text="Account Recovery:" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white;"/>
-                <Label text="Security Question" style="-fx-font-size: 16; -fx-text-fill: white;"/>
-            </VBox>
-            
+<BorderPane fx:id="mainLayout" prefHeight="900" prefWidth="400" style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);" stylesheets="@template.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.guitar_app_one_direction.TemplateController">
+   <top>
+         
             <!-- Security Question Display -->
-            <VBox alignment="CENTER" spacing="5" style="-fx-background-color: transparent; -fx-padding: 15; -fx-border-color: transparent; -fx-border-radius: 5;">
-                <Label text="What was the name of your first pet?" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: white;"/>
-            </VBox>
+         <VBox prefHeight="739.0" prefWidth="400.0" spacing="5" style="-fx-background-color: transparent; -fx-padding: 15; -fx-border-color: transparent; -fx-translate-x: 10; -fx-translate-y: 150;" BorderPane.alignment="CENTER">
+             <Label style="-fx-font-weight: bold; -fx-text-fill: white;" text="Account Recovery:">
+            <font>
+               <Font size="28.0" />
+            </font>
+         </Label>
+             <Label style="-fx-text-fill: white;" text="Security Question">
+            <font>
+               <Font name="System Bold" size="28.0" />
+            </font>
+         </Label>
+             <Label alignment="TOP_LEFT" prefHeight="40.0" prefWidth="338.0" style="-fx-text-fill: white; -fx-translate-y: 20;" text="Sample Question">
+            <font>
+               <Font size="28.0" />
+            </font>
+         </Label>
+         <TextField fx:id="securityAnswerField" maxWidth="350.0" prefHeight="25.0" prefWidth="345.0" promptText="Answer" style="-fx-max-width: 345; -fx-pref-height: 30; -fx-min-height: 50; -fx-background-radius: 0; -fx-translate-y: 70;">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </TextField>
             
-            <!-- Security Answer Input -->
-            <VBox alignment="CENTER_LEFT" spacing="5" style="-fx-min-width: 300;">
-                <Label text="Security Answer" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: white;"/>
-                <TextField fx:id="securityAnswerField" style="-fx-min-width: 300; -fx-pref-height: 35;"/>
-            </VBox>
-            
-            <!-- Done Button with Background Color Matching -->
-            <Button text="Done" fx:id="doneButton" onAction="#handleSubmit" 
-                    style="-fx-padding: 8 25; -fx-background-color: #296B73; -fx-text-fill: white; -fx-font-weight: bold;"/>
-        </VBox>
-    </center>
-    
-    <bottom>
-        <HBox alignment="CENTER" styleClass="bottom-nav-bar">
-            <Pane HBox.hgrow="ALWAYS"/> <!-- Spacer -->
-        </HBox>
-    </bottom>
+               <!-- Done Button with Background Color Matching -->
+            <Button fx:id="doneButton" onAction="#handleSubmit" prefHeight="56.0" prefWidth="202.0" style="-fx-padding: 8 25; -fx-background-color: #296B73; -fx-text-fill: white; -fx-background-radius: 30; -fx-translate-y: 465; -fx-translate-x: 75;" text="Done">
+            <font>
+               <Font size="28.0" />
+            </font>
+         </Button>
+         </VBox>
+   </top>
 </BorderPane>
