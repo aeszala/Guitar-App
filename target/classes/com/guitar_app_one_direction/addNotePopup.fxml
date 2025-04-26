@@ -2,41 +2,81 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DialogPane?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<DialogPane fx:id="dialogPane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.addNotePopupController">
-    <content>
-        <VBox alignment="CENTER" spacing="10">
-            <Label style="-fx-font-weight: bold; -fx-font-size: 16;" text="Add New Note" />
-            
-            <HBox alignment="CENTER_LEFT" spacing="10">
-                <Label text="Type:" />
-                <ComboBox fx:id="noteTypeCombo" />
+<AnchorPane style="-fx-pref-height: 420; -fx-pref-width: 380; -fx-background-radius: 30; -fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="440.0" prefWidth="380.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-translate-x: 35; -fx-translate-y: 30;">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sound Type:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <ComboBox prefWidth="65.0" style="-fx-background-color: #296B73; -fx-background-radius: 30; -fx-translate-x: 53; -fx-pref-height: 40; -fx-translate-y: -5;" />
+               </children>
             </HBox>
-            
-            <HBox alignment="CENTER_LEFT" spacing="10">
-                <Label text="Length:" />
-                <ComboBox fx:id="durationCombo" />
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-translate-x: 35; -fx-translate-y: 20;">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sound Length:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <ComboBox prefWidth="140.0" style="-fx-background-color: #296B73; -fx-background-radius: 30; -fx-pref-height: 40; -fx-translate-y: -5; -fx-translate-x: 33;" />
+               </children>
             </HBox>
-            
-            <HBox alignment="CENTER_LEFT" spacing="10">
-                <Label text="String:" />
-                <ComboBox fx:id="stringCombo" />
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-translate-x: 35; -fx-translate-y: 10;">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-style: bold;" text="String:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <ComboBox prefWidth="65.0" style="-fx-background-color: #296B73; -fx-background-radius: 30; -fx-pref-height: 40; -fx-translate-y: -5; -fx-translate-x: 107;" />
+               </children>
             </HBox>
-            
-            <HBox alignment="CENTER_LEFT" spacing="10">
-                <Label text="Fret:" />
-            <ComboBox prefWidth="150.0" />
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-translate-x: 35;">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fret:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <ComboBox prefWidth="65.0" style="-fx-background-color: #296B73; -fx-background-radius: 30; -fx-translate-y: -5; -fx-pref-height: 40; -fx-translate-x: 127;" />
+               </children>
             </HBox>
-         <HBox prefHeight="0.0" prefWidth="200.0">
-            <children>
-               <Button fx:id="addButton" mnemonicParsing="false" onAction="#addNote" text="Add" />
-               <Button fx:id="cancelButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#closePopup" text="Cancel" />
-            </children>
-         </HBox>
-        </VBox>
-    </content>
-</DialogPane>
+            <HBox prefHeight="100.0" prefWidth="380.0" style="-fx-translate-x: 35; -fx-translate-y: -10;">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pitch:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <ComboBox prefWidth="104.0" style="-fx-background-color: #296B73; -fx-background-radius: 30; -fx-translate-y: -5; -fx-pref-height: 40; -fx-translate-x: 117;" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-alignment: Center; -fx-translate-y: -20;">
+               <children>
+                  <Button fx:id="addNoteBtn" ellipsisString="Add" mnemonicParsing="false" onAction="#addNoteToMeasure" prefHeight="53.0" prefWidth="103.0" style="-fx-background-color: #D95032; -fx-background-radius: 30; -fx-translate-x: -20;" text="Add" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="cancelNoteBtn" mnemonicParsing="false" onAction="#cancelNotePopup" prefHeight="53.0" prefWidth="138.0" style="-fx-background-radius: 30; -fx-background-color: #D95032; -fx-translate-x: 20;" text="Cancel" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
