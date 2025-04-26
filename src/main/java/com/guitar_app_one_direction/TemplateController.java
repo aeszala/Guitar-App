@@ -42,7 +42,7 @@ public class TemplateController {
     @FXML
     private void handleHomeButton() {
         try {
-            App.setContent("primary");
+            App.setRoot("primary");
             pageHistory.clear();
         } catch (IOException e) {
             e.printStackTrace();
@@ -52,7 +52,7 @@ public class TemplateController {
     @FXML
     private void goToProfile() {
         try {
-            App.setContent("profile"); // or whatever the FXML file for the profile screen is
+            App.setRoot("profile"); // or whatever the FXML file for the profile screen is
         } catch (IOException e) {
             e.printStackTrace();
         }
