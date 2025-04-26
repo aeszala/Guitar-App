@@ -18,9 +18,9 @@
 
             <!-- Song Info -->
             <VBox spacing="5" style="-fx-translate-x: 45;">
-                <Label fx:id="titleLabel" style="-fx-font-size: 28; -fx-text-fill: white; -fx-font-style: bold;" text="Song Title" textFill="WHITE">
+                <Label fx:id="titleLabel" text="Song Title" textFill="WHITE">
                     <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="28.0" />
                     </font>
                 </Label>
                 <Label fx:id="artistLabel" style="-fx-text-fill: white; -fx-font-size: 28;" text="Artist Name" />
@@ -30,13 +30,16 @@
             <ImageView fx:id="albumImage" fitHeight="200" fitWidth="200" style="-fx-fit-height: 310; -fx-fit-width: 310; -fx-translate-x: 45;" />
 
             <!-- Runtime and Rating -->
-            <HBox spacing="10" style="-fx-translate-x: 45;">
-                <Label style="-fx-text-fill: white; -fx-font-size: 20; -fx-font-style: Bold;" text="Runtime:" textFill="WHITE">
+            <HBox alignment="CENTER" spacing="10">
+                <Label style="-fx-translate-x: -38;" text="Runtime:" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font></Label>
-                <Label fx:id="runtimeLabel" style="-fx-text-fill: white; -fx-font-size: 20;" text="0:00" />
-                <Label fx:id="ratingLabel" style="-fx-font-size: 20;" text="★★★★★" textFill="WHITE" />
+                <Label fx:id="runtimeLabel" style="-fx-translate-x: -38;" text="0:00" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Label>
+                <Label fx:id="ratingLabel" style="-fx-font-size: 20; -fx-translate-x: 38;" text="★★★★★" textFill="WHITE" />
             </HBox>
 
             <!-- Buttons -->

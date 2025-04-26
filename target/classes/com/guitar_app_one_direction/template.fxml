@@ -12,16 +12,16 @@
     <top>
         <HBox alignment="CENTER_RIGHT" styleClass="top-nav-bar" />
     </top>
-     linear-gradient(to bottom, #4F4F47, #995235)
+    
     <center>
         <StackPane fx:id="contentPane" styleClass="content-pane" />
     </center>
     
     <bottom>
         <HBox alignment="CENTER" styleClass="bottom-nav-bar">
-            <Button fx:id="backButton" ellipsisString="&lt;" onAction="#handleBackButton" style="-fx-background-color: transparent; -fx-font-size: 40; -fx-font-style: bold;" styleClass="nav-button back-button" text="&lt;" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+            <Button fx:id="backButton" ellipsisString="&lt;" onAction="#handleBackButton" prefHeight="85.0" prefWidth="81.0" style="-fx-background-color: transparent; -fx-pref-height: 50;" styleClass="nav-button back-button" text="&lt;" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
             <font>
-               <Font name="System Bold" size="12.0" />
+               <Font name="System Bold" size="40.0" />
             </font></Button>
             <Pane HBox.hgrow="ALWAYS" /> <!-- Spacer -->
             <Button fx:id="homeButton" ellipsisString="🏠" onAction="#goToHome" style="-fx-pref-height: 40; -fx-pref-width: 40; -fx-font-size: 40; -fx-background-color: transparent;" styleClass="nav-button home-button" text="🏠" textFill="WHITE" textOverrun="WORD_ELLIPSIS" />
