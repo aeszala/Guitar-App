@@ -5,29 +5,33 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="800" prefWidth="400" style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.MySongsController">
+<BorderPane fx:id="mainLayout" prefHeight="900" prefWidth="400" style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);" stylesheets="@template.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.MySongsController">
 
-    <!-- Main content -->
+    <top>
+        <HBox alignment="CENTER_RIGHT" styleClass="top-nav-bar" />
+    </top>
+
     <center>
-        <VBox prefHeight="805.0" prefWidth="400.0" spacing="15" style="-fx-padding: 20;">
-            <!-- Title -->
-            <Label style="-fx-font-size: 36; -fx-font-weight: bold; -fx-text-fill: white;" text="My Songs" />
-
-            <!-- ListView for dynamic song loading -->
-        <ListView fx:id="mySongsListView" prefHeight="684.0" prefWidth="360.0" style="-fx-background-insets: 0; -fx-background-color: transparent;" />
+        <VBox spacing="15" style="-fx-padding: 20;" styleClass="content-pane">
+            <Label text="My Songs" style="-fx-font-size: 36; -fx-font-weight: bold; -fx-text-fill: white;" />
+            <ListView fx:id="mySongsListView" prefHeight="684.0" prefWidth="360.0" style="-fx-background-insets: 0; -fx-background-color: transparent;" />
         </VBox>
     </center>
 
-    <!-- Bottom navigation bar -->
     <bottom>
-        <HBox spacing="50" alignment="center" style="-fx-padding: 10;">
-            <!-- Back button -->
-            <Button fx:id="backButton" text="←" style="-fx-font-size: 24; -fx-background-color: transparent; -fx-text-fill: white;" />
-
-            <!-- Home button -->
-            <Button fx:id="homeButton" text="🏠" style="-fx-font-size: 24; -fx-background-color: transparent; -fx-text-fill: white;" />
+        <HBox alignment="CENTER" styleClass="bottom-nav-bar">
+            <Button fx:id="backButton" onAction="#handleBackButton" prefHeight="85.0" prefWidth="81.0" style="-fx-background-color: transparent;" styleClass="nav-button back-button" text="&lt;" textFill="WHITE">
+                <font>
+                    <Font name="System Bold" size="40.0" />
+                </font>
+            </Button>
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button fx:id="homeButton" onAction="#goToHome" style="-fx-pref-height: 40; -fx-pref-width: 40; -fx-font-size: 40; -fx-background-color: transparent;" styleClass="nav-button home-button" text="🏠" textFill="WHITE" />
         </HBox>
     </bottom>
 
