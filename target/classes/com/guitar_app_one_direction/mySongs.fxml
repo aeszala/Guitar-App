@@ -16,7 +16,7 @@
             <Label style="-fx-font-size: 36; -fx-font-weight: bold; -fx-text-fill: white;" text="My Songs" />
 
             <!-- ListView for dynamic song loading -->
-            <ListView fx:id="songListView" prefHeight="684.0" prefWidth="360.0" style="-fx-background-insets: 0; -fx-background-color: transparent;" />
+        <ListView fx:id="mySongsListView" prefHeight="684.0" prefWidth="360.0" style="-fx-background-insets: 0; -fx-background-color: transparent;" />
         </VBox>
     </center>
 
