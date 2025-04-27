@@ -1,11 +1,13 @@
 package com.guitar_app_one_direction;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.scene.image.Image;
@@ -127,8 +129,20 @@ public class CreateSongController {
 
     @FXML
     private void goToProfile(MouseEvent event) throws IOException {
-        System.out.println("Profile picture clicked in Create Song page!");
-        App.setRoot("profile");
+        System.out.println("Profile clicked");
+
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("profile.fxml"));
+        Parent root = loader.load();
+
+        ProfileController profileController = loader.getController();
+
+        // Get the logged in user
+        MusicAppFACADE facade = new MusicAppFACADE();
+        User currentUser = facade.getUser();
+
+        profileController.setUser(currentUser);
+
+        App.setRoot(root);
     }
 
     private void clearForm() {
