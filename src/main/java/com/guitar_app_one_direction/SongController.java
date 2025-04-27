@@ -1,5 +1,7 @@
 package com.guitar_app_one_direction;
 
+import java.io.IOException;
+
 import com.model.Song;
 import com.model.Songlist;
 import javafx.collections.FXCollections;
@@ -64,6 +66,20 @@ public class SongController {
             titleField.clear();
             artistField.clear();
         }
+    }
+
+    @FXML
+    private void playSong() {
+        Song selectedSong = songListView.getSelectionModel().getSelectedItem();
+        if (selectedSong != null) {
+            selectedSong.playSong();
+        }
+    }
+
+    @FXML
+    private void goToTabPage() throws IOException{
+        App.setRoot("tabsPage");
+        System.out.println("Going to tab creation page...");
     }
 
     @FXML
