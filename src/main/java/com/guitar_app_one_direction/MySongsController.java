@@ -1,5 +1,6 @@
 package com.guitar_app_one_direction;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -43,5 +44,15 @@ public class MySongsController implements Initializable {
         for (Song song : mySongs) {
             mySongsListView.getItems().add(song.getTitle());  // Add song title to the ListView
         }
+    }
+
+    @FXML
+    private void handleBack() throws IOException {
+      App.setRoot("profile");
+    }
+
+    @FXML
+    private void handleHome() throws IOException {
+      App.setRoot("home");
     }
 }
