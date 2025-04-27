@@ -12,7 +12,10 @@ import com.model.User;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -47,7 +50,19 @@ public class HomeController implements Initializable {
     @FXML
     private void goToProfile(MouseEvent event) throws IOException {
         System.out.println("Profile clicked");
-        App.setRoot("profile");
+
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("profile.fxml"));
+        Parent root = loader.load();
+
+        ProfileController profileController = loader.getController();
+
+        // Get the logged in user
+        MusicAppFACADE facade = new MusicAppFACADE();
+        User currentUser = facade.getUser();
+
+        profileController.setUser(currentUser);
+
+        App.setRoot(root);
     }
 
     @FXML

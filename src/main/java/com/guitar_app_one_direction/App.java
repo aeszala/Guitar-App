@@ -46,6 +46,10 @@ public class App extends Application {
         }
     }
 
+    public static void setRoot(Parent root) {
+        scene.setRoot(root);
+    }
+
     // Helper to load FXML files
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader loader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));

@@ -35,13 +35,21 @@ public class ProfileController implements Initializable {
     @FXML
     private Button mySongsBtn;
 
+    @FXML
+    private Label nameLabel;
+
+    @FXML
+    private Label usernameLabel;
+
+    @FXML
+    private Label emailLabel;
+
     private MusicAppFACADE facade;
     private User currentUser;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         facade = new MusicAppFACADE();
-        loadSongs();
     }
 
     @FXML
@@ -95,5 +103,11 @@ public class ProfileController implements Initializable {
 
     public void setUser(User user) {
         this.currentUser = user;
+        if (user != null) {
+            nameLabel.setText(user.getName());
+            usernameLabel.setText(user.getUsername());
+            emailLabel.setText(user.getEmail());
+            loadSongs();
+        }
     }
 }
