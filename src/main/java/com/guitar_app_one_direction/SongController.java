@@ -1,5 +1,7 @@
 package com.guitar_app_one_direction;
 
+import java.io.IOException;
+
 import com.model.Song;
 import com.model.Songlist;
 import javafx.collections.FXCollections;
@@ -24,8 +26,8 @@ public class SongController {
     @FXML
     private Button playButton;
 
-    @FXML
-    private ListView<Song> songListView;
+    // @FXML
+    // private ListView<Song> songListView;
 
     private Songlist songlist;
     private ObservableList<Song> observableSongs;
@@ -33,21 +35,21 @@ public class SongController {
     @FXML
     public void initialize() {
         songlist = Songlist.getInstance();
-        observableSongs = FXCollections.observableArrayList(songlist.getSongs());
-        songListView.setItems(observableSongs);
+        // observableSongs = FXCollections.observableArrayList(songlist.getSongs());
+        // songListView.setItems(observableSongs);
 
         // Optional: show just titles
-        songListView.setCellFactory(param -> new javafx.scene.control.ListCell<>() {
-            @Override
-            protected void updateItem(Song song, boolean empty) {
-                super.updateItem(song, empty);
-                if (empty || song == null || song.getTitle() == null) {
-                    setText(null);
-                } else {
-                    setText(song.getTitle() + " - " + song.getArtist());
-                }
-            }
-        });
+        // songListView.setCellFactory(param -> new javafx.scene.control.ListCell<>() {
+        //     @Override
+        //     protected void updateItem(Song song, boolean empty) {
+        //         super.updateItem(song, empty);
+        //         if (empty || song == null || song.getTitle() == null) {
+        //             setText(null);
+        //         } else {
+        //             setText(song.getTitle() + " - " + song.getArtist());
+        //         }
+        //     }
+        // });
     }
 
     @FXML
@@ -67,10 +69,28 @@ public class SongController {
     }
 
     @FXML
+    private void playSong() {
+        // Song selectedSong = songListView.getSelectionModel().getSelectedItem();
+        // if (selectedSong != null) {
+        //     selectedSong.playSong();
+        // }
+        System.out.println("playSong clicked (no song selected)");
+
+    }
+
+    @FXML
+    private void goToTabPage() throws IOException{
+        App.setRoot("tabsPage");
+        System.out.println("Going to tab creation page...");
+    }
+
+    @FXML
     private void handlePlaySong(MouseEvent event) {
-        Song selectedSong = songListView.getSelectionModel().getSelectedItem();
-        if (selectedSong != null) {
-            selectedSong.playSong();
-        }
+        // Song selectedSong = songListView.getSelectionModel().getSelectedItem();
+        // if (selectedSong != null) {
+        //     selectedSong.playSong();
+        // }
+        System.out.println("handlePlaySong clicked (no song selected)");
+
     }
 }
