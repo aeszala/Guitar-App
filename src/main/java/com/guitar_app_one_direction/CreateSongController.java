@@ -46,9 +46,15 @@ public class CreateSongController {
     private Button createTabsBtn;
 
     @FXML
+    private Button addMeasureButton;
+
+    @FXML
     private ImageView profilePicture;
 
     private final Songlist songlist = Songlist.getInstance();
+
+    private final MusicAppFACADE facade = MusicAppFACADE.getInstance();
+
 
     private int measureCount = 2; // already 2 measures in FXML
 
@@ -137,7 +143,6 @@ public class CreateSongController {
         ProfileController profileController = loader.getController();
 
         // Get the logged in user
-        MusicAppFACADE facade = new MusicAppFACADE();
         User currentUser = facade.getUser();
 
         profileController.setUser(currentUser);

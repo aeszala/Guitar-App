@@ -87,7 +87,7 @@
             </font></Label>
          <HBox prefHeight="57.0" prefWidth="368.0" style="-fx-background-color: #1D3435; -fx-pref-height: 60;">
             <children>
-               <Button id="addNoteBtn" fx:id="addNoteBtn" mnemonicParsing="false" onAction="#openNotePopup" prefHeight="55.0" prefWidth="59.0" style="-fx-font-size: 25; -fx-border-color: #1D3435; -fx-pref-height: 59; -fx-pref-width: 59; -fx-background-color: white; -fx-border-width: 2; -fx-border-insets: -1;" text="➕" textFill="#bd522c">
+               <Button id="addNoteBtn" mnemonicParsing="false" onAction="#openNotePopup" prefHeight="55.0" prefWidth="59.0" style="-fx-font-size: 25; -fx-border-color: #1D3435; -fx-pref-height: 59; -fx-pref-width: 59; -fx-background-color: white; -fx-border-width: 2; -fx-border-insets: -1;" text="➕" textFill="#bd522c">
                   <font>
                      <Font size="20.0" />
                   </font>
@@ -100,7 +100,7 @@
          </Label>
          <HBox prefHeight="68.0" prefWidth="368.0" style="-fx-background-color: #1D3435; -fx-pref-height: 60;">
             <children>
-               <Button id="addNoteBtn" fx:id="addNoteBtn" mnemonicParsing="false" onAction="#openNotePopup" prefHeight="50.0" prefWidth="59.0" style="-fx-font-size: 25; -fx-border-color: #1D3435; -fx-pref-height: 59; -fx-pref-width: 59; -fx-background-color: white; -fx-border-width: 2; -fx-border-insets: -1;" text="➕" textFill="#bd522c">
+               <Button id="addNoteBtn" mnemonicParsing="false" onAction="#openNotePopup" prefHeight="50.0" prefWidth="59.0" style="-fx-font-size: 25; -fx-border-color: #1D3435; -fx-pref-height: 59; -fx-pref-width: 59; -fx-background-color: white; -fx-border-width: 2; -fx-border-insets: -1;" text="➕" textFill="#bd522c">
                   <font>
                      <Font size="20.0" />
                   </font>
