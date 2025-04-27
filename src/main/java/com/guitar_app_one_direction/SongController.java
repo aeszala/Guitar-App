@@ -1,7 +1,6 @@
 package com.guitar_app_one_direction;
 
 import java.io.IOException;
-
 import com.model.Song;
 import com.model.Songlist;
 import javafx.collections.FXCollections;
@@ -20,6 +19,9 @@ public class SongController {
     @FXML
     private TextField artistField;
 
+    // @FXML
+    // private TextField runtimeLabel;
+
     @FXML
     private Button addButton;
 
@@ -31,6 +33,8 @@ public class SongController {
 
     private Songlist songlist;
     private ObservableList<Song> observableSongs;
+
+    private Song currentSong; // To store the current song to be displayed on the page
 
     @FXML
     public void initialize() {
@@ -68,29 +72,36 @@ public class SongController {
         }
     }
 
-    @FXML
-    private void playSong() {
-        // Song selectedSong = songListView.getSelectionModel().getSelectedItem();
-        // if (selectedSong != null) {
-        //     selectedSong.playSong();
-        // }
-        System.out.println("playSong clicked (no song selected)");
-
+    // Method to set the selected song when moving to this page
+    public void setSong(Song song) {
+        currentSong = song;
+        System.out.println("Song set: " + song.getTitle() + " by " + song.getArtist());
+        titleField.setText(song.getTitle());
+        artistField.setText(song.getArtist());
+        // runtimeLabel.setText("Runtime: " + song.getRunLengthMin() + ":" + song.getRunLengthSec());
     }
 
     @FXML
-    private void goToTabPage() throws IOException{
+    private void playSong() {
+        if (currentSong != null) {
+            currentSong.playSong();
+        } else {
+            System.out.println("No song selected");
+        }
+    }
+
+    @FXML
+    private void goToTabPage() throws IOException {
         App.setRoot("tabsPage");
         System.out.println("Going to tab creation page...");
     }
 
     @FXML
     private void handlePlaySong(MouseEvent event) {
-        // Song selectedSong = songListView.getSelectionModel().getSelectedItem();
-        // if (selectedSong != null) {
-        //     selectedSong.playSong();
-        // }
-        System.out.println("handlePlaySong clicked (no song selected)");
-
+        if (currentSong != null) {
+            currentSong.playSong();
+        } else {
+            System.out.println("No song selected");
+        }
     }
 }
