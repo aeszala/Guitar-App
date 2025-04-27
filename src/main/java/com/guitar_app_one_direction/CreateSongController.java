@@ -2,91 +2,144 @@ package com.guitar_app_one_direction;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
+import javafx.scene.Node;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
+import javafx.scene.image.Image;
 import javafx.collections.FXCollections;
-import javafx.scene.control.Alert.AlertType;
+import javafx.collections.ObservableList;
 
 import com.model.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class CreateSongController {
 
     @FXML
-    private TextField txtTitle;
+    private TextField SongTitleField;
 
     @FXML
-    private TextField txtArtist;
-
-    @FXML
-    private TextField txtMinutes;
-
-    @FXML
-    private TextField txtSeconds;
-
-    @FXML
-    private TextField txtTempo;
+    private TextField tempoTextField;
 
     @FXML
     private ComboBox<Difficulty> comboDifficulty;
 
     @FXML
-    private ListView<Genre> genreList;
+    private ComboBox<Genre> comboGenre;
 
     @FXML
-    private Button btnCreate;
+    private VBox measureContainer;
+
+    @FXML
+    private Button uploadSongBtn;
+
+    @FXML
+    private Button playSongBtn;
+
+    @FXML
+    private Button createTabsBtn;
+
+    @FXML
+    private ImageView profilePicture;
 
     private final Songlist songlist = Songlist.getInstance();
 
+    private int measureCount = 2; // already 2 measures in FXML
+
     @FXML
     private void initialize() {
-        // Load enum values into ComboBox and ListView
         comboDifficulty.setItems(FXCollections.observableArrayList(Difficulty.values()));
-        genreList.setItems(FXCollections.observableArrayList(Genre.values()));
-        genreList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
-        btnCreate.setOnAction(e -> handleCreateSong());
+        comboGenre.setItems(FXCollections.observableArrayList(Genre.values()));
     }
 
-    private void handleCreateSong() {
-        try {
-            String title = txtTitle.getText().trim();
-            String artist = txtArtist.getText().trim();
-            int minutes = Integer.parseInt(txtMinutes.getText().trim());
-            int seconds = Integer.parseInt(txtSeconds.getText().trim());
-            int tempo = Integer.parseInt(txtTempo.getText().trim());
-            Difficulty difficulty = comboDifficulty.getValue();
-            ArrayList<Genre> selectedGenres = new ArrayList<>(genreList.getSelectionModel().getSelectedItems());
+    @FXML
+    private void addMeasure() {
+        measureCount++;
 
-            if (title.isEmpty() || artist.isEmpty() || difficulty == null || selectedGenres.isEmpty()) {
-                showAlert("Error", "Please fill out all fields and select difficulty and genres.");
+        Label measureLabel = new Label("Measure " + measureCount);
+        measureLabel.setStyle("-fx-text-fill: white; -fx-font-style: bold;");
+        measureLabel.setFont(new javafx.scene.text.Font("System Bold", 20));
+
+        HBox newMeasure = new HBox();
+        newMeasure.setPrefHeight(60);
+        newMeasure.setPrefWidth(368);
+        newMeasure.setStyle("-fx-background-color: #1D3435; -fx-pref-height: 60;");
+
+        Button addNoteBtn = new Button("➕");
+        addNoteBtn.setPrefHeight(59);
+        addNoteBtn.setPrefWidth(59);
+        addNoteBtn.setStyle("-fx-font-size: 25; -fx-border-color: #1D3435; -fx-background-color: white; -fx-border-width: 2;");
+        addNoteBtn.setTextFill(javafx.scene.paint.Color.valueOf("#bd522c"));
+        addNoteBtn.setOnAction(e -> openNotePopup());
+
+        newMeasure.getChildren().add(addNoteBtn);
+
+        measureContainer.getChildren().addAll(measureLabel, newMeasure);
+    }
+
+    @FXML
+    private void uploadSong() {
+        try {
+            String title = SongTitleField.getText().trim();
+            String tempoText = tempoTextField.getText().trim();
+            Difficulty difficulty = comboDifficulty.getValue();
+            Genre genre = comboGenre.getValue();
+
+            if (title.isEmpty() || tempoText.isEmpty() || difficulty == null || genre == null) {
+                showAlert("Error", "Please fill out all fields and select difficulty and genre.");
                 return;
             }
 
-            // No measures at creation; start empty
-            ArrayList<Measure> measures = new ArrayList<>();
+            int tempo = Integer.parseInt(tempoText);
 
-            songlist.addSong(title, artist, minutes, seconds, tempo, selectedGenres, difficulty, measures);
-            showAlert("Success", "Song created successfully!");
+            ArrayList<Measure> measures = new ArrayList<>(); // Assume user will add notes later
 
+            ArrayList<Genre> genres = new ArrayList<>();
+            genres.add(genre);
+
+            songlist.addSong(title, "Unknown Artist", 0, 0, tempo, genres, difficulty, measures);
+            showAlert("Success", "Song uploaded successfully!");
             clearForm();
 
         } catch (NumberFormatException ex) {
-            showAlert("Input Error", "Minutes, seconds, and tempo must be numbers.");
+            showAlert("Input Error", "Tempo must be a number.");
         }
     }
 
+    @FXML
+    private void playCreateSong() {
+        showAlert("Play Song", "Pretending to play the created song 🎸");
+    }
+
+    @FXML
+    private void goToTabsForCreateSong() throws IOException {
+        App.setRoot("tabsPage");
+    }
+
+    @FXML
+    private void openNotePopup() {
+        showAlert("Add Note", "Opening note popup (not implemented yet).");
+    }
+
+    @FXML
+    private void goToProfile(MouseEvent event) throws IOException {
+        System.out.println("Profile picture clicked in Create Song page!");
+        App.setRoot("profile");
+    }
+
     private void clearForm() {
-        txtTitle.clear();
-        txtArtist.clear();
-        txtMinutes.clear();
-        txtSeconds.clear();
-        txtTempo.clear();
+        SongTitleField.clear();
+        tempoTextField.clear();
         comboDifficulty.getSelectionModel().clearSelection();
-        genreList.getSelectionModel().clearSelection();
+        comboGenre.getSelectionModel().clearSelection();
     }
 
     private void showAlert(String title, String message) {
-        Alert alert = new Alert(AlertType.INFORMATION);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setContentText(message);
         alert.showAndWait();
