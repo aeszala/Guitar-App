@@ -14,24 +14,24 @@
             prefWidth="400" 
             style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);">
     
-    <!-- Top navigation bar -->
-    <top>
-        <HBox style="-fx-background-color: transparent; -fx-padding: 10;">
-            <Button text="Back" fx:id="backButton" onAction="#handleBack"/>
-            <Button text="Home" fx:id="homeButton" onAction="#handleHome" style="-fx-margin-left: 10;"/>
-        </HBox>
-    </top>
-
     <!-- Main content -->
     <center>
         <VBox spacing="15" style="-fx-padding: 20;">
             <!-- Title -->
-            <Label text="Favorites" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Favorites" style="-fx-font-size: 36; -fx-font-weight: bold; -fx-text-fill: white;"/>
 
             <!-- ListView to be populated by controller -->
             <ListView fx:id="favoritesListView"
                       style="-fx-background-insets: 0; -fx-background-color: transparent;" />
         </VBox>
     </center>
+
+    <!-- Bottom navigation bar -->
+    <bottom>
+        <HBox spacing="50" alignment="center" style="-fx-padding: 10;">
+            <Button fx:id="backButton" text="←" onAction="#handleBack" style="-fx-font-size: 24; -fx-background-color: transparent; -fx-text-fill: white;" />
+            <Button fx:id="homeButton" text="🏠" onAction="#handleHome" style="-fx-font-size: 24; -fx-background-color: transparent; -fx-text-fill: white;" />
+        </HBox>
+    </bottom>
 
 </BorderPane>
