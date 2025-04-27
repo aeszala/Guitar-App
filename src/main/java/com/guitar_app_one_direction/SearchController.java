@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
@@ -16,10 +17,13 @@ import javafx.scene.Node;
 import javafx.event.ActionEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import javafx.util.Callback;
 import com.model.MusicAppFACADE;
 import com.model.Song;
+import com.model.User;
 
 public class SearchController {
 
@@ -114,16 +118,21 @@ public class SearchController {
     }
 
     @FXML
-    private void goToProfile(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("profile.fxml"));
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private void goToProfile(MouseEvent event) throws IOException {
+        System.out.println("Profile clicked");
+
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("profile.fxml"));
+        Parent root = loader.load();
+
+        ProfileController profileController = loader.getController();
+
+        // Get the logged in user
+        MusicAppFACADE facade = new MusicAppFACADE();
+        User currentUser = facade.getUser();
+
+        profileController.setUser(currentUser);
+
+        App.setRoot(root);
     }
     
     private void switchToSongPage() {
