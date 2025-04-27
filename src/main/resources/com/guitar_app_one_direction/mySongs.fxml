@@ -25,13 +25,13 @@
 
     <bottom>
         <HBox alignment="CENTER" styleClass="bottom-nav-bar">
-            <Button fx:id="backButton" onAction="#handleBackButton" prefHeight="85.0" prefWidth="81.0" style="-fx-background-color: transparent;" styleClass="nav-button back-button" text="&lt;" textFill="WHITE">
+            <Button fx:id="backButton" onAction="#handleBack" prefHeight="85.0" prefWidth="81.0" style="-fx-background-color: transparent;" styleClass="nav-button back-button" text="&lt;" textFill="WHITE">
                 <font>
                     <Font name="System Bold" size="40.0" />
                 </font>
             </Button>
             <Pane HBox.hgrow="ALWAYS" />
-            <Button fx:id="homeButton" onAction="#goToHome" style="-fx-pref-height: 40; -fx-pref-width: 40; -fx-font-size: 40; -fx-background-color: transparent;" styleClass="nav-button home-button" text="🏠" textFill="WHITE" />
+            <Button fx:id="homeButton" onAction="#handleHome" style="-fx-pref-height: 40; -fx-pref-width: 40; -fx-font-size: 40; -fx-background-color: transparent;" styleClass="nav-button home-button" text="🏠" textFill="WHITE" />
         </HBox>
     </bottom>
 
