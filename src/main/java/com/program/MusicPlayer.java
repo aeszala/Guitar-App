@@ -1,8 +1,4 @@
-﻿/**
- * @author Tre
- */
-
-package com.program;
+﻿package com.program;
 
 import org.jfugue.player.Player;
 import org.jfugue.pattern.Pattern;
@@ -28,26 +24,30 @@ public class MusicPlayer {
      * @param songTitle The title of the song to play.
      */
     public void playSong(String songTitle) {
-        // Retrieve the Songlist instance
-        Songlist songlist = Songlist.getInstance();
-
-        // Get the song by its title using the getSong method
-        Song song = songlist.getSong(songTitle);
-
-        // If the song is not found, print an error message
+        Song song = Songlist.getInstance().getSong(songTitle);
         if (song == null) {
             System.out.println("Song not found: " + songTitle);
             return;
         }
+        play(song); // Delegate to the new method
+    }
 
-        // Display the song information
+    /**
+     * Plays a given Song object using JFugue.
+     *
+     * @param song The Song object to play.
+     */
+    public void play(Song song) {
+        if (song == null) {
+            System.out.println("No song to play.");
+            return;
+        }
+
         System.out.println("Playing: " + song.getTitle() + " by " + song.getArtist());
         System.out.println("Tempo: " + song.getTempo() + " BPM");
 
-        // Create a Pattern to represent the song's musical structure, include instrument and tempo
         Pattern pattern = new Pattern("I[Guitar] T" + song.getTempo() + " "); // Set instrument and tempo
 
-        // Loop through the song's measures and add the sounds to the pattern
         for (Measure measure : song.getMeasures()) {
             for (Sound sound : measure.getNotes()) {
                 if (sound instanceof Note) {
@@ -66,7 +66,6 @@ public class MusicPlayer {
             }
         }
 
-        // Play the song using JFugue player
         player.play(pattern);
     }
 
@@ -75,7 +74,7 @@ public class MusicPlayer {
      */
     public static void main(String[] args) {
         MusicPlayer player = new MusicPlayer();
-        String songTitle = "Mary Jane's Last Dance"; // Change as needed
-        player.playSong(songTitle);
+        String songTitle = "Mary Jane's Last Dance"; // Example
+        player.playSong(songTitle); // or player.play(song);
     }
 }

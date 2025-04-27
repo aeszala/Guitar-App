@@ -436,5 +436,20 @@ public class MusicAppFACADE {
         return "John Doe";
     }
 
+    /**
+ * Plays the given Song using the MusicPlayer.
+ *
+ * @param song The Song object to play.
+ */
+public void play(Song song) {
+    if (song == null) {
+        System.out.println("No song to play.");
+        return;
+    }
+
+    MusicPlayer musicPlayer = new MusicPlayer();
+    musicPlayer.play(song);
+}
+
 
 }
