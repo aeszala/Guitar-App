@@ -90,7 +90,7 @@ public class SearchController {
         songsListView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 try {
-                    facade.setSong(newSelection);
+                    MusicAppFACADE.setSong(newSelection);
                     switchToSongPage();
                 } catch (Exception e) {
                     e.printStackTrace();
