@@ -9,12 +9,16 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import com.model.User;
+import com.model.Song;
 
 public class App extends Application {
     private static Stage primaryStage;  // Store the main stage
     private static Scene scene;        // Store the main scene
     private static String currentUsername;
     private static User currentUser;
+    private static String currentSongName;
+    private static Song currentSong;
+    private static Popup currentPopup;
 
     public static User getCurrentUser() {
         return currentUser;
@@ -23,7 +27,6 @@ public class App extends Application {
     public static void setCurrentUser(User user) {
         currentUser = user;
     }
-    private static Popup currentPopup;
 
     public static void setCurrentUsername(String username) {
         currentUsername = username;
@@ -32,6 +35,23 @@ public class App extends Application {
     public static String getCurrentUsername() {
         return currentUsername;
     }
+
+    public static Song getCurrentSong() {
+        return currentSong;
+    }
+
+    public static void setCurrentSong(Song song) {
+        currentSong = song;
+    }
+
+    public static void setCurrentSongName(String songName) {
+        currentSongName = songName;
+    }
+
+    public static String getCurrentSongName() {
+        return currentSongName;
+    }
+
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -74,7 +94,7 @@ public class App extends Application {
         
         return currentPopup;
     }
-    
+
     public static void closeCurrentPopup() {
         if (currentPopup != null) {
             currentPopup.hide();

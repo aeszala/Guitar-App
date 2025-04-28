@@ -35,13 +35,13 @@ public class SearchController {
 
     @FXML
     private ImageView profilePicture;
-    
+
     private MusicAppFACADE facade;
 
     public void initialize() {
         // Initialize the facade
         facade = MusicAppFACADE.getInstance();
-        
+
         // Set up custom cell factory for the ListView
         songsListView.setCellFactory(new Callback<ListView<Song>, ListCell<Song>>() {
             @Override
@@ -50,33 +50,34 @@ public class SearchController {
                     @Override
                     protected void updateItem(Song song, boolean empty) {
                         super.updateItem(song, empty);
-                        
+
                         if (empty || song == null) {
                             setText(null);
                             setGraphic(null);
                         } else {
                             // Create the custom layout for each song
                             VBox songBox = new VBox(5);
-                            songBox.setStyle("-fx-padding: 10; -fx-background-color: rgba(0,0,0,0.2); -fx-background-radius: 5;");
-                            
+                            songBox.setStyle(
+                                    "-fx-padding: 10; -fx-background-color: rgba(0,0,0,0.2); -fx-background-radius: 5;");
+
                             // Song title
                             Label titleLabel = new Label(song.getTitle());
                             titleLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;");
-                            
+
                             // Artist name
                             Label artistLabel = new Label("By " + song.getArtist());
                             artistLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: #cccccc;");
-                            
+
                             // Difficulty and genre
                             HBox detailsBox = new HBox(10);
                             Label difficultyLabel = new Label(song.getDifficulty().toString());
                             difficultyLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #aaaaaa;");
-                            
+
                             // Assuming song has getGenres() method that returns ArrayList<Genre>
                             String genresString = song.getGenres().toString().replaceAll("[\\[\\]]", "");
                             Label genreLabel = new Label(genresString);
                             genreLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #aaaaaa;");
-                            
+
                             detailsBox.getChildren().addAll(difficultyLabel, genreLabel);
                             songBox.getChildren().addAll(titleLabel, artistLabel, detailsBox);
                             setGraphic(songBox);
@@ -85,15 +86,21 @@ public class SearchController {
                 };
             }
         });
-        
+
         // Handle song selection
+        // Updated selection listener
         songsListView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 try {
-                    MusicAppFACADE.setSong(newSelection);
-                    switchToSongPage();
+                    // Set the current song via App class
+                    App.setCurrentSong(newSelection);
+
+                    // Navigate to song page
+                    App.setRoot("Song");
                 } catch (Exception e) {
                     e.printStackTrace();
+                    // Optionally show error alert to user
+                    // showAlert("Navigation Error", "Could not open song details");
                 }
             }
         });
@@ -134,7 +141,7 @@ public class SearchController {
 
         App.setRoot(root);
     }
-    
+
     private void switchToSongPage() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("song.fxml"));
