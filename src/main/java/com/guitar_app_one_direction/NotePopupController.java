@@ -71,7 +71,7 @@ public class NotePopupController {
             System.out.println("added Note");
             // Close the popup
             App.closeCurrentPopup();
-            CreateSongController.update();
+            // CreateSongController.update();
         } catch (Exception e) {
             e.printStackTrace();
             // Show error alert if needed

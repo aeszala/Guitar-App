@@ -4,29 +4,58 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="800" prefWidth="400" spacing="20.0" style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.TabsPageController">
+<VBox alignment="CENTER" prefHeight="800" prefWidth="400" spacing="20.0" 
+      style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C);" 
+      xmlns="http://javafx.com/javafx/23.0.1" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.guitar_app_one_direction.TabsPageController">
+    
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <children>
-      <Label fx:id="songTitle" style="-fx-translate-x: -112;" text="Song Title" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="28.0" />
-         </font>
-      </Label>
-      <ScrollPane fx:id="tabsScrollPane" prefHeight="448.0" prefWidth="360.0" style="-fx-background-color: #203434; -fx-background-radius: 30;">
-        <content>
-          <AnchorPane fx:id="tabsContentPane" minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="344.0" style="-fx-background-color: #203434; -fx-background-radius: 30 0 0 30;" />
-        </content>
-      </ScrollPane>
-      <Button fx:id="saveToTxtBtn" mnemonicParsing="false" onAction="#saveTabsToTxt" style="-fx-background-color: #296B73; -fx-background-radius: 60; -fx-cursor: hand;" text="Save to txt" textFill="WHITE">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-   </children>
+    <Button text="Hello World">
+
+    </Button>
+    <children>
+        <!-- Song Title -->
+        <Label fx:id="songTitle" style="-fx-text-fill: white;" text="Song Title">
+            <font>
+                <Font name="System Bold" size="28.0" />
+            </font>
+        </Label>
+        
+        <!-- Tablature Display Area -->
+<ScrollPane fx:id="tabsScrollPane" fitToWidth="true" fitToHeight="true" 
+            style="-fx-background-color: transparent; -fx-padding: 10;">
+    
+    <AnchorPane> 
+        <TextArea fx:id="tabsTextArea" editable="false" wrapText="false"
+                 AnchorPane.topAnchor="0.0"
+                 AnchorPane.bottomAnchor="0.0"
+                 AnchorPane.leftAnchor="0.0"
+                 AnchorPane.rightAnchor="0.0"
+                 style="-fx-font-family: monospace; -fx-font-size: 14; 
+                        -fx-text-fill: white; -fx-background-color: #203434;
+                        -fx-border-color: #296B73; -fx-border-radius: 5;
+                        -fx-control-inner-background: #203434;">
+        </TextArea>
+    </AnchorPane>
+
+</ScrollPane>
+        
+        <!-- Action Button -->
+        <Button fx:id="saveToTxtBtn" mnemonicParsing="false" onAction="#saveTabsToTxt" 
+               style="-fx-background-color: #296B73; -fx-background-radius: 30; 
+                     -fx-text-fill: white; -fx-font-size: 20; -fx-cursor: hand;" 
+               text="Save to TXT">
+               <font>
+                    <Font size="20.0" />
+                </font>
+        </Button>
+    </children>
 </VBox>

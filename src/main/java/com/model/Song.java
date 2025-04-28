@@ -280,30 +280,62 @@ public class Song {
         measures.add(measure);
     }
 
-    public void printAndSaveSheetMusic() {
-        String filename = title + "_sheet.txt"; // Generate filename
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+    // public void printAndSaveSheetMusic() {
+    //     String filename = title + "_sheet.txt"; // Generate filename
+    //     try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
 
-            for (int i = 0; i < measures.size(); i++) {
-                char[][] formattedArray = measures.get(i).getFormattedMeasure(); // Get the measure
+    //         for (int i = 0; i < measures.size(); i++) {
+    //             char[][] formattedArray = measures.get(i).getFormattedMeasure(); // Get the measure
 
-                // Print & Write the measure
-                writer.write("Measure " + (i + 1) + ":\n");
-                System.out.println("Measure " + (i + 1) + ":");
+    //             // Print & Write the measure
+    //             writer.write("Measure " + (i + 1) + ":\n");
+    //             System.out.println("Measure " + (i + 1) + ":");
 
-                for (char[] row : formattedArray) {
-                    String line = new String(row);
-                    writer.write(line + "\n"); // Write to file
-                    System.out.println(line); // Print to console
-                }
+    //             for (char[] row : formattedArray) {
+    //                 String line = new String(row);
+    //                 writer.write(line + "\n"); // Write to file
+    //                 System.out.println(line); // Print to console
+    //             }
 
-                writer.write("\n"); // Add spacing between measures
-                System.out.println();
+    //             writer.write("\n"); // Add spacing between measures
+    //             System.out.println();
+    //         }
+
+    //     } catch (IOException e) {
+    //         e.printStackTrace();
+    //     }
+    // }
+
+    public String getFormattedTabs() {
+        StringBuilder tabsBuilder = new StringBuilder();
+        
+        for (int i = 0; i < measures.size(); i++) {
+            char[][] formattedArray = measures.get(i).getFormattedMeasure();
+            
+            tabsBuilder.append("Measure ").append(i + 1).append(":\n");
+            
+            for (char[] row : formattedArray) {
+                tabsBuilder.append(new String(row)).append("\n");
             }
+            
+            tabsBuilder.append("\n"); // Spacing between measures
+        }
+        
+        return tabsBuilder.toString();
+    }
 
+    public void printAndSaveSheetMusic() {
+        String tabsContent = getFormattedTabs();
+        String filename = title + "_sheet.txt";
+        
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+            writer.write(tabsContent);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
+        // Still prints to console
+        System.out.println(tabsContent);
     }
 
     /**

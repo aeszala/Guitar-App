@@ -118,6 +118,7 @@ public void initialize() {
         } else {
             System.out.println("No song selected");
         }
+        
     }
 
     @FXML
