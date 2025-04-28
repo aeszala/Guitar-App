@@ -1,6 +1,8 @@
 package com.guitar_app_one_direction;
 
 import java.io.IOException;
+
+import com.model.MusicAppFACADE;
 import com.model.Song;
 import com.model.Songlist;
 import javafx.collections.FXCollections;
@@ -108,9 +110,11 @@ public void initialize() {
     @FXML
     private void playSong() {
         Song currentSong = App.getCurrentSong();
+        MusicAppFACADE facade = new MusicAppFACADE();
+        facade.setSong(currentSong);
         if (currentSong != null) {
             System.out.println("Playing song");
-            currentSong.playSong();
+            facade.play(currentSong);
         } else {
             System.out.println("No song selected");
         }
