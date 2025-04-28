@@ -112,9 +112,11 @@ public void initialize() {
     @FXML
     private void playSong() {
         Song currentSong = App.getCurrentSong();
+        MusicAppFACADE facade = new MusicAppFACADE();
+        facade.setSong(currentSong);
         if (currentSong != null) {
             System.out.println("Playing song");
-            currentSong.playSong();
+            facade.play(currentSong);
         } else {
             System.out.println("No song selected");
         }
