@@ -75,7 +75,7 @@ public class SearchController {
                             // Assuming song has getGenres() method that returns ArrayList<Genre>
                             String genresString = song.getGenres().toString().replaceAll("[\\[\\]]", "");
                             Label genreLabel = new Label(genresString);
-                            genreLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #aaaaaa;");
+                            genreLabel.setStyle("-fx-font-size: 12px; -fx-text-fill:rgb(170, 170, 170);");
                             
                             detailsBox.getChildren().addAll(difficultyLabel, genreLabel);
                             songBox.getChildren().addAll(titleLabel, artistLabel, detailsBox);

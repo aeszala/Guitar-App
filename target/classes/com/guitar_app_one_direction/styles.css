@@ -183,3 +183,28 @@
 .combo-box {
     -fx-text-fill: white;
 }
+
+.list-view {
+    -fx-background-color: transparent;
+    -fx-control-inner-background: transparent;
+    -fx-padding: 10px;
+}
+
+.list-cell {
+    -fx-background-color: rgba(0, 0, 0, 0.2);
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-padding: 10px;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-family: "Arial";
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 5, 0.3, 0, 1);
+}
+
+.list-cell:empty {
+    -fx-background-color: transparent;
+}
+
+.list-cell:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
