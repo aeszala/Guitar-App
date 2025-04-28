@@ -10,7 +10,9 @@ import com.model.Song;
 import com.model.User;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -68,7 +70,11 @@ public class ProfileController implements Initializable {
 
     @FXML
     private void goToMySongs() throws IOException {
-        App.setRoot("mySongs");
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("mySongs.fxml"));
+        Parent root = loader.load();
+        MySongsController controller = loader.getController();
+        controller.setUser(currentUser); // Pass the current user
+        App.setRoot(root);
     }
 
     @FXML
@@ -78,12 +84,20 @@ public class ProfileController implements Initializable {
 
     @FXML
     private void goToFavoriteSongs() throws IOException {
-        App.setRoot("favorites");
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("favorites.fxml"));
+        Parent root = loader.load();
+        FavoritesController controller = loader.getController();
+        controller.setUser(currentUser); // Pass the current user
+        App.setRoot(root);
     }
 
     @FXML
     private void goToCompletedSongs() throws IOException {
-        App.setRoot("completed");
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("completed.fxml"));
+        Parent root = loader.load();
+        CompletedController controller = loader.getController();
+        controller.setUser(currentUser); // Pass the current user
+        App.setRoot(root);
     }
 
     @FXML
