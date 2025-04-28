@@ -91,12 +91,33 @@
          </Label>
          <HBox prefHeight="57.0" prefWidth="368.0" style="-fx-background-color: #1D3435; -fx-pref-height: 60;">
             <children>
+<<<<<<< HEAD
                <Button fx:id="addNoteBtn" ellipsisString="➕" mnemonicParsing="false" onAction="#handleAddNote" style="-fx-max-height: 58; -fx-min-height: 58; -fx-max-width: 58; -fx-min-width: 58; -fx-background-color: white; -fx-text-fill: #BD522C; -fx-border-color: #1D3435; -fx-border-insets: -1; -fx-border-width: 2; -fx-font-size: 25;" text="➕" textFill="#8e5622">
+=======
+               <Button id="addNoteBtn" mnemonicParsing="false" onAction="#openNotePopup" prefHeight="55.0" prefWidth="59.0" style="-fx-font-size: 25; -fx-border-color: #1D3435; -fx-pref-height: 59; -fx-pref-width: 59; -fx-background-color: white; -fx-border-width: 2; -fx-border-insets: -1;" text="➕" textFill="#bd522c">
+>>>>>>> f50b0031382f1689354c3e849bd9d92ab074a9a4
                   <font>
                      <Font size="20.0" />
                   </font>
                </Button>
             </children></HBox>
+<<<<<<< HEAD
+=======
+         <Label style="-fx-text-fill: white; -fx-font-style: bold;" text="Measure 2">
+            <font>
+               <Font name="System Bold" size="20.0" />
+            </font>
+         </Label>
+         <HBox prefHeight="68.0" prefWidth="368.0" style="-fx-background-color: #1D3435; -fx-pref-height: 60;">
+            <children>
+               <Button id="addNoteBtn" mnemonicParsing="false" onAction="#openNotePopup" prefHeight="50.0" prefWidth="59.0" style="-fx-font-size: 25; -fx-border-color: #1D3435; -fx-pref-height: 59; -fx-pref-width: 59; -fx-background-color: white; -fx-border-width: 2; -fx-border-insets: -1;" text="➕" textFill="#bd522c">
+                  <font>
+                     <Font size="20.0" />
+                  </font>
+               </Button>
+            </children>
+         </HBox>
+>>>>>>> f50b0031382f1689354c3e849bd9d92ab074a9a4
       
          <!-- Add Measure Button -->
          <Button fx:id="addMeasureButton" onAction="#addMeasure" prefHeight="37.0" prefWidth="200.0" style="-fx-background-color: #143437; -fx-font-size: 20; -fx-background-radius: 30; -fx-translate-y: 5;" text="Add Measure ➕" />
@@ -113,5 +134,9 @@
       <Button fx:id="createTabsBtn" onAction="#goToTabsForCreateSong" prefHeight="38.0" prefWidth="162.0" style="-fx-text-fill: #1C1C1F; -fx-background-color: white; -fx-font-size: 20; -fx-background-radius: 30; -fx-pref-width: 175; -fx-translate-y: 20;" text="🎼 Create Tabs" />
    </HBox>
 
+<<<<<<< HEAD
    <Button fx:id="uploadSongBtn" maxWidth="373.0" onAction="#uploadSong" prefHeight="38.0" prefWidth="373.0" style="-fx-background-color: #296B73; -fx-font-size: 20; -fx-background-radius: 30; -fx-translate-y: 20;" text="Upload Song" />
 </VBox>
+=======
+</VBox>
+>>>>>>> f50b0031382f1689354c3e849bd9d92ab074a9a4

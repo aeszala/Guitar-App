@@ -203,7 +203,16 @@ public class CreateSongController {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("profile.fxml"));
         Parent root = loader.load();
         ProfileController profileController = loader.getController();
+<<<<<<< HEAD
         profileController.setUser(facade.getUser());
+=======
+
+        // Get the logged in user
+        User currentUser = facade.getUser();
+
+        profileController.setUser(currentUser);
+
+>>>>>>> f50b0031382f1689354c3e849bd9d92ab074a9a4
         App.setRoot(root);
     }
 
