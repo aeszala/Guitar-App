@@ -8,10 +8,21 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+import com.model.User;
+
 public class App extends Application {
     private static Stage primaryStage;  // Store the main stage
     private static Scene scene;        // Store the main scene
     private static String currentUsername;
+    private static User currentUser;
+
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User user) {
+        currentUser = user;
+    }
     private static Popup currentPopup;
 
     public static void setCurrentUsername(String username) {

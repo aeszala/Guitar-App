@@ -203,6 +203,12 @@ public class CreateSongController {
         Parent root = loader.load();
         ProfileController profileController = loader.getController();
         profileController.setUser(facade.getUser());
+
+        // Get the logged in user
+        User currentUser = facade.getUser();
+
+        profileController.setUser(currentUser);
+
         App.setRoot(root);
     }
 
