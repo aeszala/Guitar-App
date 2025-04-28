@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C); -fx-pref-height: 800; -fx-pref-width: 400;" stylesheets="@search.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.SearchController">
+<BorderPane style="-fx-background-color: linear-gradient(to bottom, #1E4E53, #BF532C); -fx-pref-height: 800; -fx-pref-width: 400;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.guitar_app_one_direction.SearchController">
     
     <!-- Top Navigation Bar (from template) -->
     <top>
