@@ -10,49 +10,64 @@ import com.model.Song;
 import com.model.User;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.ListView;
 
 public class FavoritesController implements Initializable {
 
-    @FXML
-    private ListView<String> favoritesListView;  // ListView to display favorite songs
+  @FXML
+  private ListView<String> favoritesListView; // ListView to display favorite songs
 
-    private MusicAppFACADE facade;
-    private User currentUser;
+  private MusicAppFACADE facade;
+  private User currentUser;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        facade = new MusicAppFACADE();  // Initialize the facade to interact with music data
+  @Override
+  public void initialize(URL url, ResourceBundle rb) {
+    facade = new MusicAppFACADE(); // Initialize the facade to interact with music data
+  }
+
+  public void setUser(User user) {
+    this.currentUser = user; // Set the current user
+    loadFavoriteSongs(); // Load the favorite songs for the current user
+  }
+
+  private void loadFavoriteSongs() {
+    if (currentUser == null)
+      return; // If no user is set, do nothing
+
+    // Fetch the list of favorite songs for the current user
+    List<Song> favoriteSongs = facade.getFavoriteSongs(currentUser);
+
+    // Clear the existing items in the ListView
+    favoritesListView.getItems().clear();
+
+    // Add each song's title to the ListView
+    for (Song song : favoriteSongs) {
+      favoritesListView.getItems().add(song.getTitle()); // Add song title to the ListView
     }
+  }
 
-    public void setUser(User user) {
-        this.currentUser = user;  // Set the current user
-        loadFavoriteSongs();  // Load the favorite songs for the current user
-    }
+  @FXML
+  private void handleBack() throws IOException {
 
-    private void loadFavoriteSongs() {
-        if (currentUser == null) return;  // If no user is set, do nothing
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("profile.fxml"));
+    Parent root = loader.load();
 
-        // Fetch the list of favorite songs for the current user
-        List<Song> favoriteSongs = facade.getFavoriteSongs(currentUser);
+    ProfileController profileController = loader.getController();
 
-        // Clear the existing items in the ListView
-        favoritesListView.getItems().clear();
+    // Get the logged in user
+    MusicAppFACADE facade = new MusicAppFACADE();
+    User currentUser = facade.getUser();
 
-        // Add each song's title to the ListView
-        for (Song song : favoriteSongs) {
-            favoritesListView.getItems().add(song.getTitle());  // Add song title to the ListView
-        }
-    }
+    profileController.setUser(currentUser);
 
-    @FXML
-    private void handleBack() throws IOException {
-        App.setRoot("profile");
-    }
+    App.setRoot(root);
+  }
 
-    @FXML
-    private void handleHome() throws IOException {
-        App.setRoot("home");
-    }
+  @FXML
+  private void handleHome() throws IOException {
+    App.setRoot("home");
+  }
 }

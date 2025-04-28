@@ -10,49 +10,65 @@ import com.model.Song;
 import com.model.User;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 
 public class MySongsController implements Initializable {
 
-    @FXML
-    private ListView<String> mySongsListView;  // ListView to display the songs
+  @FXML
+  private ListView<String> mySongsListView; // ListView to display the songs
 
-    private MusicAppFACADE facade;
-    private User currentUser;
+  private MusicAppFACADE facade;
+  private User currentUser;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        facade = new MusicAppFACADE();  // Initialize the facade to interact with music data
+  @Override
+  public void initialize(URL url, ResourceBundle rb) {
+    facade = new MusicAppFACADE(); // Initialize the facade to interact with music data
+  }
+
+  public void setUser(User user) {
+    this.currentUser = user; // Set the current user
+    loadMySongs(); // Load the user's songs
+  }
+
+  private void loadMySongs() {
+    if (currentUser == null)
+      return; // If no user is set, do nothing
+
+    // Fetch the list of songs for the current user
+    List<Song> mySongs = facade.getMySongs(currentUser);
+
+    // Clear the existing items in the ListView
+    mySongsListView.getItems().clear();
+
+    // Add each song's title to the ListView
+    for (Song song : mySongs) {
+      mySongsListView.getItems().add(song.getTitle()); // Add song title to the ListView
     }
+  }
 
-    public void setUser(User user) {
-        this.currentUser = user;  // Set the current user
-        loadMySongs();  // Load the user's songs
-    }
+  @FXML
+  private void handleBack() throws IOException {
 
-    private void loadMySongs() {
-        if (currentUser == null) return;  // If no user is set, do nothing
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("profile.fxml"));
+    Parent root = loader.load();
 
-        // Fetch the list of songs for the current user
-        List<Song> mySongs = facade.getMySongs(currentUser);
+    ProfileController profileController = loader.getController();
 
-        // Clear the existing items in the ListView
-        mySongsListView.getItems().clear();
+    // Get the logged in user
+    MusicAppFACADE facade = new MusicAppFACADE();
+    User currentUser = facade.getUser();
 
-        // Add each song's title to the ListView
-        for (Song song : mySongs) {
-            mySongsListView.getItems().add(song.getTitle());  // Add song title to the ListView
-        }
-    }
+    profileController.setUser(currentUser);
 
-    @FXML
-    private void handleBack() throws IOException {
-      App.setRoot("profile");
-    }
+    App.setRoot(root);
+  }
 
-    @FXML
-    private void handleHome() throws IOException {
-      App.setRoot("home");
-    }
+  @FXML
+  private void handleHome() throws IOException {
+    App.setRoot("home");
+  }
 }

@@ -53,6 +53,20 @@ public class ProfileController implements Initializable {
     }
 
     @FXML
+    public void initialize() {
+        User currentUser = App.getCurrentUser();
+
+        if (currentUser != null) {
+            nameLabel.setText(currentUser.getName());
+            usernameLabel.setText(currentUser.getUsername());
+            emailLabel.setText(currentUser.getEmail());
+        } else {
+            System.out.println("No user is logged in!");
+        }
+    }
+
+
+    @FXML
     private void goToMySongs() throws IOException {
         App.setRoot("mySongs");
     }

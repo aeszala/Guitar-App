@@ -7,10 +7,21 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+import com.model.User;
+
 public class App extends Application {
     private static Stage primaryStage;  // Store the main stage
     private static Scene scene;        // Store the main scene
     private static String currentUsername;
+    private static User currentUser;
+
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User user) {
+        currentUser = user;
+    }
 
     public static void setCurrentUsername(String username) {
         currentUsername = username;
