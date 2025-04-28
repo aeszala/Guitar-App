@@ -153,4 +153,15 @@ public class SearchController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void handleBack() throws IOException {
+      App.setRoot("home");
+  
+    }
+  
+    @FXML
+    private void handleHome() throws IOException {
+      App.setRoot("home");
+    }
 }
