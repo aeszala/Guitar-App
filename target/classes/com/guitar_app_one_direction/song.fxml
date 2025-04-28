@@ -5,6 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -28,25 +29,25 @@
            <Image url="@../images/chooseImage.png" />
         </image>
     </ImageView>
-   <VBox prefHeight="200.0" prefWidth="100.0">
-      <children>
-      
-          <!-- Runtime and Rating -->
-          <HBox prefHeight="30.0" prefWidth="394.0" spacing="10" style="-fx-translate-y: 60; -fx-translate-x: 45; -fx-max-width: 310;">
-              <Label text="Runtime:" textFill="WHITE">
-                  <font>
-                      <Font name="System Bold" size="20.0" />
-                  </font>
-              </Label>
-              <Label fx:id="runtimeLabel" text="0:00" textFill="WHITE">
-                  <font>
-                      <Font name="System Bold" size="20.0" />
-                  </font>
-              </Label>
-          </HBox>
-           <Label fx:id="ratingLabel" style="-fx-font-size: 20; -fx-translate-x: 45; -fx-translate-y: 60;" text="★★★★★" textFill="WHITE" />
-      </children>
-   </VBox>
+   
+    <VBox prefHeight="200.0" prefWidth="100.0">
+        <children>
+            <!-- Runtime and Rating -->
+            <HBox prefHeight="30.0" prefWidth="394.0" spacing="10" style="-fx-translate-y: 60; -fx-translate-x: 45; -fx-max-width: 310;">
+                <Label text="Runtime:" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+                <Label fx:id="runtimeLabel" text="0:00" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+            </HBox>
+            <Label fx:id="ratingLabel" style="-fx-font-size: 20; -fx-translate-x: 45; -fx-translate-y: 60;" text="★★★★★" textFill="WHITE" />
+        </children>
+    </VBox>
 
     <!-- Buttons -->
     <VBox spacing="10" style="-fx-translate-x: 45; -fx-translate-y: -40;">
@@ -56,4 +57,15 @@
 
     <!-- Reviews Section -->
     <VBox fx:id="reviewContainer" prefWidth="385.0" spacing="10" style="-fx-background-color: transparent; -fx-padding: 10;" />
+
+    <!-- Bottom Navigation -->
+    <HBox alignment="CENTER" styleClass="bottom-nav-bar">
+        <Button fx:id="backButton" onAction="#handleBack" prefHeight="85.0" prefWidth="81.0" style="-fx-background-color: transparent;" styleClass="nav-button back-button" text="&lt;" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="40.0" />
+            </font>
+        </Button>
+        <Pane HBox.hgrow="ALWAYS" />
+        <Button fx:id="homeButton" onAction="#handleHome" style="-fx-pref-height: 40; -fx-pref-width: 40; -fx-font-size: 40; -fx-background-color: transparent;" styleClass="nav-button home-button" text="🏠" textFill="WHITE" />
+    </HBox>
 </VBox>

@@ -49,6 +49,12 @@ public class SongController {
 
     @FXML
     private Label titleLabel;
+    
+    @FXML
+    private Button backButton;
+    
+    @FXML
+    private Button homeButton;
 
     private Song currentSong; // To store the current song to be displayed on the page
 
