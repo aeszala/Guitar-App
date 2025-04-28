@@ -36,6 +36,7 @@ public class Song {
     private Difficulty difficulty;
     private ArrayList<Measure> measures;
     private boolean completed;
+    private String imagePath;
 
     /**
      * Constructor for new songs.
@@ -205,7 +206,14 @@ public class Song {
         return rating;
     }
 
-    // public String getImagePath
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public boolean setImagePath(String imagePath) {
+        this.imagePath = "@../images/" + imagePath + ".png";
+        return true;
+    }
 
     public void setRating(double rating) {
         this.rating = rating;
