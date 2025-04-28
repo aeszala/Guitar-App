@@ -6,6 +6,8 @@ import com.model.Songlist;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -114,8 +116,23 @@ public void initialize() {
 
     @FXML
     private void goToTabPage() throws IOException {
-        App.setRoot("tabsPage");
-        System.out.println("Going to tab creation page...");
+        if (currentSong == null) {
+            System.out.println("No song selected to create tabs for");
+            return;
+        }
+
+        System.out.println("Going to tab creation page for: " + currentSong.getTitle());
+
+        // Load the FXML and get the controller
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("tabsPage.fxml"));
+        Parent root = loader.load();
+
+        // Get the controller and set the song info
+        TabsPageController controller = loader.getController();
+        controller.setTabsContent(currentSong.getTitle(), ""); // Pass empty string for tabs content
+
+        // Set the new root
+        App.setRoot(root);
     }
 
     @FXML

@@ -20,7 +20,7 @@
       </Label>
       <ScrollPane fx:id="tabsScrollPane" prefHeight="448.0" prefWidth="360.0" style="-fx-background-color: #203434; -fx-background-radius: 30;">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="344.0" style="-fx-background-color: #203434; -fx-background-radius: 30 0 0 30;" />
+          <AnchorPane fx:id="tabsContentPane" minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="344.0" style="-fx-background-color: #203434; -fx-background-radius: 30 0 0 30;" />
         </content>
       </ScrollPane>
       <Button fx:id="saveToTxtBtn" mnemonicParsing="false" onAction="#saveTabsToTxt" style="-fx-background-color: #296B73; -fx-background-radius: 60; -fx-cursor: hand;" text="Save to txt" textFill="WHITE">
