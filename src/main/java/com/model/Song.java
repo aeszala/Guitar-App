@@ -205,6 +205,8 @@ public class Song {
         return rating;
     }
 
+    // public String getImagePath
+
     public void setRating(double rating) {
         this.rating = rating;
     }
