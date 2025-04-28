@@ -6,3 +6,5 @@ Backend Video: https://www.youtube.com/watch?v=7SfFXZmLbag
 Prototype Video: https://youtu.be/Nlg4dRNB6Vw
 
 Prototype: https://aeszala.github.io/Guitar-App/
+
+Frontend Video: https://youtu.be/qpyJsM7u2Z8
