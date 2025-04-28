@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -11,6 +12,7 @@ public class App extends Application {
     private static Stage primaryStage;  // Store the main stage
     private static Scene scene;        // Store the main scene
     private static String currentUsername;
+    private static Popup currentPopup;
 
     public static void setCurrentUsername(String username) {
         currentUsername = username;
@@ -49,6 +51,26 @@ public class App extends Application {
     public static void setRoot(Parent root) {
         scene.setRoot(root);
     }
+
+    // Method to show a popup overlay
+    public static Popup showPopup(String fxml) throws IOException {
+        Parent root = loadFXML(fxml);
+        
+        currentPopup = new Popup();
+        currentPopup.getContent().add(root);
+        currentPopup.setAutoHide(true); // Closes when clicking outside
+        currentPopup.show(primaryStage);
+        
+        return currentPopup;
+    }
+    
+    public static void closeCurrentPopup() {
+        if (currentPopup != null) {
+            currentPopup.hide();
+            currentPopup = null;
+        }
+    }
+
 
     // Helper to load FXML files
     private static Parent loadFXML(String fxml) throws IOException {
