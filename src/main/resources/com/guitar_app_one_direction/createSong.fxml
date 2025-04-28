@@ -78,6 +78,7 @@
    </HBox>
    
    <ScrollPane fitToWidth="true" maxHeight="400" prefHeight="370.0" prefWidth="400.0" style="-fx-background-color: transparent; -fx-translate-y: -20;">
+      <content>
       <VBox fx:id="measureContainer" prefHeight="371.0" prefWidth="398.0" spacing="10" style="-fx-background-color: linear-gradient(to bottom, #4F4F47, #995235);">
          <padding>
             <Insets bottom="10" left="10" right="10" top="10" />
@@ -101,6 +102,7 @@
          <!-- Add Measure Button -->
          <Button fx:id="addMeasureButton" onAction="#addMeasure" prefHeight="37.0" prefWidth="200.0" style="-fx-background-color: #143437; -fx-font-size: 20; -fx-background-radius: 30; -fx-translate-y: 5;" text="Add Measure ➕" />
       </VBox>
+      </content>
    </ScrollPane>
 
    <!-- Action Buttons -->

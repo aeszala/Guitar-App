@@ -2,6 +2,7 @@ package com.guitar_app_one_direction;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -9,6 +10,9 @@ import com.model.MusicAppFACADE;
 import com.model.Song;
 import com.model.User;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -34,6 +38,7 @@ public class FavoritesController implements Initializable {
   }
 
   private void loadFavoriteSongs() {
+    System.out.println("see if loaded");
     if (currentUser == null)
       return; // If no user is set, do nothing
 
@@ -70,4 +75,15 @@ public class FavoritesController implements Initializable {
   private void handleHome() throws IOException {
     App.setRoot("home");
   }
-}
+
+  // @FXML
+  // private void loadSongs(ActionEvent event) {
+  //     if (!facade.getUser().getFavoriteSongs().isEmpty()) {
+  //       // Get the songs from facade's getSongs() method
+  //       ObservableList<Song> observableSongs = FXCollections.observableArrayList(facade.getUser().getFavoriteSongs());
+  //       favoritesListView.setItems(observableSongs);
+  //     } else {
+  //       favoritesListView.setItems(FXCollections.emptyObservableList());
+  //     }
+  //   }
+  }
