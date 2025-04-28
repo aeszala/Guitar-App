@@ -5,6 +5,8 @@ import java.io.IOException;
 import com.model.MusicAppFACADE;
 import com.model.Song;
 import com.model.Songlist;
+import com.model.User;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -47,6 +49,12 @@ public class SongController {
 
     @FXML
     private Label titleLabel;
+    
+    @FXML
+    private Button backButton;
+    
+    @FXML
+    private Button homeButton;
 
     private Song currentSong; // To store the current song to be displayed on the page
 
@@ -151,4 +159,15 @@ public void initialize() {
             System.out.println("No song selected");
         }
     }
+
+      @FXML
+  private void handleBack() throws IOException {
+    App.setRoot("search");
+
+  }
+
+  @FXML
+  private void handleHome() throws IOException {
+    App.setRoot("home");
+  }
 }
