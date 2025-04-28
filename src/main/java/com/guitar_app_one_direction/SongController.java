@@ -107,7 +107,9 @@ public void initialize() {
 
     @FXML
     private void playSong() {
+        Song currentSong = App.getCurrentSong();
         if (currentSong != null) {
+            System.out.println("Playing song");
             currentSong.playSong();
         } else {
             System.out.println("No song selected");
@@ -116,6 +118,7 @@ public void initialize() {
 
     @FXML
     private void goToTabPage() throws IOException {
+        Song currentSong = App.getCurrentSong();
         if (currentSong == null) {
             System.out.println("No song selected to create tabs for");
             return;
