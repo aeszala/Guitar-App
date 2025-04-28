@@ -112,7 +112,6 @@ public class CreateSongController {
     }
 
     public void addNote(String type, double length, double pitch, int string, int fret) {
-        System.out.println("called addNote in CreateSongController");
         HBox currentMeasure = measureBoxes.get(currentEditableMeasureIndex);
         
         // Remove add button if at max notes (6)
@@ -229,9 +228,5 @@ public class CreateSongController {
         alert.setTitle(title);
         alert.setContentText(message);
         alert.showAndWait();
-    }
-
-    public static void update() {
-        
     }
 }
